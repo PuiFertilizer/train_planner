@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 120.0),
+            padding: const EdgeInsets.only(left: 20.0, right: 10.0),
             child:  Icon(
               Icons.menu,
               color: Colors.black,
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                       Text(
                   "คุณอยากเดินทางไปที่ใด",
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     )
@@ -71,10 +71,19 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15)
                 ),
                 
+                
                 child: Container(
-
-                )
-              )
+                  child: Stack(
+                    children: <Widget>[
+                      SizedBox(height: 200.0) ,
+              
+                
+                
+                     // Destination_Carousel(),
+                    ],
+                  ),
+                ),
+              ),
               
             ),
            
