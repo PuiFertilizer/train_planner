@@ -24,7 +24,9 @@ class Destination_Carousel extends StatelessWidget {
             ]),
         
         ),
-        Container(height: 290.0,
+        Container(
+          //color: Colors.blue,
+          height: 240.0,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: destinations.length,
@@ -39,11 +41,18 @@ class Destination_Carousel extends StatelessWidget {
                 Positioned(
                   bottom: 15.0,
                 child: Container(
-                  height: 120.0,
+                  height: 205.0,
                   width: 200.0,
-                  decoration: BoxDecoration(
+                  decoration: BoxDecoration( //ทำเงาดำ
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(15.0),
+                    boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      offset: Offset(0.0, 2.0),
+                      blurRadius: 10.0,
+                      ),
+                    ]
                   ),
 
                   //Padding
@@ -53,10 +62,17 @@ class Destination_Carousel extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('${destination.activities.length} activities',style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.2,)),
+                      Text(destination.city,
+                             style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0,
+                              )),
                       Text(destination.description,
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Color.fromARGB(255, 80, 80, 80),
+                        fontSize: 12.0,
                       ),),
                     ],
                   ),
@@ -68,20 +84,14 @@ class Destination_Carousel extends StatelessWidget {
                 Container(decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      offset: Offset(0.0, 2.0),
-                      blurRadius: 6.0,
-                      ),
-                    ]),
+                  ),
                     child: Stack(
                       children: <Widget>[
                         ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: Image(
-                            height: 180.0, 
-                            width: 180.0, 
+                            height: 140.0, 
+                            width: 200.0, //200
                             image: AssetImage(destination.imageUrl),
                             fit: BoxFit.cover,
                           ),
@@ -92,23 +102,11 @@ class Destination_Carousel extends StatelessWidget {
                           child: Column( //wra[]
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                            Text(destination.city,
-                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.2,
-                              )
-                              ),
+                            
                           Row(
                             children: <Widget>[
-                            SizedBox(width: 5.0,),
-                            Text(
-                              destination.country,
-                                style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16.0
-                            )),
+                            SizedBox(width: 4.0,),
+                            
                             ],
                             ),
                           ],),

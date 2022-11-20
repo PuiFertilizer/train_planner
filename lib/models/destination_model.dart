@@ -3,14 +3,14 @@ import 'package:train_planner/models/activity_model.dart';
 class Destination {
   String imageUrl;
   String city;
-  String country;
+
   String description;
   List<Activity> activities;
 
   Destination({
     required this.imageUrl,
     required this.city,
-    required this.country,
+
     required this.description,
     required this.activities,
   });
@@ -46,37 +46,37 @@ List<Activity> activities = [
 List<Destination> destinations = [
   Destination(
     imageUrl: 'assets/images/chiangmai.jpg',
-    city: 'Venice',
-    country: 'Italy',
-    description: 'Visit Venice for an amazing and unforgettable adventure.',
+    city: 'เชียงใหม่',
+
+    description: 'สถานีเชียงใหม่',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/nongkai.jpg',
-    city: 'Paris',
-    country: 'France',
-    description: 'Visit Paris for an amazing and unforgettable adventure.',
+    city: 'หนองคาย',
+
+    description: 'สถานีหนองคาย',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/surat.jpg',
-    city: 'New Delhi',
-    country: 'India',
-    description: 'Visit New Delhi for an amazing and unforgettable adventure.',
+    city: 'สุราษฎร์ธานี',
+
+    description: 'สถานีสุราษฏร์ธานี',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/tachompoo.jpg',
-    city: 'Sao Paulo',
-    country: 'Brazil',
-    description: 'Visit Sao Paulo for an amazing and unforgettable adventure.',
+    city: 'ลำพูน',
+
+    description: 'สถานีลำพูน',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/suanson.jpg',
-    city: 'New York City',
-    country: 'United States',
-    description: 'Visit New York for an amazing and unforgettable adventure.',
+    city: 'ประจวบฯ',
+
+    description: 'สถานีหัวหิน',
     activities: activities,
   ),
 ];
