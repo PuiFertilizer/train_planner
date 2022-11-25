@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
+//import 'package:train_planner/widgets/Tourtrain_Carousel.dart';
+
 import '../widgets/Destination_Carousel.dart';
+
+import '../widgets/Tourtrain_Carousel.dart';
+
 
 
 class HomePage extends StatelessWidget {
-
+  int _selectedIndex = 0;
+  int _currentTab = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +30,9 @@ class HomePage extends StatelessWidget {
           )
 
         ]),
-        body: Stack(
-          
+        body: Container(
+          child: SingleChildScrollView(
+            child: Stack(
 
           children: [
             Image.asset("assets/images/tachompoo.jpg",
@@ -60,14 +67,14 @@ class HomePage extends StatelessWidget {
             ),
             Positioned.fill(
 
-              bottom: 310,
+              bottom: 480,
               child: Align(
                 alignment: Alignment.center,
               child: Container(
                 width: 340,
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(199, 249, 204, 1),
+                  color: Color.fromARGB(255, 221, 221, 221),
                   borderRadius: BorderRadius.circular(15)
                 ),
                 
@@ -92,20 +99,61 @@ class HomePage extends StatelessWidget {
           Column(
             
             children: <Widget>[
-              SizedBox(height: 300.0) ,
-              
-                
-                
-                    Destination_Carousel(),
+              SizedBox(height: 350.0) ,
+              Destination_Carousel(),
+              SizedBox(height: 10.0) ,
+              Tourtrain_Carousel()
+
+                  
                   
               
               
             ],
-          )  
-        ],          
+          ) ,
+           
+        ],  
+          ),
+        ),        
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor:  Color.fromARGB(255, 0, 204, 153),
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value; 
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            size: 30.0,
+          ),label: 'หน้า'
+          
+          
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.favorite,
+            size: 30.0,
+          ),label: 'รายการโปรด'
+          
+        ),
+        
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.favorite,
+            size: 30.0,
+          ),label: 'แผนเดินทาง'
+          
+        ),
+      ]
       ),
     );
     
   }
   
+}
+
+void setState(Null Function() param0) {
 }
