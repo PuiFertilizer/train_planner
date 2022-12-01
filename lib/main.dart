@@ -1,10 +1,17 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_file.dart';
 import 'screens/home.dart';
 import 'screens/favourite.dart';
 import 'screens/planner.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 void main() {
+
+  
+
   runApp(MyApp());
 }
 
@@ -45,14 +52,19 @@ class _MyHomePageState extends State<MyHomePage> {
         onPageChanged: onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xffd9ffbf),
+        backgroundColor: Color.fromARGB(255, 87, 204, 153),
         onTap: onItemTap,
+        iconSize: 50,
+        selectedFontSize: 16,
+        selectedItemColor: Colors.black,
+        unselectedFontSize: 16,
+        unselectedItemColor: Colors.black,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: selectIndex==0?Colors.green:Colors.grey,),
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: selectIndex==0?Color.fromARGB(255, 0, 100, 42):Colors.black,),
           label: 'หน้าหลัก'),
-          BottomNavigationBarItem(icon: Icon(Icons.star,color: selectIndex==1?Colors.green:Colors.grey,),
+          BottomNavigationBarItem(icon: Icon(Icons.star,color: selectIndex==1?Color.fromARGB(255, 0, 100, 42):Colors.black,),
           label: 'รายการโปรด'),
-          BottomNavigationBarItem(icon: Icon(Icons.search,color: selectIndex==2?Colors.green:Colors.grey,),
+          BottomNavigationBarItem(icon: Icon(Icons.search,color: selectIndex==2?Color.fromARGB(255, 0, 100, 42):Colors.black,),
           label: 'แผนเดินทาง'),
         ]),
     );

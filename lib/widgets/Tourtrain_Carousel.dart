@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/destination_model.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Tourtrain_Carousel extends StatelessWidget {
@@ -18,7 +19,7 @@ class Tourtrain_Carousel extends StatelessWidget {
             children: <Widget>[
               Text(
                 'ท่องเที่ยวกับการรถไฟแห่งประเทศไทย',
-                style: TextStyle(
+                style: GoogleFonts.prompt(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   
@@ -66,14 +67,14 @@ class Tourtrain_Carousel extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(destination.city,
-                             style: TextStyle(
+                             style: GoogleFonts.prompt(
                               color: Colors.black,
                               fontSize: 24.0,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 0,
                               )),
                       Text(destination.description,
-                      style: TextStyle(
+                      style: GoogleFonts.prompt(
                         color: Color.fromARGB(255, 80, 80, 80),
                         fontSize: 12.0,
                       ),),

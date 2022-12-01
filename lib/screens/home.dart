@@ -2,7 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:intl/intl.dart';
 import 'package:searchfield/searchfield.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:date_format/date_format.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
+
 
 //import 'package:train_planner/widgets/Tourtrain_Carousel.dart';
 
@@ -21,11 +27,13 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> {
 
+
   void updateList(String value){
     //function กรอง items ต่างๆ
-
+    
   }
   String? _selectedStation;
+  TextEditingController _date = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Text(
                   "คุณอยากเดินทางไปที่ใด",
-                  style: TextStyle(
+                  style: GoogleFonts.prompt(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -109,11 +117,11 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "กรุณาเลือกสถานีต้นทาง",
-                              style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),
 
                             ),
                             SizedBox(
-                              height: 10.0,
+                              height: 15.0,
                             ),
                             Container(
                               
@@ -121,14 +129,23 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   SizedBox(height: 30,),
                                   DropdownSearch<String>(
+                                    
                                     mode: Mode.MENU,
                                     showSelectedItems: true,
-                                    items: ['กรุงเทพ','เชียงใหม่','หนองคาย'],
+                                    items: ['กรุงเทพ','เชียงใหม่','หนองคาย','อุบลราชธานี','สุราษฎร์ธานี','ชุมทางหาดใหญ่'],
                                     dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder( //<-- SEE HERE
+                                      borderSide: BorderSide(color: Colors.white, width: 2),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder( //<-- SEE HERE
+                                      borderSide: BorderSide(color: Colors.white, width: 2),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      ),
                                       contentPadding: EdgeInsets.symmetric(vertical: 4.0),
                                       filled: true, //<-- SEE HERE
                                       fillColor: Color.fromARGB(255, 255, 255, 255),
-                                      labelText: "สถานีต้นทาง",
+                                      
                                       hintText: "สถานีหรือชื่อจังหวัด"
                                     ),
                                     popupItemDisabled: isItemDisabled,
@@ -142,17 +159,25 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 15,),
                                   Text('กรุณาเลือกสถานีปลายทาง',
-                                  style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),),
+                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),),
                                   SizedBox(height: 2,),
                                   DropdownSearch<String>(
                                     mode: Mode.MENU,
                                     showSelectedItems: true,
-                                    items: ['กรุงเทพ','เชียงใหม่','หนองคาย'],
+                                    items: ['กรุงเทพ','เชียงใหม่','หนองคาย','อุบลราชธานี','สุราษฎร์ธานี','ชุมทางหาดใหญ่'],
                                     dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder( //<-- SEE HERE
+                                      borderSide: BorderSide(color: Colors.white, width: 2),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder( //<-- SEE HERE
+                                      borderSide: BorderSide(color: Colors.white, width: 2),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      ),
                                       contentPadding: EdgeInsets.symmetric(vertical: 4.0),
                                       filled: true, //<-- SEE HERE
                                       fillColor: Color.fromARGB(255, 255, 255, 255),
-                                      labelText: "สถานีปลายทาง",
+                                      
                                       hintText: "สถานีหรือชื่อจังหวัด"
                                     ),
                                     popupItemDisabled: isItemDisabled,
@@ -161,6 +186,37 @@ class _HomePageState extends State<HomePage> {
                                     searchFieldProps: TextFieldProps(
                                       cursorColor: Colors.blue,
                                 ),
+                                  ),
+                                  SizedBox(height: 15,),
+                                  Text('วันเดินทางไป',
+                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),),
+                                  SizedBox(height: 2,),
+                                  TextField(
+                                    controller: _date,
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.white, width: 2),
+                                        borderRadius: BorderRadius.circular(10.0)
+                                      ),
+                                      contentPadding: EdgeInsets.symmetric(vertical: 4.0),
+                                      filled: true, //<-- SEE HERE
+                                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                                      icon : Icon(Icons.calendar_today_rounded),
+                                      
+                                    ),
+                                    onTap: () async {
+                                      DateTime? pickeddate = await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: DateTime(2000),
+                                          lastDate: DateTime(2101)
+                                      );
+                                      if (pickeddate != null) {
+                                        setState( () {
+                                          _date.text = DateFormat('dd/MM/yyyy').format(pickeddate);
+                                        });
+                                      }
+                                    },
                                   ),
 
                                 ],
