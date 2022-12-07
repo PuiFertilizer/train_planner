@@ -7,6 +7,9 @@ import 'screens/planner.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
+
+
 
 void main() {
 
@@ -29,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  
 
   PageController pageController = PageController();
   List<Widget>pages=[HomePage(),Favourite(),Planner()];
@@ -46,6 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //drawer: NavBar(),
+      // appBar: AppBar(
+
+      // ),
       body: PageView(
         controller: pageController,
         children: pages,
@@ -68,5 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
           label: 'แผนเดินทาง'),
         ]),
     );
+    
   }
 }

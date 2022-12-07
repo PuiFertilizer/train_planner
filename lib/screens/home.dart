@@ -3,11 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:intl/intl.dart';
-import 'package:searchfield/searchfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import '../widgets/NavBar.dart';
+import '../screens/searchresult.dart';
 
 
 //import 'package:train_planner/widgets/Tourtrain_Carousel.dart';
@@ -28,6 +29,9 @@ class HomePage extends StatefulWidget{
 class _HomePageState extends State<HomePage> {
 
 
+
+
+
   void updateList(String value){
     //function กรอง items ต่างๆ
     
@@ -38,22 +42,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 204, 153),
-        elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 10.0),
-            child:  Icon(
-              Icons.menu,
-              color: Colors.black,
-            ),
-          )
 
-        ]),
+      
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      drawer: NavBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 87, 204, 153),
+        title: Text('side'),
+      ),
         body: Container(
+          
           child: SingleChildScrollView(
             child: Stack(
 
@@ -95,8 +93,8 @@ class _HomePageState extends State<HomePage> {
               child: Align(
                 alignment: Alignment.center,
               child: Container(
-                width: 340,
-                height: 800,
+                width: 320,
+                height: 600,
                 decoration: BoxDecoration(
                 color: Color.fromARGB(255, 221, 221, 221),
                 borderRadius: BorderRadius.circular(15),
@@ -132,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                                     
                                     mode: Mode.MENU,
                                     showSelectedItems: true,
-                                    items: ['กรุงเทพ','เชียงใหม่','หนองคาย','อุบลราชธานี','สุราษฎร์ธานี','ชุมทางหาดใหญ่'],
+                                    items: ['กรุงเทพ  จ.กรุงเทพ','เชียงใหม่  จ.เชียงใหม่','หนองคาย  จ.หนองคาย','อุบลราชธานี  จ.อุบลราชธานี','สุราษฎร์ธานี  จ.สุราษฎร์ธานี','ชุมทางหาดใหญ่  จ.สงขลา'],
                                     dropdownSearchDecoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder( //<-- SEE HERE
                                       borderSide: BorderSide(color: Colors.white, width: 2),
@@ -218,75 +216,48 @@ class _HomePageState extends State<HomePage> {
                                       }
                                     },
                                   ),
+                                  SizedBox(height: 10,),
+                                  ElevatedButton.icon(
+                                    
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
+                                    },
+                                    icon: Icon(Icons.search),
+                                    label: Text("สถานีใกล้ตัว",
+                                    style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),),
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(90, 40),
+                                      backgroundColor: Color.fromARGB(255, 128, 237, 193),
+                                       shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0),
+                                      ),
+                                    ),
+                                    
+                                  ),
+                                  SizedBox(height: 10,),
+                                  ElevatedButton.icon(
+                                    
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
+                                    },
+                                    icon: Icon(Icons.search),
+                                    label: Text("ค้นหา",
+                                    style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),),
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(90, 40),
+                                      backgroundColor: Color.fromARGB(255, 56, 163, 165),
+                                       shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0),
+                                      ),
+                                    ),
+                                    
+                                  ),
+                                  
 
                                 ],
                               )
                             ),
-                          //   Container(
-                          //   margin: EdgeInsets.symmetric(horizontal: 20),
-                          //   decoration: BoxDecoration(
-                          //     color: Colors.white,
-                          //     borderRadius: BorderRadius.circular(10)
-                          //   ),
-                          //     child: SearchField(
-                                
-                                
-                          //       hint: 'ค้นหาตามชื่อสถานีหรือจังหวัด',
-                          //       searchInputDecoration: InputDecoration(
-                                  
-                          //         enabledBorder: OutlineInputBorder(
-                          //           borderRadius: BorderRadius.circular(10)
-                          //         ),
-                          //         focusedBorder: OutlineInputBorder(
-                          //           borderSide: BorderSide(
-                          //             color: Colors.blue.withOpacity(0.8),
-                          //             width: 2
-                          //           ) ,
-                          //           borderRadius: BorderRadius.circular(10)
-                          //           ),
-                          //           isDense: true,
-                          //           contentPadding: EdgeInsets.all(10),
-                          //       ),
-                          //       searchStyle: TextStyle(fontSize: 14),
-                          //       itemHeight: 25,
-                          //       maxSuggestionsInViewPort: 3,
-                          //       suggestionsDecoration: BoxDecoration(
-                          //         color: Colors.white,
-                          //         borderRadius: BorderRadius.circular(10)
-                          //       ),
-                          //       onTap: (value) {
-                          //         setState(() {
-                          //           _selectedStation = value;
-                          //         });
-                          //       },
-                          //       suggestions: [
-                          //         'กรุงเทพ',
-                          //         'เชียงใหม่',
-                          //         'อุบลราชธานี',
-                          //         'หนองคาย',
-                          //         'สุราษฏร์ธานี'
-                          //       ],
-                          //     ),
-                          //  ),
-                          //  Container(
-                          //   height: 100,
-                            
-                          //   decoration: BoxDecoration(
-                              
-                          //   ),
-                          //   child: Row(
-                          //     children: [
-                          //       _selectedStation == null ? Text('กรุณาเลือกสถานีต้นทาง',style: TextStyle(
-                          //         fontSize: 16,
-                          //         color: Colors.blue
-                          //       ),) : Text(_selectedStation!, style: TextStyle(
-                          //         color: Colors.blue,
-                          //         fontSize: 16,
-                          //         fontWeight: FontWeight.w600
-                          //       ))
-                          //     ],
-                          //   ),
-                          //  ) 
+
                             
                           ],
                           
@@ -297,11 +268,7 @@ class _HomePageState extends State<HomePage> {
                         
                         
                         ),
-                        
-                    
-                    //This is the actual widget 
-                
-                     // พื้นที่ Form ค้นหา
+
                     ],
                   ),
                 ),

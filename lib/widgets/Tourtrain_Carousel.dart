@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
-
-import '../models/destination_model.dart';
+import '../models/tourtrain_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -33,9 +31,9 @@ class Tourtrain_Carousel extends StatelessWidget {
           height: 240.0,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: destinations.length,
+          itemCount: tours.length,
           itemBuilder: (BuildContext context, int index) {
-            Destination destination = destinations[index];
+            Tour tour = tours[index];
           return Container(
             margin: EdgeInsets.all(10.0),
             width: 210.0,
@@ -66,14 +64,14 @@ class Tourtrain_Carousel extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(destination.city,
+                      Text(tour.tourname,
                              style: GoogleFonts.prompt(
                               color: Colors.black,
-                              fontSize: 24.0,
+                              fontSize: 20.0,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 0,
                               )),
-                      Text(destination.description,
+                      Text(tour.description,
                       style: GoogleFonts.prompt(
                         color: Color.fromARGB(255, 80, 80, 80),
                         fontSize: 12.0,
@@ -96,7 +94,7 @@ class Tourtrain_Carousel extends StatelessWidget {
                           child: Image(
                             height: 140.0, 
                             width: 200.0, //200
-                            image: AssetImage(destination.imageUrl),
+                            image: AssetImage(tour.imageUrl),
                             fit: BoxFit.cover,
                           ),
                         ),

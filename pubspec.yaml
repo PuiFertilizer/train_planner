@@ -39,9 +39,10 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_launcher_icons: ^0.10.0
   dropdown_search: ^3.0.1
-  searchfield: ^0.2.1
   date_format: ^2.0.7
   intl: ^0.17.0
+  sidebar: ^0.0.1
+  custom_navigator: ^0.3.0
   
 
 flutter_icons:

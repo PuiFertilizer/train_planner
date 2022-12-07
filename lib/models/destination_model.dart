@@ -79,4 +79,11 @@ List<Destination> destinations = [
     description: 'สถานีหัวหิน',
     activities: activities,
   ),
+  Destination(
+    imageUrl: 'assets/images/suanson.jpg',
+    city: 'สงขลา',
+
+    description: 'สงขลา',
+    activities: activities,
+  ),
 ];
