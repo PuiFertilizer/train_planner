@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import '../widgets/NavBar.dart';
-import '../main.dart';
+import '../screens/home.dart';
+import '../screens/favourite.dart';
+import '../screens/planner.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/plan.dart';
-
-import '../widgets/Tourtrain_Carousel.dart';
-class Planner extends StatefulWidget {
-  const Planner({ Key? key }) : super(key: key);
+class Stationlist extends StatefulWidget {
+  const Stationlist({ Key? key }) : super(key: key);
 
   @override
-  _PlannerState createState() => _PlannerState();
+  _StationlistState createState() => _StationlistState();
 }
 
-class _PlannerState extends State<Planner> {
+class _StationlistState extends State<Stationlist> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +21,13 @@ class _PlannerState extends State<Planner> {
       drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 87, 204, 153),
-        title: Text('แผนการเดินทาง', style: GoogleFonts.prompt(color: Colors.black),),
+        title: Text('รายชื่อสถานี'),
       ),
       body: Container(
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              Image.asset("assets/images/pasak.jpg",
+              Image.asset("assets/images/stationlistimage.jpg",
               height: 150,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -41,9 +41,9 @@ class _PlannerState extends State<Planner> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text("แผนการเดินทางที่กำลังมาถึง",
+                        Text("                                   รายชื่อสถานี",
                         style: GoogleFonts.prompt(
-                          fontSize: 22,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),)
@@ -52,30 +52,11 @@ class _PlannerState extends State<Planner> {
                   )
                 ],
               ),
-            Column(
-                       
-            children: <Widget>[
-              
-              SizedBox(height: 150.0) ,
-              Plan(),
-              
-
             ],
-            
-          ) ,
-              
-            ],
-            
-          ),
-
+          )
         ),
       )
+      
     );
   }
 }
-// IconButton(
-// icon: Icon(Icons.arrow_back),
-// iconSize: 30.0,
-// color: Colors.black,
-// onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp())),
-// )

@@ -48,7 +48,11 @@ class _HomePageState extends State<HomePage> {
       drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 87, 204, 153),
-        title: Text('side'),
+        title: Text('หน้าหลัก', style: GoogleFonts.prompt(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    )),
       ),
         body: Container(
           
@@ -115,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "กรุณาเลือกสถานีต้นทาง",
-                              style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),
+                              style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0,fontWeight: FontWeight.w600,),
 
                             ),
                             SizedBox(
@@ -130,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                                     
                                     mode: Mode.MENU,
                                     showSelectedItems: true,
-                                    items: ['กรุงเทพ  จ.กรุงเทพ','เชียงใหม่  จ.เชียงใหม่','หนองคาย  จ.หนองคาย','อุบลราชธานี  จ.อุบลราชธานี','สุราษฎร์ธานี  จ.สุราษฎร์ธานี','ชุมทางหาดใหญ่  จ.สงขลา'],
+                                    items: ['กรุงเทพ  จ.กรุงเทพ','บ้านพลูตาหลวง  จ.ชลบุรี','เชียงใหม่  จ.เชียงใหม่','หนองคาย  จ.หนองคาย','อุบลราชธานี  จ.อุบลราชธานี','สุราษฎร์ธานี  จ.สุราษฎร์ธานี','ชุมทางหาดใหญ่  จ.สงขลา'],
                                     dropdownSearchDecoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder( //<-- SEE HERE
                                       borderSide: BorderSide(color: Colors.white, width: 2),
@@ -157,12 +161,12 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 15,),
                                   Text('กรุณาเลือกสถานีปลายทาง',
-                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),),
+                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w600,),),
                                   SizedBox(height: 2,),
                                   DropdownSearch<String>(
                                     mode: Mode.MENU,
                                     showSelectedItems: true,
-                                    items: ['กรุงเทพ','เชียงใหม่','หนองคาย','อุบลราชธานี','สุราษฎร์ธานี','ชุมทางหาดใหญ่'],
+                                    items: ['กรุงเทพ  จ.กรุงเทพ','บ้านพลูตาหลวง  จ.ชลบุรี','เชียงใหม่  จ.เชียงใหม่','หนองคาย  จ.หนองคาย','อุบลราชธานี  จ.อุบลราชธานี','สุราษฎร์ธานี  จ.สุราษฎร์ธานี','ชุมทางหาดใหญ่  จ.สงขลา'],
                                     dropdownSearchDecoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder( //<-- SEE HERE
                                       borderSide: BorderSide(color: Colors.white, width: 2),
@@ -187,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 15,),
                                   Text('วันเดินทางไป',
-                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),),
+                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0 ,fontWeight: FontWeight.w600,),),
                                   SizedBox(height: 2,),
                                   TextField(
                                     controller: _date,
@@ -222,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                                     onPressed: () {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
                                     },
-                                    icon: Icon(Icons.search),
+                                    icon: Icon(Icons.location_on, size: 30.0, color: Colors.black),
                                     label: Text("สถานีใกล้ตัว",
                                     style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0),),
                                     style: ElevatedButton.styleFrom(
