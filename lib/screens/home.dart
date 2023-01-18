@@ -45,7 +45,11 @@ class _HomePageState extends State<HomePage> {
 
       
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      drawer: NavBar(),
+      drawer: Container(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: NavBar()
+      ),
+      //drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 87, 204, 153),
         title: Text('หน้าหลัก', style: GoogleFonts.prompt(

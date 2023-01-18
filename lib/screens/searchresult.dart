@@ -244,7 +244,7 @@ class _SearchresultState extends State<Searchresult> {
                                 "ราคารวม 170 บาท",
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 17.0, fontWeight: FontWeight.w600),
                                 ),
-                                SizedBox(width: 20.0),
+                                SizedBox(width: 60.0),
                                 ElevatedButton.icon(
                                     
                                 onPressed: () {
