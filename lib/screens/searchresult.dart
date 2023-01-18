@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:train_planner/models/result_model.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../models/plan_model.dart';
 
 
@@ -84,9 +84,9 @@ class _SearchresultState extends State<Searchresult> {
           Expanded(
             child: new ListView.builder(
             scrollDirection: Axis.vertical,
-            itemCount: planns.length,
+            itemCount: results.length,
             itemBuilder: (BuildContext context, int index) {
-              Plann plann = planns[index];
+              Result result = results[index];
               return Stack(
                 children: <Widget>[
                   Container(margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 5.0),
@@ -125,14 +125,14 @@ class _SearchresultState extends State<Searchresult> {
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text('กรุงเทพ',
+                                        Text(result.departureStation,
                                             style: GoogleFonts.prompt(
-                                            fontSize: 14.0,
+                                            fontSize: 10.0,
                                             
                                             
                                             ),),
                                         Text(
-                                            '06:45',
+                                            result.departureTime,
                                             style: GoogleFonts.prompt(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.w600,
@@ -166,14 +166,14 @@ class _SearchresultState extends State<Searchresult> {
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text('บ้านพลูตาหลวง',
+                                        Text(result.arriveStation,
                                             style: GoogleFonts.prompt(
-                                            fontSize: 14.0,
+                                            fontSize: 10.0,
                                             
                                             
                                             ),),
                                         Text(
-                                            '09:50',
+                                            result.arriveTime,
                                             style: GoogleFonts.prompt(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.w600,
@@ -202,12 +202,12 @@ class _SearchresultState extends State<Searchresult> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                "เร็ว",
+                                result.traintype,
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0,),
                                 ),
                                 
                                 Text(
-                                "ขบวน 997",
+                                result.trainNumber,
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w600),
                                 ),
                                 SizedBox(height: 60,),
@@ -220,7 +220,7 @@ class _SearchresultState extends State<Searchresult> {
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0,),
                                 ),
                                 Text(
-                                "ราคา 170 บาท",
+                                result.price,
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0,),
                                 ),
 

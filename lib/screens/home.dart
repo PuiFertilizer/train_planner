@@ -77,9 +77,9 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                  "คุณอยากเดินทางไปที่ใด",
+                  "    คุณอยากเดินทางไปที่ใด",
                   style: GoogleFonts.prompt(
-                    fontSize: 26,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     )
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               child: Align(
                 alignment: Alignment.center,
               child: Container(
-                width: 320,
+                width: 280,
                 height: 600,
                 decoration: BoxDecoration(
                 color: Color.fromARGB(255, 221, 221, 221),
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "กรุณาเลือกสถานีต้นทาง",
-                              style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0,fontWeight: FontWeight.w600,),
+                              style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),
 
                             ),
                             SizedBox(
@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 15,),
                                   Text('กรุณาเลือกสถานีปลายทาง',
-                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w600,),),
+                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w600,),),
                                   SizedBox(height: 2,),
                                   DropdownSearch<String>(
                                     mode: Mode.MENU,
