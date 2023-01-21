@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/box.dart';
 import '../widgets/NavBar.dart';
@@ -20,7 +21,7 @@ class _WriteplanState extends State<Writeplan> {
         title: Text('สร้างแผนการเดินทางใหม่', style: GoogleFonts.prompt(color: Colors.black),),       
       ),
       body: Column(
-        children: <Widget>[
+        children: <Widget>[       
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
             child: Row(
@@ -38,17 +39,32 @@ class _WriteplanState extends State<Writeplan> {
                       Container(
                         height: 50,
                         width: 350,
+
                         margin: EdgeInsets.only(top: 8.0),
+                        padding: EdgeInsets.only(left: 14),
                         decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 219, 219, 219),
                           border: Border.all(
-                            color:Colors.grey,
+                            color: Color.fromARGB(255, 219, 219, 219),
                             width: 1.0
                           ),
-                          borderRadius: BorderRadius.circular(12.0)
+                          //borderRadius: BorderRadius.circular(12.0)
                         ),
                         child: Row(children: [
                           Expanded(child: 
                             TextFormField(
+                              autofocus: false,
+                              decoration: InputDecoration(
+                                hintText: 'ระบุชื่อแผน',
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    //color: context.theme.backgroundColor
+                                    width: 0
+                                  )
+                                ),
+
+                              ),
+
                               
                             )
                           )
@@ -60,6 +76,21 @@ class _WriteplanState extends State<Writeplan> {
               ]
             ),
             ),
+            Container(
+              child: DatePicker(
+                DateTime.now(),
+                height: 100,
+                width: 80,
+                initialSelectedDate: DateTime.now(),
+                selectionColor: Color.fromARGB(255, 255, 0, 0),
+                selectedTextColor: Colors.white,
+                dateTextStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey
+                ),
+              ),
+            )
             
             
         ],
