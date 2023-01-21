@@ -56,7 +56,7 @@ class _NewsState extends State<News> {
             scrollDirection: Axis.vertical,
             itemCount: newsss.length,
             itemBuilder: (BuildContext context, int index) {
-              Newss newss = newsss[index];
+              Newss newss = newsss[index]; 
               return Stack(
                 children: <Widget>[
                   Container(margin: EdgeInsets.fromLTRB(40.0, 20.0, 40.0, 5.0),

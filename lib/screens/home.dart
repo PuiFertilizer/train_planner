@@ -246,8 +246,8 @@ class _HomePageState extends State<HomePage> {
                                   ElevatedButton.icon(
                                     
                                     onPressed: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
-                                    },
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);//ไปที่หน้าผลการค้นหา
+                                    },                                                                                  //มีการ Query 
                                     icon: Icon(Icons.search),
                                     label: Text("ค้นหา",
                                     style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:train_planner/screens/writeplan.dart';
 
 import '../models/destination_model.dart';
 import '../models/plan_model.dart';
@@ -96,10 +97,10 @@ class Plan extends StatelessWidget {
         ElevatedButton.icon(
                                     
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Writeplan()),);
            },
           icon: Icon(Icons.add),
-          label: Text("เพิ่มแผนใหม่",
+          label: Text("เพิ่มแผนใหม่", //สร้างแผนใหม่
           style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),),
           style: ElevatedButton.styleFrom(
           fixedSize: Size(200, 40),
