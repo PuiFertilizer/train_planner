@@ -79,13 +79,13 @@ class Plan extends StatelessWidget {
                     top: 20.0,
                     bottom: 10.0,
                     child: ClipRRect(borderRadius: BorderRadius.circular(20.0),
-                    child: Image(
-                      width: 100.0,
-                      image:AssetImage(
-                          plann.imageUrl
-                      ),
-                      fit: BoxFit.cover,
-                    ),
+                    // child: Image(
+                    //   width: 100.0,
+                    //   image:AssetImage(
+                    //       plann.imageUrl
+                    //   ),
+                    //   fit: BoxFit.cover,
+                    // ),
                     ),
                   )
                 ],

@@ -15,8 +15,12 @@ class AddTaskPage extends StatefulWidget {
 
 class _AddTaskPageState extends State<AddTaskPage> {
   DateTime _selectedDate = DateTime.now();
-  String _endTime= "21:30";
-  String _startTime = DateFormat("HH:mm").format(DateTime.now()).toString();
+  String _endTime= "เลือกเวลา";
+  String _startTime = "เลือกเวลา";
+  String _selectedAttraction = 'ไม่ระบุสถานที่';
+  List<String> attractionList=[
+    'หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด','หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +35,29 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           fontWeight: FontWeight.bold,),
               ),
               MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่'),
+              MyInputField(title: 'สถานที่', hint: _selectedAttraction,
+              widget: DropdownButton(
+                icon:Icon(Icons.keyboard_arrow_down,
+                color: Colors.grey,
+                ),
+                iconSize: 32,
+                elevation: 4,
+                underline: Container(height: 0,),
+                onChanged: (String? newValue){
+                  setState(() {
+                    _selectedAttraction = (newValue!);
+                  });
+                },
+                items: attractionList.map<DropdownMenuItem<String>>((String value){
+                  return DropdownMenuItem<String>(
+                    value: value.toString(),
+                    child: Text(value.toString())
+                  );
+                }
+                ).toList(),
+                //style: subTitleStyle,
+              ),
+              ),
               MyInputField(title: 'วันที่ต้องการเพิ่มกิจกรรม', hint: DateFormat.yMd().format(_selectedDate),
               widget: IconButton(
                 icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),

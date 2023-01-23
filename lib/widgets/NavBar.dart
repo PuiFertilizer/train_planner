@@ -20,7 +20,7 @@ class NavBar extends StatelessWidget{
             leading: Icon(Icons.home),
             title: Text('หน้าหลัก',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
             },
           ),
           ListTile(
