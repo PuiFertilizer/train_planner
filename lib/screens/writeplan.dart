@@ -1,8 +1,11 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/box.dart';
+import 'package:train_planner/widgets/addTask.dart';
+import 'package:train_planner/widgets/button.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class Writeplan extends StatefulWidget {
   const Writeplan({ Key? key }) : super(key: key);
@@ -12,6 +15,7 @@ class Writeplan extends StatefulWidget {
 }
 
 class _WriteplanState extends State<Writeplan> {
+  DateTime _selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -69,7 +73,8 @@ class _WriteplanState extends State<Writeplan> {
                             )
                           )
                         ]),
-                      )  
+                      ),
+                      MyButton(label: 'เพิ่มกิจกรรม', onTap: ()=>Get.to(AddTaskPage()))  
                     ],
                   ),
                 )
@@ -85,10 +90,21 @@ class _WriteplanState extends State<Writeplan> {
                 selectionColor: Color.fromARGB(255, 255, 0, 0),
                 selectedTextColor: Colors.white,
                 dateTextStyle: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w600,
                   color: Colors.grey
                 ),
+                monthTextStyle: GoogleFonts.prompt(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                   color: Colors.grey
+
+                  )
+                ),
+                onDateChange: (date){
+                  _selectedDate = date;
+                },
               ),
             )
             

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 
 
@@ -21,7 +22,7 @@ void main() {
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-    return MaterialApp(home: MyHomePage()); //หน้าหลัก
+    return GetMaterialApp(home: MyHomePage()); //หน้าหลัก
   }
 }
 class MyHomePage extends StatefulWidget {
