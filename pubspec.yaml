@@ -44,7 +44,9 @@ dependencies:
   intl: ^0.17.0
   sidebar: ^0.0.1
   custom_navigator: ^0.3.0
+  get_storage:
   get: ^4.6.5
+  sqflite:
   
 
 flutter_icons:

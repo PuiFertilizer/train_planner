@@ -74,7 +74,9 @@ class _WriteplanState extends State<Writeplan> {
                           )
                         ]),
                       ),
-                      MyButton(label: 'เพิ่มกิจกรรม', onTap: ()=>Get.to(AddTaskPage()))  
+                      SizedBox(height: 18,),
+                      MyButton(
+                        label: 'เพิ่มกิจกรรม', onTap: ()=>Get.to(AddTaskPage()))  
                     ],
                   ),
                 )

@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_file.dart';
+import 'package:train_planner/db/db_helper.dart';
 import 'screens/home.dart';
 import 'screens/favourite.dart';
 import 'screens/planner.dart';
@@ -12,10 +14,10 @@ import 'package:get/get.dart';
 
 
 
-void main() {
-
-  
-
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDb();
+  await GetStorage.init();
   runApp(MyApp());
 }
 

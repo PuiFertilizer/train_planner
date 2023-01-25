@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:train_planner/controllers/task_controllers.dart';
+import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/input_field.dart';
+
+import '../models/task.dart';
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({Key? key}) : super(key: key);
@@ -14,6 +18,8 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
+  final TaskController _taskController = Get.put(TaskController());
+  final TextEditingController _titleController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
   String _endTime= "เลือกเวลา";
   String _startTime = "เลือกเวลา";
@@ -34,7 +40,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 'เพิ่มกิจกรรมอื่นๆ',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
                           fontWeight: FontWeight.bold,),
               ),
-              MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่'),
+              MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่', controller: _titleController,),
               MyInputField(title: 'สถานที่', hint: _selectedAttraction,
               widget: DropdownButton(
                 icon:Icon(Icons.keyboard_arrow_down,
@@ -97,12 +103,53 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                 ),
                 
-              ],)
+              ],),
+              SizedBox(height: 18,),
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      
+                      MyButton(label: 'ยืนยันการเพิ่ม', onTap: ()=> _validateData(),
+                      
+                      )
+                    ],
+                  )
+                ],
+              )
             ],
           ),
           )
       )
     );
+  }
+
+  _validateData(){
+    if(_titleController.text.isNotEmpty){
+      //add to database
+      _addTaskToDb();
+      Get.back();
+    }else if(_titleController.text.isEmpty){
+      Get.snackbar("Required", "All fields are required!",
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.black,
+      colorText: Colors.white,
+      icon:Icon(Icons.warning_amber_rounded));
+    }
+  }
+
+  _addTaskToDb() async{
+    int value = await _taskController.addTask(
+      task: Task(
+      title: _titleController.text,
+      attraction: _selectedAttraction,
+      date: DateFormat.yMd().format(_selectedDate),
+      startTime: _startTime,
+      endTime: _endTime,
+    )
+    );
+    print("My id is"+" $value");
   }
 
   _appBar(BuildContext context){
