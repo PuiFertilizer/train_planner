@@ -106,7 +106,7 @@ class Plan extends StatelessWidget {
           fixedSize: Size(200, 40),
           backgroundColor: Color.fromARGB(255, 56, 163, 165),
           shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(15.0), 
           ),
           ),
                                     

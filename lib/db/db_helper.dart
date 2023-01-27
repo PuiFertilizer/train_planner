@@ -21,8 +21,8 @@ class DBHelper{
           return db.execute(
             "Create table $_tableName("
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                "title STRING, date STRING, "
-                "startTime STRING, endTime STRING"
+                "title STRING, attraction STRING, date STRING, "
+                "startTime STRING, endTime STRING)"
           );
         }
       );
@@ -33,5 +33,10 @@ class DBHelper{
   static Future<int> insert(Task? task) async {
     print('insert function called');
     return await _db?.insert(_tableName, task!.toJson())??1;
+  }
+
+  static Future<List<Map<String, dynamic>>> query() async {
+    print("query function called");
+    return await _db!.query(_tableName);
   }
 }

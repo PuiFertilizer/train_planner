@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/box.dart';
 import 'package:train_planner/widgets/addTask.dart';
 import 'package:train_planner/widgets/button.dart';
+import '../controllers/task_controllers.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,9 @@ class Writeplan extends StatefulWidget {
 
 class _WriteplanState extends State<Writeplan> {
   DateTime _selectedDate = DateTime.now();
+  final _taskController = Get.put(TaskController());
+  var notifyHelper;
+  
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -76,7 +80,10 @@ class _WriteplanState extends State<Writeplan> {
                       ),
                       SizedBox(height: 18,),
                       MyButton(
-                        label: 'เพิ่มกิจกรรม', onTap: ()=>Get.to(AddTaskPage()))  
+                        label: 'เพิ่มกิจกรรม', onTap: ()async{
+                          await Get.to(AddTaskPage());
+                          _taskController.getTasks();
+                          }) 
                     ],
                   ),
                 )
@@ -86,8 +93,8 @@ class _WriteplanState extends State<Writeplan> {
             Container(
               child: DatePicker(
                 DateTime.now(),
-                height: 100,
-                width: 80,
+                height: 80,
+                width: 60,
                 initialSelectedDate: DateTime.now(),
                 selectionColor: Color.fromARGB(255, 255, 0, 0),
                 selectedTextColor: Colors.white,
@@ -108,11 +115,38 @@ class _WriteplanState extends State<Writeplan> {
                   _selectedDate = date;
                 },
               ),
-            )
-            
+            ),
+
+            SizedBox(
+            height: 12,
+          ),
+          _showTasks()
+          
             
         ],
+
       ),
     );
   }
+
+
+  //function แสดงรายชื่อกิจกรรมของแผนจาก database
+  _showTasks(){
+    return Expanded(
+      child: Obx((){
+        return ListView.builder(
+          itemCount: _taskController.taskList.length,
+          itemBuilder: (_, context){
+            print(_taskController.taskList.length);
+            return Container(
+              width: 100,
+              height: 50,
+              color: Colors.green,
+              margin: const EdgeInsets.only(bottom:10),
+            );
+        });
+      }),
+    );
+  }
+
 }
