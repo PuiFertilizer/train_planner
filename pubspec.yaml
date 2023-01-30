@@ -47,6 +47,7 @@ dependencies:
   get_storage:
   get: ^4.6.5
   sqflite:
+  flutter_staggered_animations:
   
 
 flutter_icons:
