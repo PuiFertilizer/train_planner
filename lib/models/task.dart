@@ -1,4 +1,4 @@
-class Task{
+class Task {
   int? id;
   String? title;
   String? attraction;
@@ -25,13 +25,13 @@ class Task{
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['attraction'] = this.attraction;
-    data['date'] = this.date;
-    data['startTime'] = this.startTime;
-    data['endTime'] = this.endTime;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['attraction'] = attraction;
+    data['date'] = date;
+    data['startTime'] = startTime;
+    data['endTime'] = endTime;
     return data;
   }
 }
