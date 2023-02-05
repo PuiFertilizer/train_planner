@@ -1,31 +1,33 @@
 import 'package:get/get.dart';
-import 'package:train_planner/db/db_helper.dart';
+import 'package:train_planner/db/db_planHelper.dart';
 import '../models/task.dart';
 
 class TaskController extends GetxController {
+  late int planid;
   @override
   void onReady() {
-    getTasks();
+    getTasks(planid);
     super.onReady();
   }
 
+  TaskController(this.planid);
   var taskList = <Task>[].obs;
 
   Future<int> addTask({Task? task}) async {
-    return await DBHelper.insert(task);
+    return await PlanDBHelper.insertTask(task);
   }
 
   //เอาข้อมูลจากตาราง
-  void getTasks() async {
-    List<Map<String, dynamic>> tasks = await DBHelper.query();
+  void getTasks(int planid) async {
+    List<Map<String, dynamic>> tasks = await PlanDBHelper.queryTask(planid);
     taskList.assignAll(tasks
         .map((data) => Task.fromJson(data))
         .toList()); //สงสัยจุดนี้ของ sqlite
   }
 
   void delete(Task task) {
-    DBHelper.delete(task);
-    // var val = DBHelper.delete(task);
+    PlanDBHelper.deleteTask(task);
+    // var val = TaskDBHelper.delete(task);
     // print(val);
   }
 }
