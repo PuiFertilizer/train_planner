@@ -1,6 +1,5 @@
 class Task {
   int? id;
-  int? planid;
   String? title;
   String? attraction;
   String? date;
@@ -9,7 +8,6 @@ class Task {
 
   Task({
     this.id,
-    this.planid,
     this.title,
     this.attraction,
     this.date,
@@ -19,7 +17,6 @@ class Task {
 
   Task.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    planid = json['planid'];
     title = json['title'];
     attraction = json['attraction'];
     date = json['date'];
@@ -30,7 +27,6 @@ class Task {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['planid'] = planid;
     data['title'] = title;
     data['attraction'] = attraction;
     data['date'] = date;
