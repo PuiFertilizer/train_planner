@@ -14,13 +14,16 @@ import 'package:get/get.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  runApp(MyApp());
+  await PlanDBHelper.initPlanDb();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: MyHomePage()); //หน้าหลัก
+    return const GetMaterialApp(home: MyHomePage()); //หน้าหลัก
   }
 }
 

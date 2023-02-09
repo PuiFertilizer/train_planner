@@ -12,8 +12,14 @@ class PlanController extends GetxController {
 
   var planList = <Plann>[].obs;
 
-  Future<int> addPlan({Task? task}) async {
-    return await PlanDBHelper.createPlan();
+  Future<int> addPlan({Plann? plann}) async {
+    return await PlanDBHelper.createPlan(plann);
+  }
+
+  //
+
+  Future<int> editPlan({Plann? plann}) async {
+    return await PlanDBHelper.editPlan(plann);
   }
 
   //เอาข้อมูลจากตาราง

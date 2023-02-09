@@ -40,13 +40,14 @@ class PlanDBHelper {
   }
 
   //plan control
-  static Future<int> createPlan() {
-    Plann tem = Plann(planname: "", plandate: "", description: "");
-    return _db!.insert(_planTableName, tem.toJson());
+  static Future<int> createPlan(Plann? plann) {
+    return _db!.insert(_planTableName, plann!.toJson());
   }
 
-  static void editPlan(Plann? plann) async {
-    //return await _db?.insert(_planTableName, task!.toJson()) ?? 1;
+  static Future<int> editPlan(Plann? plann) async {
+    return await _db?.update(_planTableName, plann!.toJson(),
+            where: 'id=?', whereArgs: [plann.id]) ??
+        1;
   }
 
   static Future<List<Map<String, dynamic>>> queryPlan() async {
@@ -63,6 +64,14 @@ class PlanDBHelper {
   static Future<int> insertTask(Task? task) async {
     print('insert function called');
     return await _db?.insert(_taskTableName, task!.toJson()) ?? 1;
+  }
+
+  /////
+  static Future<int> editTask(Task? task) async {
+    print('insert function called');
+    return await _db?.update(_taskTableName, task!.toJson(),
+            where: 'id = ?', whereArgs: [task.id]) ??
+        1;
   }
 
   static Future<List<Map<String, dynamic>>> queryTask(int planid) async {

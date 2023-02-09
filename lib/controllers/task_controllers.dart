@@ -6,7 +6,7 @@ class TaskController extends GetxController {
   late int planid;
   @override
   void onReady() {
-    getTasks(planid);
+    getTasks();
     super.onReady();
   }
 
@@ -17,8 +17,14 @@ class TaskController extends GetxController {
     return await PlanDBHelper.insertTask(task);
   }
 
+  //
+
+  Future<int> editTask({Task? task}) async {
+    return await PlanDBHelper.editTask(task);
+  }
+
   //เอาข้อมูลจากตาราง
-  void getTasks(int planid) async {
+  void getTasks() async {
     List<Map<String, dynamic>> tasks = await PlanDBHelper.queryTask(planid);
     taskList.assignAll(tasks
         .map((data) => Task.fromJson(data))
