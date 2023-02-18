@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                             child: Stack(
                               children: [
                                 Text(
-                                  "กรุณาเลือกสถานีต้นทาง",
+                                  "สถานีต้นทาง",
                                   style: GoogleFonts.prompt(
                                     color: Colors.black,
                                     fontSize: 18.0,
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                                     DropdownSearch<String>(
                                       mode: Mode.MENU,
                                       showSelectedItems: true,
-                                      items: [
+                                      items: [ //เอามาจากรายชื่อสถานีใน Database
                                         'กรุงเทพ  จ.กรุงเทพ',
                                         'บ้านพลูตาหลวง  จ.ชลบุรี',
                                         'เชียงใหม่  จ.เชียงใหม่',
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                                       height: 15,
                                     ),
                                     Text(
-                                      'กรุณาเลือกสถานีปลายทาง',
+                                      'สถานีปลายทาง',
                                       style: GoogleFonts.prompt(
                                         color: Colors.black,
                                         fontSize: 18.0,
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                                     DropdownSearch<String>(
                                       mode: Mode.MENU,
                                       showSelectedItems: true,
-                                      items: [
+                                      items: [ //เอามาจากรายชื่อสถานีใน Database
                                         'กรุงเทพ  จ.กรุงเทพ',
                                         'บ้านพลูตาหลวง  จ.ชลบุรี',
                                         'เชียงใหม่  จ.เชียงใหม่',
@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                       height: 15,
                                     ),
                                     Text(
-                                      'วันเดินทางไป',
+                                      'วันเดินทาง',
                                       style: GoogleFonts.prompt(
                                         color: Colors.black,
                                         fontSize: 20.0,

@@ -1,18 +1,19 @@
 import 'package:train_planner/models/activity_model.dart';
 
 class Plann {
-  String imageUrl;
+
   String planname;
   String plandate;
-  String description;
+  String noOfDate;
+  //รายละเอียดของแผน
 
 
   Plann({
-    required this.imageUrl,
+
     required this.planname,
     required this.plandate,
-    required this.description,
-
+    required this.noOfDate,
+    //รายละเอียดของแผน
   });
 }
 
@@ -20,17 +21,19 @@ class Plann {
 
 List<Plann> planns = [
   Plann(
-    imageUrl: 'assets/images/chiangmai.jpg',
+
     planname: 'สัมผัสธรรมชาติ กับการท่องรถไฟท้องถิ่นเชียงใหม่',
-    plandate: '5 ม.ค. - 7 ม.ค',
-    description: '13 วันก่อนเดินทาง',
+    plandate: '5 May - 7 May 2023',
+    noOfDate: '3 วัน'
+    //รายละเอียดต่างๆ ของแผน
 
   ),
   Plann(
-    imageUrl: 'assets/images/nongkai.jpg',
-    planname: 'รถไฟไปสัตหีบ',
-    plandate: '15 ม.ค.',
-    description: '23 วันก่อนเดินทาง',
+
+    planname: 'เที่ยวตลาดโรงเกลือ และด่านพรมแดนคลองลึก',
+    plandate: '11 May - 12 May 2023',
+    noOfDate: '2 วัน'
+    //รายละเอียดต่างๆ ของแผน
 
   ),
   

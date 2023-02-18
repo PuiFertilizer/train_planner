@@ -57,7 +57,7 @@ class _PlannerState extends State<Planner> {
             children: <Widget>[
               
               SizedBox(height: 150.0) ,
-              Plan(),
+              Plan(), //รายชื่อแผนการเดินทาง และปุ่มใหญ่ด้านล่าง
               
 
             ],
