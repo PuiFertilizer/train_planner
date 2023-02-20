@@ -7,6 +7,7 @@ import 'package:flutter/src/rendering/box.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:train_planner/screens/planner.dart';
 import 'package:train_planner/widgets/addTask.dart';
+import 'package:train_planner/widgets/addTaskNewPlan.dart';
 import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/searchRouteEdit.dart';
 import '../controllers/task_controllers.dart';
@@ -16,18 +17,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../widgets/searchRouteNew.dart';
 import '../widgets/task_tile.dart';
 
 
 // แก้ไขแผนเดิมที่มีอยู่แล้ว
-class Writeplan extends StatefulWidget {
-  const Writeplan({Key? key}) : super(key: key);
+class WriteNewplan extends StatefulWidget {
+  const WriteNewplan({Key? key}) : super(key: key);
 
   @override
-  _WriteplanState createState() => _WriteplanState();
+  _WriteNewplanState createState() => _WriteNewplanState();
 }
 
-class _WriteplanState extends State<Writeplan> {
+class _WriteNewplanState extends State<WriteNewplan> {
   DateTime _selectedDate = DateTime.now();
   DateTime startDate = new DateTime(2023, 2,5);
   DateTime endDate = new DateTime(2023, 2,8);
@@ -41,8 +43,8 @@ class _WriteplanState extends State<Writeplan> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0), // ความสูงของ navbar
           child:AppBar(
-        backgroundColor: const Color.fromARGB(255, 87, 204, 153), //title หรือชื่อของแผน
-        title: Text('นั่งรถไฟเที่ยวชายหาดหัวหิน และสวนสนประดิพัทธ์', style: GoogleFonts.prompt(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,)),
+        backgroundColor: const Color.fromARGB(255, 87, 204, 153), //title หรือชื่อของแผน พิมพ์จากหน้าตั้งชื่อ
+        title: Text('(ชื่อแผนการเดินทางใหม่)', style: GoogleFonts.prompt(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,)),
         centerTitle: true,
         bottom: PreferredSize(
           child: Padding(
@@ -271,7 +273,7 @@ class DialogAddPlan extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(onPressed: () async {
-                        await Get.to(const SearchRouteEdit());
+                        await Get.to(const SearchRouteNew());
                         _taskController.getTasks();
                         Navigator.of(context).pop();
                       }, style: ElevatedButton.styleFrom(
@@ -283,7 +285,7 @@ class DialogAddPlan extends StatelessWidget{
 
                       //กิจกรรมอื่นๆ
                       ElevatedButton(onPressed: () async {
-                        await Get.to(const AddTaskPage());
+                        await Get.to(const AddTaskNewPlanPage());
                         _taskController.getTasks();
                         Navigator.of(context).pop();
                       },style: ElevatedButton.styleFrom(

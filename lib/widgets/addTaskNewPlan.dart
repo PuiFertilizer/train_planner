@@ -7,30 +7,29 @@ import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
 import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/input_field.dart';
-import 'package:train_planner/widgets/input_field_disabled.dart';
 
 import '../models/task.dart';
-import '../screens/writeplan.dart';
+import '../screens/writeNewplan.dart';
 
 
-// เพิ่มผลการค้นหาหน้าแก้ไข
-class AddResultPage extends StatefulWidget {
-  const AddResultPage({Key? key}) : super(key: key);
+// เพิ่มกิจกรรมอื่นหน้าแก้ไข
+class AddTaskNewPlanPage extends StatefulWidget {
+  const AddTaskNewPlanPage({Key? key}) : super(key: key);
 
   @override
-  State<AddResultPage> createState() => _AddResultPageState();
+  State<AddTaskNewPlanPage> createState() => _AddTaskPageState();
 }
 
-class _AddResultPageState extends State<AddResultPage> {
+class _AddTaskPageState extends State<AddTaskNewPlanPage> {
   final TaskController _taskController = Get.put(TaskController());
   final TextEditingController _titleController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();            //วันเดินทาง
-  String _description = "โดยสารรถไฟขบวนรถธรรมดา 261"; //ขบวน
-  String _endTime= "09:20"; //เวลารถออก
-  String _startTime = "14:15"; //เวลาถึง
-
-  String _selectedAttraction = 'กรุงเทพ - หัวหิน'; //ต้นทาง - ปลายทาง
-  
+  DateTime _selectedDate = DateTime.now();
+  String _endTime= "เลือกเวลา";
+  String _startTime = "เลือกเวลา";
+  String _selectedAttraction = 'ไม่ระบุสถานที่';
+  List<String> attractionList=[
+    'หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด','หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,28 +40,78 @@ class _AddResultPageState extends State<AddResultPage> {
           child: Column(
             children: [
               Text(
-                'ยืนยันผลการค้นหาที่เลือก',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
+                'เพิ่มกิจกรรมเพื่อสร้างแผนใหม่',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
                           fontWeight: FontWeight.bold,),
               ),
-              MyInputFieldDisabled(title: 'คำอธิบาย', hint: _description ),
-              MyInputFieldDisabled(title: 'ต้นทาง - ปลายทาง', hint: _selectedAttraction ),
-              MyInputFieldDisabled(title: 'วันเดินทาง', hint: DateFormat.yMd().format(_selectedDate) ),
-              
+              MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่', controller: _titleController,),
+              MyInputField(title: 'สถานที่', hint: _selectedAttraction,
+              widget: DropdownButton(
+                icon:Icon(Icons.keyboard_arrow_down,
+                color: Colors.grey,
+                ),
+                iconSize: 32,
+                elevation: 4,
+                underline: Container(height: 0,),
+                onChanged: (String? newValue){
+                  setState(() {
+                    _selectedAttraction = (newValue!);
+                  });
+                },
+                items: attractionList.map<DropdownMenuItem<String>>((String value){
+                  return DropdownMenuItem<String>(
+                    value: value.toString(),
+                    child: Text(value.toString())
+                  );
+                }
+                ).toList(),
+                //style: subTitleStyle,
+              ),
+              ),
+              MyInputField(title: 'วันที่ต้องการเพิ่มกิจกรรม', hint: DateFormat.yMd().format(_selectedDate),
+              widget: IconButton(
+                icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),
+                onPressed: (){
+                  _getDateFromUser();
+              }),),
               Row(children: [
                 Expanded(
-                  child: MyInputFieldDisabled(title: 'เวลารถออก', hint: _startTime ),
+                  child: MyInputField(
+                    title:"เวลาเริ่ม",
+                    hint:  _startTime,
+                    widget: IconButton(
+                      onPressed: (){
+                        _getTimeFromUser(isStartTime: true);
+                      },
+                      icon: Icon(
+                        Icons.access_time_rounded,
+                        color:Colors.grey,
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(width: 12,),
                 Expanded(
-                  child: MyInputFieldDisabled(title: 'เวลาถึง', hint: _startTime ),
+                  child: MyInputField(
+                    title:"เวลาสิ้นสุด",
+                    hint:  _endTime,
+                    widget: IconButton(
+                      onPressed: (){
+                        _getTimeFromUser(isStartTime: false);
+                      },
+                      icon: Icon(
+                        Icons.access_time_rounded,
+                        color:Colors.grey,
+                      ),
+                    ),
+                  ),
                 ),
                 
               ],),
               SizedBox(height: 18,),
               ElevatedButton.icon(                                  
-          onPressed: ()   {
+          onPressed: ()  {
             _addTaskToDb();
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Writeplan()),); //ยืนยันการเพิ่ม
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WriteNewplan()),); //ยืนยันการเพิ่ม
             _taskController.getTasks();
           },
           icon: Icon(Icons.add),
@@ -100,7 +149,7 @@ class _AddResultPageState extends State<AddResultPage> {
   _addTaskToDb() async{
     int value = await _taskController.addTask(
       task: Task(
-      title: _description,
+      title: _titleController.text,
       attraction: _selectedAttraction,
       date: DateFormat.yMd().format(_selectedDate),
       startTime: _startTime,

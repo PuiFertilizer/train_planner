@@ -10,26 +10,27 @@ import 'package:train_planner/widgets/input_field.dart';
 import 'package:train_planner/widgets/input_field_disabled.dart';
 
 import '../models/task.dart';
+import '../screens/writeNewplan.dart';
 import '../screens/writeplan.dart';
 
 
 // เพิ่มผลการค้นหาหน้าแก้ไข
-class AddResultPage extends StatefulWidget {
-  const AddResultPage({Key? key}) : super(key: key);
+class AddResultNewPage extends StatefulWidget {
+  const AddResultNewPage({Key? key}) : super(key: key);
 
   @override
-  State<AddResultPage> createState() => _AddResultPageState();
+  State<AddResultNewPage> createState() => _AddResultNewPageState();
 }
 
-class _AddResultPageState extends State<AddResultPage> {
+class _AddResultNewPageState extends State<AddResultNewPage> {
   final TaskController _taskController = Get.put(TaskController());
   final TextEditingController _titleController = TextEditingController();
   DateTime _selectedDate = DateTime.now();            //วันเดินทาง
-  String _description = "โดยสารรถไฟขบวนรถธรรมดา 261"; //ขบวน
-  String _endTime= "09:20"; //เวลารถออก
-  String _startTime = "14:15"; //เวลาถึง
+  String _description = "โดยสารรถไฟขบวนรถเร็ว 997"; //ขบวน
+  String _endTime= "06:45"; //เวลารถออก
+  String _startTime = "09:50"; //เวลาถึง
 
-  String _selectedAttraction = 'กรุงเทพ - หัวหิน'; //ต้นทาง - ปลายทาง
+  String _selectedAttraction = 'กรุงเทพ - บ้านพลูตาหลวง'; //ต้นทาง - ปลายทาง
   
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class _AddResultPageState extends State<AddResultPage> {
               ElevatedButton.icon(                                  
           onPressed: ()   {
             _addTaskToDb();
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Writeplan()),); //ยืนยันการเพิ่ม
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WriteNewplan()),); //ยืนยันการเพิ่ม
             _taskController.getTasks();
           },
           icon: Icon(Icons.add),

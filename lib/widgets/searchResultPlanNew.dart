@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:train_planner/models/result_model.dart';
-import 'package:train_planner/screens/traindetails.dart';
+import 'package:train_planner/widgets/addSearchResultNew.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/plan_model.dart';
+import 'addSearchResultEdit.dart';
 
+// ผลการค้นหาเส้นทางตอนแก้ไขแผน เหมือนค้นหาจากหน้าแรก
 
-class Searchresult extends StatefulWidget {
-  const Searchresult({ Key? key }) : super(key: key);
+class SearchresultPlanNew extends StatefulWidget {
+  const SearchresultPlanNew({ Key? key }) : super(key: key);
 
   @override
   _SearchresultState createState() => _SearchresultState();
 }
 
-class _SearchresultState extends State<Searchresult> {
+class _SearchresultState extends State<SearchresultPlanNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 87, 204, 153),
-        title: Text('ผลการค้นหา', style: GoogleFonts.prompt(color: Colors.black),),
+        //title: Text('ผลการค้นหาเพิ่มในแผน', style: GoogleFonts.prompt(color: Colors.black),),
         
         
       ),
@@ -33,7 +37,7 @@ class _SearchresultState extends State<Searchresult> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('ผลการค้นหา', style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
+                    Text('ผลการค้นหาสร้างในแผน', style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
                           fontWeight: FontWeight.bold,),),
                     Row(
                       children: <Widget>[
@@ -261,11 +265,11 @@ class _SearchresultState extends State<Searchresult> {
                                     child: ElevatedButton.icon(
                                     
                                 onPressed: () {
-                                     Navigator.push(context, MaterialPageRoute(builder: (context) => TrainDetails()),);
+                                     //Get.to(const AddResultPage());
                                 },
                                   icon: Icon(Icons.add, size: 20.0, color: Colors.black,),
-                                  label: Text("รายละเอียดขบวน",
-                                style: GoogleFonts.prompt(color: Colors.white, fontSize: 11.0),),
+                                  label: Text("รายละเอียด",
+                                style: GoogleFonts.prompt(color: Colors.black, fontSize: 11.0),),
                                 style: ElevatedButton.styleFrom(
                                   fixedSize: Size(110, 1),
                                   backgroundColor: Color.fromARGB(255, 87, 204, 153),
@@ -278,14 +282,13 @@ class _SearchresultState extends State<Searchresult> {
                                   ),
                                   SizedBox(height: 2,),
                                   Container(
-                                    child: ElevatedButton.icon(
-                                    
-                                onPressed: () {
-                                     Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
+                                    child: ElevatedButton.icon(                                  
+                                onPressed: () { //เพิ่มในแผน
+                                     Get.to(const AddResultNewPage());
                                 },
                                   icon: Icon(Icons.add, size: 20.0, color: Colors.black,),
                                   label: Text("เพิ่มในแผน",
-                                style: GoogleFonts.prompt(color: Colors.white, fontSize: 11.0),),
+                                style: GoogleFonts.prompt(color: Colors.black, fontSize: 11.0),),
                                 style: ElevatedButton.styleFrom(
                                   fixedSize: Size(110, 1),
                                   backgroundColor: Color.fromARGB(255, 87, 204, 153),
