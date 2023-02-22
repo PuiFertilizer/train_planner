@@ -48,6 +48,7 @@ dependencies:
   get: ^4.6.5
   sqflite:
   flutter_staggered_animations:
+  web_scraper:
   
 
 flutter_icons:
