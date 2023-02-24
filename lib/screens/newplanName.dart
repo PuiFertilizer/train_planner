@@ -36,7 +36,7 @@ class _newplanPageState extends State<newplanPage>{
           child: Column(
             children: [
               Text(
-                'เพิ่มกิจกรรมอื่นๆ',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
+                'สร้างแผนการเดินทางใหม่',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
                           fontWeight: FontWeight.bold,),
               ),
               MyInputField(title: 'ตั้งชื่อการเดินทาง (ไม่เกิน 50 ตัวอักษร)', hint: 'ระบุที่นี่', controller: _titleController,),
