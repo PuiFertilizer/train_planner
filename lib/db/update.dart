@@ -1,3 +1,4 @@
+import 'package:train_planner/db/db_helper.dart';
 import 'package:web_scraper/web_scraper.dart';
 import 'dart:io';
 import 'package:train_planner/db/dataList.dart';
@@ -29,14 +30,15 @@ class Updater {
         int timeCounter = 1;
         for (var i in time) {
           if (i.groupNames.toString() != " ") {
-            Route route = Route({
-              timeCounter,
-              trains.elementAt((timeCounter % trains.length)).toString(),
-              stations
-                  .elementAt((timeCounter / stations.length - 1).round())
-                  .toString(),
-              time.elementAt(timeCounter - 1).toString()
-            });
+            Route route = Route(
+                id: timeCounter,
+                train:
+                    trains.elementAt((timeCounter % trains.length)).toString(),
+                station: stations
+                    .elementAt((timeCounter / stations.length - 1).round())
+                    .toString(),
+                time: time.elementAt(timeCounter - 1).toString());
+            DBHelper.insertR(route);
           }
           timeCounter++;
         }

@@ -54,8 +54,30 @@ class DBHelper {
     return await _db?.insert(_tableRoute, route!.toJson()) ?? 1;
   }
 
-  static Future<List<Map<String, dynamic>>> queryR() async {
+  static Future<List<Map<Route, Route>>> seachR(
+      String start, String end) async {
     print("query function called");
-    return await _db!.query(_tableRoute);
+    List<Map<String, dynamic>> startR = await _db!.query(_tableRoute,
+        where: 'station=?', whereArgs: [start], orderBy: "train");
+    List<Map<String, dynamic>> endR = await _db!.query(_tableRoute,
+        where: 'station=?', whereArgs: [end], orderBy: "train");
+    List<Map<Route, Route>> result = [];
+    int i = 0, j = 0;
+    for (; i < startR.length && j < endR.length;) {
+      var s = Route.fromJson(startR[i]);
+      var e = Route.fromJson(endR[j]);
+      if (s.train == e.train) {
+        result.add({s: e});
+        i++;
+        j++;
+      } else {
+        if (int.parse(s.train) > int.parse(e.train)) {
+          i++;
+        } else {
+          j++;
+        }
+      }
+    }
+    return result;
   }
 }

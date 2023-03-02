@@ -1,16 +1,14 @@
 class Route {
-  int? id;
-  String? train;
-  String? station;
-  String? time;
+  int id = 0;
+  String train = '';
+  String station = '';
+  String time = '';
 
   Route(
-    Set<Object> set, {
-    this.id,
-    this.train,
-    this.station,
-    this.time,
-  });
+      {required this.id,
+      required this.train,
+      required this.station,
+      required this.time});
 
   Route.fromJson(Map<String, dynamic> json) {
     id = json['id'];
