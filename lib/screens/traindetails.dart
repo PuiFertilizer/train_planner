@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/plan_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 
 
@@ -528,23 +529,11 @@ class _TrainDetailsState extends State<TrainDetails> {
                     ),
                   ),
                   
-                ),
-                
-                
+                ),              
               ),
-              
-              
-              
-              
-              
-              
-              
-              
-            ],
-            
+                           
+            ],          
           ),
-          
-
           ),
         ), 
         Container( //tab ที่ 3
@@ -557,7 +546,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                 height: 20,
               ),
               SizedBox(
-                height: 120,
+                height: 200,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 45,right: 45),
                   child: Stack(
@@ -576,78 +565,139 @@ class _TrainDetailsState extends State<TrainDetails> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Text(
-                                    'ผังขบวนรถ', //ชื่อของตู้โดยสาร
-                                    style: GoogleFonts.prompt(fontSize: 17,color: Colors.black,fontWeight: FontWeight.w600,),
-                                    softWrap: false,
-                                     maxLines: 3,
-                                      overflow: TextOverflow.ellipsis, // new
-                                     ),
-                                  )
-                              ],
-                              ),
+                              Text(
+                                'สถานีต้นทาง', //ชื่อของตู้โดยสาร
+                                style: GoogleFonts.prompt(fontSize: 13,color: Colors.black,),
+                                softWrap: false,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis, // new
+                                ),
+                                  
                               SizedBox(
                                     height: 2.0,
+                              ),
+                              Container(
+                              height: 30.0,
+                              child: DropdownSearch<String>(
+                              mode: Mode.MENU,
+                              showSelectedItems: true,
+                              items: [
+                                //เอามาจากรายชื่อสถานีใน Database
+                                '  กรุงเทพ',
+                                '  ฉะเชิงเทรา',
+                                '  ชลบุรี',
+                                '  พัทยา',
+                                '  บ้านพลูตาหลวง',
+                                
+                              ],
+                                dropdownSearchDecoration: InputDecoration( //ต้นทาง
+                                  
+                                  hintText: " เลือกสถานี...",
+                                  enabledBorder: 
+                                  OutlineInputBorder(                                           
+                                  borderSide: const BorderSide(
+                                    color: Colors.white, width: 2),
+                                  borderRadius:
+                                  BorderRadius.circular(10.0),
                                   ),
-                                  SingleChildScrollView(
-                                   scrollDirection: Axis.horizontal,
-                                   child: Row(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   children: [
-                                      Image.asset('assets/images/trainchart/trainchartCNR_depart.png',height: 30,) //ผังขบวนรถตามเลขขบวน
-                                   ],
-                                   ),
-                                         ),
-                                         SizedBox(height: 10,),
-                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start, 
-                            children: [
-                            SizedBox(width: 1,),
-                            Icon(
-                            Icons.arrow_back_sharp,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            size: 20,
-                          ),
-                          SizedBox(width: 2,),
-                          Text(
-                            "บ้านพลูตาหลวง", //เวลาเริ่มและเวลาสิ้นสุด
-                            style: GoogleFonts.prompt(
-                            textStyle: 
-                            TextStyle(fontSize: 12,)
-                            ),                    
-                          ),                      
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end, 
-                            children: [
-                          
-                          Text(
-                            "กรุงเทพ (หัวลำโพง)", //เวลาเริ่มและเวลาสิ้นสุด
-                            style: GoogleFonts.prompt(
-                            textStyle: 
-                            TextStyle(fontSize: 12,)
-                            ),
-                            
-                            
-                          ),
-                          SizedBox(width: 2,),
-                            Icon(
-                            Icons.arrow_forward_sharp,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            size: 20,
-                          ),
-                          
-                          ],
-                        ),
-
+                                  focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                  color: Colors.white, width: 2),
+                                  borderRadius:
+                                    BorderRadius.circular(10.0),
+                                  ),
+                                  contentPadding:
+                                  const EdgeInsets.symmetric(
+                                  vertical: 4.0),
+                                  filled: true, //<-- SEE HERE
+                                  fillColor: const Color.fromARGB(
+                                  255, 255, 255, 255),
+                              
+                                ),
+                                onChanged: itemSelectionChanged,
+                                showSearchBox: true,
+                                searchFieldProps: TextFieldProps(
+                                  cursorColor: Colors.red,
+                                )
+                                          ),
+                              ),
+                               SizedBox(
+                                    height: 10.0,
+                              ),
+                              Text(
+                                'สถานีปลายทาง', //ชื่อของตู้โดยสาร
+                                style: GoogleFonts.prompt(fontSize: 13,color: Colors.black,),
+                                softWrap: false,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis, // new
+                                ),
+                                  
+                              SizedBox(
+                                    height: 2.0,
+                              ),
+                              Container(
+                              height: 30.0,
+                              child: DropdownSearch<String>(
+                              mode: Mode.MENU,
+                              showSelectedItems: true,
+                              items: [
+                                //เอามาจากรายชื่อสถานีใน Database
+                                '  กรุงเทพ',
+                                '  ฉะเชิงเทรา',
+                                '  ชลบุรี',
+                                '  พัทยา',
+                                '  บ้านพลูตาหลวง',
+                                
+                              ],
+                                dropdownSearchDecoration: InputDecoration( //ปลายทาง
+                                  
+                                  hintText: " เลือกสถานี...",
+                                  enabledBorder: 
+                                  OutlineInputBorder(                                           
+                                  borderSide: const BorderSide(
+                                    color: Colors.white, width: 2),
+                                  borderRadius:
+                                  BorderRadius.circular(10.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                  color: Colors.white, width: 2),
+                                  borderRadius:
+                                    BorderRadius.circular(10.0),
+                                  ),
+                                  contentPadding:
+                                  const EdgeInsets.symmetric(
+                                  vertical: 4.0),
+                                  filled: true, //<-- SEE HERE
+                                  fillColor: const Color.fromARGB(
+                                  255, 255, 255, 255),
+                              
+                                ),
+                                onChanged: itemSelectionChanged,
+                                showSearchBox: true,
+                                searchFieldProps: TextFieldProps(
+                                  cursorColor: Colors.red,
+                                )
+                                          ),
+                              ),
+                              SizedBox(height: 10,),
+                              ElevatedButton.icon(
+                                    
+                                  onPressed: () { //คำนวณค่าโดยสารใหม่
+                                       
+                                  },
+                                  icon: Icon(Icons.search),
+                                  label: Text("คำนวณค่าโดยสาร", 
+                                  style: GoogleFonts.prompt(color: Colors.white, fontSize: 16.0),),
+                                  style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(300, 20),
+                                  backgroundColor: Color.fromARGB(255, 56, 163, 165),
+                                  shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0), 
+                                  ),
+                                ),
+                                                          
+                              ),
                             ],
                           ),
                           
@@ -668,14 +718,14 @@ class _TrainDetailsState extends State<TrainDetails> {
                     thickness: 5,
                     child: ListView.builder(
                       scrollDirection: Axis.vertical,
-                      itemCount: seats.length,
+                      itemCount: fare.length,
                       itemBuilder: (BuildContext context, int index){
-                        Seating seating = seats[index];
+                        Fare fares = fare[index];
                         return Stack(
                           children: <Widget>[
                             Container(
                               margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
-                              height: 150,
+                              height: 120,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: Color.fromARGB(255, 199, 249, 204),
@@ -695,7 +745,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                 children: <Widget>[
                                   Expanded(
                                     child: Text(
-                                    seating.coachname, //ชื่อของตู้โดยสาร
+                                    fares.coachname, //ชื่อของตู้โดยสาร
                                     style: GoogleFonts.prompt(fontSize: 17,color: Colors.black,fontWeight: FontWeight.w600,),
                                     softWrap: false,
                                      maxLines: 3,
@@ -708,7 +758,37 @@ class _TrainDetailsState extends State<TrainDetails> {
                                     height: 5.0,
                                   ),
                               SizedBox(height: 5,),
-                              Text(seating.description,style: GoogleFonts.prompt(fontSize: 14,color: Colors.black)),  
+                              
+                              Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           crossAxisAlignment: CrossAxisAlignment.center, 
+                            children: [
+                           
+                            
+                       
+                          Text(
+                            fares.seattype, //ประเภทที่นั่ง
+                            style: GoogleFonts.prompt(
+                            textStyle: 
+                            TextStyle(fontSize: 12, color:Color.fromARGB(255, 0, 0, 0))
+                            ),
+                            
+                            
+                          ),
+
+                          Text(
+                            fares.price, //ราคาค่าโดยสาร
+                            style: GoogleFonts.prompt(
+                            textStyle: 
+                            TextStyle(fontSize: 18,fontWeight: FontWeight.bold, color:Color.fromARGB(255, 4, 0, 226))
+                            ),
+                            
+                            
+                          ),
+                          
+                          
+                          ],
+                        ),
                                 
                               
                      ],
@@ -755,6 +835,10 @@ class _TrainDetailsState extends State<TrainDetails> {
       TrainTimetable('สวนนงนุช',  '09:39'),
       TrainTimetable('บ้านพลูตาหลวง', '09:50'),
     ];
+  }
+  void itemSelectionChanged(String? originStation) {
+    print('items');
+    print(originStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
   }
 
 }
@@ -815,6 +899,25 @@ class Seating {
   });
 }
 
+class Fare{  //คิดค่าโดยสาร
+  String coachname;
+  String seattype;
+  String price;
+
+  Fare({
+    required this.coachname,
+    required this.seattype,
+    required this.price
+  });
+}
+List<Fare> fare = [
+  Fare(
+    coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
+    seattype: 'นั่งปรับอากาศ (ไม่มีบริการอาหาร)',
+    price: '170 บาท',
+  ),
+];
+
 class DialogScene extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -871,14 +974,14 @@ class DialogScene extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(destination.city,
+                      Text(destination.scenename,
                              style: GoogleFonts.prompt(
                               color: Colors.black,
                               fontSize: 24.0,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 0,
                               )),
-                      Text(destination.description,
+                      Text(destination.betweenstation,
                       style: GoogleFonts.prompt(
                         color: Color.fromARGB(255, 80, 80, 80),
                         fontSize: 12.0,
@@ -944,52 +1047,48 @@ class DialogScene extends StatelessWidget{
 
 List<Seating> seats = [
   Seating(
-    imageUrlExterior: 'assets/images/trainimage/sprinter_Exterior.jpg',
-    imageUrlInterior: 'assets/images/trainimage/sprinter_Interior.png',
+    imageUrlExterior: 'assets/images/trainimage/2ndsprinter_Exterior.jpg',
+    imageUrlInterior: 'assets/images/trainimage/2ndsprinter_Interior.png',
     imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
     coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
     description: '**ไม่มีบริการอาหาร',
-    imageUrlConvience: 'assets/images/ความสะดวก_กซขป.png',
+    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
 
   ),
   Seating(
-    imageUrlExterior: 'assets/images/trainimage/daewoo_Exterior.png',
-    imageUrlInterior: 'assets/images/trainimage/daewoo_interior.jpg',
+    imageUrlExterior: 'assets/images/trainimage/2nddaewoo_Exterior.png',
+    imageUrlInterior: 'assets/images/trainimage/2nddaewoo_interior.jpg',
     imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
     coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ แดวู (บางกรณี)',
     description: '**ไม่มีบริการอาหาร',
-    imageUrlConvience: 'assets/images/ความสะดวก_กซขป.png',
+    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
 
   ),
-  
-
-  
-  
 ];
 
 class Destination {
   String imageUrl;
-  String city;
-  String description;
+  String scenename;
+  String betweenstation;
 
 
   Destination({
     required this.imageUrl,
-    required this.city,
-    required this.description,
+    required this.scenename,
+    required this.betweenstation,
   });
 }
 List<Destination> destinations = [
   Destination(
     imageUrl: 'assets/images/chiangmai.jpg',
-    city: 'แม่นำ้บางปะกง',
-    description: 'สถานีฉะเชิงเทรา-ดอนสีนนท์',
+    scenename: 'แม่นำ้บางปะกง',
+    betweenstation: 'สถานีฉะเชิงเทรา-ดอนสีนนท์',
 
   ),
   Destination(
     imageUrl: 'assets/images/nongkai.jpg',
-    city: 'แกรนด์แคนยอนชลบุรี',
-    description: 'สถานีชลบุรี-บางพระ',
+    scenename: 'แกรนด์แคนยอนชลบุรี',
+    betweenstation: 'สถานีชลบุรี-บางพระ',
 
   ),
   

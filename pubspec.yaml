@@ -83,6 +83,7 @@ flutter:
      - assets/images/seatchart/
      - assets/images/trainchart/
      - assets/images/trainimage/
+     - assets/images/convience/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
