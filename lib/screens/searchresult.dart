@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/screens/traindetails.dart';
+import 'package:train_planner/screens/stationdetails.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/plan_model.dart';
@@ -112,14 +113,18 @@ class _SearchresultState extends State<Searchresult> {
                                 Row(
                                   children: <Widget>[
                                     Container(
-                                      padding: EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 87, 204, 153),
-                                        shape: BoxShape.circle
-                                      ),
-                                      child: Icon(
-                                        Icons.directions_train, size: 35.0, color: Colors.black,
-                                      ),
+                                      height: 50.0,
+                                      width: 50.0,
+                                      padding: EdgeInsets.only(left: 5),
+                                      child: FloatingActionButton(
+                                        elevation: 0,
+                                      heroTag: null,
+                                      child: Icon(Icons.train,size: 35.0, color: Colors.black),
+                                      backgroundColor: Color.fromARGB(255, 87, 204, 153),
+                                      onPressed: () { //ไปหน้าของชื่อสถานีต้นทาง
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
+                                    },
+                                 ),
                                     ),
                                     
                                     SizedBox(width: 20.0),
@@ -137,7 +142,7 @@ class _SearchresultState extends State<Searchresult> {
                                             'เวลาออก  ',
                                             style: GoogleFonts.prompt(
                                             fontSize: 18.0,
-                                            fontWeight: FontWeight.w600,
+                                            
                                             )),
                                             Text(
                                             result.departureTime,
@@ -160,14 +165,18 @@ class _SearchresultState extends State<Searchresult> {
                                 Row(
                                   children: <Widget>[
                                     Container(
-                                      padding: EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 87, 204, 153),
-                                        shape: BoxShape.circle
-                                      ),
-                                      child: Icon(
-                                        Icons.location_on, size: 35.0, color: Colors.black,
-                                      ),
+                                      height: 50.0,
+                                      width: 50.0,
+                                      padding: EdgeInsets.only(left: 5),
+                                      child: FloatingActionButton(
+                                        elevation: 0,
+                                      heroTag: null,
+                                      child: Icon(Icons.location_on,size: 35.0, color: Colors.black),
+                                      backgroundColor: Color.fromARGB(255, 87, 204, 153),
+                                      onPressed: () { //ไปหน้าของชื่อสถานีต้นทาง
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
+                                    },
+                                 ),
                                     ),
                                     
                                     SizedBox(width: 20.0),

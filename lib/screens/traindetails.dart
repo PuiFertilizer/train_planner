@@ -1,9 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:train_planner/models/result_model.dart';
-import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/plan_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:dropdown_search/dropdown_search.dart';
