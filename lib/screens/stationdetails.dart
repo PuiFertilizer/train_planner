@@ -338,7 +338,6 @@ class _StationDetailsState extends State<StationDetails> {
                   child: Material(
                   color: Color.fromARGB(255, 128,	237,	153),
                  child: InkWell(
-        //splashColor: Colors.green, 
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => StationTouristAttractions()),);
                     }, 

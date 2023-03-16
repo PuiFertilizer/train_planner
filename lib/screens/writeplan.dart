@@ -132,9 +132,10 @@ class _WriteplanState extends State<Writeplan> {
           height: 60,
           padding: const EdgeInsets.only(bottom: 25,right: 25),
           child: FloatingActionButton(
+              elevation: 0,
               heroTag: null,
-              child: Icon(Icons.more_horiz),
-              backgroundColor: Color.fromARGB(255, 0, 0, 0),
+              child: Icon(Icons.more_horiz, color: Colors.black),
+              backgroundColor: Color.fromARGB(255, 207, 207, 207),
               onPressed: () {
               _showBottomSheet(context, task);
             },
