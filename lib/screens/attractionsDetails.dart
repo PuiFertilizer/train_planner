@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_planner/screens/stationTouristAttractions.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+//รายละเอียดแต่ละสถานที่
 class AttractionsDetails extends StatefulWidget {
   final Destination destination;
 

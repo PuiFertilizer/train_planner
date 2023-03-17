@@ -1,11 +1,16 @@
+//เก็บข้อมูลรายการผลการค้นหา
+
 class Result {
-  String departureStation;
-  String departureTime;
-  String arriveStation;
-  String arriveTime;
-  String traintype;
-  String trainNumber;
-  String price;
+  String departureStation; //สถานีต้นทาง
+  String departureTime;    //เวลาออกต้นทาง
+  String arriveStation;    //สถานีปลายทาง
+  String arriveTime;       //เวลาถึงปลายทาง
+  String traintype;        //ประเภทขบวนรถ (เช่น ด่วนพิเศษ ด่วน เร็ว)
+  String trainNumber;      //เลขขบวนรถ
+  String classes;          //ชั้นที่นั่ง
+  String coachtype1;
+  
+           
 
   Result({
     required this.departureStation,
@@ -14,7 +19,8 @@ class Result {
     required this.arriveTime,
     required this.traintype,
     required this.trainNumber,
-    required this.price
+    required this.classes,
+    required this.coachtype1,
   });
 }
 
@@ -25,8 +31,10 @@ List <Result> results = [
     arriveStation: 'บ้านพลูตาหลวง', 
     arriveTime: '09:50', 
     traintype: 'เร็ว', 
-    trainNumber: 'ขบวน 997', 
-    price: '170 บาท'
+    trainNumber: '997', 
+    classes: 'ชั้น 2',
+    coachtype1: 'รถนั่งปรับอากาศ'
+    
   ),
   Result(
     departureStation: 'กรุงเทพ (หัวลำโพง)', 
@@ -34,7 +42,9 @@ List <Result> results = [
     arriveStation: 'บ้านพลูตาหลวง', 
     arriveTime: '11:20', 
     traintype: 'ธรรมดา', 
-    trainNumber: 'ขบวน 283', 
-    price: '37 บาท'
+    trainNumber: '283', 
+    classes: 'ชั้น 3',
+    coachtype1: 'รถนั่งพัดลม'
+    
   )
 ];

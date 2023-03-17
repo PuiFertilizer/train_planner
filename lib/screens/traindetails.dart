@@ -110,7 +110,7 @@ class _TrainDetailsState extends State<TrainDetails> {
     body: TabBarView(
       children: [ 
         Container( //tab ที่ 1
-          color: Color.fromARGB(255, 217, 217, 217),
+          color: Color.fromARGB(255, 255, 255, 255),
           
           child: Column(
             children: [
@@ -120,11 +120,11 @@ class _TrainDetailsState extends State<TrainDetails> {
                   padding: const EdgeInsets.only(left: 18,top: 18,right: 18,bottom: 10),
                   child: SafeArea(
                     child: Scaffold(
-                      backgroundColor: Color.fromARGB(255, 217, 217, 217),
+                      backgroundColor: Color.fromARGB(255, 199, 249, 204),
                       body: SfDataGridTheme(
                     data: SfDataGridThemeData(
                         headerColor: const Color(0xff009889),
-                        gridLineColor: Color.fromARGB(255, 217, 217, 217), gridLineStrokeWidth: 1.5),
+                        gridLineColor: Color.fromARGB(255, 255, 255, 255), gridLineStrokeWidth: 1.5),
                     child: SfDataGrid(source: _timetableDataSource, columns: <GridColumn>[
                       GridColumn(
                           columnName: 'สถานี',
@@ -157,15 +157,14 @@ class _TrainDetailsState extends State<TrainDetails> {
                 
               ),
             SizedBox(height: 2,),
-            ElevatedButton.icon(
-                                    
+            ElevatedButton(                       
              onPressed: () {
                   showDialog(context: context, builder: (BuildContext context) {
                     return DialogScene();
                   });
              },
-            icon: Icon(Icons.add),
-            label: Text("ทัศนียภาพข้างทางที่พบได้", //สร้างแผนใหม่
+            
+            child: Text("ทัศนียภาพข้างทางที่พบได้", //สร้างแผนใหม่
             style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),),
             style: ElevatedButton.styleFrom(
             fixedSize: Size(350, 50),
@@ -182,7 +181,7 @@ class _TrainDetailsState extends State<TrainDetails> {
           
         ),
         Container( //tab ที่ 2
-          color: Color.fromARGB(255, 217, 217, 217),
+          color: Color.fromARGB(255, 255, 255, 255),
           child:  SingleChildScrollView(
           
           child: Column( 
@@ -232,7 +231,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                    scrollDirection: Axis.horizontal,
                                    child: Row(
                                    mainAxisAlignment: MainAxisAlignment.start,
-                                   children: [
+                                   children: [ //ผังขบวนรถซึ่งแต่ละขบวนจะไม่เหมือนกัน
                                       Image.asset('assets/images/trainchart/trainchartCNR_depart.png',height: 30,) //ผังขบวนรถตามเลขขบวน
                                    ],
                                    ),
@@ -250,7 +249,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                           ),
                           SizedBox(width: 2,),
                           Text(
-                            "บ้านพลูตาหลวง", //เวลาเริ่มและเวลาสิ้นสุด
+                            "บ้านพลูตาหลวง", //ชื่อสถานีปลายทางของแต่ละขบวน
                             style: GoogleFonts.prompt(
                             textStyle: 
                             TextStyle(fontSize: 12,)
@@ -264,7 +263,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                             children: [
                           
                           Text(
-                            "กรุงเทพ (หัวลำโพง)", //เวลาเริ่มและเวลาสิ้นสุด
+                            "กรุงเทพ (หัวลำโพง)", //ชื่อสถานีต้นทางของแต่ละขบวน
                             style: GoogleFonts.prompt(
                             textStyle: 
                             TextStyle(fontSize: 12,)
@@ -297,7 +296,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 45,right: 45),
                   child: RawScrollbar(
-                    thumbColor: Color.fromARGB(255, 34, 168, 1),
+                    thumbColor: Color.fromARGB(255, 130, 130, 130),
                     radius: Radius.circular(20),
                     thickness: 5,
                     child: ListView.builder(
@@ -379,7 +378,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                       height: 210,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color.fromARGB(255, 217, 217, 217),
+                        color: Color.fromARGB(255, 255, 255, 255),
                               
                       ),
                       
@@ -534,7 +533,7 @@ class _TrainDetailsState extends State<TrainDetails> {
           ),
         ), 
         Container( //tab ที่ 3
-          color: Color.fromARGB(255, 217, 217, 217),
+          color: Color.fromARGB(255, 255, 255, 255),
           child:  SingleChildScrollView(
           
           child: Column( 
@@ -710,7 +709,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 45,right: 45),
                   child: RawScrollbar(
-                    thumbColor: Color.fromARGB(255, 34, 168, 1),
+                    thumbColor: Color.fromARGB(255, 130, 130, 130),
                     radius: Radius.circular(20),
                     thickness: 5,
                     child: ListView.builder(
@@ -817,7 +816,7 @@ class _TrainDetailsState extends State<TrainDetails> {
     ),
   ),  
   );
-  List<TrainTimetable> getTimetableData() { //เอาเวลาเข้า-ออกสถานีจาก database
+  List<TrainTimetable> getTimetableData() { //รายชื่อสถานีและเวลาที่จอดของแต่ละขบวน
     return[
       TrainTimetable('กรุงเทพ', '06:45'),
       TrainTimetable('มักกะสัน',  '06:58'),
@@ -869,15 +868,15 @@ class TimetableDataSource extends DataGridSource{
   }
 }
 
-class TrainTimetable{
+class TrainTimetable{ //ช่วงเวลา (ตารางเวลา) ของแต่ละขบวน
   TrainTimetable(this.station, this.deptime);
-  final String station;
-  final String deptime;
+  final String station; //สถานี
+  final String deptime; //เวลาจอดที่สถานี
 }
 
 
 
-class Seating {
+class Seating { //รายละเอียดขบวน (ที่นั่ง ชนิดรถ รูปรถภายนอกภายใน)
   String imageUrlExterior;
   String imageUrlInterior;
   String imageUrlSeatchart;

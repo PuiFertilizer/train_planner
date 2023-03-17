@@ -59,7 +59,7 @@ class _SearchresultState extends State<Searchresult> {
                     Row(
                       children: <Widget>[
                         Text(
-                          "กรุงเทพ",
+                          "กรุงเทพ", //ชื่อสถานีต้นทาง parse จากช่องค้นหา
                           style: GoogleFonts.prompt(
                             color: Colors.black,
                             fontSize: 20.0,
@@ -67,7 +67,15 @@ class _SearchresultState extends State<Searchresult> {
                         ),
                         SizedBox(width: 5.0),
                         Text(
-                          "บ้านพลูตาหลวง",
+                          "-", //ชื่อสถานีต้นทาง parse จากช่องค้นหา
+                          style: GoogleFonts.prompt(
+                            color: Colors.black,
+                            fontSize: 20.0,
+                          ),
+                        ),
+                        SizedBox(width: 5.0),
+                        Text(
+                          "บ้านพลูตาหลวง", //ชื่อสถานีปลายทาง parse จากช่องค้นหา
                           style: GoogleFonts.prompt(
                             color: Colors.black,
                             fontSize: 20.0,
@@ -84,7 +92,7 @@ class _SearchresultState extends State<Searchresult> {
             ],
           ),
           Expanded(
-            child: new ListView.builder(
+            child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: results.length,
             itemBuilder: (BuildContext context, int index) {
@@ -121,8 +129,8 @@ class _SearchresultState extends State<Searchresult> {
                                       heroTag: null,
                                       child: Icon(Icons.train,size: 35.0, color: Colors.black),
                                       backgroundColor: Color.fromARGB(255, 87, 204, 153),
-                                      onPressed: () { //ไปหน้าของชื่อสถานีต้นทาง
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
+                                      onPressed: () { //***ไปหน้ารายละเอียดสถานีต้นทาง
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);//ไปหน้ารายละเอียดสถานีต้นทาง
                                     },
                                  ),
                                     ),
@@ -131,7 +139,7 @@ class _SearchresultState extends State<Searchresult> {
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text(result.departureStation,
+                                        Text(result.departureStation, //ชื่อสถานีต้นทาง
                                             style: GoogleFonts.prompt(
                                             fontSize: 20.0,
                                             fontWeight: FontWeight.w600,
@@ -145,7 +153,7 @@ class _SearchresultState extends State<Searchresult> {
                                             
                                             )),
                                             Text(
-                                            result.departureTime,
+                                            result.departureTime, //เวลาออกจากสถานีต้นทาง
                                             style: GoogleFonts.prompt(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.w600,
@@ -173,9 +181,9 @@ class _SearchresultState extends State<Searchresult> {
                                       heroTag: null,
                                       child: Icon(Icons.location_on,size: 35.0, color: Colors.black),
                                       backgroundColor: Color.fromARGB(255, 87, 204, 153),
-                                      onPressed: () { //ไปหน้าของชื่อสถานีต้นทาง
+                                      onPressed: () { //***ไปหน้ารายละเอียดสถานีปลายทาง
                                         Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
-                                    },
+                                    }, //***ไปหน้ารายละเอียดสถานีปลายทาง
                                  ),
                                     ),
                                     
@@ -197,7 +205,7 @@ class _SearchresultState extends State<Searchresult> {
                                             //fontWeight: FontWeight.w600,
                                             )),
                                             Text(
-                                            result.arriveTime,
+                                            result.arriveTime, //เวลาถึงที่สถานีปลายทาง
                                             style: GoogleFonts.prompt(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.w600,
@@ -224,8 +232,8 @@ class _SearchresultState extends State<Searchresult> {
                         ),
                         
                         Divider(
-                  color: Colors.black,
-                ),
+                        color: Colors.black,
+                        ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -238,9 +246,9 @@ class _SearchresultState extends State<Searchresult> {
                                 Row(
                                   children: [
                                     Text(
-                                  result.traintype,
-                                  style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w600),
-                                  ),
+                                result.traintype,
+                                style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w600),
+                                ),
                                 SizedBox(width: 20),
                                 Text(
                                 result.trainNumber,
@@ -249,11 +257,11 @@ class _SearchresultState extends State<Searchresult> {
                                   ],
                                 ),
                                 Text(
-                                  'ชั้น 2',
+                                  result.classes,
                                   style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, ),
                                 ),
                                 Text(
-                                  'รถนั่งปรับอากาศ',
+                                  result.coachtype1,
                                   style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, ),
                                 ),
                                 
@@ -267,16 +275,15 @@ class _SearchresultState extends State<Searchresult> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Container(
-                                    child: ElevatedButton.icon(
+                                    child: ElevatedButton(
                                     
                                 onPressed: () {
                                      Navigator.push(context, MaterialPageRoute(builder: (context) => TrainDetails()),);
                                 },
-                                  icon: Icon(Icons.add, size: 20.0, color: Colors.black,),
-                                  label: Text("รายละเอียดขบวน",
-                                style: GoogleFonts.prompt(color: Colors.white, fontSize: 11.0),),
-                                style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(110, 1),
+                                  child: Text("รายละเอียดขบวน",
+                                  style: GoogleFonts.prompt(color: Color.fromARGB(255, 0, 0, 0), fontSize: 12.0),),
+                                  style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(130, 1),
                                   backgroundColor: Color.fromARGB(255, 87, 204, 153),
                                   shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
@@ -287,16 +294,16 @@ class _SearchresultState extends State<Searchresult> {
                                   ),
                                   SizedBox(height: 2,),
                                   Container(
-                                    child: ElevatedButton.icon(
+                                    child: ElevatedButton(
                                     
                                 onPressed: () {
                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
                                 },
-                                  icon: Icon(Icons.add, size: 20.0, color: Colors.black,),
-                                  label: Text("เพิ่มในแผน",
-                                style: GoogleFonts.prompt(color: Colors.white, fontSize: 11.0),),
+                                  
+                                  child: Text("เพิ่มในแผน",
+                                style: GoogleFonts.prompt(color: Color.fromARGB(255, 0, 0, 0), fontSize: 12.0),),
                                 style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(110, 1),
+                                  fixedSize: Size(130, 1),
                                   backgroundColor: Color.fromARGB(255, 87, 204, 153),
                                   shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),

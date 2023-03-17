@@ -301,7 +301,11 @@ class _StationDetailsState extends State<StationDetails> {
                   color: Color.fromARGB(255, 128,	237,	153),
                  child: InkWell(
         //splashColor: Colors.green, 
-                    onTap: () {}, 
+                    onTap: () {
+                      showDialog(context: context, builder: (BuildContext context) {
+                      return DialogMap();
+                  });
+                    }, 
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -320,7 +324,11 @@ class _StationDetailsState extends State<StationDetails> {
                   color: Color.fromARGB(255, 128,	237,	153),
                  child: InkWell(
         //splashColor: Colors.green, 
-                    onTap: () {}, 
+                    onTap: () {
+                      showDialog(context: context, builder: (BuildContext context) {
+                      return DialogConvience();
+                  });
+                    }, 
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -456,3 +464,152 @@ List <StationTrainList> stationTrainLists = [ //รายชื่อขบว�
   ),
   
 ];
+
+class DialogConvience extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Stack(
+        children: [
+          Container(
+            height:300,
+            width: 600,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(5,2,5,2),
+              child: Column(
+                children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text('สิ่งอำนวยความสะดวกของสถานี', style: GoogleFonts.prompt(fontWeight: FontWeight.bold, fontSize: 16) ,)),
+                  SizedBox(height: 20,),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/ticket.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('จำหน่ายตั๋วล่วงหน้า', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/ticket.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('จำหน่ายตั๋วประจำวัน', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/toliet.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('ห้องนำ้สะอาด', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/handicaptoliet.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('ห้องนำ้ผู้พิการ', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  )
+              ]),
+
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DialogMap extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Stack(
+        children: [
+          Container(
+            height:300,
+            width: 600,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10,10,10,5),
+              child: Column(
+                children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text('แผนที่ของสถานี', style: GoogleFonts.prompt(fontWeight: FontWeight.bold, fontSize: 16) ,)),
+                  SizedBox(height: 20,),
+                  Container(
+          //color: Colors.blue,
+          height: 240.0,
+          child: Container(
+            color: Colors.grey,
+          )
+        
+        )
+
+              ]),
+
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
