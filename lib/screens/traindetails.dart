@@ -67,10 +67,20 @@ class _TrainDetailsState extends State<TrainDetails> {
                   
                 ),
                 TextSpan(text: "\n"),
+                TextSpan( //สถานีต้นทางของขบวนนั้นๆ
+                  text: 'กรุงเทพ',style: GoogleFonts.prompt(color: Colors.black,fontSize: 18,
+                )
+
+                ),
                 TextSpan(
-                  text: 'กรุงเทพ - บ้านพลูตาหลวง',style: GoogleFonts.prompt(color: Colors.black,fontSize: 18,
-                            )
-                  //style: textTheme.subtitle,
+                  text: ' - ',style: GoogleFonts.prompt(color: Colors.black,fontSize: 18,
+                )
+
+                ),
+                TextSpan( //สถานีปลายทางของขบวนนั้นๆ
+                  text: 'บ้านพลูตาหลวง',style: GoogleFonts.prompt(color: Colors.black,fontSize: 18,
+                )
+
                 )
               ]),
         ),
@@ -128,10 +138,10 @@ class _TrainDetailsState extends State<TrainDetails> {
                     child: SfDataGrid(source: _timetableDataSource, columns: <GridColumn>[
                       GridColumn(
                           columnName: 'สถานี',
-                          columnWidthMode: ColumnWidthMode.lastColumnFill,
+                          columnWidthMode: ColumnWidthMode.fill,
                           label: Container(
                               padding: EdgeInsets.symmetric(horizontal: 6.0),
-                              alignment: Alignment.centerLeft,
+                              alignment: Alignment.center,
                               child: Text(
                                 'สถานี', style: GoogleFonts.prompt(color: Colors.white,fontSize: 16,
                                     fontWeight: FontWeight.bold,),
@@ -139,6 +149,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                               ))),
                       GridColumn(
                           columnName: 'เวลาออก',
+                          columnWidthMode: ColumnWidthMode.fill,
                           label: Container(
                               padding: EdgeInsets.symmetric(horizontal: 6.0),
                               alignment: Alignment.center,
@@ -215,7 +226,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                 children: <Widget>[
                                   Expanded(
                                     child: Text(
-                                    'ผังขบวนรถ', //ชื่อของตู้โดยสาร
+                                    'ผังขบวนรถภาพรวม', //ชื่อของตู้โดยสาร
                                     style: GoogleFonts.prompt(fontSize: 17,color: Colors.black,fontWeight: FontWeight.w600,),
                                     softWrap: false,
                                      maxLines: 3,
@@ -231,7 +242,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                    scrollDirection: Axis.horizontal,
                                    child: Row(
                                    mainAxisAlignment: MainAxisAlignment.start,
-                                   children: [ //ผังขบวนรถซึ่งแต่ละขบวนจะไม่เหมือนกัน
+                                   children: [ //ผังขบวนรถซึ่งแต่ละขบวนจะไม่เหมือนกัน สามารถเลื่อนซ้ายขวาได้
                                       Image.asset('assets/images/trainchart/trainchartCNR_depart.png',height: 30,) //ผังขบวนรถตามเลขขบวน
                                    ],
                                    ),
@@ -877,12 +888,12 @@ class TrainTimetable{ //ช่วงเวลา (ตารางเวลา) �
 
 
 class Seating { //รายละเอียดขบวน (ที่นั่ง ชนิดรถ รูปรถภายนอกภายใน)
-  String imageUrlExterior;
-  String imageUrlInterior;
-  String imageUrlSeatchart;
-  String coachname;
-  String description;
-  String imageUrlConvience;
+  String imageUrlExterior;  //รูปภายนอกรถ
+  String imageUrlInterior;  //รูปภายในรถ
+  String imageUrlSeatchart; //รูปผังที่นั่ง
+  String coachname;         //ชื่อชนิดรถ
+  String description;       //คำอธิบายเพิ่มเติม (เช่น ไม่มีบริการอาหาร)
+  String imageUrlConvience; //รูป icon ความสะดวก
 
 
   Seating({

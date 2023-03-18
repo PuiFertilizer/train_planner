@@ -67,7 +67,7 @@ class _SearchresultState extends State<Searchresult> {
                         ),
                         SizedBox(width: 5.0),
                         Text(
-                          "-", //ชื่อสถานีต้นทาง parse จากช่องค้นหา
+                          "-",
                           style: GoogleFonts.prompt(
                             color: Colors.black,
                             fontSize: 20.0,
@@ -218,11 +218,6 @@ class _SearchresultState extends State<Searchresult> {
 
 
                               ],
-
-
-
-
-
                             ),
                             ),
                             
@@ -249,19 +244,24 @@ class _SearchresultState extends State<Searchresult> {
                                 result.traintype,
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.w600),
                                 ),
-                                SizedBox(width: 20),
+                                SizedBox(width: 10),
                                 Text(
-                                result.trainNumber,
+                                'ขบวน', //เลขขบวน
+                                style: GoogleFonts.prompt(color: Colors.black, fontSize: 17.0, fontWeight: FontWeight.w600),
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                result.trainNumber, //เลขขบวน
                                 style: GoogleFonts.prompt(color: Colors.black, fontSize: 17.0, fontWeight: FontWeight.w600),
                                 ),
                                   ],
                                 ),
                                 Text(
-                                  result.classes,
+                                  result.classes, //ชั้นที่นั่ง เช่น 2,3
                                   style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, ),
                                 ),
                                 Text(
-                                  result.coachtype1,
+                                  result.coachtype1, //ชนิดรถ เช่น นั่งปรับอากาศ
                                   style: GoogleFonts.prompt(color: Colors.black, fontSize: 15.0, ),
                                 ),
                                 
@@ -278,9 +278,9 @@ class _SearchresultState extends State<Searchresult> {
                                     child: ElevatedButton(
                                     
                                 onPressed: () {
-                                     Navigator.push(context, MaterialPageRoute(builder: (context) => TrainDetails()),);
+                                     Navigator.push(context, MaterialPageRoute(builder: (context) => TrainDetails()),); //ไปหน้ารายละเอียดขบวนตามเลขขบวนที่กำหนด
                                 },
-                                  child: Text("รายละเอียดขบวน",
+                                  child: Text("รายละเอียดขบวน", //ไปหน้ารายละเอียดขบวนตามเลขขบวนที่กำหนด
                                   style: GoogleFonts.prompt(color: Color.fromARGB(255, 0, 0, 0), fontSize: 12.0),),
                                   style: ElevatedButton.styleFrom(
                                   fixedSize: Size(130, 1),
@@ -312,21 +312,14 @@ class _SearchresultState extends State<Searchresult> {
                                     
                                  ),
                                   ),
-
-                                ],
+                               ],
                               ),
-                              
-                                 
-                                 
+    
                             ),
                             
                             Row(
                               
-                            ),
-
-
-                                
-                            
+                            ),         
                           ],
                         ),
                         

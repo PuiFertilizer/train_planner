@@ -67,7 +67,7 @@ class _StationTouristAttractionsState extends State<StationTouristAttractions> {
                         ),
                         SizedBox(width: 10,),
                         Text(
-                          "เชียงใหม่",
+                          "เชียงใหม่", //ชื่อสถานีตาม parameter ชื่อสถานีเดียวกับหน้ารายละเอียดสถานี
                           style: GoogleFonts.prompt(
                             color: Colors.black,
                             fontSize: 16.0,
@@ -193,11 +193,11 @@ class _StationTouristAttractionsState extends State<StationTouristAttractions> {
 
 
 class Destination {
-  String imageUrl;
-  String locationName;
-  String locationaddress;
-  String description;
-  String howtotravel;
+  String imageUrl; //รูปสถานที่
+  String locationName; //ชื่อสถานที่
+  String locationaddress; //ที่อยู่สถานที่
+  String description; //คำอธิบายสถานที่โดยย่อ
+  String howtotravel; //วิธีเดินทางไป
   
 
   Destination({
@@ -210,7 +210,7 @@ class Destination {
   });
 }
 
-List<Destination> destinations = [
+List<Destination> destinations = [ //รายชื่อสถานที่รอบสถานี ซึ่งแต่ละสถานีจะมีไม่เหมือนกัน
   Destination(
     imageUrl: 'assets/images/nongkai.jpg',
     locationName: 'ประตูท่าแพ',

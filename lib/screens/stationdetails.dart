@@ -97,7 +97,7 @@ class _StationDetailsState extends State<StationDetails> {
           ),
           Container(
             height: 50, 
-            color: Color.fromARGB(255, 204, 204, 204),
+            color: Color.fromARGB(255, 255, 255, 255),
             child:Padding(
               padding: const EdgeInsets.only(left:10.0, right: 10),
               child: Row(
@@ -106,59 +106,62 @@ class _StationDetailsState extends State<StationDetails> {
                   "กำหนดเวลาเดินรถ สถานี",
                    style: GoogleFonts.prompt(
                    color: Colors.black,
-                   fontSize: 16.0,
+                   fontSize: 15.0,
+                   fontWeight: FontWeight.w600
                   ),
                 ),
                 Text(
-                  "เชียงใหม่",
+                  "เชียงใหม่", //ชื่อสถานีตาม parameter ชื่อสถานีของหน้านั้นๆ
                    style: GoogleFonts.prompt(
                    color: Colors.black,
-                   fontSize: 16.0,
+                   fontSize: 15.0,
+                   fontWeight: FontWeight.w600
                   ),
                 ),
               ]),
             ),
           ),
           Container(
-            height: 30, 
-            color: Color.fromARGB(255, 204, 204, 204),
+            height: 40, 
+            color: Color.fromARGB(255, 255, 255, 255),
             child:Padding(
               padding: const EdgeInsets.only(left:30.0, right: 30),
               child: Container(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Color(0xff009889),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, //Center Row contents horizontally,
-                  crossAxisAlignment: CrossAxisAlignment.start, //Center Row contents vertically,
+                  crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                   children: [
+                    SizedBox(width: 30,),
                   Text(
-                    "  ขบวน",
+                    "ขบวน",
                      style: GoogleFonts.prompt(
-                     color: Colors.black,
-                     fontSize: 12.0,
+                     color: Colors.white,
+                     fontSize: 14.0,
                     ),
                   ),
-                  SizedBox(width: 20,),
+                  SizedBox(width: 35,),
                   Text(
                     "ต้นทาง",
                      style: GoogleFonts.prompt(
-                     color: Colors.black,
-                     fontSize: 12.0,
+                     color: Colors.white,
+                     fontSize: 14.0,
                     ),
                   ),
-                  SizedBox(width: 75,),
+                  SizedBox(width: 10,),
                   Text(
-                    "ปลายทาง",
+                    "- ปลายทาง",
                      style: GoogleFonts.prompt(
-                     color: Colors.black,
-                     fontSize: 12.0,
+                     color: Colors.white,
+                     fontSize: 14.0,
                     ),
                   ),
-                  SizedBox(width: 65,),
+                  SizedBox(width: 45,),
                   Text(
                     "เวลา",
                      style: GoogleFonts.prompt(
-                     color: Colors.black,
-                     fontSize: 12.0,
+                     color: Colors.white,
+                     fontSize: 14.0,
                     ),
                   ),
 
@@ -168,19 +171,19 @@ class _StationDetailsState extends State<StationDetails> {
           ),
           Container(
             height: 4, 
-            color: Color.fromARGB(255, 204, 204, 204), 
+            color: Color.fromARGB(255, 255, 255, 255), 
           ),
           SizedBox(
             
             child: Container(
-              height: 300, 
-              color: Color.fromARGB(255, 204, 204, 204),
+              height: 340, 
+              color: Color.fromARGB(255, 255, 255, 255),
               
                 child: Padding(
                   padding: const EdgeInsets.only(left:30.0, right: 30),
                   child: Container(
                     child: RawScrollbar(
-                      thumbColor: Color.fromARGB(255, 34, 168, 1),
+                      thumbColor: Color.fromARGB(255, 132, 132, 132),
                       radius: Radius.circular(20),
                       thickness: 5,
                      // color: Color.fromARGB(255, 255, 255, 255),
@@ -193,17 +196,17 @@ class _StationDetailsState extends State<StationDetails> {
                           StationTrainList stationTrainList = stationTrainLists[index];
                           return Stack(
                             children: <Widget>[
-                              Container(margin: EdgeInsets.fromLTRB(5.0, 2.0, 5.0, 5.0),
-                              height: 20.0,
+                              Container(margin: EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
+                              height: 50.0,
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                borderRadius: BorderRadius.circular(20.0),                  
+                                color: Color.fromARGB(255, 199, 249, 204),
+                                borderRadius: BorderRadius.circular(0.0),                  
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
                                 child: Column(
-                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                               Row(  //แบ่งครึ่งหน้า
@@ -211,48 +214,58 @@ class _StationDetailsState extends State<StationDetails> {
                                      crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                               children: [
                               Container(
-                                width: 40,
+                                width: 50,
                                 child: GestureDetector(
-                                onTap: () { //ไปหน้ารายละเอียดแต่ละเลขขบวน
+                                onTap: () { //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
                                    Navigator.push(context, MaterialPageRoute(builder: (context) => TrainDetails()),);
                                 },
                                child: Text(stationTrainList.trainNo, //เลขขบวน
                                style: GoogleFonts.prompt(
                                 color: Colors.black,
-                                fontSize: 10.0,
+                                fontSize: 14.0,
                                 ) ,),
                               ),
                               ),
+                               Container(
+                               width: 20,
+                               ),
                               //SizedBox(width: 5,),
-                              Container(
-                                width: 110,
-                                child: Text(
-                                stationTrainList.originStation, //ต้นทางขบวน
-                                style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 10.0,
-                                ),
-                                                ),
+                              Column(
+                                children: [
+                                  Container(
+                                    width: 110,
+                                    child: Text(
+                                    stationTrainList.originStation, //ชื่อสถานีต้นทางขบวน
+                                    style: GoogleFonts.prompt(
+                                    color: Colors.black,
+                                    fontSize: 14.0,
+                                    ),
+                                                    ),
+                                  ),
+                                  Container(
+                                    width: 110,
+                                    child: Text(
+                                    stationTrainList.destinationStation, //ชื่อสถานีปลายทางขบวน
+                                    style: GoogleFonts.prompt(
+                                    color: Colors.black,
+                                    fontSize: 14.0,
+                                    ),
+                                                    ),
+                                  ),
+                                ],
                               ),
-                                          //SizedBox(width: 5,),
-                                          Container(
-                        width: 110,                    
-                        child: Text(
-                          stationTrainList.destinationStation, //ปลายทางขบวน
-                           style: GoogleFonts.prompt(
-                           color: Colors.black,
-                           fontSize: 10.0,
-                          ),
+                                          
+                        Container(
+                        width: 50,                    
                         ),
-                                          ),
-                                          //SizedBox(width: 5,),
-                                          Container(
-                        width: 30,
+                                        
+                        Container(
+                        width: 40,
                         child: Text(
                           stationTrainList.stationTime, //เวลารถเข้า-ออก แต่ละสถานี
                            style: GoogleFonts.prompt(
                            color: Colors.black,
-                           fontSize: 10.0,
+                           fontSize: 14.0,
                           ),
                         ),
                                           ),
@@ -282,10 +295,7 @@ class _StationDetailsState extends State<StationDetails> {
                 ),
             ),
           ),
-          Container(
-            height: 20, 
-            color: Color.fromARGB(255, 204, 204, 204), 
-          ),
+          
           Container(
             color: Colors.white,
             height: 100,
@@ -295,10 +305,10 @@ class _StationDetailsState extends State<StationDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox.fromSize(
-                  size: Size(100, 70),
+                  size: Size(100, 90),
                   
                   child: Material(
-                  color: Color.fromARGB(255, 128,	237,	153),
+                  color: Color.fromARGB(255, 199, 249, 204),
                  child: InkWell(
         //splashColor: Colors.green, 
                     onTap: () {
@@ -309,7 +319,7 @@ class _StationDetailsState extends State<StationDetails> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/images/map.png',width: 40,), 
+                       Image.asset('assets/images/map.png',width: 50,), 
                        SizedBox(height: 5,),// <-- Icon
                        Text("แผนที่"), // <-- Text
                     ],
@@ -318,10 +328,10 @@ class _StationDetailsState extends State<StationDetails> {
                 ),
                ),
                SizedBox.fromSize(
-                  size: Size(100, 70),
+                  size: Size(100, 90),
                   
                   child: Material(
-                  color: Color.fromARGB(255, 128,	237,	153),
+                  color: Color.fromARGB(255, 199, 249, 204),
                  child: InkWell(
         //splashColor: Colors.green, 
                     onTap: () {
@@ -332,7 +342,7 @@ class _StationDetailsState extends State<StationDetails> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/images/amenities.png',width: 40,),
+                       Image.asset('assets/images/amenities.png',width: 50,),
                        SizedBox(height: 5,), // <-- Icon
                        Text("ความสะดวก"), // <-- Text
                     ],
@@ -341,10 +351,10 @@ class _StationDetailsState extends State<StationDetails> {
                 ),
                ),
                SizedBox.fromSize(
-                  size: Size(100, 70),
+                  size: Size(100, 90),
                   
                   child: Material(
-                  color: Color.fromARGB(255, 128,	237,	153),
+                  color: Color.fromARGB(255, 199, 249, 204),
                  child: InkWell(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => StationTouristAttractions()),);
@@ -352,7 +362,7 @@ class _StationDetailsState extends State<StationDetails> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/images/attractions.png',width: 40,),
+                       Image.asset('assets/images/attractions.png',width: 50,),
                        SizedBox(height: 5,), // <-- Icon
                        Text("สถานที่"), // <-- Text
                     ],
@@ -389,7 +399,7 @@ class StationTrainList {
   });
 }
 
-List <StationTrainList> stationTrainLists = [ //รายชื่อขบวนที่จอดที่สถานีนี้ ดูตามชื่อสถานี
+List <StationTrainList> stationTrainLists = [ //รายชื่อขบวนที่จอดที่สถานีนี้พร้อมเวลา ดูตามชื่อสถานีและตารางจาก web scraping
   StationTrainList(
     trainNo: '109', 
     originStation: 'กรุงเทพอภิวัฒน์',
