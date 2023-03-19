@@ -49,6 +49,7 @@ dependencies:
   sqflite:
   flutter_staggered_animations:
   syncfusion_flutter_datagrid: ^20.4.51
+  persistent_bottom_nav_bar: any
   
 
 flutter_icons:

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 import '../widgets/NavBar.dart';
@@ -347,3 +346,98 @@ class _SearchresultState extends State<Searchresult> {
     );
   }
 }
+//เก็บข้อมูลรายการผลการค้นหา
+
+class Result {
+  String departureStation; //สถานีต้นทาง
+  String departureTime;    //เวลาออกต้นทาง
+  String arriveStation;    //สถานีปลายทาง
+  String arriveTime;       //เวลาถึงปลายทาง
+  String traintype;        //ประเภทขบวนรถ (เช่น ด่วนพิเศษ ด่วน เร็ว)
+  String trainNumber;      //เลขขบวนรถ
+  String classes;          //ชั้นที่นั่ง
+  String coachtype1;
+  String coachtype2;
+  
+           
+
+  Result({
+    required this.departureStation,
+    required this.departureTime,
+    required this.arriveStation,
+    required this.arriveTime,
+    required this.traintype,
+    required this.trainNumber,
+    required this.classes,
+    required this.coachtype1,
+    required this.coachtype2,
+  });
+}
+
+List <Result> results = [
+  Result(
+    departureStation: 'กรุงเทพอภิวัฒน์', 
+    departureTime: '09:05', 
+    arriveStation: 'เชียงใหม่', 
+    arriveTime: '19:30', 
+    traintype: 'ด่วนพิเศษดีเซลราง', 
+    trainNumber: '7', 
+    classes: 'ชั้น 2',
+    coachtype1: 'รถนั่งปรับอากาศ',
+    coachtype2: ''
+    
+  ),
+
+  Result(
+    departureStation: 'กรุงเทพอภิวัฒน์', 
+    departureTime: '14:15', 
+    arriveStation: 'เชียงใหม่', 
+    arriveTime: '04:05', 
+    traintype: 'เร็ว', 
+    trainNumber: '109', 
+    classes: 'ชั้น 3, 2',
+    coachtype1: 'รถนั่งพัดลม',
+    coachtype2: 'รถนอนปรับอากาศ'
+    
+  ),
+
+  Result(
+    departureStation: 'กรุงเทพอภิวัฒน์', 
+    departureTime: '18:40', 
+    arriveStation: 'เชียงใหม่', 
+    arriveTime: '07:15', 
+    traintype: 'ด่วนพิเศษ CNR', 
+    trainNumber: '9', 
+    classes: 'ชั้น 2, 1',
+    coachtype1: 'รถนอนปรับอากาศ',
+    coachtype2: ''
+    
+  ),
+
+  Result(
+    departureStation: 'กรุงเทพอภิวัฒน์', 
+    departureTime: '20:05', 
+    arriveStation: 'เชียงใหม่', 
+    arriveTime: '08:40', 
+    traintype: 'ด่วนพิเศษ', 
+    trainNumber: '13', 
+    classes: 'ชั้น 3, 2, 1',
+    coachtype1: 'รถนั่งพัดลม',
+    coachtype2: 'รถนอนปรับอากาศ'
+    
+  ),
+
+  Result(
+    departureStation: 'กรุงเทพอภิวัฒน์', 
+    departureTime: '22:30', 
+    arriveStation: 'เชียงใหม่', 
+    arriveTime: '12:10', 
+    traintype: 'ด่วน', 
+    trainNumber: '51', 
+    classes: 'ชั้น 3, 2',
+    coachtype1: 'รถนั่งพัดลม',
+    coachtype2: 'รถนอนปรับอากาศ'
+    
+  ),
+  
+];
