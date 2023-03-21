@@ -1,11 +1,11 @@
 class Result {
-  String departureStation;
-  String departureTime;
-  String arriveStation;
-  String arriveTime;
-  String traintype;
-  String trainNumber;
-  String price;
+  String departureStation = '';
+  String departureTime = '';
+  String arriveStation = '';
+  String arriveTime = '';
+  String traintype = '';
+  String trainNumber = '';
+  //String price;
 
   Result({
     required this.departureStation,
@@ -14,11 +14,30 @@ class Result {
     required this.arriveTime,
     required this.traintype,
     required this.trainNumber,
-    required this.price
+    //required this.price
   });
+  Result.fromJson(Map<String, dynamic> json) {
+    departureStation = json['departureStation'];
+    arriveStation = json['arriveStation'];
+    departureTime = json['departureTime'];
+    arriveTime = json['arriveTime'];
+    traintype = json['traintype'];
+    trainNumber = json['trainNumber'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['departureStation'] = departureStation;
+    data['arriveStation'] = arriveStation;
+    data['departureTime'] = departureTime;
+    data['arriveTime'] = arriveTime;
+    data['traintype'] = traintype;
+    data['trainNumber'] = trainNumber;
+    return data;
+  }
 }
 
-List <Result> results = [
+/*List <Result> results = [
   Result(
     departureStation: 'กรุงเทพ (หัวลำโพง)', 
     departureTime: '06:45', 
@@ -37,4 +56,4 @@ List <Result> results = [
     trainNumber: 'ขบวน 283', 
     price: '37 บาท'
   )
-];
+];*/

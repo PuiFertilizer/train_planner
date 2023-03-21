@@ -1,4 +1,4 @@
-final trainslist = {
+final trainslist = [
   "7",
   "8",
   "21",
@@ -86,8 +86,8 @@ final trainslist = {
   "4385",
   "4386",
   "4387"
-};
-final stationList = {
+];
+final stationList = [
   'กบินทร์บุรี',
   'กระสัง',
   'กรุงเทพ',
@@ -333,4 +333,4 @@ final stationList = {
   'โพธาราม',
   'โยทะกา',
   'ไชยา'
-};
+];
