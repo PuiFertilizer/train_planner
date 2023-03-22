@@ -88,15 +88,15 @@ class DBHelper {
               where: 'station=?', whereArgs: [end], orderBy: "train")
           .then((value) => arrive = value)
     ]);
-    print(depart);
-    print(arrive);
+    //print(depart);
+    //print(arrive);
     List<Result> result = [];
     int i = 0, j = 0;
     for (; i < arrive.length && j < depart.length;) {
-      var s = Routes.fromJson(arrive[i]);
-      var e = Routes.fromJson(depart[j]);
-      print(s.station + s.train + s.time);
-      print(e.station + e.train + e.time);
+      var e = Routes.fromJson(arrive[i]);
+      var s = Routes.fromJson(depart[j]);
+      //print(s.station + s.train + s.time);
+      //print(e.station + e.train + e.time);
       if (s.train == e.train) {
         Result x = Result(
             departureStation: s.station,
