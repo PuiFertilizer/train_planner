@@ -32,16 +32,23 @@ class DBHelper {
               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
               "train STRING, station STRING, time STRING)") /*.then((value) => updater.updateTrain())*/;
         },
-        /*onOpen: (db) =>
-              db.execute("DROP TABLE IF EXISTS $_tableRoute").then((value) => db
-                  .execute("Create table $_tableRoute("
-                      "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                      "train STRING, station STRING, time STRING)")
-                  .then((value) => updater.updateTrain()))*/
       );
+      cleanAndUpdate();
+      //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {
       print(e);
     }
+  }
+
+  static void cleanAndUpdate() async {
+    print("delete call");
+    await _db?.delete(_tableRoute);
+    /*await _db!
+        .query(_tableRoute,
+            where: 'station=?', whereArgs: ["กรุงเทพ"], orderBy: "train")
+        .then((value) => print(value));*/
+    await _db!.execute('DELETE FROM $_tableRoute');
+    await updater.updateTrain();
   }
 
   //task

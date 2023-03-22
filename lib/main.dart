@@ -13,11 +13,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
-  Updater updater = Updater();
+  //Updater updater = Updater();
   WidgetsFlutterBinding.ensureInitialized();
   await DBHelper.initDb();
   await GetStorage.init();
-  await updater.updateTrain();
+  //await updater.updateTrain();
   runApp(const MyApp());
 }
 
