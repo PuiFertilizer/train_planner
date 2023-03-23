@@ -8,11 +8,10 @@ import 'addSearchResultEdit.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 
-
 // ผลการค้นหาเส้นทางตอนแก้ไขแผน เหมือนค้นหาจากหน้าแรก
 
 class SearchresultPlan extends StatefulWidget {
-  const SearchresultPlan({ Key? key }) : super(key: key);
+  const SearchresultPlan({Key? key}) : super(key: key);
 
   @override
   _SearchresultState createState() => _SearchresultState();
@@ -22,66 +21,74 @@ class _SearchresultState extends State<SearchresultPlan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 87, 204, 153),
-        //title: Text('ผลการค้นหาเพิ่มในแผน', style: GoogleFonts.prompt(color: Colors.black),),
-        
-        
-      ),
-      body: Column(
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text('ผลการค้นหาเพิ่มในแผน', style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
-                          fontWeight: FontWeight.bold,),),
-                    Row(
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.filter),
-                          iconSize: 30.0,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 87, 204, 153),
+          //title: Text('ผลการค้นหาเพิ่มในแผน', style: GoogleFonts.prompt(color: Colors.black),),
+        ),
+        body: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'ผลการค้นหาเพิ่มในแผน',
+                        style: GoogleFonts.prompt(
                           color: Colors.black,
-                          onPressed: () => Navigator.pop(context),
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
                         ),
-                        
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                left: 10,
-                bottom: 10,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          "กรุงเทพ",
-                          style: GoogleFonts.prompt(
+                      ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.filter),
+                            iconSize: 30.0,
                             color: Colors.black,
-                            fontSize: 20.0,
+                            onPressed: () => Navigator.pop(context),
                           ),
-                        ),
-                        SizedBox(width: 5.0),
-                        Text(
-                          "บ้านพลูตาหลวง",
-                          style: GoogleFonts.prompt(
-                            color: Colors.black,
-                            fontSize: 20.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                    
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
+                Positioned(
+                  left: 10,
+                  bottom: 10,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            "กรุงเทพ",
+                            style: GoogleFonts.prompt(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          SizedBox(width: 5.0),
+                          Text(
+                            "บ้านพลูตาหลวง",
+                            style: GoogleFonts.prompt(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            /*Expanded(
+            child: new ListView.builder(
               ),
               
               
@@ -335,27 +342,23 @@ class _SearchresultState extends State<SearchresultPlan> {
               );
             }
           ),
-          )
-          
-        ],
-      )
-    );
+          )*/
+          ],
+        ));
   }
 }
 //เก็บข้อมูลรายการผลการค้นหา
 
 class Result {
   String departureStation; //สถานีต้นทาง
-  String departureTime;    //เวลาออกต้นทาง
-  String arriveStation;    //สถานีปลายทาง
-  String arriveTime;       //เวลาถึงปลายทาง
-  String traintype;        //ประเภทขบวนรถ (เช่น ด่วนพิเศษ ด่วน เร็ว)
-  String trainNumber;      //เลขขบวนรถ
-  String classes;          //ชั้นที่นั่ง
+  String departureTime; //เวลาออกต้นทาง
+  String arriveStation; //สถานีปลายทาง
+  String arriveTime; //เวลาถึงปลายทาง
+  String traintype; //ประเภทขบวนรถ (เช่น ด่วนพิเศษ ด่วน เร็ว)
+  String trainNumber; //เลขขบวนรถ
+  String classes; //ชั้นที่นั่ง
   String coachtype1;
   String coachtype2;
-  
-           
 
   Result({
     required this.departureStation,
@@ -370,29 +373,25 @@ class Result {
   });
 }
 
-List <Result> results = [
+List<Result> results = [
   Result(
-    departureStation: 'กรุงเทพ (หัวลำโพง)', 
-    departureTime: '06:45', 
-    arriveStation: 'บ้านพลูตาหลวง', 
-    arriveTime: '09:50', 
-    traintype: 'เร็ว', 
-    trainNumber: '997', 
-    classes: 'ชั้น 2',
-    coachtype1: 'รถนั่งปรับอากาศ',
-    coachtype2: ''
-    
-  ),
+      departureStation: 'กรุงเทพ (หัวลำโพง)',
+      departureTime: '06:45',
+      arriveStation: 'บ้านพลูตาหลวง',
+      arriveTime: '09:50',
+      traintype: 'เร็ว',
+      trainNumber: '997',
+      classes: 'ชั้น 2',
+      coachtype1: 'รถนั่งปรับอากาศ',
+      coachtype2: ''),
   Result(
-    departureStation: 'กรุงเทพ (หัวลำโพง)', 
-    departureTime: '06:55', 
-    arriveStation: 'บ้านพลูตาหลวง', 
-    arriveTime: '11:20', 
-    traintype: 'ธรรมดา', 
-    trainNumber: '283', 
-    classes: 'ชั้น 3',
-    coachtype1: 'รถนั่งพัดลม',
-    coachtype2: ''
-    
-  )
+      departureStation: 'กรุงเทพ (หัวลำโพง)',
+      departureTime: '06:55',
+      arriveStation: 'บ้านพลูตาหลวง',
+      arriveTime: '11:20',
+      traintype: 'ธรรมดา',
+      trainNumber: '283',
+      classes: 'ชั้น 3',
+      coachtype1: 'รถนั่งพัดลม',
+      coachtype2: '')
 ];

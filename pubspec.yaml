@@ -48,6 +48,7 @@ dependencies:
   get: ^4.6.5
   sqflite:
   flutter_staggered_animations:
+  web_scraper:
   syncfusion_flutter_datagrid: ^20.4.51
   persistent_bottom_nav_bar: any
   
