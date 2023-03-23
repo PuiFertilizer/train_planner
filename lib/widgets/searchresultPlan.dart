@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:train_planner/models/result_model.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/plan_model.dart';
 import 'addSearchResultEdit.dart';
+import 'package:train_planner/screens/traindetails.dart';
+import 'package:train_planner/screens/stationdetails.dart';
 
 // ผลการค้นหาเส้นทางตอนแก้ไขแผน เหมือนค้นหาจากหน้าแรก
 
@@ -88,6 +89,13 @@ class _SearchresultState extends State<SearchresultPlan> {
             ),
             /*Expanded(
             child: new ListView.builder(
+              ),
+              
+              
+            ],
+          ),
+          Expanded(
+            child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: results.length,
             itemBuilder: (BuildContext context, int index) {
@@ -262,16 +270,15 @@ class _SearchresultState extends State<SearchresultPlan> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Container(
-                                    child: ElevatedButton.icon(
+                                    child: ElevatedButton(
                                     
                                 onPressed: () {
-                                     Get.to(const AddResultPage());
+                                     Navigator.push(context, MaterialPageRoute(builder: (context) => TrainDetails()),);
                                 },
-                                  icon: Icon(Icons.add, size: 20.0, color: Colors.black,),
-                                  label: Text("รายละเอียด",
-                                style: GoogleFonts.prompt(color: Colors.black, fontSize: 11.0),),
-                                style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(110, 1),
+                                  child: Text("รายละเอียดขบวน",
+                                  style: GoogleFonts.prompt(color: Color.fromARGB(255, 0, 0, 0), fontSize: 12.0),),
+                                  style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(130, 1),
                                   backgroundColor: Color.fromARGB(255, 87, 204, 153),
                                   shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
@@ -282,16 +289,16 @@ class _SearchresultState extends State<SearchresultPlan> {
                                   ),
                                   SizedBox(height: 2,),
                                   Container(
-                                    child: ElevatedButton.icon(
+                                    child: ElevatedButton(
                                     
-                                onPressed: () { //เพิ่มในแผน
-                                     //Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
+                                onPressed: () {
+                                    // Navigator.push(context, MaterialPageRoute(builder: (context) => Searchresult()),);
                                 },
-                                  icon: Icon(Icons.add, size: 20.0, color: Colors.black,),
-                                  label: Text("เพิ่มในแผน",
-                                style: GoogleFonts.prompt(color: Colors.black, fontSize: 11.0),),
+                                  
+                                  child: Text("เพิ่มในแผน",
+                                style: GoogleFonts.prompt(color: Color.fromARGB(255, 0, 0, 0), fontSize: 12.0),),
                                 style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(110, 1),
+                                  fixedSize: Size(130, 1),
                                   backgroundColor: Color.fromARGB(255, 87, 204, 153),
                                   shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
@@ -340,3 +347,51 @@ class _SearchresultState extends State<SearchresultPlan> {
         ));
   }
 }
+//เก็บข้อมูลรายการผลการค้นหา
+
+class Result {
+  String departureStation; //สถานีต้นทาง
+  String departureTime; //เวลาออกต้นทาง
+  String arriveStation; //สถานีปลายทาง
+  String arriveTime; //เวลาถึงปลายทาง
+  String traintype; //ประเภทขบวนรถ (เช่น ด่วนพิเศษ ด่วน เร็ว)
+  String trainNumber; //เลขขบวนรถ
+  String classes; //ชั้นที่นั่ง
+  String coachtype1;
+  String coachtype2;
+
+  Result({
+    required this.departureStation,
+    required this.departureTime,
+    required this.arriveStation,
+    required this.arriveTime,
+    required this.traintype,
+    required this.trainNumber,
+    required this.classes,
+    required this.coachtype1,
+    required this.coachtype2,
+  });
+}
+
+List<Result> results = [
+  Result(
+      departureStation: 'กรุงเทพ (หัวลำโพง)',
+      departureTime: '06:45',
+      arriveStation: 'บ้านพลูตาหลวง',
+      arriveTime: '09:50',
+      traintype: 'เร็ว',
+      trainNumber: '997',
+      classes: 'ชั้น 2',
+      coachtype1: 'รถนั่งปรับอากาศ',
+      coachtype2: ''),
+  Result(
+      departureStation: 'กรุงเทพ (หัวลำโพง)',
+      departureTime: '06:55',
+      arriveStation: 'บ้านพลูตาหลวง',
+      arriveTime: '11:20',
+      traintype: 'ธรรมดา',
+      trainNumber: '283',
+      classes: 'ชั้น 3',
+      coachtype1: 'รถนั่งพัดลม',
+      coachtype2: '')
+];

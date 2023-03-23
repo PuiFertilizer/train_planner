@@ -6,11 +6,13 @@ import 'package:train_planner/db/update.dart';
 import 'screens/home.dart';
 import 'screens/favourite.dart';
 import 'screens/planner.dart';
+import 'screens/others.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 Future<void> main() async {
   //Updater updater = Updater();
@@ -39,66 +41,85 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  PageController pageController = PageController();
-  List<Widget> pages = [const HomePage(), const Favourite(), const Planner()];
-
-  int selectIndex = 0;
-  void onPageChanged(int index) {
-    setState(() {
-      selectIndex = index;
-    });
-  }
-
-  void onItemTap(int selectedItems) {
-    pageController.jumpToPage(selectedItems);
-  }
+  var _controller = PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //drawer: NavBar(),
-      // appBar: AppBar(
-
-      // ),
-      body: PageView(
-        controller: pageController,
-        onPageChanged: onPageChanged,
-        children: pages,
+    return PersistentTabView(
+      //สิขรีปีโตรเลี่ยม
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: Color.fromARGB(255, 98, 231, 173),
+      navBarHeight: 70, // Default is Colors.white.
+      handleAndroidBackButtonPress: true, // Default is true.
+      resizeToAvoidBottomInset:
+          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      stateManagement: true, // Default is true.
+      hideNavigationBarWhenKeyboardShows:
+          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(0.0),
+        colorBehindNavBar: Colors.white,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color.fromARGB(255, 87, 204, 153),
-          onTap: onItemTap,
-          iconSize: 50,
-          selectedFontSize: 16,
-          selectedItemColor: Colors.black,
-          unselectedFontSize: 16,
-          unselectedItemColor: Colors.black,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: selectIndex == 0
-                      ? Color.fromARGB(255, 0, 100, 42)
-                      : Colors.black,
-                ),
-                label: 'หน้าหลัก'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.star,
-                  color: selectIndex == 1
-                      ? Color.fromARGB(255, 0, 100, 42)
-                      : Colors.black,
-                ),
-                label: 'รายการโปรด'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search,
-                  color: selectIndex == 2
-                      ? Color.fromARGB(255, 0, 100, 42)
-                      : Colors.black,
-                ),
-                label: 'แผนเดินทาง'),
-          ]),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: ItemAnimationProperties(
+        // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: ScreenTransitionAnimation(
+        // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle:
+          NavBarStyle.style3, // Choose the nav bar style with this property.
     );
+  }
+
+  List<Widget> _buildScreens() {
+    return [HomePage(), Favourite(), Planner(), Others()];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Image.asset(
+          'assets/images/home.png',
+          height: 20,
+        ),
+        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Image.asset(
+          'assets/images/favourite.png',
+          height: 20,
+        ),
+        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Image.asset(
+          'assets/images/travelplan.png',
+          height: 20,
+        ),
+        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Image.asset(
+          'assets/images/otherinfo.png',
+          height: 20,
+        ),
+        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+    ];
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:train_planner/models/result_model.dart';
 //import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/screens/traindetails.dart';
+import 'package:train_planner/screens/stationdetails.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../db/db_helper.dart';

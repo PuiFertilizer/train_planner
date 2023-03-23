@@ -15,7 +15,7 @@ class Destination_Carousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'จุดหมายยอดนิยม',
+                'จุดหมายแนะนำ',
                 style: GoogleFonts.prompt(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
@@ -28,7 +28,7 @@ class Destination_Carousel extends StatelessWidget {
         Container(
           //color: Colors.blue,
           height: 240.0,
-        child: ListView.builder(
+          child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: destinations.length,
           itemBuilder: (BuildContext context, int index) {

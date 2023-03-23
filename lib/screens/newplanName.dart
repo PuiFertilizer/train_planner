@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
+import 'package:train_planner/screens/planner.dart';
 import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/input_field.dart';
 import 'package:train_planner/widgets/searchRouteNew.dart';
@@ -36,7 +37,7 @@ class _newplanPageState extends State<newplanPage>{
           child: Column(
             children: [
               Text(
-                'เพิ่มกิจกรรมอื่นๆ',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
+                'สร้างแผนการเดินทางใหม่',style: GoogleFonts.prompt(color: Colors.black,fontSize: 22,
                           fontWeight: FontWeight.bold,),
               ),
               MyInputField(title: 'ตั้งชื่อการเดินทาง (ไม่เกิน 50 ตัวอักษร)', hint: 'ระบุที่นี่', controller: _titleController,),
@@ -99,7 +100,7 @@ class _newplanPageState extends State<newplanPage>{
       backgroundColor: Color.fromARGB(255, 56, 163, 165),
       leading: GestureDetector(
         onTap:(){
-          Get.back();
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Planner()));
         },
         child: Icon(Icons.arrow_back_ios,
         size:20,
