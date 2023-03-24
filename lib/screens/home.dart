@@ -32,9 +32,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      drawer: Container(
-          width: MediaQuery.of(context).size.width * 0.6, child: NavBar()),
-      //drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 87, 204, 153),
         title: Text('หน้าหลัก',

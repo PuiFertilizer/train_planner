@@ -197,6 +197,21 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
                   ),
             ),
           ),
+          SizedBox(height: 40,),
+          ElevatedButton(
+            onPressed: () {
+
+            },
+            child: Text("เพิ่มในแผนการเดินทาง", //สร้างแผนใหม่
+              style: GoogleFonts.prompt(color: Color.fromARGB(255, 19, 19, 19), fontSize: 16.0),),
+              style: ElevatedButton.styleFrom(
+              fixedSize: Size(350, 30),
+              backgroundColor: Color.fromARGB(255, 87, 204, 153),
+              shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0), 
+            ),
+          ),
+          )
           
 
 

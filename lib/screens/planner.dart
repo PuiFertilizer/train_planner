@@ -18,7 +18,7 @@ class _PlannerState extends State<Planner> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: NavBar(),
+      //drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 87, 204, 153),
         title: Text('แผนการเดินทาง', style: GoogleFonts.prompt(color: Colors.black),),

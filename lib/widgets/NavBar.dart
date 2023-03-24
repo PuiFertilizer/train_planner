@@ -17,13 +17,6 @@ class NavBar extends StatelessWidget{
         children: [
           SizedBox(height: 30,),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('หน้าหลัก',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.newspaper),
             title: Text('ข่าวสาร',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
             onTap: (){

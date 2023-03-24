@@ -31,16 +31,16 @@ class _TrainDetailsState extends State<TrainDetails> {
       labelStyle: GoogleFonts.prompt(color: Colors.black,fontSize: 17,),
       tabs: [
         new Container(
-                    height: 90.0,
-                    child: new Tab(text: 'ช่วงเวลา',icon: Image.asset('assets/images/clock.png',width: 45,),),
+                    height: 80.0,
+                    child: new Tab(text: 'ช่วงเวลา',icon: Image.asset('assets/images/clock.png',width: 35,),),
                   ),
        new Container(
-                    height: 90.0,
-                    child: new Tab(text: 'ขบวนรถ',icon: Image.asset('assets/images/train1.png',width: 45,),),
+                    height: 80.0,
+                    child: new Tab(text: 'ขบวนรถ',icon: Image.asset('assets/images/train1.png',width: 35,),),
                   ),
         new Container(
-                    height: 90.0,
-                    child: new Tab(text: 'ค่าโดยสาร',icon: Image.asset('assets/images/price.png',width: 45,),),
+                    height: 80.0,
+                    child: new Tab(text: 'ค่าโดยสาร',icon: Image.asset('assets/images/price.png',width: 35,),),
                   ),
       ],
       
@@ -104,15 +104,8 @@ class _TrainDetailsState extends State<TrainDetails> {
             ),
           ],),
         )
-        // child: Material(
-        //   color: Colors.green,
-        //   child: Theme( //<-- SEE HERE
-        //       data: ThemeData().copyWith(splashColor: Colors.redAccent),
-        //       child: _tabBar),
-        // )
         
       ),
-      //backgroundColor: Color.fromARGB(255, 255, 255, 255),
     ),
     
     body: TabBarView(
@@ -276,13 +269,13 @@ class _TrainDetailsState extends State<TrainDetails> {
                   });
              },
             
-            child: Text("ทัศนียภาพข้างทางที่พบได้", //สร้างแผนใหม่
-            style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),),
-            style: ElevatedButton.styleFrom(
-            fixedSize: Size(350, 50),
-            backgroundColor: Color.fromARGB(255, 56, 163, 165),
-            shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0), 
+              child: Text("ทัศนียภาพข้างทางที่พบได้", //สร้างแผนใหม่
+              style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),),
+              style: ElevatedButton.styleFrom(
+              fixedSize: Size(350, 50),
+              backgroundColor: Color.fromARGB(255, 56, 163, 165),
+              shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0), 
             ),
           ),
                                     
@@ -344,7 +337,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                    child: Row(
                                    mainAxisAlignment: MainAxisAlignment.start,
                                    children: [ //ผังขบวนรถซึ่งแต่ละขบวนจะไม่เหมือนกัน สามารถเลื่อนซ้ายขวาได้
-                                      Image.asset('assets/images/trainchart/trainchartCNR_depart.png',height: 30,) //ผังขบวนรถตามเลขขบวน
+                                      Image.asset('assets/images/trainchart/trainchart_sprinter.png',height: 30,) //ผังขบวนรถตามเลขขบวน
                                    ],
                                    ),
                                          ),
