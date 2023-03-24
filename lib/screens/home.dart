@@ -8,6 +8,8 @@ import 'package:intl/intl.dart';
 import '../widgets/NavBar.dart';
 import '../screens/searchresult.dart';
 
+import '../db/datalist.dart';
+
 //import 'package:train_planner/widgets/Tourtrain_Carousel.dart';
 
 import '../widgets/Destination_Carousel.dart';
@@ -25,7 +27,11 @@ class _HomePageState extends State<HomePage> {
   void updateList(String value) {
     //function กรอง items ต่างๆ
   }
-  String? _selectedStation;
+  //String? _selectedStation;
+
+  String source = ' ';
+  String destination = ' ';
+
   final TextEditingController _date = TextEditingController();
 
   @override
@@ -109,15 +115,7 @@ class _HomePageState extends State<HomePage> {
                                     DropdownSearch<String>(
                                       mode: Mode.MENU,
                                       showSelectedItems: true,
-                                      items: [ //เอามาจากรายชื่อสถานีใน Database
-                                        'กรุงเทพ  จ.กรุงเทพ',
-                                        'บ้านพลูตาหลวง  จ.ชลบุรี',
-                                        'เชียงใหม่  จ.เชียงใหม่',
-                                        'หนองคาย  จ.หนองคาย',
-                                        'อุบลราชธานี  จ.อุบลราชธานี',
-                                        'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
-                                        'ชุมทางหาดใหญ่  จ.สงขลา'
-                                      ],
+                                      items: stationList,
                                       dropdownSearchDecoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                             //<-- SEE HERE
@@ -141,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                                               255, 255, 255, 255),
                                           hintText: "สถานีหรือชื่อจังหวัด"),
                                       popupItemDisabled: isItemDisabled,
-                                      onChanged: itemSelectionChanged,
+                                      onChanged: sourceSelectionChanged,
                                       showSearchBox: true,
                                       searchFieldProps: const TextFieldProps(
                                         cursorColor:
@@ -165,15 +163,7 @@ class _HomePageState extends State<HomePage> {
                                     DropdownSearch<String>(
                                       mode: Mode.MENU,
                                       showSelectedItems: true,
-                                      items: [ //เอามาจากรายชื่อสถานีใน Database
-                                        'กรุงเทพ  จ.กรุงเทพ',
-                                        'บ้านพลูตาหลวง  จ.ชลบุรี',
-                                        'เชียงใหม่  จ.เชียงใหม่',
-                                        'หนองคาย  จ.หนองคาย',
-                                        'อุบลราชธานี  จ.อุบลราชธานี',
-                                        'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
-                                        'ชุมทางหาดใหญ่  จ.สงขลา'
-                                      ],
+                                      items: stationList,
                                       dropdownSearchDecoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                             //<-- SEE HERE
@@ -197,11 +187,14 @@ class _HomePageState extends State<HomePage> {
                                               255, 255, 255, 255),
                                           hintText: "สถานีหรือชื่อจังหวัด"),
                                       popupItemDisabled: isItemDisabled,
-                                      onChanged: itemSelectionChanged,
+                                      onChanged: destinationSelectionChanged,
                                       showSearchBox: true,
                                       searchFieldProps: const TextFieldProps(
                                         cursorColor: Colors.blue,
                                       ),
+                                      onSaved: ((newValue) {
+                                        destination = newValue!;
+                                      }),
                                     ),
                                     const SizedBox(
                                       height: 15,
@@ -259,7 +252,10 @@ class _HomePageState extends State<HomePage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Searchresult()),
+                                                  Searchresult(
+                                                    source: source,
+                                                    destination: destination,
+                                                  )),
                                         );
                                       },
                                       icon: const Icon(Icons.location_on,
@@ -289,7 +285,10 @@ class _HomePageState extends State<HomePage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Searchresult()),
+                                                  Searchresult(
+                                                    source: source,
+                                                    destination: destination,
+                                                  )),
                                         ); //ไปที่หน้าผลการค้นหา
                                       }, //มีการ Query
                                       icon: const Icon(Icons.search),
@@ -348,7 +347,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void itemSelectionChanged(String? s) {
-    print(s);
+  void sourceSelectionChanged(String? s) {
+    source = s!;
+  }
+
+  void destinationSelectionChanged(String? s) {
+    destination = s!;
   }
 }

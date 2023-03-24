@@ -9,14 +9,13 @@ import '../widgets/plan.dart';
 import '../screens/searchresult.dart';
 
 class News extends StatefulWidget {
-  const News({ Key? key }) : super(key: key);
+  const News({Key? key}) : super(key: key);
 
   @override
   _NewsState createState() => _NewsState();
 }
 
 class _NewsState extends State<News> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,21 +23,21 @@ class _NewsState extends State<News> {
       drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 87, 204, 153),
-        title: Text('ข่าวสารรถไฟ',
-                        style: GoogleFonts.prompt(
-                          
-                        ),),
+        title: Text(
+          'ข่าวสารรถไฟ',
+          style: GoogleFonts.prompt(),
+        ),
       ),
       body: Container(
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              Image.asset("assets/images/newsimage.jpg",
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
+              Image.asset(
+                "assets/images/newsimage.jpg",
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-
               Column(
                 children: <Widget>[
                   
@@ -66,12 +65,7 @@ class _NewsState extends State<News> {
             ],
           ),
         ),
-        
       ),
-      
-      
-
-      
     );
   }
 }
