@@ -203,7 +203,7 @@ class _StationDetailsState extends State<StationDetails> {
           SizedBox(
             
             child: Container(
-              height: 330, 
+              height: 320, 
               color: Color.fromARGB(255, 255, 255, 255),
               
                 child: Padding(
@@ -322,17 +322,28 @@ class _StationDetailsState extends State<StationDetails> {
                 ),
             ),
           ),
-          
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            color: Colors.white,
+            child: Padding(padding: const EdgeInsets.only(left:30.0, right: 30),
+            child: Container(
+              color: Color(0xff009889),
+              height: 3,
+            ),),
+          )
+          ,
           Container(
             color: Colors.white,
             height: 100,
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(left:25, right: 25, top: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox.fromSize(
-                  size: Size(100, 90),
+                  size: Size(80, 80),
                   
                   child: Material(
                   color: Color.fromARGB(255, 199, 249, 204),
@@ -346,16 +357,39 @@ class _StationDetailsState extends State<StationDetails> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/images/map.png',width: 50,), 
+                       Image.asset('assets/images/map.png',width: 40,), 
                        SizedBox(height: 5,),// <-- Icon
-                       Text("แผนที่"), // <-- Text
+                       Text("แผนที่",style: GoogleFonts.prompt(fontSize: 13),), // <-- Text
                     ],
                   ),
                   ),
                 ),
                ),
                SizedBox.fromSize(
-                  size: Size(100, 90),
+                  size: Size(80, 80),
+                  
+                  child: Material(
+                  color: Color.fromARGB(255, 199, 249, 204),
+                 child: InkWell(
+        //splashColor: Colors.green, 
+                    onTap: () {
+                      showDialog(context: context, builder: (BuildContext context) {
+                      return DialogConnections();
+                  });
+                    }, 
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                       Image.asset('assets/images/walking.png',width: 25,),
+                       SizedBox(height: 5,), // <-- Icon
+                       Text("การเชื่อมต่อ",style: GoogleFonts.prompt(fontSize: 13),), // <-- Text
+                    ],
+                  ),
+                  ),
+                ),
+               ),
+               SizedBox.fromSize(
+                  size: Size(80, 80),
                   
                   child: Material(
                   color: Color.fromARGB(255, 199, 249, 204),
@@ -369,16 +403,16 @@ class _StationDetailsState extends State<StationDetails> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/images/amenities.png',width: 50,),
+                       Image.asset('assets/images/amenities.png',width: 40,),
                        SizedBox(height: 5,), // <-- Icon
-                       Text("ความสะดวก"), // <-- Text
+                       Text("ความสะดวก",style: GoogleFonts.prompt(fontSize: 13),), // <-- Text
                     ],
                   ),
                   ),
                 ),
                ),
                SizedBox.fromSize(
-                  size: Size(100, 90),
+                  size: Size(80, 80),
                   
                   child: Material(
                   color: Color.fromARGB(255, 199, 249, 204),
@@ -389,9 +423,9 @@ class _StationDetailsState extends State<StationDetails> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                       Image.asset('assets/images/attractions.png',width: 50,),
+                       Image.asset('assets/images/attractions.png',width: 40,),
                        SizedBox(height: 5,), // <-- Icon
-                       Text("สถานที่"), // <-- Text
+                       Text("สถานที่",style: GoogleFonts.prompt(fontSize: 13),), // <-- Text
                     ],
                   ),
                   ),
@@ -641,6 +675,118 @@ class DialogMap extends StatelessWidget{
         
         )
 
+              ]),
+
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DialogConnections extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Stack(
+        children: [
+          Container(
+            height:300,
+            width: 600,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(5,2,5,2),
+              child: Column(
+                children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text('การเชื่อมต่อกับระบบขนส่งอื่นๆ', style: GoogleFonts.prompt(fontWeight: FontWeight.bold, fontSize: 16) ,)),
+                  SizedBox(height: 20,),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/ticket.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('จำหน่ายตั๋วล่วงหน้า', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/ticket.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('จำหน่ายตั๋วประจำวัน', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/toliet.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('ห้องนำ้สะอาด', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                      height: 32, 
+                      color: Color.fromARGB(255, 255, 255, 255), 
+                      child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[ //ชื่อสถานที่
+                            Image.asset('assets/images/handicaptoliet.png',height: 30,),
+                            SizedBox(width: 10,),
+                            Text('ห้องนำ้ผู้พิการ', style: GoogleFonts.prompt(color: Colors.black,fontSize: 16,
+                              ),),
+                      
+                          ],
+                       ),
+                      ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  )
               ]),
 
             ),

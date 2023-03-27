@@ -29,10 +29,7 @@ class _SearchresultState extends State<Searchresult> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 87, 204, 153),
-          title: Text(
-            'ผลการค้นหา',
-            style: GoogleFonts.prompt(color: Colors.black),
-          ),
+          
         ),
         body: FutureBuilder(
             future: DBHelper.seachR(widget.source, widget.destination),
@@ -81,6 +78,14 @@ class _SearchresultState extends State<Searchresult> {
                                 children: <Widget>[
                                   Text(
                                     widget.source,
+                                    style: GoogleFonts.prompt(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                    ),
+                                  ),
+                                  SizedBox(width: 5.0),
+                                  Text(
+                                    '-',
                                     style: GoogleFonts.prompt(
                                       color: Colors.black,
                                       fontSize: 20.0,
@@ -165,15 +170,20 @@ class _SearchresultState extends State<Searchresult> {
                                                               CrossAxisAlignment
                                                                   .start,
                                                           children: <Widget>[
-                                                            Text(
-                                                              result
-                                                                  .departureStation,
-                                                              style: GoogleFonts
-                                                                  .prompt(
-                                                                fontSize: 20.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
+                                                            GestureDetector(
+                                                              onTap: () { //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา
+                                                              Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
+                                                            },  
+                                                              child: Text(
+                                                                result
+                                                                    .departureStation,
+                                                                style: GoogleFonts
+                                                                    .prompt(
+                                                                  fontSize: 20.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
                                                               ),
                                                             ),
                                                             Row(
@@ -185,9 +195,7 @@ class _SearchresultState extends State<Searchresult> {
                                                                         .prompt(
                                                                       fontSize:
                                                                           18.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
+                                                                      
                                                                     )),
                                                                 Text(
                                                                     result
@@ -237,15 +245,20 @@ class _SearchresultState extends State<Searchresult> {
                                                               CrossAxisAlignment
                                                                   .start,
                                                           children: <Widget>[
-                                                            Text(
-                                                              result
-                                                                  .arriveStation,
-                                                              style: GoogleFonts
-                                                                  .prompt(
-                                                                fontSize: 20.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
+                                                            GestureDetector(
+                                                              onTap: () { //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา เช่น ลพบุรี ต้องแสดงของรายละเอียดของสถานีลพบุรี
+                                                              Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
+                                                            },
+                                                              child: Text(
+                                                                result
+                                                                    .arriveStation,
+                                                                style: GoogleFonts
+                                                                    .prompt(
+                                                                  fontSize: 20.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
                                                               ),
                                                             ),
                                                             Row(
@@ -310,13 +323,23 @@ class _SearchresultState extends State<Searchresult> {
                                                                     FontWeight
                                                                         .w600),
                                                           ),
-                                                          SizedBox(width: 20),
+                                                          Text(
+                                                            'เลขที่',
+                                                            style: GoogleFonts.prompt(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 16.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          ),
+                                                          SizedBox(width: 10),
                                                           Text(
                                                             result.trainNumber,
                                                             style: GoogleFonts.prompt(
                                                                 color: Colors
                                                                     .black,
-                                                                fontSize: 17.0,
+                                                                fontSize: 16.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600),
@@ -350,7 +373,7 @@ class _SearchresultState extends State<Searchresult> {
                                                   children: [
                                                     Container(
                                                       child:
-                                                          ElevatedButton.icon(
+                                                          ElevatedButton(
                                                         onPressed: () {
                                                           Navigator.push(
                                                             context,
@@ -360,24 +383,10 @@ class _SearchresultState extends State<Searchresult> {
                                                                         TrainDetails()),
                                                           );
                                                         },
-                                                        icon: Icon(
-                                                          Icons.add,
-                                                          size: 20.0,
-                                                          color: Colors.black,
-                                                        ),
-                                                        label: Text(
-                                                          "รายละเอียดขบวน",
-                                                          style: GoogleFonts
-                                                              .prompt(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      11.0),
-                                                        ),
                                                         style: ElevatedButton
                                                             .styleFrom(
                                                           fixedSize:
-                                                              Size(110, 1),
+                                                              Size(120, 1),
                                                           backgroundColor:
                                                               const Color
                                                                       .fromARGB(
@@ -393,6 +402,15 @@ class _SearchresultState extends State<Searchresult> {
                                                                         15.0),
                                                           ),
                                                         ),
+                                                        
+                                                        child: Text(
+                                                          "รายละเอียดขบวน",
+                                                          style: GoogleFonts
+                                                              .prompt(
+                                                                  color: Color.fromARGB(255, 0, 0, 0),
+                                                                  fontSize:
+                                                                      12.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -400,7 +418,7 @@ class _SearchresultState extends State<Searchresult> {
                                                     ),
                                                     Container(
                                                       child:
-                                                          ElevatedButton.icon(
+                                                          ElevatedButton(
                                                         onPressed: () {
                                                           /*Navigator.push(
                                                     context,
@@ -409,24 +427,10 @@ class _SearchresultState extends State<Searchresult> {
                                                             Searchresult()),
                                                   );*/
                                                         },
-                                                        icon: Icon(
-                                                          Icons.add,
-                                                          size: 20.0,
-                                                          color: Colors.black,
-                                                        ),
-                                                        label: Text(
-                                                          "เพิ่มในแผน",
-                                                          style: GoogleFonts
-                                                              .prompt(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      11.0),
-                                                        ),
                                                         style: ElevatedButton
                                                             .styleFrom(
                                                           fixedSize:
-                                                              Size(110, 1),
+                                                              Size(120, 1),
                                                           backgroundColor:
                                                               Color.fromARGB(
                                                                   255,
@@ -440,6 +444,15 @@ class _SearchresultState extends State<Searchresult> {
                                                                     .circular(
                                                                         15.0),
                                                           ),
+                                                        ),
+                                                        
+                                                        child: Text(
+                                                          "เพิ่มในแผน",
+                                                          style: GoogleFonts
+                                                              .prompt(
+                                                                  color: Color.fromARGB(255, 0, 0, 0),
+                                                                  fontSize:
+                                                                      14.0),
                                                         ),
                                                       ),
                                                     ),
