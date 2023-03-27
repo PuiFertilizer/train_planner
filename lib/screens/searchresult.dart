@@ -29,7 +29,6 @@ class _SearchresultState extends State<Searchresult> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 87, 204, 153),
-          
         ),
         body: FutureBuilder(
             future: DBHelper.seachR(widget.source, widget.destination),
@@ -171,15 +170,26 @@ class _SearchresultState extends State<Searchresult> {
                                                                   .start,
                                                           children: <Widget>[
                                                             GestureDetector(
-                                                              onTap: () { //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา
-                                                              Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
-                                                            },  
+                                                              onTap: () {
+                                                                //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              StationDetails(
+                                                                                station: result.departureStation,
+                                                                              )),
+                                                                );
+                                                              },
                                                               child: Text(
                                                                 result
                                                                     .departureStation,
-                                                                style: GoogleFonts
-                                                                    .prompt(
-                                                                  fontSize: 20.0,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .prompt(
+                                                                  fontSize:
+                                                                      20.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -195,7 +205,6 @@ class _SearchresultState extends State<Searchresult> {
                                                                         .prompt(
                                                                       fontSize:
                                                                           18.0,
-                                                                      
                                                                     )),
                                                                 Text(
                                                                     result
@@ -246,15 +255,26 @@ class _SearchresultState extends State<Searchresult> {
                                                                   .start,
                                                           children: <Widget>[
                                                             GestureDetector(
-                                                              onTap: () { //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา เช่น ลพบุรี ต้องแสดงของรายละเอียดของสถานีลพบุรี
-                                                              Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails()),);
-                                                            },
+                                                              onTap: () {
+                                                                //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา เช่น ลพบุรี ต้องแสดงของรายละเอียดของสถานีลพบุรี
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              StationDetails(
+                                                                                station: result.arriveStation,
+                                                                              )),
+                                                                );
+                                                              },
                                                               child: Text(
                                                                 result
                                                                     .arriveStation,
-                                                                style: GoogleFonts
-                                                                    .prompt(
-                                                                  fontSize: 20.0,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .prompt(
+                                                                  fontSize:
+                                                                      20.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -372,8 +392,7 @@ class _SearchresultState extends State<Searchresult> {
                                                       CrossAxisAlignment.end,
                                                   children: [
                                                     Container(
-                                                      child:
-                                                          ElevatedButton(
+                                                      child: ElevatedButton(
                                                         onPressed: () {
                                                           Navigator.push(
                                                             context,
@@ -402,12 +421,16 @@ class _SearchresultState extends State<Searchresult> {
                                                                         15.0),
                                                           ),
                                                         ),
-                                                        
                                                         child: Text(
                                                           "รายละเอียดขบวน",
                                                           style: GoogleFonts
                                                               .prompt(
-                                                                  color: Color.fromARGB(255, 0, 0, 0),
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                   fontSize:
                                                                       12.0),
                                                         ),
@@ -417,8 +440,7 @@ class _SearchresultState extends State<Searchresult> {
                                                       height: 2,
                                                     ),
                                                     Container(
-                                                      child:
-                                                          ElevatedButton(
+                                                      child: ElevatedButton(
                                                         onPressed: () {
                                                           /*Navigator.push(
                                                     context,
@@ -445,12 +467,16 @@ class _SearchresultState extends State<Searchresult> {
                                                                         15.0),
                                                           ),
                                                         ),
-                                                        
                                                         child: Text(
                                                           "เพิ่มในแผน",
                                                           style: GoogleFonts
                                                               .prompt(
-                                                                  color: Color.fromARGB(255, 0, 0, 0),
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                   fontSize:
                                                                       14.0),
                                                         ),
