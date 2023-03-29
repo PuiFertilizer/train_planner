@@ -795,7 +795,7 @@ class DialogConnections extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: 300,
+            height: 400,
             width: 600,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(5, 2, 5, 2),
@@ -811,6 +811,8 @@ class DialogConnections extends StatelessWidget {
                   height: 20,
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
                       height: 32,
@@ -821,26 +823,81 @@ class DialogConnections extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/ticket.png',
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                            
                             Text(
-                              'จำหน่ายตั๋วล่วงหน้า',
+                              'สถานีรถไฟใกล้เคียง',
                               style: GoogleFonts.prompt(
                                 color: Colors.black,
                                 fontSize: 16,
+                                fontWeight: FontWeight.w600
                               ),
                             ),
+                            
+
+
                           ],
                         ),
+
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        
+                        children: <Widget>[
+                          Row(children: [
+                            Image.asset(
+                              'assets/images/mrtblueline.png',
+                              width: 25,
+                            ),
+                              SizedBox(width: 5,),
+                              Text(
+                                'สายสีนำ้เงิน สถานีบางซื่อ',
+                                style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  
+                                ),
+                              ),
+                          ]),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Image.asset(
+                              'assets/images/darkredline.png',
+                              width: 25,
+                            ),
+                              SizedBox(width: 5,),
+                              Text(
+                                'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
+                                style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  
+                                ),
+                              ),
+                          ]),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Image.asset(
+                              'assets/images/lightredline.png',
+                              width: 25,
+                            ),
+                              SizedBox(width: 5,),
+                              Text(
+                                'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
+                                style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  
+                                ),
+                              ),
+                          ]),
+                        ],
+                      ),
+                    ),
+                    
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       height: 32,
@@ -851,18 +908,13 @@ class DialogConnections extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/ticket.png',
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                            
                             Text(
-                              'จำหน่ายตั๋วประจำวัน',
+                              'รถโดยสาร',
                               style: GoogleFonts.prompt(
                                 color: Colors.black,
                                 fontSize: 16,
+                                fontWeight: FontWeight.w600
                               ),
                             ),
                           ],
@@ -872,63 +924,48 @@ class DialogConnections extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        
+                        children: <Widget>[
+                          Row(children: [
                             Image.asset(
-                              'assets/images/toliet.png',
-                              height: 30,
+                              'assets/images/bus.png',
+                              width: 25,
                             ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'ห้องนำ้สะอาด',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
+                              SizedBox(width: 5,),
+                              Text(
+                                'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้',
+                                style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  
+                                ),
                               ),
+                          ]),
+                          SizedBox(height: 5,),
+                          Row(children: [
+                            Image.asset(
+                              'assets/images/taxi.png',
+                              width: 25,
                             ),
-                          ],
-                        ),
+                              SizedBox(width: 5,),
+                              Text(
+                                'Taxi บริการที่หน้าสถานี',
+                                style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  
+                                ),
+                              ),
+                          ]),
+                          SizedBox(height: 5,),
+                          
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/handicaptoliet.png',
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'ห้องนำ้ผู้พิการ',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    
                     SizedBox(
                       height: 10,
                     ),

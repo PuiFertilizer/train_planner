@@ -344,7 +344,7 @@ class _SearchresultState extends State<Searchresult> {
                                                                         .w600),
                                                           ),
                                                           Text(
-                                                            'เลขที่',
+                                                            ' ที่',
                                                             style: GoogleFonts.prompt(
                                                                 color: Colors
                                                                     .black,
@@ -367,7 +367,7 @@ class _SearchresultState extends State<Searchresult> {
                                                         ],
                                                       ),
                                                       Text(
-                                                        'ชั้น 2',
+                                                        'ชั้น 2', //result.class
                                                         style:
                                                             GoogleFonts.prompt(
                                                           color: Colors.black,
@@ -375,7 +375,15 @@ class _SearchresultState extends State<Searchresult> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        'รถนั่งปรับอากาศ',
+                                                        'รถนั่งปรับอากาศ', //result.coachtype1
+                                                        style:
+                                                            GoogleFonts.prompt(
+                                                          color: Colors.black,
+                                                          fontSize: 15.0,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        'รถนั่งปรับอากาศ', //result.coachtype2
                                                         style:
                                                             GoogleFonts.prompt(
                                                           color: Colors.black,
@@ -405,7 +413,7 @@ class _SearchresultState extends State<Searchresult> {
                                                         style: ElevatedButton
                                                             .styleFrom(
                                                           fixedSize:
-                                                              Size(120, 1),
+                                                              Size(120, 10),
                                                           backgroundColor:
                                                               const Color
                                                                       .fromARGB(
@@ -418,7 +426,7 @@ class _SearchresultState extends State<Searchresult> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        15.0),
+                                                                        10.0),
                                                           ),
                                                         ),
                                                         child: Text(
@@ -452,7 +460,7 @@ class _SearchresultState extends State<Searchresult> {
                                                         style: ElevatedButton
                                                             .styleFrom(
                                                           fixedSize:
-                                                              Size(120, 1),
+                                                              Size(120, 10),
                                                           backgroundColor:
                                                               Color.fromARGB(
                                                                   255,
@@ -464,7 +472,7 @@ class _SearchresultState extends State<Searchresult> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        15.0),
+                                                                        10.0),
                                                           ),
                                                         ),
                                                         child: Text(
