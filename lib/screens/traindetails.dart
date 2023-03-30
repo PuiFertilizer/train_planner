@@ -1,12 +1,14 @@
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
+//import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 
 class TrainDetails extends StatefulWidget {
+  const TrainDetails({super.key, required this.train});
+  final String train;
   @override
   _TrainDetailsState createState() => _TrainDetailsState();
 }
@@ -29,9 +31,9 @@ class _TrainDetailsState extends State<TrainDetails> {
           fontSize: 17,
         ),
         tabs: [
-          new Container(
+          SizedBox(
             height: 80.0,
-            child: new Tab(
+            child: Tab(
               text: 'ช่วงเวลา',
               icon: Image.asset(
                 'assets/images/clock.png',
@@ -39,9 +41,9 @@ class _TrainDetailsState extends State<TrainDetails> {
               ),
             ),
           ),
-          new Container(
+          SizedBox(
             height: 80.0,
-            child: new Tab(
+            child: Tab(
               text: 'ขบวนรถ',
               icon: Image.asset(
                 'assets/images/train1.png',
@@ -49,9 +51,9 @@ class _TrainDetailsState extends State<TrainDetails> {
               ),
             ),
           ),
-          new Container(
+          SizedBox(
             height: 80.0,
-            child: new Tab(
+            child: Tab(
               text: 'ค่าโดยสาร',
               icon: Image.asset(
                 'assets/images/price.png',
@@ -73,14 +75,14 @@ class _TrainDetailsState extends State<TrainDetails> {
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
-                    text: 'ขบวน 7 ด่วนพิเศษดีเซลราง',
+                    text: 'ขบวน ${widget.train}',
                     style: GoogleFonts.prompt(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextSpan(text: "\n"),
+                  const TextSpan(text: "\n"),
                   TextSpan(
                       //สถานีต้นทางของขบวนนั้นๆ
                       text: 'กรุงเทพอภิวัฒน์',
@@ -104,7 +106,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                 ]),
               ),
             ),
-            iconTheme: IconThemeData(
+            iconTheme: const IconThemeData(
               color: Colors.black, //change your color here
             ),
             backgroundColor: Colors.white,
@@ -117,7 +119,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                     children: [
                       Material(
                         elevation: 18.0,
-                        color: Color.fromARGB(255, 138, 237, 153),
+                        color: const Color.fromARGB(255, 138, 237, 153),
                         child: Theme(
                             //<-- SEE HERE
                             data:
@@ -133,11 +135,11 @@ class _TrainDetailsState extends State<TrainDetails> {
             children: [
               Container(
                 //tab ที่ 1
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
 
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 450,
                       child: Padding(
                         padding: const EdgeInsets.only(
@@ -147,12 +149,12 @@ class _TrainDetailsState extends State<TrainDetails> {
                           children: <Widget>[
                             Container(
                               height: 40,
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     left: 10.0, right: 10),
                                 child: Container(
-                                  color: Color(0xff009889),
+                                  color: const Color(0xff009889),
                                   child: Row(
                                       mainAxisAlignment: MainAxisAlignment
                                           .start, //Center Row contents horizontally,
@@ -191,25 +193,25 @@ class _TrainDetailsState extends State<TrainDetails> {
                             ),
                             Container(
                               height: 4,
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                             ),
                             //เนื้อหาตารางใหม่
                             SizedBox(
                               child: Container(
                                 height: 370,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: const Color.fromARGB(255, 255, 255, 255),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       left: 10.0, right: 10),
                                   child: Container(
                                     child: RawScrollbar(
-                                      thumbColor:
-                                          Color.fromARGB(255, 132, 132, 132),
-                                      radius: Radius.circular(20),
+                                      thumbColor: const Color.fromARGB(
+                                          255, 132, 132, 132),
+                                      radius: const Radius.circular(20),
                                       thickness: 5,
                                       child: Container(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
+                                        color: const Color.fromARGB(
+                                            255, 255, 255, 255),
                                         child: ListView.builder(
                                           scrollDirection: Axis.vertical,
                                           itemCount: stationStopLists.length,
@@ -220,11 +222,12 @@ class _TrainDetailsState extends State<TrainDetails> {
                                             return Stack(
                                               children: <Widget>[
                                                 Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      0, 0.0, 0, 2.0),
+                                                  margin:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 0.0, 0, 2.0),
                                                   height: 35.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
+                                                    color: const Color.fromARGB(
                                                         255, 199, 249, 204),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -305,7 +308,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 2,
                     ),
                     ElevatedButton(
@@ -313,7 +316,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return DialogScene();
+                              return const DialogScene();
                             });
                       },
                       child: Text(
@@ -322,8 +325,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                             color: Colors.white, fontSize: 20.0),
                       ),
                       style: ElevatedButton.styleFrom(
-                        fixedSize: Size(350, 50),
-                        backgroundColor: Color.fromARGB(255, 56, 163, 165),
+                        fixedSize: const Size(350, 50),
+                        backgroundColor:
+                            const Color.fromARGB(255, 56, 163, 165),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),
                         ),
@@ -334,11 +338,11 @@ class _TrainDetailsState extends State<TrainDetails> {
               ),
               Container(
                 //tab ที่ 2
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
@@ -348,11 +352,13 @@ class _TrainDetailsState extends State<TrainDetails> {
                           child: Stack(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
+                                margin: const EdgeInsets.fromLTRB(
+                                    0.0, 0.0, 0.0, 5.0),
                                 height: 550,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 199, 249, 204),
+                                    color: const Color.fromARGB(
+                                        255, 199, 249, 204),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
@@ -384,7 +390,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                           )
                                         ],
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 2.0,
                                       ),
                                       SingleChildScrollView(
@@ -401,7 +407,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       Row(
@@ -410,21 +416,21 @@ class _TrainDetailsState extends State<TrainDetails> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 1,
                                           ),
-                                          Icon(
+                                          const Icon(
                                             Icons.arrow_back_sharp,
                                             color: Color.fromARGB(255, 0, 0, 0),
                                             size: 20,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 2,
                                           ),
                                           Text(
                                             "เชียงใหม่", //ชื่อสถานีปลายทางของแต่ละขบวน
                                             style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
+                                                textStyle: const TextStyle(
                                               fontSize: 12,
                                             )),
                                           ),
@@ -439,14 +445,14 @@ class _TrainDetailsState extends State<TrainDetails> {
                                           Text(
                                             "กรุงเทพอภิวัฒน์", //ชื่อสถานีต้นทางของแต่ละขบวน
                                             style: GoogleFonts.prompt(
-                                                textStyle: TextStyle(
+                                                textStyle: const TextStyle(
                                               fontSize: 12,
                                             )),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 2,
                                           ),
-                                          Icon(
+                                          const Icon(
                                             Icons.arrow_forward_sharp,
                                             color: Color.fromARGB(255, 0, 0, 0),
                                             size: 20,
@@ -461,7 +467,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -469,8 +475,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 45, right: 45),
                           child: RawScrollbar(
-                            thumbColor: Color.fromARGB(255, 130, 130, 130),
-                            radius: Radius.circular(20),
+                            thumbColor:
+                                const Color.fromARGB(255, 130, 130, 130),
+                            radius: const Radius.circular(20),
                             thickness: 5,
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
@@ -480,12 +487,12 @@ class _TrainDetailsState extends State<TrainDetails> {
                                   return Stack(
                                     children: <Widget>[
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(
+                                        margin: const EdgeInsets.fromLTRB(
                                             0.0, 10.0, 0.0, 5.0),
                                         height: 550,
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color.fromARGB(
+                                          color: const Color.fromARGB(
                                               255, 199, 249, 204),
                                           borderRadius:
                                               BorderRadius.circular(20.0),
@@ -524,7 +531,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                   )
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 5.0,
                                               ),
                                               Row(
@@ -560,7 +567,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 5,
                                               ),
                                               Text(seating.description,
@@ -574,7 +581,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                       color: Colors.black,
                                                       fontWeight:
                                                           FontWeight.bold)),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 5,
                                               ),
                                               Container(
@@ -582,7 +589,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  color: Color.fromARGB(
+                                                  color: const Color.fromARGB(
                                                       255, 255, 255, 255),
                                                 ),
                                                 child: Column(
@@ -606,22 +613,22 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                               CrossAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            SizedBox(
+                                                            const SizedBox(
                                                               width: 1,
                                                             ),
-                                                            Icon(
+                                                            const Icon(
                                                               Icons
                                                                   .arrow_back_sharp,
                                                               color: Colors.red,
                                                               size: 20,
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                               width: 2,
                                                             ),
                                                             Text(
                                                               "ทิศเที่ยวไป",
                                                               style: GoogleFonts.prompt(
-                                                                  textStyle: TextStyle(
+                                                                  textStyle: const TextStyle(
                                                                       fontSize:
                                                                           14,
                                                                       fontWeight:
@@ -630,13 +637,13 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                                       color: Colors
                                                                           .red)),
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                               width: 80,
                                                             ),
                                                             Text(
                                                               "ทิศเที่ยวกลับ",
                                                               style: GoogleFonts.prompt(
-                                                                  textStyle: TextStyle(
+                                                                  textStyle: const TextStyle(
                                                                       fontSize:
                                                                           14,
                                                                       fontWeight:
@@ -648,10 +655,10 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                                           0,
                                                                           226))),
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                               width: 2,
                                                             ),
-                                                            Icon(
+                                                            const Icon(
                                                               Icons
                                                                   .arrow_forward_sharp,
                                                               color: Color
@@ -665,7 +672,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                           ],
                                                         ),
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         height: 5,
                                                       ),
                                                       Column(
@@ -701,7 +708,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                           ),
                                                         ],
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         height: 10,
                                                       ),
                                                       Row(
@@ -712,10 +719,10 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
-                                                          Icon(
+                                                          const Icon(
                                                             Icons
                                                                 .arrow_back_sharp,
                                                             color:
@@ -726,7 +733,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                                     0),
                                                             size: 20,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 2,
                                                           ),
                                                           Text(
@@ -734,7 +741,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                             style: GoogleFonts
                                                                 .prompt(
                                                                     textStyle:
-                                                                        TextStyle(
+                                                                        const TextStyle(
                                                               fontSize: 12,
                                                             )),
                                                           ),
@@ -753,14 +760,14 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                             style: GoogleFonts
                                                                 .prompt(
                                                                     textStyle:
-                                                                        TextStyle(
+                                                                        const TextStyle(
                                                               fontSize: 12,
                                                             )),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 2,
                                                           ),
-                                                          Icon(
+                                                          const Icon(
                                                             Icons
                                                                 .arrow_forward_sharp,
                                                             color:
@@ -775,7 +782,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                       ),
                                                     ]),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 15,
                                               ),
                                               Text('สิ่งอำนวยความสะดวก',
@@ -808,11 +815,11 @@ class _TrainDetailsState extends State<TrainDetails> {
               ),
               Container(
                 //tab ที่ 3
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
@@ -822,11 +829,13 @@ class _TrainDetailsState extends State<TrainDetails> {
                           child: Stack(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),
+                                margin: const EdgeInsets.fromLTRB(
+                                    0.0, 0.0, 0.0, 5.0),
                                 height: 550,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 199, 249, 204),
+                                    color: const Color.fromARGB(
+                                        255, 199, 249, 204),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
@@ -846,10 +855,10 @@ class _TrainDetailsState extends State<TrainDetails> {
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis, // new
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 2.0,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height: 30.0,
                                         child: DropdownSearch<String>(
                                             mode: Mode.MENU,
@@ -890,11 +899,12 @@ class _TrainDetailsState extends State<TrainDetails> {
                                             ),
                                             onChanged: itemSelectionChanged,
                                             showSearchBox: true,
-                                            searchFieldProps: TextFieldProps(
+                                            searchFieldProps:
+                                                const TextFieldProps(
                                               cursorColor: Colors.red,
                                             )),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10.0,
                                       ),
                                       Text(
@@ -907,15 +917,15 @@ class _TrainDetailsState extends State<TrainDetails> {
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis, // new
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 2.0,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height: 30.0,
                                         child: DropdownSearch<String>(
                                             mode: Mode.MENU,
                                             showSelectedItems: true,
-                                            items: [
+                                            items: const [
                                               //เอามาจากรายชื่อสถานีใน Database
                                               '  กรุงเทพ',
                                               '  ฉะเชิงเทรา',
@@ -951,18 +961,19 @@ class _TrainDetailsState extends State<TrainDetails> {
                                             ),
                                             onChanged: itemSelectionChanged,
                                             showSearchBox: true,
-                                            searchFieldProps: TextFieldProps(
+                                            searchFieldProps:
+                                                const TextFieldProps(
                                               cursorColor: Colors.red,
                                             )),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       ElevatedButton.icon(
                                         onPressed: () {
                                           //คำนวณค่าโดยสารใหม่
                                         },
-                                        icon: Icon(Icons.search),
+                                        icon: const Icon(Icons.search),
                                         label: Text(
                                           "คำนวณค่าโดยสาร",
                                           style: GoogleFonts.prompt(
@@ -970,9 +981,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                                               fontSize: 16.0),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          fixedSize: Size(300, 20),
-                                          backgroundColor:
-                                              Color.fromARGB(255, 56, 163, 165),
+                                          fixedSize: const Size(300, 20),
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 56, 163, 165),
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(15.0),
@@ -987,7 +998,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -995,8 +1006,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 45, right: 45),
                           child: RawScrollbar(
-                            thumbColor: Color.fromARGB(255, 130, 130, 130),
-                            radius: Radius.circular(20),
+                            thumbColor:
+                                const Color.fromARGB(255, 130, 130, 130),
+                            radius: const Radius.circular(20),
                             thickness: 5,
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
@@ -1006,12 +1018,12 @@ class _TrainDetailsState extends State<TrainDetails> {
                                   return Stack(
                                     children: <Widget>[
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(
+                                        margin: const EdgeInsets.fromLTRB(
                                             0.0, 10.0, 0.0, 5.0),
                                         height: 120,
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color.fromARGB(
+                                          color: const Color.fromARGB(
                                               255, 199, 249, 204),
                                           borderRadius:
                                               BorderRadius.circular(20.0),
@@ -1050,10 +1062,10 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                   )
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 5,
                                               ),
                                               Row(
@@ -1067,28 +1079,31 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                     fares
                                                         .seattype, //ประเภทที่นั่ง
                                                     style: GoogleFonts.prompt(
-                                                        textStyle: TextStyle(
-                                                            fontSize: 12,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    0,
-                                                                    0))),
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                fontSize: 12,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        0,
+                                                                        0,
+                                                                        0))),
                                                   ),
                                                   Text(
                                                     fares.price, //ราคาค่าโดยสาร
                                                     style: GoogleFonts.prompt(
-                                                        textStyle: TextStyle(
-                                                            fontSize: 18,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    4,
-                                                                    0,
-                                                                    226))),
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        4,
+                                                                        0,
+                                                                        226))),
                                                   ),
                                                 ],
                                               ),
@@ -1126,7 +1141,7 @@ class TimetableDataSource extends DataGridSource {
         alignment: (dataGridCell.columnName == 'สถานี')
             ? Alignment.centerLeft
             : Alignment.center,
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Text(dataGridCell.value.toString(),
             style: GoogleFonts.prompt(fontSize: 14),
             overflow: TextOverflow.ellipsis),
@@ -1179,13 +1194,14 @@ List<Fare> fare = [
 ];
 
 class DialogScene extends StatelessWidget {
+  const DialogScene({super.key});
   @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: 300,
             width: 600,
             child: Padding(
@@ -1198,10 +1214,10 @@ class DialogScene extends StatelessWidget {
                       style: GoogleFonts.prompt(
                           fontWeight: FontWeight.bold, fontSize: 16),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                   //color: Colors.blue,
                   height: 240.0,
                   child: ListView.builder(
@@ -1210,7 +1226,7 @@ class DialogScene extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       Destination destination = destinations[index];
                       return Container(
-                        margin: EdgeInsets.all(10.0),
+                        margin: const EdgeInsets.all(10.0),
                         width: 210.0,
                         child: Stack(
                           alignment: Alignment.topCenter,
@@ -1224,7 +1240,7 @@ class DialogScene extends StatelessWidget {
                                       //ทำเงาดำ
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(15.0),
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           color: Colors.black26,
                                           offset: Offset(0.0, 2.0),
@@ -1234,7 +1250,7 @@ class DialogScene extends StatelessWidget {
 
                                   //Padding
                                   child: Padding(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       crossAxisAlignment:
@@ -1250,8 +1266,8 @@ class DialogScene extends StatelessWidget {
                                         Text(
                                           destination.betweenstation,
                                           style: GoogleFonts.prompt(
-                                            color:
-                                                Color.fromARGB(255, 80, 80, 80),
+                                            color: const Color.fromARGB(
+                                                255, 80, 80, 80),
                                             fontSize: 12.0,
                                           ),
                                         ),
@@ -1284,7 +1300,7 @@ class DialogScene extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Row(
-                                          children: <Widget>[
+                                          children: const <Widget>[
                                             SizedBox(
                                               width: 4.0,
                                             ),

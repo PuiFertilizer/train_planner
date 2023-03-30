@@ -39,7 +39,7 @@ class _StationDetailsState extends State<StationDetails> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 87, 204, 153),
+          backgroundColor: const Color.fromARGB(255, 87, 204, 153),
           //title: Text('ผลการค้นหาเพิ่มในแผน', style: GoogleFonts.prompt(color: Colors.black),),
         ),
         body: Column(
@@ -47,8 +47,8 @@ class _StationDetailsState extends State<StationDetails> {
             Stack(
               children: <Widget>[
                 Padding(
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 30),
+                  padding: const EdgeInsets.only(
+                      left: 10, right: 10, top: 15, bottom: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -114,7 +114,7 @@ class _StationDetailsState extends State<StationDetails> {
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w600),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
@@ -133,11 +133,11 @@ class _StationDetailsState extends State<StationDetails> {
             ),
             Container(
               height: 10,
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
             ),
             Container(
               height: 50,
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               child: Padding(
                 padding: const EdgeInsets.only(left: 10.0, right: 10),
                 child: Row(children: [
@@ -161,18 +161,18 @@ class _StationDetailsState extends State<StationDetails> {
             ),
             Container(
               height: 40,
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               child: Padding(
                 padding: const EdgeInsets.only(left: 30.0, right: 30),
                 child: Container(
-                  color: Color(0xff009889),
+                  color: const Color(0xff009889),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment
                           .start, //Center Row contents horizontally,
                       crossAxisAlignment: CrossAxisAlignment
                           .center, //Center Row contents vertically,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                         Text(
@@ -182,7 +182,7 @@ class _StationDetailsState extends State<StationDetails> {
                             fontSize: 14.0,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 35,
                         ),
                         Text(
@@ -192,7 +192,7 @@ class _StationDetailsState extends State<StationDetails> {
                             fontSize: 14.0,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -202,7 +202,7 @@ class _StationDetailsState extends State<StationDetails> {
                             fontSize: 14.0,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 45,
                         ),
                         Text(
@@ -218,22 +218,22 @@ class _StationDetailsState extends State<StationDetails> {
             ),
             Container(
               height: 4,
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
             ),
             SizedBox(
               child: Container(
                 height: 320,
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30.0, right: 30),
                   child: Container(
                     child: RawScrollbar(
-                      thumbColor: Color.fromARGB(255, 132, 132, 132),
-                      radius: Radius.circular(20),
+                      thumbColor: const Color.fromARGB(255, 132, 132, 132),
+                      radius: const Radius.circular(20),
                       thickness: 5,
                       // color: Color.fromARGB(255, 255, 255, 255),
                       child: Container(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         child: ListView.builder(
                           scrollDirection: Axis.vertical,
                           itemCount: stationTrainLists.length,
@@ -243,11 +243,13 @@ class _StationDetailsState extends State<StationDetails> {
                             return Stack(
                               children: <Widget>[
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
                                   height: 50.0,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 199, 249, 204),
+                                    color: const Color.fromARGB(
+                                        255, 199, 249, 204),
                                     borderRadius: BorderRadius.circular(0.0),
                                   ),
                                   child: Padding(
@@ -275,7 +277,10 @@ class _StationDetailsState extends State<StationDetails> {
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
-                                                                TrainDetails()),
+                                                                TrainDetails(
+                                                                  train: stationTrainList
+                                                                      .trainNo,
+                                                                )),
                                                       );
                                                     },
                                                     child: Text(
@@ -358,7 +363,7 @@ class _StationDetailsState extends State<StationDetails> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Container(
@@ -366,7 +371,7 @@ class _StationDetailsState extends State<StationDetails> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 30.0, right: 30),
                 child: Container(
-                  color: Color(0xff009889),
+                  color: const Color(0xff009889),
                   height: 3,
                 ),
               ),
@@ -375,14 +380,14 @@ class _StationDetailsState extends State<StationDetails> {
               color: Colors.white,
               height: 100,
               child: Padding(
-                padding: EdgeInsets.only(left: 25, right: 25, top: 5),
+                padding: const EdgeInsets.only(left: 25, right: 25, top: 5),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox.fromSize(
-                        size: Size(80, 80),
+                        size: const Size(80, 80),
                         child: Material(
-                          color: Color.fromARGB(255, 199, 249, 204),
+                          color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
                             //splashColor: Colors.green,
                             onTap: () {
@@ -399,7 +404,7 @@ class _StationDetailsState extends State<StationDetails> {
                                   'assets/images/map.png',
                                   width: 40,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ), // <-- Icon
                                 Text(
@@ -412,9 +417,9 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(80, 80),
+                        size: const Size(80, 80),
                         child: Material(
-                          color: Color.fromARGB(255, 199, 249, 204),
+                          color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
                             //splashColor: Colors.green,
                             onTap: () {
@@ -431,7 +436,7 @@ class _StationDetailsState extends State<StationDetails> {
                                   'assets/images/walking.png',
                                   width: 25,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ), // <-- Icon
                                 Text(
@@ -444,9 +449,9 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(80, 80),
+                        size: const Size(80, 80),
                         child: Material(
-                          color: Color.fromARGB(255, 199, 249, 204),
+                          color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
                             //splashColor: Colors.green,
                             onTap: () {
@@ -463,7 +468,7 @@ class _StationDetailsState extends State<StationDetails> {
                                   'assets/images/amenities.png',
                                   width: 40,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ), // <-- Icon
                                 Text(
@@ -476,16 +481,16 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(80, 80),
+                        size: const Size(80, 80),
                         child: Material(
-                          color: Color.fromARGB(255, 199, 249, 204),
+                          color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        StationTouristAttractions()),
+                                        const StationTouristAttractions()),
                               );
                             },
                             child: Column(
@@ -495,7 +500,7 @@ class _StationDetailsState extends State<StationDetails> {
                                   'assets/images/attractions.png',
                                   width: 40,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ), // <-- Icon
                                 Text(
@@ -613,14 +618,14 @@ class DialogConvience extends StatelessWidget {
                       style: GoogleFonts.prompt(
                           fontWeight: FontWeight.bold, fontSize: 16),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
                   children: <Widget>[
                     Container(
                       height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
@@ -631,7 +636,7 @@ class DialogConvience extends StatelessWidget {
                               'assets/images/ticket.png',
                               height: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -645,12 +650,12 @@ class DialogConvience extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
                       height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
@@ -661,7 +666,7 @@ class DialogConvience extends StatelessWidget {
                               'assets/images/ticket.png',
                               height: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -675,12 +680,12 @@ class DialogConvience extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
                       height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
@@ -691,7 +696,7 @@ class DialogConvience extends StatelessWidget {
                               'assets/images/toliet.png',
                               height: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -705,12 +710,12 @@ class DialogConvience extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
                       height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
@@ -721,7 +726,7 @@ class DialogConvience extends StatelessWidget {
                               'assets/images/handicaptoliet.png',
                               height: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -735,7 +740,7 @@ class DialogConvience extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
@@ -769,7 +774,7 @@ class DialogMap extends StatelessWidget {
                       style: GoogleFonts.prompt(
                           fontWeight: FontWeight.bold, fontSize: 16),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -807,7 +812,7 @@ class DialogConnections extends StatelessWidget {
                       style: GoogleFonts.prompt(
                           fontWeight: FontWeight.bold, fontSize: 16),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
@@ -816,157 +821,159 @@ class DialogConnections extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             //ชื่อสถานที่
-                            
+
                             Text(
                               'สถานีรถไฟใกล้เคียง',
                               style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600
-                              ),
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
                             ),
-                            
-
-
                           ],
                         ),
-
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Column(
-                        
                         children: <Widget>[
                           Row(children: [
                             Image.asset(
                               'assets/images/mrtblueline.png',
                               width: 25,
                             ),
-                              SizedBox(width: 5,),
-                              Text(
-                                'สายสีนำ้เงิน สถานีบางซื่อ',
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  
-                                ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'สายสีนำ้เงิน สถานีบางซื่อ',
+                              style: GoogleFonts.prompt(
+                                color: Colors.black,
+                                fontSize: 14,
                               ),
+                            ),
                           ]),
-                          SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           Row(children: [
                             Image.asset(
                               'assets/images/darkredline.png',
                               width: 25,
                             ),
-                              SizedBox(width: 5,),
-                              Text(
-                                'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  
-                                ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
+                              style: GoogleFonts.prompt(
+                                color: Colors.black,
+                                fontSize: 14,
                               ),
+                            ),
                           ]),
-                          SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           Row(children: [
                             Image.asset(
                               'assets/images/lightredline.png',
                               width: 25,
                             ),
-                              SizedBox(width: 5,),
-                              Text(
-                                'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  
-                                ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
+                              style: GoogleFonts.prompt(
+                                color: Colors.black,
+                                fontSize: 14,
                               ),
+                            ),
                           ]),
                         ],
                       ),
                     ),
-                    
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(
                       height: 32,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             //ชื่อสถานที่
-                            
+
                             Text(
                               'รถโดยสาร',
                               style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600
-                              ),
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Column(
-                        
                         children: <Widget>[
                           Row(children: [
                             Image.asset(
                               'assets/images/bus.png',
                               width: 25,
                             ),
-                              SizedBox(width: 5,),
-                              Text(
-                                'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้',
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  
-                                ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้',
+                              style: GoogleFonts.prompt(
+                                color: Colors.black,
+                                fontSize: 14,
                               ),
+                            ),
                           ]),
-                          SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           Row(children: [
                             Image.asset(
                               'assets/images/taxi.png',
                               width: 25,
                             ),
-                              SizedBox(width: 5,),
-                              Text(
-                                'Taxi บริการที่หน้าสถานี',
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  
-                                ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'Taxi บริการที่หน้าสถานี',
+                              style: GoogleFonts.prompt(
+                                color: Colors.black,
+                                fontSize: 14,
                               ),
+                            ),
                           ]),
-                          SizedBox(height: 5,),
-                          
+                          const SizedBox(
+                            height: 5,
+                          ),
                         ],
                       ),
                     ),
-                    
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
