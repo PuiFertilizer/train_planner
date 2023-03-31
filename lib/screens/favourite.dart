@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:train_planner/screens/stationdetails.dart';
 import 'package:train_planner/screens/traindetails.dart';
 
 class Favourite extends StatefulWidget {
@@ -138,15 +139,12 @@ class _FavouriteState extends State<Favourite> {
                                                             GestureDetector(
                                                               onTap: () {
                                                                 //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา
-                                                                // Navigator.push(
-                                                                //   context,
-                                                                //   MaterialPageRoute(
-                                                                //       builder:
-                                                                //           (context) =>
-                                                                //               StationDetails(
-                                                                //                 station: result.departureStation,
-                                                                //               )),
-                                                                // );
+                                                                Navigator.push(
+                                                                   context,
+                                                                   MaterialPageRoute(
+                                                                   builder: (context) =>
+                                                                   StationDetails(station: favouriteResult.departureStation,)),//ไปราะละเอียดแต่ละสถานี
+                                                               );
                                                               },
                                                               child: Text(
                                                                 favouriteResult.departureStation,
@@ -218,15 +216,12 @@ class _FavouriteState extends State<Favourite> {
                                                             GestureDetector(
                                                               onTap: () {
                                                                 //link ไปหน้ารายละเอียดของแต่ละสถานีในผลการค้นหา
-                                                                // Navigator.push(
-                                                                //   context,
-                                                                //   MaterialPageRoute(
-                                                                //       builder:
-                                                                //           (context) =>
-                                                                //               StationDetails(
-                                                                //                 station: result.departureStation,
-                                                                //               )),
-                                                                // );
+                                                                Navigator.push(
+                                                                   context,
+                                                                   MaterialPageRoute(
+                                                                   builder: (context) =>
+                                                                   StationDetails(station: favouriteResult.arriveStation,)),//ไปราะละเอียดแต่ละสถานี
+                                                               );
                                                               },
                                                               child: Text(
                                                                 favouriteResult.arriveStation,
@@ -561,7 +556,7 @@ class _FavouriteState extends State<Favourite> {
                                         
                                         children: [
                                           Container(
-                                            width: 130,
+                                            width: 120,
                                             alignment: Alignment.centerLeft,
                                             child: Padding(
                                                   padding: const EdgeInsets.only(left: 8.0,top: 10),
@@ -582,7 +577,7 @@ class _FavouriteState extends State<Favourite> {
                                                           'ขบวน ${favouriteTrainList.trainNo}',//เลขขบวน
                                                           style: GoogleFonts.prompt(
                                                           color: Colors.black,
-                                                          fontSize: 14.0,
+                                                          fontSize: 17.0,
                                                           fontWeight: FontWeight.w600
                                                         ),),
                                                         SizedBox(height: 2,),
@@ -599,7 +594,7 @@ class _FavouriteState extends State<Favourite> {
                                           ),
                                           
                                           Container(
-                                            width: 160,
+                                            width: 170,
                                             alignment: Alignment.centerLeft,
                                             
                                                 child: Padding(
@@ -611,14 +606,14 @@ class _FavouriteState extends State<Favourite> {
                                                         favouriteTrainList.departureStation, //สถานีต้นทางแต่ละขบวน
                                                         style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 14.0,
+                                                        fontSize: 15.0,
                                                       ),),
                                                       SizedBox(height: 2,),
                                                       Text(
                                                       favouriteTrainList.arriveStation, //สถานีปลายทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                       color: Colors.black,
-                                                      fontSize: 14.0,
+                                                      fontSize: 15.0,
                                                     ),),
                                                     ],
                                                   )
@@ -710,14 +705,14 @@ class _FavouriteState extends State<Favourite> {
                               color: Color.fromARGB(255, 255, 255, 255),
                               child: ListView.builder(
                                 scrollDirection: Axis.vertical,
-                                itemCount: favouriteTrainLists.length,
+                                itemCount: favouriteStationLists.length,
                                 itemBuilder: (BuildContext context, int index){
-                                  FavouriteTrainList favouriteTrainList = favouriteTrainLists[index];
+                                  FavouriteStationList favouriteStationList = favouriteStationLists[index];
                                   return Stack(
                                     children: <Widget>[
                                       Container(
                                         margin: EdgeInsets.fromLTRB(0, 0.0, 0, 10.0),
-                                        height: 70.0,
+                                        height: 80.0,
                                         decoration: BoxDecoration(
                                           color: Color.fromARGB(255, 255, 255, 255),
                                           border: Border.all(
@@ -742,26 +737,39 @@ class _FavouriteState extends State<Favourite> {
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
-                                                                TrainDetails()),
+                                                                StationDetails(station: favouriteStationList.stationName,)),//ไปราะละเอียดแต่ละสถานี
                                                       );
                                                     },
                                                     child: Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         Text(
-                                                          'ขบวน ${favouriteTrainList.trainNo}',//เลขขบวน
-                                                          style: GoogleFonts.prompt(
-                                                          color: Colors.black,
-                                                          fontSize: 14.0,
-                                                          fontWeight: FontWeight.w600
-                                                        ),),
-                                                        SizedBox(height: 2,),
-                                                        Text(
-                                                        favouriteTrainList.trainType, //ประเภทขบวน
+                                                        favouriteStationList.stationName, //ชื่อสถานี
                                                         style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 12.0,
+                                                        fontSize: 17.0,
+                                                        fontWeight: FontWeight.w600
                                                       ),),
+                                                        SizedBox(height: 2,),
+                                                      Row(children: [
+                                                        Text(
+                                                          'จ. ${favouriteStationList.stationProvince}',//จังหวัดสถานี
+                                                          style: GoogleFonts.prompt(
+                                                          color: Colors.black,
+                                                          fontSize: 16.0,
+                                                          
+                                                        ),),
+                                                        SizedBox(width: 10,),
+                                                        
+                                                      Text(
+                                                        favouriteStationList.stationRoute,//จังหวัดสถานี
+                                                          style: GoogleFonts.prompt(
+                                                          color: Colors.black,
+                                                          fontSize: 16.0,
+                                                          
+                                                        ),),
+                                                      ],)
+                                                      
                                                       ],
                                                     ),
                                                   )
@@ -818,13 +826,154 @@ class _FavouriteState extends State<Favourite> {
           ),
               ),
               Container( //tab ที่ 4
-                color: Color.fromARGB(255, 255, 255, 255),
+               color: Color.fromARGB(255, 255, 255, 255),
+          
                 child: Column(
-                  children: <Widget>[
+                children: [
+                Container(
+                
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 18,top: 18,right: 18,bottom: 10),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                      height: 0, 
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      
+                    
+                   ),
+                  
+                  //เนื้อหาตารางใหม่
+                  SizedBox(
+                    child: Container(
+                      height: 510,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left:10.0, right: 10),
+                        child: Container(
+                          child: RawScrollbar(
+                            thumbColor: Color.fromARGB(255, 132, 132, 132),
+                            radius: Radius.circular(20),
+                            thickness: 5,
+                            child: Container(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: favouriteAttractionLists.length,
+                                itemBuilder: (BuildContext context, int index){
+                                  FavouriteAttractionList favouriteAttractionList = favouriteAttractionLists[index];
+                                  return Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0, 0.0, 0, 10.0),
+                                        height: 80.0,
+                                        decoration: BoxDecoration(
+                                          color: Color.fromARGB(255, 255, 255, 255),
+                                          border: Border.all(
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            width: 2,
+                                          ),
+                                          borderRadius: BorderRadius.circular(5.0),
+                                                            
+                                      ),
+                                      child: Row(
+                                        
+                                        children: [
+                                          Container(
+                                            width: 290,
+                                            alignment: Alignment.centerLeft,
+                                            child: Padding(
+                                                  padding: const EdgeInsets.only(left: 8.0,top: 10),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                      // Navigator.push(
+                                                      //   context,
+                                                      //   MaterialPageRoute(
+                                                      //       builder: (context) =>
+                                                      //           StationDetails(station: favouriteStationList.stationName,)),//ไปราะละเอียดแต่ละสถานี
+                                                      // );
+                                                    },
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                        favouriteAttractionList.attractionName, //ชื่อสถานี
+                                                        style: GoogleFonts.prompt(
+                                                        color: Colors.black,
+                                                        fontSize: 17.0,
+                                                        fontWeight: FontWeight.w600
+                                                      ),),
+                                                        SizedBox(height: 2,),
+                                                      Row(children: [
+                                                        Text(
+                                                          'สถานีรถไฟ${favouriteAttractionList.attractionStation}',//จังหวัดสถานี
+                                                          style: GoogleFonts.prompt(
+                                                          color: Colors.black,
+                                                          fontSize: 16.0,
+                                                          
+                                                        ),),
+                                                        SizedBox(width: 10,),
+                                                        
+                                                      
+                                                      ],)
+                                                      
+                                                      ],
+                                                    ),
+                                                  )
+                                                ),
+                                          ),
+                                          
+                                          
+                                          Container(
+                                            
+                                            width: 30,
+                                            child:
+                                              GestureDetector(
+                                                onTap: () {
+                                                  showDialog(
+                                                  context: context,
+                                                  builder: (BuildContext context) {
+                                                    return DialogDelete();
+                                                  });        //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                                                  
+                                              },
+                                                child: Icon(
+                                                  Icons.delete,
+                                                  color: Color.fromARGB(255, 0, 0, 0),
+                                                  size: 30,
+                                                ),
+                                              ),
+                                          ),
+                          
+                                        ]
+                                        ),
+                                      )
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
 
-                  ],
+                      ),
+                    ),
+                  )
+          
+                  //เนื้อหาตารางใหม่
+                    ],
+                  ),
                 ),
-              )
+                
+              ),
+            
+            
+              
+            ],
+          ),
+              ),
             ]),
       ),
     );
@@ -930,7 +1079,50 @@ List <FavouriteTrainList> favouriteTrainLists = [ //รายชื่อสถ�
   FavouriteTrainList(trainNo: '31',trainType: 'ด่วนพิเศษ CNR' ,departureStation: 'กรุงเทพอภิวัฒน์', arriveStation: 'ชุมทางหาดใหญ่'),
   FavouriteTrainList(trainNo: '32',trainType: 'ด่วนพิเศษ CNR', departureStation: 'ชุมทางหาดใหญ่', arriveStation: 'กรุงเทพอภิวัฒน์'),
   
+  
 ];
+
+
+
+class FavouriteStationList { //**ข้อมูลมาจากหน้ารายละเอียดของแต่ละขสถานี
+  String stationName; //ชื่อสถานี
+  String stationProvince;  //จังหวัดสถานี
+  String stationRoute;   //เส้นทางสถานี เช่น เหนือ ใต้
+
+
+  FavouriteStationList({
+    required this.stationName,
+    required this.stationProvince,
+    required this.stationRoute,
+
+  });
+}
+List <FavouriteStationList> favouriteStationLists = [ //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา
+  FavouriteStationList(stationName: 'อรัญประเทศ',stationProvince: 'สระแก้ว', stationRoute: 'สายตะวันออก'),
+  FavouriteStationList(stationName: 'กรุงเทพอภิวัฒน์',stationProvince: 'กรุงเทพฯ', stationRoute: 'สายเหนือ'),
+  FavouriteStationList(stationName: 'เชียงใหม่',stationProvince: 'เชียงใหม่' ,stationRoute: 'สายเหนือ'),
+  FavouriteStationList(stationName: 'หัวหมาก',stationProvince: 'กรุงเทพฯ', stationRoute: 'สายตะวันออก'),
+  FavouriteStationList(stationName: 'ศิลาอาสน์',stationProvince: 'อุตรดิตถ์', stationRoute: 'สายเหนือ'),
+];
+
+
+
+class FavouriteAttractionList { //**ข้อมูลมาจากหน้ารายละเอียดของสถานที่ท่องเที่ยวว่าชื่ออะไร อยู่ใกล้สถานีอะไร
+  String attractionName; //ชื่อสถานที่ท่องเที่ยว
+  String attractionStation;  //จังหวัดสถานที่ท่องเที่ยว
+
+  FavouriteAttractionList({
+    required this.attractionName,
+    required this.attractionStation,
+  });
+}
+List <FavouriteAttractionList> favouriteAttractionLists = [ //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา
+  FavouriteAttractionList(attractionName: 'วัดโสธรวรารามวรวิหาร',attractionStation: 'ชุมทางฉะเชิงเทรา' ),
+  FavouriteAttractionList(attractionName: 'สะพานข้ามแม่นำ้แคว',attractionStation: 'สะพานแควใหญ่'),
+  FavouriteAttractionList(attractionName: 'นำ้ตกไทรโยคน้อย',attractionStation: 'นำ้ตก'),
+];
+
+
 
 class DialogDelete extends StatelessWidget {
   @override
