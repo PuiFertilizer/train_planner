@@ -23,8 +23,8 @@ class Searchresult extends StatefulWidget {
 class _SearchresultState extends State<Searchresult> {
   @override
   Widget build(BuildContext context) {
-    print(widget.source);
-    print(widget.destination);
+    //print(widget.source);
+    //print(widget.destination);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -35,7 +35,7 @@ class _SearchresultState extends State<Searchresult> {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 List<Result> results = snapshot.data;
-                print(snapshot.data);
+                //print(snapshot.data);
                 return Column(
                   children: <Widget>[
                     Stack(
@@ -57,7 +57,7 @@ class _SearchresultState extends State<Searchresult> {
                               Row(
                                 children: <Widget>[
                                   IconButton(
-                                    icon: Icon(Icons.filter),
+                                    icon: const Icon(Icons.filter),
                                     iconSize: 30.0,
                                     color: Colors.black,
                                     onPressed: () => Navigator.pop(context),
@@ -82,7 +82,7 @@ class _SearchresultState extends State<Searchresult> {
                                       fontSize: 20.0,
                                     ),
                                   ),
-                                  SizedBox(width: 5.0),
+                                  const SizedBox(width: 5.0),
                                   Text(
                                     '-',
                                     style: GoogleFonts.prompt(
@@ -90,7 +90,7 @@ class _SearchresultState extends State<Searchresult> {
                                       fontSize: 20.0,
                                     ),
                                   ),
-                                  SizedBox(width: 5.0),
+                                  const SizedBox(width: 5.0),
                                   Text(
                                     widget.destination,
                                     style: GoogleFonts.prompt(
@@ -405,9 +405,10 @@ class _SearchresultState extends State<Searchresult> {
                                                           Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        TrainDetails()),
+                                                                builder: (context) =>
+                                                                    TrainDetails(
+                                                                        train: result
+                                                                            .trainNumber)),
                                                           );
                                                         },
                                                         style: ElevatedButton

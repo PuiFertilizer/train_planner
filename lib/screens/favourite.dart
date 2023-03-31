@@ -373,13 +373,13 @@ class _FavouriteState extends State<Favourite> {
                                                     Container(
                                                       child: ElevatedButton(
                                                         onPressed: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        TrainDetails()),
-                                                          );
+                                                          // Navigator.push(
+                                                          //   context,
+                                                          //   MaterialPageRoute(
+                                                          //       builder:
+                                                          //           (context) =>
+                                                          //               TrainDetails()),
+                                                          // );
                                                         },
                                                         style: ElevatedButton
                                                             .styleFrom(
@@ -563,12 +563,12 @@ class _FavouriteState extends State<Favourite> {
                                                   child: GestureDetector(
                                                     onTap: () {
                                                       //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                TrainDetails()),
-                                                      );
+                                                      // Navigator.push(
+                                                      //   context,
+                                                      //   MaterialPageRoute(
+                                                      //       builder: (context) =>
+                                                      //           TrainDetails()),
+                                                      // );
                                                     },
                                                     child: Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
