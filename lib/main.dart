@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_file.dart';
 import 'package:train_planner/db/db_helper.dart';
-import 'package:train_planner/db/update.dart';
 import 'screens/home.dart';
 import 'screens/favourite.dart';
 import 'screens/planner.dart';
@@ -15,7 +14,6 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 Future<void> main() async {
-  //Updater updater = Updater();
   WidgetsFlutterBinding.ensureInitialized();
   await DBHelper.initDb();
   await GetStorage.init();

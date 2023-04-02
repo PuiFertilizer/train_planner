@@ -1,16 +1,15 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:train_planner/models/result_model.dart';
-
+import 'package:web_scraper/web_scraper.dart';
 import '../models/task.dart';
 import '../models/route.dart';
-import '../db/update.dart';
 
 class DBHelper {
   static Database? _db;
   static const int _version = 1;
   static const String _tableTask = 'tasks';
   static const String _tableRoute = 'routes';
-  static Updater updater = Updater();
+
   static Future<void> initDb() async {
     if (_db != null) {
       return;
@@ -33,6 +32,7 @@ class DBHelper {
               "train STRING, station STRING, time STRING)") /*.then((value) => updater.updateTrain())*/;
         },
       );
+
       cleanAndUpdate();
       //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {
@@ -43,12 +43,8 @@ class DBHelper {
   static void cleanAndUpdate() async {
     print("delete call");
     await _db?.delete(_tableRoute);
-    /*await _db!
-        .query(_tableRoute,
-            where: 'station=?', whereArgs: ["กรุงเทพ"], orderBy: "train")
-        .then((value) => print(value));*/
     await _db!.execute('DELETE FROM $_tableRoute');
-    await updater.updateTrain();
+    await updateTrain();
   }
 
   //task
@@ -118,5 +114,50 @@ class DBHelper {
     }
 
     return result;
+  }
+
+  static Future<void> updateTrain() async {
+    //String trainPath = "assets/db/train.txt";
+    RegExp reStname = RegExp(r'(?<=<b>)(.*?)(?=</b>)', multiLine: true);
+    RegExp reTrname = RegExp(r'([0-9]{1,4}(?=</a>))', multiLine: true);
+    RegExp reTime = RegExp(r'[0-9]{2}:[0-9]{2}|arrow', multiLine: true);
+    int id = 1;
+    for (int line = 1; line <= 7; line++) {
+      for (int route = 1; route <= 2; route++) {
+        String webPath = "https://ttsview.railway.co.th/";
+        final webScraper = WebScraper(webPath);
+        if (await webScraper.loadWebPage(
+            '/SRT_Schedule2022.php?ln=th&line=$line&trip=$route')) {
+          String pageHTML = webScraper.getPageContent();
+          Iterable<RegExpMatch> stations = reStname.allMatches(pageHTML);
+          Iterable<RegExpMatch> trains = reTrname.allMatches(pageHTML);
+          Iterable<RegExpMatch> time = reTime.allMatches(pageHTML);
+          int timeCounter = 0;
+          Batch batch = _db!.batch();
+          for (var i in time) {
+            if (i.groupNames.toString() != " ") {
+              if (time.elementAt(timeCounter)[0].toString() == 'arrow') {
+                timeCounter++;
+                continue;
+              }
+              Routes route = Routes(
+                  id: id,
+                  train: trains
+                      .elementAt((timeCounter % trains.length))[0]
+                      .toString(),
+                  station: stations
+                      .elementAt(timeCounter ~/ trains.length)[0]
+                      .toString(),
+                  time: time.elementAt(timeCounter)[0].toString());
+              batch.insert(_tableRoute, route.toJson());
+              //DBHelper.insertR(route);
+              id++;
+            }
+            timeCounter++;
+          }
+          await batch.commit(noResult: true);
+        }
+      }
+    }
   }
 }
