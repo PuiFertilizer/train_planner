@@ -1,3 +1,4 @@
+[
 {"id": "7", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
 {"id": "8", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
 {"id": "21", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
@@ -84,4 +85,5 @@
 {"id": "4326", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
 {"id": "4385", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
 {"id": "4386", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
-{"id": "4387", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []},
+{"id": "4387", "name": "", "line": "", "seatLatout": "", "comfort": [], "class": []}
+]

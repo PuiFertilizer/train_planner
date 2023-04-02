@@ -1,3 +1,4 @@
+[
 {"name": "กบินทร์บุรี", "line": "", "desription": "", "attraction": [], "comfort": []},
 {"name": "กระสัง", "line": "", "desription": "", "attraction": [], "comfort": []},
 {"name": "กรุงเทพ", "line": "", "desription": "", "attraction": [], "comfort": []},
@@ -242,4 +243,5 @@
 {"name": "โนนสูง", "line": "", "desription": "", "attraction": [], "comfort": []},
 {"name": "โพธาราม", "line": "", "desription": "", "attraction": [], "comfort": []},
 {"name": "โยทะกา", "line": "", "desription": "", "attraction": [], "comfort": []},
-{"name": "ไชยา", "line": "", "desription": "", "attraction": [], "comfort": []},
+{"name": "ไชยา", "line": "", "desription": "", "attraction": [], "comfort": []}
+]
