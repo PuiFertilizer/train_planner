@@ -1158,7 +1158,7 @@ class TrainTimetable {
 }
 
 class Seating {
-  //รายละเอียดขบวน (ที่นั่ง ชนิดรถ รูปรถภายนอกภายใน)
+  //รายละเอียดขบวน (ที่นั่ง ชนิดรถ รูปรถภายนอกภายใน) แต่ละขบวนอาจมีมากกว่า 2 ชนิดได้
   String imageUrlExterior; //รูปภายนอกรถ
   String imageUrlInterior; //รูปภายในรถ
   String imageUrlSeatchart; //รูปผังที่นั่ง
@@ -1176,8 +1176,8 @@ class Seating {
   });
 }
 
-List<Seating> seats = [
-  Seating(
+List<Seating> seats = [ 
+  Seating( //ชนิดที่ 1
     imageUrlExterior: 'assets/images/trainimage/2nddaewoo_Exterior.png',
     imageUrlInterior: 'assets/images/trainimage/2nddaewoo_interior.jpg',
     imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
@@ -1186,7 +1186,7 @@ List<Seating> seats = [
     imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
   ),
 
-  Seating(
+  Seating( //ชนิดที่ 2
     imageUrlExterior: 'assets/images/trainimage/2ndsprinter_Exterior.jpg',
     imageUrlInterior: 'assets/images/trainimage/2ndsprinter_Interior.png',
     imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
@@ -1362,12 +1362,12 @@ class Destination {
 }
 
 List<Destination> destinations = [  //รายชื่อทัศนีย์ภาพ
-  Destination(
+  Destination( //สถานที่ ที่ 1
     imageUrl: 'assets/images/chiangmai.jpg',
     scenename: 'แม่นำ้บางปะกง',
     betweenstation: 'สถานีฉะเชิงเทรา-ดอนสีนนท์',
   ),
-  Destination(
+  Destination( //สถานที่ ที่ 2
     imageUrl: 'assets/images/nongkai.jpg',
     scenename: 'แกรนด์แคนยอนชลบุรี',
     betweenstation: 'สถานีชลบุรี-บางพระ',
