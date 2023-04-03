@@ -1221,7 +1221,7 @@ class _TrainlistState extends State<Trainlist> {
     );
   }
 
-class NorthTrainList {
+class NorthTrainList { //ของสายเหนือ
   //**ข้อมูลมาจากหน้ารายละเอียดของแต่ละขบวน
   String trainNo; //เลขขบวน
   String trainType; //ประเภทขบวน

@@ -1176,6 +1176,26 @@ class Seating {
   });
 }
 
+List<Seating> seats = [
+  Seating(
+    imageUrlExterior: 'assets/images/trainimage/2nddaewoo_Exterior.png',
+    imageUrlInterior: 'assets/images/trainimage/2nddaewoo_interior.jpg',
+    imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
+    coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ แดวู',
+    description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
+    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
+  ),
+
+  Seating(
+    imageUrlExterior: 'assets/images/trainimage/2ndsprinter_Exterior.jpg',
+    imageUrlInterior: 'assets/images/trainimage/2ndsprinter_Interior.png',
+    imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
+    coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
+    description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
+    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
+  ),
+];
+
 class Fare {
   //คิดค่าโดยสาร
   String coachname;
@@ -1327,16 +1347,7 @@ class DialogScene extends StatelessWidget {
   }
 }
 
-List<Seating> seats = [
-  Seating(
-    imageUrlExterior: 'assets/images/trainimage/2nddaewoo_Exterior.png',
-    imageUrlInterior: 'assets/images/trainimage/2nddaewoo_interior.jpg',
-    imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
-    coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ แดวู',
-    description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
-    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
-  ),
-];
+
 
 class Destination {
   String imageUrl;
@@ -1350,7 +1361,7 @@ class Destination {
   });
 }
 
-List<Destination> destinations = [
+List<Destination> destinations = [  //รายชื่อทัศนีย์ภาพ
   Destination(
     imageUrl: 'assets/images/chiangmai.jpg',
     scenename: 'แม่นำ้บางปะกง',
