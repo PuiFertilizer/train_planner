@@ -27,31 +27,37 @@ class _StationlistState extends State<Stationlist> {
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              Image.asset("assets/images/stationlistimage.jpg",
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
+              
+              Image.asset(
+                "assets/images/stationlistimage.jpg",
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text("                                   รายชื่อสถานี",
-                        style: GoogleFonts.prompt(
+                  
+              SizedBox(height: 170.0) ,
+              Text('   ข่าวประชาสัมพันธ์',style: GoogleFonts.prompt(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
-                        ),)
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                        ),),
+              Column(
+                children: <Widget>[
+              SizedBox(
+              height: 500, 
+          
+            ),
+       
+        
+           ],
+              )
+             
+              
+
+            ],
+              )
             ],
           )
         ),

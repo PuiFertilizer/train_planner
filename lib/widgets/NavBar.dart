@@ -6,6 +6,8 @@ import '../main.dart';
 import '../screens/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../screens/trainlist.dart';
+
 class NavBar extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class NavBar extends StatelessWidget{
             leading: Icon(Icons.train),
             title: Text('ข้อมูลขบวนรถ',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Planner()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Trainlist()));
             },
           ),
           ListTile(
