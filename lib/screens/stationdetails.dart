@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:train_planner/widgets/addSearchResultNew.dart';
+import 'package:train_planner/models/stationdatalist.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/plan_model.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationTouristAttractions.dart';
 
@@ -36,6 +33,8 @@ class _StationDetailsState extends State<StationDetails> {
 
   @override
   Widget build(BuildContext context) {
+    StationList stationdetail = stationLists[
+        stationLists.indexWhere((element) => element.name == widget.station)];
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
