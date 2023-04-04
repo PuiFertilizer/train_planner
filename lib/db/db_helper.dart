@@ -105,13 +105,6 @@ class DBHelper {
       //convert time to double
       double toDouble(TimeOfDay t) => t.hour + t.minute / 60.0;
       if (s.train == e.train && toDouble(startTime) < toDouble(endTime)) {
-        //swap if is go in
-        /*if (s.inOrOut == 'in') {
-          var t = e;
-          e = s;
-          s = t;
-        }*/
-
         Result x = Result(
             departureStation: s.station,
             departureTime: s.time,
@@ -144,10 +137,6 @@ class DBHelper {
       for (int route = 1; route <= 2; route++) {
         String webPath = "https://ttsview.railway.co.th/";
         final webScraper = WebScraper(webPath);
-        String inout = "out";
-        if (route == 2) {
-          inout = "in";
-        }
         if (await webScraper.loadWebPage(
             '/SRT_Schedule2022.php?ln=th&line=$line&trip=$route')) {
           String pageHTML = webScraper.getPageContent();
