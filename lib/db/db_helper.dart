@@ -96,15 +96,15 @@ class DBHelper {
       //print(s.station + s.train + s.time);
       //print(e.station + e.train + e.time);
 
-      /*TimeOfDay startTime = TimeOfDay(
+      TimeOfDay startTime = TimeOfDay(
           hour: int.parse(s.time.split(":")[0]),
           minute: int.parse(s.time.split(":")[1]));
       TimeOfDay endTime = TimeOfDay(
           hour: int.parse(e.time.split(":")[0]),
-          minute: int.parse(e.time.split(":")[1]));*/
+          minute: int.parse(e.time.split(":")[1]));
       //convert time to double
-      //double toDouble(TimeOfDay t) => t.hour + t.minute / 60.0;
-      if (s.train == e.train && s.order < e.order) {
+      double toDouble(TimeOfDay t) => t.hour + t.minute / 60.0;
+      if (s.train == e.train && toDouble(startTime) < toDouble(endTime)) {
         Result x = Result(
             departureStation: s.station,
             departureTime: s.time,
@@ -157,7 +157,6 @@ class DBHelper {
                   train: trains
                       .elementAt((timeCounter % trains.length))[0]
                       .toString(),
-                  order: (timeCounter ~/ trains.length),
                   station: stations
                       .elementAt(timeCounter ~/ trains.length)[0]
                       .toString(),
