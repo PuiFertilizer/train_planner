@@ -162,7 +162,7 @@ class _OthersState extends State<Others> {
                                     ),
                                     Flexible(
                                       child: Text(
-                                        "ข้อมูลขบวนรถ",
+                                        "รายชื่อขบวนรถ",
                                         style: GoogleFonts.prompt(fontSize: 14),
                                       ),
                                     ), // <-- Text

@@ -613,7 +613,7 @@ class _FavouriteState extends State<Favourite> {
                                                 margin:
                                                     const EdgeInsets.fromLTRB(
                                                         0, 0.0, 0, 10.0),
-                                                height: 70.0,
+                                                height: 80.0,
                                                 decoration: BoxDecoration(
                                                   color: const Color.fromARGB(
                                                       255, 255, 255, 255),

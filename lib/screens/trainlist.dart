@@ -23,13 +23,13 @@ class _TrainlistState extends State<Trainlist> {
         drawer: NavBar(),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 87, 204, 153),
-          title: Text('รายชื่อขบวนรถทุกสาย'),
+          title: Text('รายชื่อขบวนรถทุกสาย',style: GoogleFonts.prompt(color: Colors.black),),
           
         ),
         body: Column(
           children: <Widget>[
             Image.asset("assets/images/trainlist.jpg",
-              height: 100,
+              height: 93,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
@@ -51,1167 +51,1170 @@ class _TrainlistState extends State<Trainlist> {
             ),
             Expanded(
 
-              child: TabBarView(
-                children: [
-                  Container( //tab ที่ 1 
-
-              color: const Color.fromARGB(255, 255, 255, 255),
-
-              child: Column(
-                children: [
-                  Text('สายเหนือ' ,style: GoogleFonts.prompt(
-                            color: Colors.black,
-                            fontSize: 14.0,
-                  ),),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18, top: 5, right: 18, bottom: 10),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          
-                          Container(
-              height: 45,
-              color: const Color.fromARGB(255, 255, 255, 255),
               child: Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
-                child: Container(
-                  color: const Color(0xff009889),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .start, //Center Row contents horizontally,
-                      crossAxisAlignment: CrossAxisAlignment
-                          .center, //Center Row contents vertically,
-                      children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "ขบวน",
-                          style: GoogleFonts.prompt(
-                            color: Colors.white,
-                            fontSize: 14.0,
+                padding: const EdgeInsets.only(top:10),
+                child: TabBarView(
+                  children: [
+                    Container( //tab ที่ 1 
+              
+                color: const Color.fromARGB(255, 255, 255, 255),
+              
+                child: Column(
+                  children: [
+                    Text('สายเหนือ' ,style: GoogleFonts.prompt(
+                              color: Colors.black,
+                              fontSize: 14.0,
+                    ),),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 18, top: 5, right: 18, bottom: 10),
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            
+                            Container(
+                height: 45,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  child: Container(
+                    color: const Color(0xff009889),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .start, //Center Row contents horizontally,
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, //Center Row contents vertically,
+                        children: [
+                          const SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        const SizedBox(
-                          width: 80,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "ต้นทาง (เวลาออก)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
+                          Text(
+                            "ขบวน",
+                            style: GoogleFonts.prompt(
+                              color: Colors.white,
+                              fontSize: 14.0,
                             ),
-                            Text(
-                              "ปลายทาง (เวลาถึง)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "ต้นทาง (เวลาออก)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        
-                        
-                        
-                      ]),
+                              Text(
+                                "ปลายทาง (เวลาถึง)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          
+                          
+                          
+                        ]),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: 5,),
-
-                          //เนื้อหาตารางใหม่
-                          SizedBox(
-                            child: Container(
-                              height: 395,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10),
-                                child: Container(
-                                  child: RawScrollbar(
-                                    thumbColor: const Color.fromARGB(
-                                        255, 132, 132, 132),
-                                    radius: const Radius.circular(20),
-                                    thickness: 5,
-                                    child: Container(
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255),
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: northTrainLists.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          NorthTrainList
-                                              northTrainList =
-                                              northTrainLists[index];
-                                          return Stack(
-                                            children: <Widget>[
-                                              Container(
-                                                margin:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 0.0, 0, 5.0),
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                        255, 199, 249, 204),
-                                                  
-                                                  // borderRadius:
-                                                  //     BorderRadius.circular(
-                                                  //         5.0),
-                                                ),
-                                                child: Row(children: [
-                                                  Container(
-                                                    width: 110,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      TrainDetails(
-                                                                          train:
-                                                                              northTrainList.trainNo)),
-                                                            );
-                                                          },
+                          ),
+                          SizedBox(height: 5,),
+              
+                            //เนื้อหาตารางใหม่
+                            SizedBox(
+                              child: Container(
+                                height: 395,
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10.0, right: 10),
+                                  child: Container(
+                                    child: RawScrollbar(
+                                      thumbColor: const Color.fromARGB(
+                                          255, 132, 132, 132),
+                                      radius: const Radius.circular(20),
+                                      thickness: 5,
+                                      child: Container(
+                                        color: const Color.fromARGB(
+                                            255, 255, 255, 255),
+                                        child: ListView.builder(
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: northTrainLists.length,
+                                          itemBuilder:
+                                              (BuildContext context, int index) {
+                                            NorthTrainList
+                                                northTrainList =
+                                                northTrainLists[index];
+                                            return Stack(
+                                              children: <Widget>[
+                                                Container(
+                                                  margin:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 0.0, 0, 5.0),
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color.fromARGB(
+                                                      255, 199, 249, 204),
+                                                    
+                                                    // borderRadius:
+                                                    //     BorderRadius.circular(
+                                                    //         5.0),
+                                                  ),
+                                                  child: Row(children: [
+                                                    Container(
+                                                      width: 110,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
+                                                          child: GestureDetector(
+                                                            onTap: () {
+                                                              //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        TrainDetails(
+                                                                            train:
+                                                                                northTrainList.trainNo)),
+                                                              );
+                                                            },
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'ขบวน ${northTrainList.trainNo}', //เลขขบวน
+                                                                  style: GoogleFonts.prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize:
+                                                                          17.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 2,
+                                                                ),
+                                                                Text(
+                                                                  northTrainList
+                                                                      .trainType, //ประเภทขบวน
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .prompt(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )),
+                                                    ),
+                                                    Container(
+                                                      width: 215,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Text(
-                                                                'ขบวน ${northTrainList.trainNo}', //เลขขบวน
-                                                                style: GoogleFonts.prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        17.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    northTrainList
+                                                                        .departureStation, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ออก', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 5,
+                                                                  ),
+                                                                  Text(
+                                                                    northTrainList
+                                                                        .departureTime, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                               const SizedBox(
                                                                 height: 2,
                                                               ),
-                                                              Text(
-                                                                northTrainList
-                                                                    .trainType, //ประเภทขบวน
-                                                                style:
-                                                                    GoogleFonts
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    northTrainList
+                                                                        .arriveStation, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
                                                                         .prompt(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ถึง', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 5,
+                                                                  ),
+                                                                  Text(
+                                                                    northTrainList
+                                                                        .arriveTime, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
-                                                          ),
-                                                        )),
-                                                  ),
-                                                  Container(
-                                                    width: 215,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  northTrainList
-                                                                      .departureStation, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ออก', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 5,
-                                                                ),
-                                                                Text(
-                                                                  northTrainList
-                                                                      .departureTime, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 2,
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  northTrainList
-                                                                      .arriveStation, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ถึง', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 5,
-                                                                ),
-                                                                Text(
-                                                                  northTrainList
-                                                                      .arriveTime, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        )),
-                                                  ),
-                                                  
-                                                ]),
-                                              )
-                                            ],
-                                          );
-                                        },
+                                                          )),
+                                                    ),
+                                                    
+                                                  ]),
+                                                )
+                                              ],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-
-                          //เนื้อหาตารางใหม่
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container( //tab ที่ 2
-
-              color: const Color.fromARGB(255, 255, 255, 255),
-
-              child: Column(
-                children: [
-                  Text('สายอีสาน (ตะวันออกเฉียงเหนือ)' ,style: GoogleFonts.prompt(
-                            color: Colors.black,
-                            fontSize: 14.0,
-                  ),),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18, top: 5, right: 18, bottom: 10),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          
-                          Container(
-              height: 45,
-              color: const Color.fromARGB(255, 255, 255, 255),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
-                child: Container(
-                  color: const Color(0xff009889),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .start, //Center Row contents horizontally,
-                      crossAxisAlignment: CrossAxisAlignment
-                          .center, //Center Row contents vertically,
-                      children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "ขบวน",
-                          style: GoogleFonts.prompt(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 80,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "ต้นทาง (เวลาออก)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
-                            ),
-                            Text(
-                              "ปลายทาง (เวลาถึง)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
-                            ),
+                            )
+              
+                            //เนื้อหาตารางใหม่
                           ],
                         ),
-                        
-                        
-                        
-                      ]),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            SizedBox(height: 5,),
-
-                          //เนื้อหาตารางใหม่
-                          SizedBox(
-                            child: Container(
-                              height: 395,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10),
-                                child: Container(
-                                  child: RawScrollbar(
-                                    thumbColor: const Color.fromARGB(
-                                        255, 132, 132, 132),
-                                    radius: const Radius.circular(20),
-                                    thickness: 5,
-                                    child: Container(
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255),
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: northEastTrainLists.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          NorthEastTrainList
-                                              northEastTrainList =
-                                              northEastTrainLists[index];
-                                          return Stack(
-                                            children: <Widget>[
-                                              Container(
-                                                margin:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 0.0, 0, 5.0),
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                        255, 199, 249, 204),
-                                                  
-                                                  // borderRadius:
-                                                  //     BorderRadius.circular(
-                                                  //         5.0),
-                                                ),
-                                                child: Row(children: [
-                                                  Container(
-                                                    width: 110,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      TrainDetails(
-                                                                          train:
-                                                                              northEastTrainList.trainNo)),
-                                                            );
-                                                          },
+                          ),
+                          Container( //tab ที่ 2
+              
+                color: const Color.fromARGB(255, 255, 255, 255),
+              
+                child: Column(
+                  children: [
+                    Text('สายอีสาน (ตะวันออกเฉียงเหนือ)' ,style: GoogleFonts.prompt(
+                              color: Colors.black,
+                              fontSize: 14.0,
+                    ),),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 18, top: 5, right: 18, bottom: 10),
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            
+                            Container(
+                height: 45,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  child: Container(
+                    color: const Color(0xff009889),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .start, //Center Row contents horizontally,
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, //Center Row contents vertically,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "ขบวน",
+                            style: GoogleFonts.prompt(
+                              color: Colors.white,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "ต้นทาง (เวลาออก)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                              Text(
+                                "ปลายทาง (เวลาถึง)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          
+                          
+                          
+                        ]),
+                  ),
+                ),
+                          ),
+                          SizedBox(height: 5,),
+              
+                            //เนื้อหาตารางใหม่
+                            SizedBox(
+                              child: Container(
+                                height: 395,
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10.0, right: 10),
+                                  child: Container(
+                                    child: RawScrollbar(
+                                      thumbColor: const Color.fromARGB(
+                                          255, 132, 132, 132),
+                                      radius: const Radius.circular(20),
+                                      thickness: 5,
+                                      child: Container(
+                                        color: const Color.fromARGB(
+                                            255, 255, 255, 255),
+                                        child: ListView.builder(
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: northEastTrainLists.length,
+                                          itemBuilder:
+                                              (BuildContext context, int index) {
+                                            NorthEastTrainList
+                                                northEastTrainList =
+                                                northEastTrainLists[index];
+                                            return Stack(
+                                              children: <Widget>[
+                                                Container(
+                                                  margin:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 0.0, 0, 5.0),
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color.fromARGB(
+                                          255, 199, 249, 204),
+                                                    
+                                                    // borderRadius:
+                                                    //     BorderRadius.circular(
+                                                    //         5.0),
+                                                  ),
+                                                  child: Row(children: [
+                                                    Container(
+                                                      width: 110,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
+                                                          child: GestureDetector(
+                                                            onTap: () {
+                                                              //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        TrainDetails(
+                                                                            train:
+                                                                                northEastTrainList.trainNo)),
+                                                              );
+                                                            },
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'ขบวน ${northEastTrainList.trainNo}', //เลขขบวน
+                                                                  style: GoogleFonts.prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize:
+                                                                          17.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 2,
+                                                                ),
+                                                                Text(
+                                                                  northEastTrainList
+                                                                      .trainType, //ประเภทขบวน
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .prompt(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )),
+                                                    ),
+                                                    Container(
+                                                      width: 215,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Text(
-                                                                'ขบวน ${northEastTrainList.trainNo}', //เลขขบวน
-                                                                style: GoogleFonts.prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        17.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    northEastTrainList
+                                                                        .departureStation, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ออก', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(width: 5,),
+                                                                  
+                                                                  Text(
+                                                                    northEastTrainList
+                                                                        .departureTime, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                               const SizedBox(
                                                                 height: 2,
                                                               ),
-                                                              Text(
-                                                                northEastTrainList
-                                                                    .trainType, //ประเภทขบวน
-                                                                style:
-                                                                    GoogleFonts
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    northEastTrainList
+                                                                        .arriveStation, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
                                                                         .prompt(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ถึง', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 5,
+                                                                  ),
+                                                                  Text(
+                                                                    northEastTrainList
+                                                                        .arriveTime, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
-                                                          ),
-                                                        )),
-                                                  ),
-                                                  Container(
-                                                    width: 215,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  northEastTrainList
-                                                                      .departureStation, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ออก', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(width: 5,),
-                                                                
-                                                                Text(
-                                                                  northEastTrainList
-                                                                      .departureTime, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 2,
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  northEastTrainList
-                                                                      .arriveStation, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ถึง', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 5,
-                                                                ),
-                                                                Text(
-                                                                  northEastTrainList
-                                                                      .arriveTime, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        )),
-                                                  ),
-                                                  
-                                                ]),
-                                              )
-                                            ],
-                                          );
-                                        },
+                                                          )),
+                                                    ),
+                                                    
+                                                  ]),
+                                                )
+                                              ],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-
-                          //เนื้อหาตารางใหม่
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container( //tab ที่ 3
-
-              color: const Color.fromARGB(255, 255, 255, 255),
-
-              child: Column(
-                children: [
-                  Text('สายตะวันออก' ,style: GoogleFonts.prompt(
-                            color: Colors.black,
-                            fontSize: 14.0,
-                  ),),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18, top: 5, right: 18, bottom: 10),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          
-                          Container(
-              height: 45,
-              color: const Color.fromARGB(255, 255, 255, 255),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
-                child: Container(
-                  color: const Color(0xff009889),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .start, //Center Row contents horizontally,
-                      crossAxisAlignment: CrossAxisAlignment
-                          .center, //Center Row contents vertically,
-                      children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "ขบวน",
-                          style: GoogleFonts.prompt(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 80,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "ต้นทาง (เวลาออก)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
-                            ),
-                            Text(
-                              "ปลายทาง (เวลาถึง)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
-                            ),
+                            )
+              
+                            //เนื้อหาตารางใหม่
                           ],
                         ),
-                        
-                        
-                        
-                      ]),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            SizedBox(height: 5,),
-
-                          //เนื้อหาตารางใหม่
-                          SizedBox(
-                            child: Container(
-                              height: 395,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10),
-                                child: Container(
-                                  child: RawScrollbar(
-                                    thumbColor: const Color.fromARGB(
-                                        255, 132, 132, 132),
-                                    radius: const Radius.circular(20),
-                                    thickness: 5,
-                                    child: Container(
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255),
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: eastTrainLists.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          EastTrainList
-                                              eastTrainList =
-                                              eastTrainLists[index];
-                                          return Stack(
-                                            children: <Widget>[
-                                              Container(
-                                                margin:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 0.0, 0, 5.0),
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                        255, 199, 249, 204),
-                                                  
-                                                  // borderRadius:
-                                                  //     BorderRadius.circular(
-                                                  //         5.0),
-                                                ),
-                                                child: Row(children: [
-                                                  Container(
-                                                    width: 110,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      TrainDetails(
-                                                                          train:
-                                                                              eastTrainList.trainNo)),
-                                                            );
-                                                          },
+                          ),
+                          Container( //tab ที่ 3
+              
+                color: const Color.fromARGB(255, 255, 255, 255),
+              
+                child: Column(
+                  children: [
+                    Text('สายตะวันออก' ,style: GoogleFonts.prompt(
+                              color: Colors.black,
+                              fontSize: 14.0,
+                    ),),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 18, top: 5, right: 18, bottom: 10),
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            
+                            Container(
+                height: 45,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  child: Container(
+                    color: const Color(0xff009889),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .start, //Center Row contents horizontally,
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, //Center Row contents vertically,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "ขบวน",
+                            style: GoogleFonts.prompt(
+                              color: Colors.white,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "ต้นทาง (เวลาออก)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                              Text(
+                                "ปลายทาง (เวลาถึง)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          
+                          
+                          
+                        ]),
+                  ),
+                ),
+                          ),
+                          SizedBox(height: 5,),
+              
+                            //เนื้อหาตารางใหม่
+                            SizedBox(
+                              child: Container(
+                                height: 395,
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10.0, right: 10),
+                                  child: Container(
+                                    child: RawScrollbar(
+                                      thumbColor: const Color.fromARGB(
+                                          255, 132, 132, 132),
+                                      radius: const Radius.circular(20),
+                                      thickness: 5,
+                                      child: Container(
+                                        color: const Color.fromARGB(
+                                            255, 255, 255, 255),
+                                        child: ListView.builder(
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: eastTrainLists.length,
+                                          itemBuilder:
+                                              (BuildContext context, int index) {
+                                            EastTrainList
+                                                eastTrainList =
+                                                eastTrainLists[index];
+                                            return Stack(
+                                              children: <Widget>[
+                                                Container(
+                                                  margin:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 0.0, 0, 5.0),
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color.fromARGB(
+                                          255, 199, 249, 204),
+                                                    
+                                                    // borderRadius:
+                                                    //     BorderRadius.circular(
+                                                    //         5.0),
+                                                  ),
+                                                  child: Row(children: [
+                                                    Container(
+                                                      width: 110,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
+                                                          child: GestureDetector(
+                                                            onTap: () {
+                                                              //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        TrainDetails(
+                                                                            train:
+                                                                                eastTrainList.trainNo)),
+                                                              );
+                                                            },
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'ขบวน ${eastTrainList.trainNo}', //เลขขบวน
+                                                                  style: GoogleFonts.prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize:
+                                                                          17.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 2,
+                                                                ),
+                                                                Text(
+                                                                  eastTrainList
+                                                                      .trainType, //ประเภทขบวน
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .prompt(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )),
+                                                    ),
+                                                    Container(
+                                                      width: 215,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Text(
-                                                                'ขบวน ${eastTrainList.trainNo}', //เลขขบวน
-                                                                style: GoogleFonts.prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        17.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    eastTrainList
+                                                                        .departureStation, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ออก', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(width: 5,),
+                                                                  
+                                                                  Text(
+                                                                    eastTrainList
+                                                                        .departureTime, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                               const SizedBox(
                                                                 height: 2,
                                                               ),
-                                                              Text(
-                                                                eastTrainList
-                                                                    .trainType, //ประเภทขบวน
-                                                                style:
-                                                                    GoogleFonts
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    eastTrainList
+                                                                        .arriveStation, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
                                                                         .prompt(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ถึง', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 5,
+                                                                  ),
+                                                                  Text(
+                                                                    eastTrainList
+                                                                        .arriveTime, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
-                                                          ),
-                                                        )),
-                                                  ),
-                                                  Container(
-                                                    width: 215,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  eastTrainList
-                                                                      .departureStation, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ออก', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(width: 5,),
-                                                                
-                                                                Text(
-                                                                  eastTrainList
-                                                                      .departureTime, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 2,
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  eastTrainList
-                                                                      .arriveStation, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ถึง', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 5,
-                                                                ),
-                                                                Text(
-                                                                  eastTrainList
-                                                                      .arriveTime, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        )),
-                                                  ),
-                                                  
-                                                ]),
-                                              )
-                                            ],
-                                          );
-                                        },
+                                                          )),
+                                                    ),
+                                                    
+                                                  ]),
+                                                )
+                                              ],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-
-                          //เนื้อหาตารางใหม่
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-                  
-                  Container( //tab ที่ 4
-
-              color: const Color.fromARGB(255, 255, 255, 255),
-
-              child: Column(
-                children: [
-                  Text('สายใต้' ,style: GoogleFonts.prompt(
-                            color: Colors.black,
-                            fontSize: 14.0,
-                  ),),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18, top: 5, right: 18, bottom: 10),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          
-                          Container(
-              height: 45,
-              color: const Color.fromARGB(255, 255, 255, 255),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
-                child: Container(
-                  color: const Color(0xff009889),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .start, //Center Row contents horizontally,
-                      crossAxisAlignment: CrossAxisAlignment
-                          .center, //Center Row contents vertically,
-                      children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "ขบวน",
-                          style: GoogleFonts.prompt(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 80,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "ต้นทาง (เวลาออก)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
-                            ),
-                            Text(
-                              "ปลายทาง (เวลาถึง)",
-                              style: GoogleFonts.prompt(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                              ),
-                            ),
+                            )
+              
+                            //เนื้อหาตารางใหม่
                           ],
                         ),
-                        
-                        
-                        
-                      ]),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            SizedBox(height: 5,),
-
-                          //เนื้อหาตารางใหม่
-                          SizedBox(
-                            child: Container(
-                              height: 395,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10),
-                                child: Container(
-                                  child: RawScrollbar(
-                                    thumbColor: const Color.fromARGB(
-                                        255, 132, 132, 132),
-                                    radius: const Radius.circular(20),
-                                    thickness: 5,
-                                    child: Container(
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255),
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: southTrainLists.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          SouthTrainList
-                                              southTrainList =
-                                              southTrainLists[index];
-                                          return Stack(
-                                            children: <Widget>[
-                                              Container(
-                                                margin:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 0.0, 0, 5.0),
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                        255, 199, 249, 204),
-                                                  
-                                                  // borderRadius:
-                                                  //     BorderRadius.circular(
-                                                  //         5.0),
-                                                ),
-                                                child: Row(children: [
-                                                  Container(
-                                                    width: 110,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      TrainDetails(
-                                                                          train:
-                                                                              southTrainList.trainNo)),
-                                                            );
-                                                          },
+                          ),
+                    
+                    Container( //tab ที่ 4
+              
+                color: const Color.fromARGB(255, 255, 255, 255),
+              
+                child: Column(
+                  children: [
+                    Text('สายใต้' ,style: GoogleFonts.prompt(
+                              color: Colors.black,
+                              fontSize: 14.0,
+                    ),),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 18, top: 5, right: 18, bottom: 10),
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            
+                            Container(
+                height: 45,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  child: Container(
+                    color: const Color(0xff009889),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .start, //Center Row contents horizontally,
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, //Center Row contents vertically,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "ขบวน",
+                            style: GoogleFonts.prompt(
+                              color: Colors.white,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "ต้นทาง (เวลาออก)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                              Text(
+                                "ปลายทาง (เวลาถึง)",
+                                style: GoogleFonts.prompt(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          
+                          
+                          
+                        ]),
+                  ),
+                ),
+                          ),
+                          SizedBox(height: 5,),
+              
+                            //เนื้อหาตารางใหม่
+                            SizedBox(
+                              child: Container(
+                                height: 395,
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10.0, right: 10),
+                                  child: Container(
+                                    child: RawScrollbar(
+                                      thumbColor: const Color.fromARGB(
+                                          255, 132, 132, 132),
+                                      radius: const Radius.circular(20),
+                                      thickness: 5,
+                                      child: Container(
+                                        color: const Color.fromARGB(
+                                            255, 255, 255, 255),
+                                        child: ListView.builder(
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: southTrainLists.length,
+                                          itemBuilder:
+                                              (BuildContext context, int index) {
+                                            SouthTrainList
+                                                southTrainList =
+                                                southTrainLists[index];
+                                            return Stack(
+                                              children: <Widget>[
+                                                Container(
+                                                  margin:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 0.0, 0, 5.0),
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color.fromARGB(
+                                          255, 199, 249, 204),
+                                                    
+                                                    // borderRadius:
+                                                    //     BorderRadius.circular(
+                                                    //         5.0),
+                                                  ),
+                                                  child: Row(children: [
+                                                    Container(
+                                                      width: 110,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
+                                                          child: GestureDetector(
+                                                            onTap: () {
+                                                              //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        TrainDetails(
+                                                                            train:
+                                                                                southTrainList.trainNo)),
+                                                              );
+                                                            },
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'ขบวน ${southTrainList.trainNo}', //เลขขบวน
+                                                                  style: GoogleFonts.prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize:
+                                                                          17.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 2,
+                                                                ),
+                                                                Text(
+                                                                  southTrainList
+                                                                      .trainType, //ประเภทขบวน
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .prompt(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )),
+                                                    ),
+                                                    Container(
+                                                      width: 215,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0,
+                                                                  top: 5),
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Text(
-                                                                'ขบวน ${southTrainList.trainNo}', //เลขขบวน
-                                                                style: GoogleFonts.prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        17.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    southTrainList
+                                                                        .departureStation, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ออก', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(width: 5,),
+                                                                  
+                                                                  Text(
+                                                                    southTrainList
+                                                                        .departureTime, //สถานีต้นทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                               const SizedBox(
                                                                 height: 2,
                                                               ),
-                                                              Text(
-                                                                southTrainList
-                                                                    .trainType, //ประเภทขบวน
-                                                                style:
-                                                                    GoogleFonts
+                                                              Row(
+                                                                children: [
+                                                                  Text(
+                                                                    southTrainList
+                                                                        .arriveStation, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
                                                                         .prompt(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 7,
+                                                                  ),
+                                                                  Text(
+                                                                      'ถึง', //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 12.0,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 5,
+                                                                  ),
+                                                                  Text(
+                                                                    southTrainList
+                                                                        .arriveTime, //สถานีปลายทางแต่ละขบวน
+                                                                    style: GoogleFonts
+                                                                        .prompt(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize: 15.0,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
-                                                          ),
-                                                        )),
-                                                  ),
-                                                  Container(
-                                                    width: 215,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 5),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  southTrainList
-                                                                      .departureStation, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ออก', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(width: 5,),
-                                                                
-                                                                Text(
-                                                                  southTrainList
-                                                                      .departureTime, //สถานีต้นทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 2,
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  southTrainList
-                                                                      .arriveStation, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 7,
-                                                                ),
-                                                                Text(
-                                                                    'ถึง', //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 12.0,
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 5,
-                                                                ),
-                                                                Text(
-                                                                  southTrainList
-                                                                      .arriveTime, //สถานีปลายทางแต่ละขบวน
-                                                                  style: GoogleFonts
-                                                                      .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize: 15.0,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        )),
-                                                  ),
-                                                  
-                                                ]),
-                                              )
-                                            ],
-                                          );
-                                        },
+                                                          )),
+                                                    ),
+                                                    
+                                                  ]),
+                                                )
+                                              ],
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-
-                          //เนื้อหาตารางใหม่
-                        ],
+                            )
+              
+                            //เนื้อหาตารางใหม่
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-                ],
+                  ],
+                ),
+                          ),
+                  ],
+                ),
               ),
             ),
           ],
