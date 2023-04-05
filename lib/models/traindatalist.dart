@@ -40,6 +40,7 @@ class TrainList {
   String line; //สาย
   List<Seating> seats;
   List<Destination> desinations;
+  String chart;
 
   TrainList(
       {required this.trainNo,
@@ -50,7 +51,8 @@ class TrainList {
       required this.departureTime,
       required this.line,
       required this.seats,
-      required this.desinations});
+      required this.desinations,
+      required this.chart});
 }
 
 List<List<TrainList>> trainLists = [
@@ -99,7 +101,8 @@ List<List<TrainList>> trainLists = [
             scenename: 'แกรนด์แคนยอนชลบุรี',
             betweenstation: 'สถานีชลบุรี-บางพระ',
           ),
-        ]),
+        ],
+        chart: 'assets/images/trainchart/trainchart_sprinter.png'),
     TrainList(
         trainNo: '8',
         trainType: 'ด่วนพิเศษดีเซลราง',
@@ -109,7 +112,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:55',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '9',
         trainType: 'ด่วนพิเศษ CNR',
@@ -118,29 +122,9 @@ List<List<TrainList>> trainLists = [
         arriveStation: 'เชียงใหม่',
         arriveTime: '07:15',
         line: 'North',
-        seats: [
-          Seating(
-            //ชนิดที่ 1
-            imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
-            imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
-            coachname: 'ชั้น 2 บนทป.40CN รถนั่งและนอนปรับอากาศชั้น 2 CNR',
-            description: 'มีปลั็กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
-          ),
-          Seating(
-            //ชนิดที่ 2
-            imageUrlExterior:
-                'assets/images/trainimage/2ndsprinter_Exterior.jpg',
-            imageUrlInterior:
-                'assets/images/trainimage/2ndsprinter_Interior.png',
-            imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
-            coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
-            description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
-          ),
-        ],
-        desinations: []),
+        seats: [],
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '10',
         trainType: 'ด่วนพิเศษ CNR',
@@ -150,7 +134,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '06:50',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '13',
         trainType: 'ด่วนพิเศษ',
@@ -160,7 +145,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:40',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '14',
         trainType: 'ด่วนพิเศษ',
@@ -170,7 +156,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '06:10',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '51',
         trainType: 'ด่วน',
@@ -180,7 +167,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:10',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '52',
         trainType: 'ด่วน',
@@ -190,7 +178,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '05:10',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '109',
         trainType: 'เร็ว',
@@ -200,7 +189,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '04:05',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '102',
         trainType: 'เร็ว',
@@ -210,7 +200,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:25',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '107',
         trainType: 'เร็ว',
@@ -220,7 +211,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '05:15',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '108',
         trainType: 'เร็ว',
@@ -230,7 +222,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '04:30',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '111',
         trainType: 'เร็ว',
@@ -240,7 +233,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:30',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '112',
         trainType: 'เร็ว',
@@ -250,7 +244,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:20',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '201',
         trainType: 'ธรรมดา',
@@ -260,7 +255,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:55',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '202',
         trainType: 'ธรรมดา',
@@ -270,7 +266,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:05',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '207',
         trainType: 'ธรรมดา',
@@ -280,7 +277,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:35',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '208',
         trainType: 'ธรรมดา',
@@ -290,7 +288,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:15',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '209',
         trainType: 'ธรรมดา',
@@ -300,7 +299,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '15:40',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '210',
         trainType: 'ธรรมดา',
@@ -310,7 +310,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:35',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '211',
         trainType: 'ธรรมดา',
@@ -320,7 +321,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:15',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '212',
         trainType: 'ธรรมดา',
@@ -330,7 +332,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:10',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '301',
         trainType: 'ชานเมือง',
@@ -340,7 +343,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:40',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '302',
         trainType: 'ชานเมือง',
@@ -350,7 +354,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:35',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '303',
         trainType: 'ชานเมือง',
@@ -360,7 +365,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:05',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '304',
         trainType: 'ชานเมือง',
@@ -370,7 +376,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:35',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '313',
         trainType: 'ชานเมือง',
@@ -380,7 +387,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:45',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '314',
         trainType: 'ชานเมือง',
@@ -390,7 +398,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '06:50',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '317',
         trainType: 'ชานเมือง',
@@ -400,7 +409,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:20',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '318',
         trainType: 'ชานเมือง',
@@ -410,7 +420,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:50',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '401',
         trainType: 'ท้องถิ่น',
@@ -420,7 +431,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:55',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '402',
         trainType: 'ท้องถิ่น',
@@ -430,7 +442,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:45',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '403',
         trainType: 'ท้องถิ่น',
@@ -440,7 +453,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:40',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '410',
         trainType: 'ท้องถิ่น',
@@ -450,7 +464,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:10',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '407',
         trainType: 'ท้องถิ่น',
@@ -460,7 +475,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:35',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '408',
         trainType: 'ท้องถิ่น',
@@ -470,7 +486,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:55',
         line: 'North',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
   ],
   [
     //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา
@@ -483,7 +500,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:00',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '22',
         trainType: 'ด่วนพิเศษดีเซลราง',
@@ -493,7 +511,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '22:35',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '23',
         trainType: 'ด่วนพิเศษ CNR',
@@ -503,7 +522,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:35',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '24',
         trainType: 'ด่วนพิเศษ CNR',
@@ -513,7 +533,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '04:50',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '25',
         trainType: 'ด่วนพิเศษ CNR',
@@ -523,7 +544,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '06:25',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '26',
         trainType: 'ด่วนพิเศษ CNR',
@@ -533,7 +555,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '05:50',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '71',
         trainType: 'ด่วน',
@@ -543,7 +566,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:50',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '72',
         trainType: 'ด่วน',
@@ -553,7 +577,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '75',
         trainType: 'ด่วน',
@@ -563,7 +588,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '76',
         trainType: 'ด่วน',
@@ -573,7 +599,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:35',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '133',
         trainType: 'เร็ว',
@@ -583,7 +610,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:55',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '134',
         trainType: 'เร็ว',
@@ -593,7 +621,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '05:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '135',
         trainType: 'เร็ว',
@@ -603,7 +632,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:00',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '136',
         trainType: 'เร็ว',
@@ -613,7 +643,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:55',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '139',
         trainType: 'เร็ว',
@@ -623,7 +654,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '06:15',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '140',
         trainType: 'เร็ว',
@@ -633,7 +665,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:10',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '141',
         trainType: 'เร็ว',
@@ -643,7 +676,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:20',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '142',
         trainType: 'เร็ว',
@@ -653,7 +687,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '04:10',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '233',
         trainType: 'ธรรมดา',
@@ -663,7 +698,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:00',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '234',
         trainType: 'ธรรมดา',
@@ -673,7 +709,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:15',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '339',
         trainType: 'ชานเมือง',
@@ -683,7 +720,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:05',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '340',
         trainType: 'ชานเมือง',
@@ -693,7 +731,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:10',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '341',
         trainType: 'ชานเมือง',
@@ -703,7 +742,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:00',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '342',
         trainType: 'ชานเมือง',
@@ -713,7 +753,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '415',
         trainType: 'ท้องถิ่น',
@@ -723,7 +764,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:05',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '418',
         trainType: 'ท้องถิ่น',
@@ -733,7 +775,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:35',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '417',
         trainType: 'ท้องถิ่น',
@@ -743,7 +786,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '21:00',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '416',
         trainType: 'ท้องถิ่น',
@@ -753,7 +797,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:55',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '419',
         trainType: 'ท้องถิ่น',
@@ -763,7 +808,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:45',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '420',
         trainType: 'ท้องถิ่น',
@@ -773,7 +819,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '21:10',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '421',
         trainType: 'ท้องถิ่น',
@@ -783,7 +830,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:15',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '422',
         trainType: 'ท้องถิ่น',
@@ -793,7 +841,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:15',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '423',
         trainType: 'ท้องถิ่น',
@@ -803,7 +852,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '05:40',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '424',
         trainType: 'ท้องถิ่น',
@@ -813,7 +863,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:50',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '425',
         trainType: 'ท้องถิ่น',
@@ -823,7 +874,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '426',
         trainType: 'ท้องถิ่น',
@@ -833,7 +885,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:25',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '427',
         trainType: 'ท้องถิ่น',
@@ -843,7 +896,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:15',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '428',
         trainType: 'ท้องถิ่น',
@@ -853,7 +907,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:45',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '429',
         trainType: 'ท้องถิ่น',
@@ -863,7 +918,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:25',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '430',
         trainType: 'ท้องถิ่น',
@@ -873,7 +929,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:20',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '431',
         trainType: 'ท้องถิ่น',
@@ -883,7 +940,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '432',
         trainType: 'ท้องถิ่น',
@@ -893,7 +951,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:30',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '433',
         trainType: 'ท้องถิ่น',
@@ -903,7 +962,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:08',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '434',
         trainType: 'ท้องถิ่น',
@@ -913,7 +973,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:10',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '437',
         trainType: 'ท้องถิ่น',
@@ -923,7 +984,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:26',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '438',
         trainType: 'ท้องถิ่น',
@@ -933,7 +995,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:40',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '439',
         trainType: 'ท้องถิ่น',
@@ -943,7 +1006,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:40',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '440',
         trainType: 'ท้องถิ่น',
@@ -953,7 +1017,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:40',
         line: 'NorthEast',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
   ],
   [
     //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา
@@ -966,7 +1031,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:50',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '998',
         trainType: 'เร็ว',
@@ -976,7 +1042,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:55',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '275',
         trainType: 'ธรรมดา',
@@ -986,7 +1053,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:11',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '276',
         trainType: 'ธรรมดา',
@@ -996,7 +1064,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '19:40',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '277',
         trainType: 'ธรรมดา',
@@ -1006,7 +1075,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:20',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '278',
         trainType: 'ธรรมดา',
@@ -1016,7 +1086,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:15',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '279',
         trainType: 'ธรรมดา',
@@ -1026,7 +1097,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:21',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '280',
         trainType: 'ธรรมดา',
@@ -1036,7 +1108,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:05',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '281',
         trainType: 'ธรรมดา',
@@ -1046,7 +1119,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:35',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '282',
         trainType: 'ธรรมดา',
@@ -1056,7 +1130,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:15',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '283',
         trainType: 'ธรรมดา',
@@ -1066,7 +1141,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:20',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '284',
         trainType: 'ธรรมดา',
@@ -1076,7 +1152,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:15',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '367',
         trainType: 'ชานเมือง',
@@ -1086,7 +1163,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:45',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '368',
         trainType: 'ชานเมือง',
@@ -1096,7 +1174,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:10',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '371',
         trainType: 'ชานเมือง',
@@ -1106,7 +1185,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:32',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '372',
         trainType: 'ชานเมือง',
@@ -1116,7 +1196,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:15',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '379',
         trainType: 'ชานเมือง',
@@ -1126,7 +1207,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:05',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '380',
         trainType: 'ชานเมือง',
@@ -1136,7 +1218,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:45',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '383',
         trainType: 'ชานเมือง',
@@ -1146,7 +1229,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:00',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '384',
         trainType: 'ชานเมือง',
@@ -1156,7 +1240,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:10',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '389',
         trainType: 'ชานเมือง',
@@ -1166,7 +1251,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '13:30',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '390',
         trainType: 'ชานเมือง',
@@ -1176,7 +1262,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '15:25',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '391',
         trainType: 'ชานเมือง',
@@ -1186,7 +1273,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:25',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '388',
         trainType: 'ชานเมือง',
@@ -1196,7 +1284,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:35',
         line: 'East',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
   ],
   [
     //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา
@@ -1209,7 +1298,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:25',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '32',
         trainType: 'ด่วนพิเศษ CNR',
@@ -1219,7 +1309,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '37',
         trainType: 'ด่วนพิเศษ',
@@ -1229,7 +1320,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:30',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '38',
         trainType: 'ด่วนพิเศษ',
@@ -1239,7 +1331,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '39',
         trainType: 'ด่วนพิเศษดีเซลราง',
@@ -1249,7 +1342,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:25',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '40',
         trainType: 'ด่วนพิเศษดีเซลราง',
@@ -1259,7 +1353,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:30',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '43',
         trainType: 'ด่วนพิเศษดีเซลราง',
@@ -1269,7 +1364,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '44',
         trainType: 'ด่วนพิเศษดีเซลราง',
@@ -1279,7 +1375,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '45',
         trainType: 'ด่วนพิเศษ',
@@ -1289,7 +1386,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '46',
         trainType: 'ด่วนพิเศษ',
@@ -1299,7 +1397,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '83',
         trainType: 'ด่วน',
@@ -1309,7 +1408,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '84',
         trainType: 'ด่วน',
@@ -1319,7 +1419,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:25',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '85',
         trainType: 'ด่วน',
@@ -1329,7 +1430,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '86',
         trainType: 'ด่วน',
@@ -1339,7 +1441,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '167',
         trainType: 'เร็ว',
@@ -1349,7 +1452,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '168',
         trainType: 'เร็ว',
@@ -1359,7 +1463,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:00',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '169',
         trainType: 'เร็ว',
@@ -1369,7 +1474,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '170',
         trainType: 'เร็ว',
@@ -1379,7 +1485,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:25',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '171',
         trainType: 'เร็ว',
@@ -1389,7 +1496,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '172',
         trainType: 'เร็ว',
@@ -1399,7 +1507,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '10:30',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '251',
         trainType: 'ธรรมดา',
@@ -1409,7 +1518,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:00',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '252',
         trainType: 'ธรรมดา',
@@ -1419,7 +1529,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '11:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '255',
         trainType: 'ธรรมดา',
@@ -1429,7 +1540,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:20',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '254',
         trainType: 'ธรรมดา',
@@ -1439,7 +1551,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:30',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '257',
         trainType: 'ธรรมดา',
@@ -1449,7 +1562,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:35',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '258',
         trainType: 'ธรรมดา',
@@ -1459,7 +1573,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:40',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '259',
         trainType: 'ธรรมดา',
@@ -1469,7 +1584,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:35',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '260',
         trainType: 'ธรรมดา',
@@ -1479,7 +1595,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '261',
         trainType: 'ธรรมดา',
@@ -1489,7 +1606,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:15',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '262',
         trainType: 'ธรรมดา',
@@ -1499,7 +1617,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:20',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '351',
         trainType: 'ชานเมือง',
@@ -1509,7 +1628,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:35',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '352',
         trainType: 'ชานเมือง',
@@ -1519,7 +1639,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:10',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '355',
         trainType: 'ชานเมือง',
@@ -1529,7 +1650,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '20:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '356',
         trainType: 'ชานเมือง',
@@ -1539,7 +1661,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '445',
         trainType: 'ท้องถิ่น',
@@ -1549,7 +1672,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:00',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '446',
         trainType: 'ท้องถิ่น',
@@ -1559,7 +1683,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:05',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '447',
         trainType: 'ท้องถิ่น',
@@ -1569,7 +1694,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:40',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '448',
         trainType: 'ท้องถิ่น',
@@ -1579,7 +1705,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:55',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '451',
         trainType: 'ท้องถิ่น',
@@ -1589,7 +1716,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '452',
         trainType: 'ท้องถิ่น',
@@ -1599,7 +1727,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '453',
         trainType: 'ท้องถิ่น',
@@ -1609,7 +1738,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:40',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '454',
         trainType: 'ท้องถิ่น',
@@ -1619,7 +1749,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:35',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '455',
         trainType: 'ท้องถิ่น',
@@ -1629,7 +1760,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:30',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '456',
         trainType: 'ท้องถิ่น',
@@ -1639,7 +1771,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '13:40',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '463',
         trainType: 'ท้องถิ่น',
@@ -1649,7 +1782,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '12:45',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '464',
         trainType: 'ท้องถิ่น',
@@ -1659,7 +1793,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '18:25',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '485',
         trainType: 'ท้องถิ่น',
@@ -1669,7 +1804,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:20',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '486',
         trainType: 'ท้องถิ่น',
@@ -1679,7 +1815,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:33',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '489',
         trainType: 'ท้องถิ่น',
@@ -1689,7 +1826,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:40',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '490',
         trainType: 'ท้องถิ่น',
@@ -1699,7 +1837,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:00',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '947',
         trainType: 'ด่วนพิเศษ',
@@ -1709,7 +1848,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '08:35',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '948',
         trainType: 'ด่วนพิเศษ',
@@ -1719,7 +1859,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '09:50',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '949',
         trainType: 'ด่วนพิเศษ',
@@ -1729,7 +1870,8 @@ List<List<TrainList>> trainLists = [
         arriveTime: '14:55',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
     TrainList(
         trainNo: '950',
         trainType: 'ด่วนพิเศษ',
@@ -1739,6 +1881,7 @@ List<List<TrainList>> trainLists = [
         arriveTime: '16:35',
         line: 'South',
         seats: [],
-        desinations: []),
+        desinations: [],
+        chart: ''),
   ]
 ];

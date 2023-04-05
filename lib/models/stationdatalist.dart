@@ -1,16 +1,23 @@
-class TourPlace {
-  String name;
-  String postition;
-  TourPlace({
-    required this.name,
-    required this.postition,
+class Destination {
+  String imageUrl; //รูปสถานที่
+  String locationName; //ชื่อสถานที่
+  String locationaddress; //ที่อยู่สถานที่
+  String description; //คำอธิบายสถานที่โดยย่อ
+  String howtotravel; //วิธีเดินทางไป
+
+  Destination({
+    required this.imageUrl,
+    required this.locationName,
+    required this.locationaddress,
+    required this.description,
+    required this.howtotravel,
   });
 }
 
 class StationList {
   String name;
   String postition;
-  List<TourPlace> places;
+  List<Destination> places;
   List<String> connects;
   List<String> comforts;
   List<String> lines;
