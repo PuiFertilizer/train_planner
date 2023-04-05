@@ -22,12 +22,13 @@ class AddTaskPage extends StatefulWidget {
 class _AddTaskPageState extends State<AddTaskPage> {
   final TaskController _taskController = Get.put(TaskController());
   final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _selectedAttraction = TextEditingController();
+
   DateTime _selectedDate = DateTime.now();
   String _endTime= "เลือกเวลา";
   String _startTime = "เลือกเวลา";
-  String _selectedAttraction = 'ไม่ระบุสถานที่';
   List<String> attractionList=[
-    'หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด','หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด'
+    'หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด','หาดนํ้าใส','หาดนางรำ','ท่าเรือจุกเสม็ด' ,'นครสวรรค์ - เชียงใหม่'
   ];
   @override
   Widget build(BuildContext context) {
@@ -43,29 +44,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           fontWeight: FontWeight.bold,),
               ),
               MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่', controller: _titleController,),
-              MyInputField(title: 'สถานที่', hint: _selectedAttraction,
-              widget: DropdownButton(
-                icon:Icon(Icons.keyboard_arrow_down,
-                color: Colors.grey,
-                ),
-                iconSize: 32,
-                elevation: 4,
-                underline: Container(height: 0,),
-                onChanged: (String? newValue){
-                  setState(() {
-                    _selectedAttraction = (newValue!);
-                  });
-                },
-                items: attractionList.map<DropdownMenuItem<String>>((String value){
-                  return DropdownMenuItem<String>(
-                    value: value.toString(),
-                    child: Text(value.toString())
-                  );
-                }
-                ).toList(),
-                //style: subTitleStyle,
-              ),
-              ),
+              MyInputField(title: 'สถานที่', hint: 'ระบุที่นี่', controller: _selectedAttraction,),
               MyInputField(title: 'วันที่ต้องการเพิ่มกิจกรรม', hint: DateFormat.yMd().format(_selectedDate),
               widget: IconButton(
                 icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),
@@ -145,7 +124,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     int value = await _taskController.addTask(
       task: Task(
       title: _titleController.text,
-      attraction: _selectedAttraction,
+      attraction: _selectedAttraction.text,
       date: DateFormat.yMd().format(_selectedDate),
       startTime: _startTime,
       endTime: _endTime,

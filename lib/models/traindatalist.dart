@@ -118,7 +118,28 @@ List<List<TrainList>> trainLists = [
         arriveStation: 'เชียงใหม่',
         arriveTime: '07:15',
         line: 'North',
-        seats: [],
+        seats: [
+          Seating(
+            //ชนิดที่ 1
+            imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
+            imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
+            imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
+            coachname: 'ชั้น 2 บนทป.40CN รถนั่งและนอนปรับอากาศชั้น 2 CNR',
+            description: 'มีปลั็กไฟทุกที่นั่ง',
+            imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
+          ),
+          Seating(
+            //ชนิดที่ 2
+            imageUrlExterior:
+                'assets/images/trainimage/2ndsprinter_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2ndsprinter_Interior.png',
+            imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
+            coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
+            description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
+            imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
+          ),
+        ],
         desinations: []),
     TrainList(
         trainNo: '10',

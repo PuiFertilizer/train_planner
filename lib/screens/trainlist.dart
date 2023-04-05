@@ -21,7 +21,7 @@ class _TrainlistState extends State<Trainlist> {
             drawer: NavBar(),
             appBar: AppBar(
               backgroundColor: const Color.fromARGB(255, 87, 204, 153),
-              title: const Text('รายชื่อขบวนรถทุกสาย'),
+              title: Text('รายชื่อขบวนรถทุกสาย',style: GoogleFonts.prompt(color: Colors.black),),
             ),
             body: Column(
               children: <Widget>[
@@ -42,16 +42,16 @@ class _TrainlistState extends State<Trainlist> {
                     ),
                     tabs: const [
                       Tab(
-                        text: 'สายเหนือ',
+                        text: 'เหนือ',
                       ),
                       Tab(
-                        text: 'สายอีสาน',
+                        text: 'อีสาน',
                       ),
                       Tab(
-                        text: 'สายตะวันออก',
+                        text: 'ตะวันออก',
                       ),
                       Tab(
-                        text: 'สายใต้',
+                        text: 'ใต้',
                       )
                     ],
                   ),
@@ -85,6 +85,7 @@ class DisplayTrain extends StatelessWidget {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                SizedBox(height: 10,),
                 Container(
                   height: 45,
                   color: const Color.fromARGB(255, 255, 255, 255),
@@ -140,7 +141,7 @@ class DisplayTrain extends StatelessWidget {
                 //เนื้อหาตารางใหม่
                 SizedBox(
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.45,
+                    height: MediaQuery.of(context).size.height * 0.45, //ขนาดหน้าจอ
                     color: const Color.fromARGB(255, 255, 255, 255),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0, right: 10),
