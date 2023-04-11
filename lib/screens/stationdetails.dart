@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:train_planner/models/stationdatalist.dart';
-import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationTouristAttractions.dart';
@@ -33,8 +32,20 @@ class _StationDetailsState extends State<StationDetails> {
 
   @override
   Widget build(BuildContext context) {
-    StationList stationdetail = stationLists[
-        stationLists.indexWhere((element) => element.name == widget.station)];
+    StationList stationdetail;
+    int stindex =
+        stationLists.indexWhere((element) => element.name == widget.station);
+    if (stindex >= 0) {
+      stationdetail = stationLists[stindex];
+    } else {
+      stationdetail = StationList(
+          name: '',
+          postition: '',
+          places: [],
+          connects: [],
+          comforts: [],
+          lines: []);
+    }
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -114,10 +125,11 @@ class _StationDetailsState extends State<StationDetails> {
                                 fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(
-                            width: 10,
+                            width: 5,
                           ),
                           Text(
-                            "ต.วัดเกต อ.เมืองเชียงใหม่ จ.เชียงใหม่", // ที่ตั้งสถานีดึงตาม database
+                            stationdetail
+                                .postition, // ที่ตั้งสถานีดึงตาม database
                             style: GoogleFonts.prompt(
                               color: Colors.black,
                               fontSize: 16.0,
@@ -131,11 +143,7 @@ class _StationDetailsState extends State<StationDetails> {
               ],
             ),
             Container(
-              height: 10,
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
-            Container(
-              height: 50,
+              height: MediaQuery.of(context).size.height * 0.07,
               color: const Color.fromARGB(255, 255, 255, 255),
               child: Padding(
                 padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -221,141 +229,138 @@ class _StationDetailsState extends State<StationDetails> {
             ),
             SizedBox(
               child: Container(
-                height: 320,
+                height: MediaQuery.of(context).size.height * 0.35,
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30.0, right: 30),
-                  child: Container(
-                    child: RawScrollbar(
-                      thumbColor: const Color.fromARGB(255, 132, 132, 132),
-                      radius: const Radius.circular(20),
-                      thickness: 5,
-                      // color: Color.fromARGB(255, 255, 255, 255),
-                      child: Container(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: stationTrainLists.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            StationTrainList stationTrainList =
-                                stationTrainLists[index];
-                            return Stack(
-                              children: <Widget>[
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
-                                  height: 50.0,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                        255, 199, 249, 204),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        10.0, 2.0, 10.0, 2.0),
-                                    child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Row(
-                                              //แบ่งครึ่งหน้า
-                                              mainAxisAlignment: MainAxisAlignment
-                                                  .center, //Center Row contents horizontally,
-                                              crossAxisAlignment: CrossAxisAlignment
-                                                  .center, //Center Row contents vertically,
-                                              children: [
-                                                Container(
-                                                  width: 50,
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                TrainDetails(
-                                                                  train: stationTrainList
-                                                                      .trainNo,
-                                                                )),
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      stationTrainList
-                                                          .trainNo, //เลขขบวน
-                                                      style: GoogleFonts.prompt(
-                                                        color: Colors.black,
-                                                        fontSize: 14.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width: 20,
-                                                ),
-                                                //SizedBox(width: 5,),
-                                                Column(
-                                                  children: [
-                                                    Container(
-                                                      width: 110,
-                                                      child: Text(
-                                                        stationTrainList
-                                                            .originStation, //ชื่อสถานีต้นทางขบวน
-                                                        style:
-                                                            GoogleFonts.prompt(
-                                                          color: Colors.black,
-                                                          fontSize: 14.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 110,
-                                                      child: Text(
-                                                        stationTrainList
-                                                            .destinationStation, //ชื่อสถานีปลายทางขบวน
-                                                        style:
-                                                            GoogleFonts.prompt(
-                                                          color: Colors.black,
-                                                          fontSize: 14.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Container(
-                                                  width: 50,
-                                                ),
-
-                                                Container(
-                                                  width: 40,
+                  child: RawScrollbar(
+                    thumbColor: const Color.fromARGB(255, 132, 132, 132),
+                    radius: const Radius.circular(20),
+                    thickness: 5,
+                    // color: Color.fromARGB(255, 255, 255, 255),
+                    child: Container(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: stationTrainLists.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          StationTrainList stationTrainList =
+                              stationTrainLists[index];
+                          return Stack(
+                            children: <Widget>[
+                              Container(
+                                margin:
+                                    const EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
+                                height: 50.0,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 199, 249, 204),
+                                  borderRadius: BorderRadius.circular(0.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      10.0, 2.0, 10.0, 2.0),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Row(
+                                            //แบ่งครึ่งหน้า
+                                            mainAxisAlignment: MainAxisAlignment
+                                                .center, //Center Row contents horizontally,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .center, //Center Row contents vertically,
+                                            children: [
+                                              SizedBox(
+                                                width: 50,
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              TrainDetails(
+                                                                train:
+                                                                    stationTrainList
+                                                                        .trainNo,
+                                                              )),
+                                                    );
+                                                  },
                                                   child: Text(
                                                     stationTrainList
-                                                        .stationTime, //เวลารถเข้า-ออก แต่ละสถานี
+                                                        .trainNo, //เลขขบวน
                                                     style: GoogleFonts.prompt(
                                                       color: Colors.black,
                                                       fontSize: 14.0,
                                                     ),
                                                   ),
                                                 ),
-                                              ]),
-                                        ]),
-                                  ),
+                                              ),
+                                              Container(
+                                                width: 20,
+                                              ),
+                                              //SizedBox(width: 5,),
+                                              Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width: 110,
+                                                    child: Text(
+                                                      stationTrainList
+                                                          .originStation, //ชื่อสถานีต้นทางขบวน
+                                                      style: GoogleFonts.prompt(
+                                                        color: Colors.black,
+                                                        fontSize: 14.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 110,
+                                                    child: Text(
+                                                      stationTrainList
+                                                          .destinationStation, //ชื่อสถานีปลายทางขบวน
+                                                      style: GoogleFonts.prompt(
+                                                        color: Colors.black,
+                                                        fontSize: 14.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+
+                                              Container(
+                                                width: 50,
+                                              ),
+
+                                              SizedBox(
+                                                width: 40,
+                                                child: Text(
+                                                  stationTrainList
+                                                      .stationTime, //เวลารถเข้า-ออก แต่ละสถานี
+                                                  style: GoogleFonts.prompt(
+                                                    color: Colors.black,
+                                                    fontSize: 14.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
+                                      ]),
                                 ),
-                                Positioned(
-                                  right: 40.0,
-                                  top: 20.0,
-                                  bottom: 10.0,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                              Positioned(
+                                right: 40.0,
+                                top: 20.0,
+                                bottom: 10.0,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              )
+                            ],
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -425,7 +430,9 @@ class _StationDetailsState extends State<StationDetails> {
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return DialogConnections();
+                                    return DialogConnections(
+                                      connect: stationdetail.connects,
+                                    );
                                   });
                             },
                             child: Column(
@@ -457,7 +464,9 @@ class _StationDetailsState extends State<StationDetails> {
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return DialogConvience();
+                                    return DialogConvience(
+                                      convience: stationdetail.comforts,
+                                    );
                                   });
                             },
                             child: Column(
@@ -489,7 +498,9 @@ class _StationDetailsState extends State<StationDetails> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const StationTouristAttractions()),
+                                        StationTouristAttractions(
+                                          station: stationdetail,
+                                        )),
                               );
                             },
                             child: Column(
@@ -598,169 +609,60 @@ List<StationTrainList> stationTrainLists = [
 ];
 
 class DialogConvience extends StatelessWidget {
+  const DialogConvience({super.key, required this.convience});
+  final List<String> convience;
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Stack(
-        children: [
-          Container(
-            height: 300,
-            width: 600,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(5, 2, 5, 2),
-              child: Column(children: [
-                Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      'สิ่งอำนวยความสะดวกของสถานี',
-                      style: GoogleFonts.prompt(
-                          fontWeight: FontWeight.bold, fontSize: 16),
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
+    return SimpleDialog(
+        title: const Text('สิ่งอำนวยความสะดวก'),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        children: <Widget>[
+          SizedBox(
+              height: 400,
+              width: 300,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: convience.length,
+                  itemBuilder: (context, index) {
+                    return Container(
                       height: 32,
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/ticket.png',
-                              height: 30,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'จำหน่ายตั๋วล่วงหน้า',
-                              style: GoogleFonts.prompt(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          //ชื่อประเภท
+                          Image.asset(
+                            comfortPic[convience[index]]!,
+                            width: 25,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            convience[index],
+                            style: GoogleFonts.prompt(
                                 color: Colors.black,
                                 fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 32,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/ticket.png',
-                              height: 30,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'จำหน่ายตั๋วประจำวัน',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 32,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/toliet.png',
-                              height: 30,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'ห้องนำ้สะอาด',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 32,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-                            Image.asset(
-                              'assets/images/handicaptoliet.png',
-                              height: 30,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'ห้องนำ้ผู้พิการ',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                )
-              ]),
-            ),
-          )
-        ],
-      ),
-    );
+                    );
+                  }))
+        ]);
   }
 }
 
 class DialogMap extends StatelessWidget {
+  const DialogMap({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: 300,
             width: 600,
             child: Padding(
@@ -776,7 +678,7 @@ class DialogMap extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                     //color: Colors.blue,
                     height: 240.0,
                     child: Container(
@@ -792,196 +694,46 @@ class DialogMap extends StatelessWidget {
 }
 
 class DialogConnections extends StatelessWidget {
+  const DialogConnections({super.key, required this.connect});
+  final List<String> connect;
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Stack(
-        children: [
-          Container(
-            height: 400,
-            width: 600,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(5, 2, 5, 2),
-              child: Column(children: [
-                Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      'การเชื่อมต่อกับระบบขนส่งอื่นๆ',
-                      style: GoogleFonts.prompt(
-                          fontWeight: FontWeight.bold, fontSize: 16),
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
+    return SimpleDialog(
+        title: const Text('การเชื่อมต่อกับระบบขนส่งอื่นๆ'),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        children: <Widget>[
+          SizedBox(
+              height: 400,
+              width: 300,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: connect.length,
+                  itemBuilder: (context, index) {
+                    return Container(
                       height: 32,
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-
-                            Text(
-                              'สถานีรถไฟใกล้เคียง',
-                              style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Column(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Row(children: [
-                            Image.asset(
-                              'assets/images/mrtblueline.png',
-                              width: 25,
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'สายสีนำ้เงิน สถานีบางซื่อ',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ]),
-                          const SizedBox(
-                            height: 5,
+                          //ชื่อประเภท
+                          Image.asset(
+                            connectPic[connect[index]]!,
+                            width: 25,
                           ),
-                          Row(children: [
-                            Image.asset(
-                              'assets/images/darkredline.png',
-                              width: 25,
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ]),
                           const SizedBox(
-                            height: 5,
+                            width: 5,
                           ),
-                          Row(children: [
-                            Image.asset(
-                              'assets/images/lightredline.png',
-                              width: 25,
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
-                              style: GoogleFonts.prompt(
+                          Text(
+                            connect[index],
+                            style: GoogleFonts.prompt(
                                 color: Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ]),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 32,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            //ชื่อสถานที่
-
-                            Text(
-                              'รถโดยสาร',
-                              style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Column(
-                        children: <Widget>[
-                          Row(children: [
-                            Image.asset(
-                              'assets/images/bus.png',
-                              width: 25,
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ]),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(children: [
-                            Image.asset(
-                              'assets/images/taxi.png',
-                              width: 25,
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'Taxi บริการที่หน้าสถานี',
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ]),
-                          const SizedBox(
-                            height: 5,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                )
-              ]),
-            ),
-          )
-        ],
-      ),
-    );
+                    );
+                  }))
+        ]);
   }
 }

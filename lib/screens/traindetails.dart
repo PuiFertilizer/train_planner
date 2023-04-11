@@ -175,7 +175,7 @@ class _TrainDetailsState extends State<TrainDetails> {
       child: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.45,
+            height: MediaQuery.of(context).size.height * 0.50,
             child: Padding(
               padding: const EdgeInsets.only(
                   left: 18, top: 18, right: 18, bottom: 10),
