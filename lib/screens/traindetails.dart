@@ -688,43 +688,42 @@ class _TrainDetailsState extends State<TrainDetails> {
                               height: 10,
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const SizedBox(
-                                  width: 1,
-                                ),
-                                const Icon(
-                                  Icons.arrow_back_sharp,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  size: 20,
-                                ),
-                                const SizedBox(
-                                  width: 2,
-                                ),
-                                Text(
-                                  traindetail
-                                      .arriveStation, //ชื่อสถานีปลายทางของแต่ละขบวน
-                                  style: GoogleFonts.prompt(
+                                
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.arrow_back_sharp,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      size: 20,
+                                    ),
+                                     Text(
+                                     'ทิศเที่ยวไป', //ชื่อสถานีปลายทางของแต่ละขบวน
+                                      style: GoogleFonts.prompt(
                                       textStyle: const TextStyle(
                                     fontSize: 12,
                                   )),
                                 ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  traindetail
-                                      .departureStation, //ชื่อสถานีต้นทางของแต่ละขบวน
-                                  style: GoogleFonts.prompt(
-                                      textStyle: const TextStyle(
-                                    fontSize: 12,
-                                  )),
+
+                                  ],
                                 ),
+                                
+                               
                                 const SizedBox(
+                                  width: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'ทิศเที่ยวกลับ', //ชื่อสถานีปลายทางของแต่ละขบวน
+                                      style: GoogleFonts.prompt(
+                                          textStyle: const TextStyle(
+                                        fontSize: 12,
+                                      )),
+                                    ),
+                                    const SizedBox(
                                   width: 2,
                                 ),
                                 const Icon(
@@ -732,8 +731,13 @@ class _TrainDetailsState extends State<TrainDetails> {
                                   color: Color.fromARGB(255, 0, 0, 0),
                                   size: 20,
                                 ),
+                                  ],
+                                ),
+                                
+                                
                               ],
                             ),
+                            
                           ],
                         ),
                       ),
@@ -763,7 +767,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                             Container(
                               margin: const EdgeInsets.fromLTRB(
                                   0.0, 10.0, 0.0, 5.0),
-                              height: 550,
+                              height: 508,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: const Color.fromARGB(255, 199, 249, 204),
@@ -838,7 +842,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                                     Text(seating.description,
                                         style: GoogleFonts.prompt(
                                             fontSize: 14, color: Colors.black)),
-
+                                    SizedBox(
+                                      height: 5,
+                                    ),
                                     Text('ผังที่นั่ง',
                                         style: GoogleFonts.prompt(
                                             fontSize: 16,
@@ -848,7 +854,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                       height: 5,
                                     ),
                                     Container(
-                                      height: 210,
+                                      height: 170,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: const Color.fromARGB(
@@ -941,7 +947,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                               .start,
                                                       children: [
                                                         Image(
-                                                          height: 120.0,
+                                                          height: 110.0,
                                                           //width: 200.0, //200
                                                           image: AssetImage(seating
                                                               .imageUrlSeatchart),
@@ -956,61 +962,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const SizedBox(
-                                                  width: 1,
-                                                ),
-                                                const Icon(
-                                                  Icons.arrow_back_sharp,
-                                                  color: Color.fromARGB(
-                                                      255, 0, 0, 0),
-                                                  size: 20,
-                                                ),
-                                                const SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Text(
-                                                  traindetail
-                                                      .arriveStation, //สถานีปลายทาง
-                                                  style: GoogleFonts.prompt(
-                                                      textStyle:
-                                                          const TextStyle(
-                                                    fontSize: 12,
-                                                  )),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              children: [
-                                                Text(
-                                                  traindetail
-                                                      .departureStation, // สถานีต้นทาง
-                                                  style: GoogleFonts.prompt(
-                                                      textStyle:
-                                                          const TextStyle(
-                                                    fontSize: 12,
-                                                  )),
-                                                ),
-                                                const SizedBox(
-                                                  width: 2,
-                                                ),
-                                                const Icon(
-                                                  Icons.arrow_forward_sharp,
-                                                  color: Color.fromARGB(
-                                                      255, 0, 0, 0),
-                                                  size: 20,
-                                                ),
-                                              ],
-                                            ),
+                                            
                                           ]),
                                     ),
                                     const SizedBox(
@@ -1049,12 +1001,12 @@ class _TrainDetailsState extends State<TrainDetails> {
     if (traindetail.chart == '') {
       return Image.asset(
         'assets/other/nodatapic.png',
-        height: 30,
+        height: 45,
       );
     }
     return Image.asset(
       traindetail.chart,
-      height: 30,
+      height: 45,
     );
   }
 
