@@ -14,6 +14,21 @@ class Destination {
   });
 }
 
+Map<String, String> connectPic = {
+  'Taxi บริการที่หน้าสถานี': 'assets/images/taxi.png',
+  'สายสีนำ้เงิน สถานีบางซื่อ': 'assets/images/mrtblueline.png',
+  'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์': 'assets/images/darkredline.png',
+  'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์': 'assets/images/lightredline.png',
+  'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้': 'assets/images/bus.png'
+};
+
+Map<String, String> comfortPic = {
+  'จำหน่ายตั๋วล่วงหน้า': 'assets/images/ticket.png',
+  'จำหน่ายตั๋วประจำวัน': 'assets/images/ticket.png',
+  'ห้องนำ้สะอาด': 'assets/images/toliet.png',
+  'ห้องนำ้ผู้พิการ': 'assets/images/handicaptoliet.png',
+};
+
 class StationList {
   String name;
   String postition;
@@ -1621,13 +1636,37 @@ List<StationList> stationLists = [
       connects: [],
       comforts: [],
       lines: []),
-  StationList(
-      name: 'เชียงใหม่',
-      postition: '',
-      places: [],
-      connects: [],
-      comforts: [],
-      lines: []),
+  StationList(name: 'เชียงใหม่', postition: '', places: [
+    Destination(
+        imageUrl: 'assets/images/nongkai.jpg',
+        locationName: 'ประตูท่าแพ',
+        locationaddress: 'ถนนท่าแพ ตำบลช้างคลาน อำเภอเมือง จังหวัดเชียงใหม่',
+        description:
+            'ประตูที่ตั้งอยู่ทางทิศตะวันออก และเป็น 1 ใน 5 ประตูเมืองชั้นในของเวียงเชียงใหม่อีกด้วย ซึ่งถือได้ว่าปัจจุบันนี้ ที่นี่เป็นแค่เพียงประตูเมืองเพียงแห่งเดียวที่มีบานประตูนั่นเอง',
+        howtotravel:
+            'จากสถานีเชียงใหม่ ให้ใช้บริการรถสี่ล้อแดงไปประตูท่าแพได้'),
+    Destination(
+        imageUrl: 'assets/images/surat.jpg',
+        locationName: 'สวนสัตว์เชียงใหม่',
+        locationaddress: 'ถนนห้วยแก้ว ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่',
+        description:
+            'มีสัตว์อยู่จำนวนมาก เช่น เม่น นกยูง เสือโคร่ง เสือขาว กวาง แรด ฮิปโปเตมัส ช้าง หมี อีเห็น ยีราฟ และยังมีส่วนจัดแสดงหมีแพนด้า ช่วงช่วง และ หลินฮุ่ย ทูตจากประเทศจีนอีกด้วย',
+        howtotravel:
+            'จากสถานีเชียงใหม่ ให้ใช้บริการรถสี่ล้อแดงไปสวนสัตว์โดยตรง'),
+  ], connects: [
+    'สายสีนำ้เงิน สถานีบางซื่อ',
+    'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
+    'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
+    'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้',
+    'Taxi บริการที่หน้าสถานี'
+  ], comforts: [
+    'จำหน่ายตั๋วล่วงหน้า',
+    'จำหน่ายตั๋วประจำวัน',
+    'ห้องนำ้สะอาด',
+    'ห้องนำ้ผู้พิการ'
+  ], lines: [
+    "สายเหนือ"
+  ]),
   StationList(
       name: 'เด่นชัย',
       postition: '',
