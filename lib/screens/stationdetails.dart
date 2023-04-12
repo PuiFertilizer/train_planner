@@ -3,6 +3,7 @@ import 'package:train_planner/models/stationdatalist.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationTouristAttractions.dart';
+import '../db/db_helper.dart';
 
 class StationDetails extends StatefulWidget {
   const StationDetails({Key? key, required this.station}) : super(key: key);
@@ -240,128 +241,31 @@ class _StationDetailsState extends State<StationDetails> {
                     // color: Color.fromARGB(255, 255, 255, 255),
                     child: Container(
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: stationTrainLists.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          StationTrainList stationTrainList =
-                              stationTrainLists[index];
-                          return Stack(
-                            children: <Widget>[
-                              Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
-                                height: 50.0,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 199, 249, 204),
-                                  borderRadius: BorderRadius.circular(0.0),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                      10.0, 2.0, 10.0, 2.0),
+                      child: FutureBuilder(
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<StationTrainList>> snapshot) {
+                            if (snapshot.hasData) {
+                              print("get data");
+                              return stationTable(snapshot.data);
+                            } else {
+                              return Center(
                                   child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Row(
-                                            //แบ่งครึ่งหน้า
-                                            mainAxisAlignment: MainAxisAlignment
-                                                .center, //Center Row contents horizontally,
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center, //Center Row contents vertically,
-                                            children: [
-                                              SizedBox(
-                                                width: 50,
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              TrainDetails(
-                                                                train:
-                                                                    stationTrainList
-                                                                        .trainNo,
-                                                              )),
-                                                    );
-                                                  },
-                                                  child: Text(
-                                                    stationTrainList
-                                                        .trainNo, //เลขขบวน
-                                                    style: GoogleFonts.prompt(
-                                                      color: Colors.black,
-                                                      fontSize: 14.0,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 20,
-                                              ),
-                                              //SizedBox(width: 5,),
-                                              Column(
-                                                children: [
-                                                  SizedBox(
-                                                    width: 110,
-                                                    child: Text(
-                                                      stationTrainList
-                                                          .originStation, //ชื่อสถานีต้นทางขบวน
-                                                      style: GoogleFonts.prompt(
-                                                        color: Colors.black,
-                                                        fontSize: 14.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 110,
-                                                    child: Text(
-                                                      stationTrainList
-                                                          .destinationStation, //ชื่อสถานีปลายทางขบวน
-                                                      style: GoogleFonts.prompt(
-                                                        color: Colors.black,
-                                                        fontSize: 14.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-
-                                              Container(
-                                                width: 50,
-                                              ),
-
-                                              SizedBox(
-                                                width: 40,
-                                                child: Text(
-                                                  stationTrainList
-                                                      .stationTime, //เวลารถเข้า-ออก แต่ละสถานี
-                                                  style: GoogleFonts.prompt(
-                                                    color: Colors.black,
-                                                    fontSize: 14.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ]),
-                                      ]),
-                                ),
-                              ),
-                              Positioned(
-                                right: 40.0,
-                                top: 20.0,
-                                bottom: 10.0,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                              )
-                            ],
-                          );
-                        },
-                      ),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const <Widget>[
+                                  SizedBox(
+                                    width: 60,
+                                    height: 60,
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 16),
+                                    child: Text('Awaiting result...'),
+                                  ),
+                                ],
+                              ));
+                            }
+                          },
+                          future: DBHelper.getStationtable(widget.station)),
                     ),
                   ),
                 ),
@@ -528,9 +432,124 @@ class _StationDetailsState extends State<StationDetails> {
           ],
         ));
   }
+
+  ListView stationTable(List<StationTrainList>? stationTrainLists) {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: stationTrainLists?.length,
+      itemBuilder: (BuildContext context, int index) {
+        StationTrainList stationTrainList = stationTrainLists![index];
+        return Stack(
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0.0, 0, 4.0),
+              height: 50.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 199, 249, 204),
+                borderRadius: BorderRadius.circular(0.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                          //แบ่งครึ่งหน้า
+                          mainAxisAlignment: MainAxisAlignment
+                              .center, //Center Row contents horizontally,
+                          crossAxisAlignment: CrossAxisAlignment
+                              .center, //Center Row contents vertically,
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              child: GestureDetector(
+                                onTap: () {
+                                  //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => TrainDetails(
+                                              train: stationTrainList.trainNo,
+                                            )),
+                                  );
+                                },
+                                child: Text(
+                                  stationTrainList.trainNo, //เลขขบวน
+                                  style: GoogleFonts.prompt(
+                                    color: Colors.black,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 20,
+                            ),
+                            //SizedBox(width: 5,),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  width: 110,
+                                  child: Text(
+                                    stationTrainList
+                                        .originStation, //ชื่อสถานีต้นทางขบวน
+                                    style: GoogleFonts.prompt(
+                                      color: Colors.black,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 110,
+                                  child: Text(
+                                    stationTrainList
+                                        .destinationStation, //ชื่อสถานีปลายทางขบวน
+                                    style: GoogleFonts.prompt(
+                                      color: Colors.black,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Container(
+                              width: 50,
+                            ),
+
+                            SizedBox(
+                              width: 40,
+                              child: Text(
+                                stationTrainList
+                                    .stationTime, //เวลารถเข้า-ออก แต่ละสถานี
+                                style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                            ),
+                          ]),
+                    ]),
+              ),
+            ),
+            Positioned(
+              right: 40.0,
+              top: 20.0,
+              bottom: 10.0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
 }
 
-class StationTrainList {
+/*class StationTrainList {
   String trainNo;
   String originStation;
   String destinationStation;
@@ -606,7 +625,7 @@ List<StationTrainList> stationTrainLists = [
       originStation: 'กรุงเทพอภิวัฒน์',
       destinationStation: 'เชียงใหม่',
       stationTime: '19:30'),
-];
+];*/
 
 class DialogConvience extends StatelessWidget {
   const DialogConvience({super.key, required this.convience});
