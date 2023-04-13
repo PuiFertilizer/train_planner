@@ -163,6 +163,7 @@ class DBHelper {
               where: 'station=?', whereArgs: [station], orderBy: "train")
           .then((value) => trainlist = value)
     ]);
+    print("get table");
 
     int i = 0;
     List<StationTrainList> datas = [];
@@ -170,19 +171,17 @@ class DBHelper {
       var data = Routes.fromJson(trainlist[i]);
       late String des;
       //เช็คสถานีสุดท้ายขาเข้า
-      if (line[int.parse(data.line)].indexOf(station) != 0 &&
+      if (line[int.parse(data.line) - 1].indexOf(station) != 0 &&
           int.parse(data.train) % 2 == 0) {
-        print("1");
-        des = line[int.parse(data.line)]
-            [line[int.parse(data.line)].indexOf(station)];
+        des = line[int.parse(data.line) - 1]
+            [line[int.parse(data.line) - 1].indexOf(station) - 1];
       }
       //เช็คสถานีสุดท้ายขาออก
-      else if (line[int.parse(data.line)].indexOf(station) !=
-              line[int.parse(data.line)].length - 1 &&
+      else if (line[int.parse(data.line) - 1].indexOf(station) !=
+              line[int.parse(data.line) - 1].length - 1 &&
           int.parse(data.train) % 2 != 0) {
-        print("0");
-        des = line[int.parse(data.line)]
-            [line[int.parse(data.line)].indexOf(station)];
+        des = line[int.parse(data.line) - 1]
+            [line[int.parse(data.line) - 1].indexOf(station) + 1];
       } else {
         continue;
       }
