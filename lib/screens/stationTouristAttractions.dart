@@ -146,7 +146,7 @@ class _StationTouristAttractionsState extends State<StationTouristAttractions> {
                                                   .center, //Center Row contents vertically,
                                               children: [
                                                 SizedBox(
-                                                  width: 150,
+                                                  width: 300,
                                                   child: Text(
                                                     destination.locationName,
                                                     style: GoogleFonts.prompt(

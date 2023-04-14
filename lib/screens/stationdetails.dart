@@ -614,41 +614,50 @@ class DialogConvience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-        title: const Text('สิ่งอำนวยความสะดวก'),
+        title: Text('สิ่งอำนวยความสะดวก' , style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600) ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         children: <Widget>[
-          SizedBox(
-              height: 400,
-              width: 300,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: convience.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 32,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          //ชื่อประเภท
-                          Image.asset(
-                            comfortPic[convience[index]]!,
-                            width: 25,
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 5),
+            child: SizedBox(
+                height: 400,
+                width: 300,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: convience.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Container(
+                          height: 32,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              //ชื่อประเภท
+                              Image.asset(
+                                comfortPic[convience[index]]!,
+                                width: 30,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                convience[index],
+                                style: GoogleFonts.prompt(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
                           ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            convience[index],
-                            style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    );
-                  }))
+                        ),
+                      );
+                    })),
+          )
         ]);
   }
 }
@@ -699,41 +708,47 @@ class DialogConnections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-        title: const Text('การเชื่อมต่อกับระบบขนส่งอื่นๆ'),
+        title: Text('การเชื่อมต่อกับระบบขนส่งอื่นๆ', style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600) ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         children: <Widget>[
-          SizedBox(
-              height: 400,
-              width: 300,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: connect.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 32,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          //ชื่อประเภท
-                          Image.asset(
-                            connectPic[connect[index]]!,
-                            width: 25,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            connect[index],
-                            style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    );
-                  }))
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 5),
+            child: SizedBox(
+                height: 400,
+                width: 300,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: connect.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 32,
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            //ชื่อประเภท
+                            Image.asset(
+                              connectPic[connect[index]]!,
+                              width: 25,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              connect[index],
+                              style: GoogleFonts.prompt(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      );
+                    })),
+          )
         ]);
   }
 }

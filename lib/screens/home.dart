@@ -324,7 +324,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Column(
                 children: <Widget>[
-                  const SizedBox(height: 550.0),
+                  const SizedBox(height: 560.0),
                   Destination_Carousel(),
                   const SizedBox(height: 10.0),
                   Tourtrain_Carousel()

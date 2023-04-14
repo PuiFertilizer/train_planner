@@ -193,7 +193,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           ),
         ),
         Container(
-          height: 20,
+          height: 50,
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -202,11 +202,13 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
               children: <Widget>[
                 //ชื่อสถานที่
 
-                Text(
-                  widget.destination.howtotravel,
-                  style: GoogleFonts.prompt(
-                    color: Colors.black,
-                    fontSize: 12,
+                Expanded(
+                  child: Text(
+                    widget.destination.howtotravel,
+                    style: GoogleFonts.prompt(
+                      color: Colors.black,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ],
@@ -214,7 +216,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           ),
         ),
         Container(
-          height: 50,
+          height: 40,
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -242,7 +244,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           ),
         ),
         Container(
-          height: 20,
+          height: 40,
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -251,11 +253,13 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
               children: <Widget>[
                 //ชื่อสถานที่
 
-                Text(
-                  widget.destination.locationaddress,
-                  style: GoogleFonts.prompt(
-                    color: Colors.black,
-                    fontSize: 12,
+                Expanded(
+                  child: Text(
+                    widget.destination.locationaddress,
+                    style: GoogleFonts.prompt(
+                      color: Colors.black,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ],

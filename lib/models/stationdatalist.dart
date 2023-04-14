@@ -17,9 +17,30 @@ class Destination {
 Map<String, String> connectPic = {
   'Taxi บริการที่หน้าสถานี': 'assets/images/taxi.png',
   'สายสีนำ้เงิน สถานีบางซื่อ': 'assets/images/mrtblueline.png',
+  'สายสีนำ้เงิน สถานีเพชรบุรี': 'assets/images/mrtblueline.png',
+  'สายสีนำ้เงิน สถานีบางขุนนนท์': 'assets/images/mrtblueline.png',
+  'สายสีนำ้เงิน สถานีหัวลำโพง': 'assets/images/mrtblueline.png',
+  'รถไฟฟ้าบีทีเอส สถานีพญาไท': 'assets/images/bts.png',
+  'Airport link สถานีพญาไท': 'assets/images/Airlink.jpg',
+  'Airport link สถานีมักกะสัน': 'assets/images/Airlink.jpg',
+  'Airport link สถานีรามคำแหง': 'assets/images/Airlink.jpg',
+  'Airport link สถานีหัวหมาก': 'assets/images/Airlink.jpg',
+  'Airport link สถานีบ้านทับช้าง': 'assets/images/Airlink.jpg',
+  'Airport link สถานีลาดกระบัง': 'assets/images/Airlink.jpg',
   'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์': 'assets/images/darkredline.png',
+  'สายสีแดงเข้ม สถานีดอนเมือง': 'assets/images/darkredline.png',
+  'สายสีแดงเข้ม สถานีรังสิต': 'assets/images/darkredline.png',
   'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์': 'assets/images/lightredline.png',
-  'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้': 'assets/images/bus.png'
+  'สายสีแดงอ่อน สถานีบางบำหรุ': 'assets/images/lightredline.png',
+  'สายสีแดงอ่อน สถานีตลิ่งชัน': 'assets/images/lightredline.png',
+  'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้': 'assets/images/bus.png',
+  'รถโดยสารประจำทาง ขสมก.': 'assets/images/bus.png',
+  'shuttle bus ไปสถานีหัวลำโพง': 'assets/images/bus.png',
+  'shuttle bus ไปสถานีกลางอภิวัฒน์': 'assets/images/bus.png',
+  'ท่าอากาศยานดอนเมือง': 'assets/images/local-airport.png',
+  'ท่าอากาศยานสุวรรณภูมิ': 'assets/images/local-airport.png',
+  
+  
 };
 
 Map<String, String> comfortPic = {
@@ -27,6 +48,8 @@ Map<String, String> comfortPic = {
   'จำหน่ายตั๋วประจำวัน': 'assets/images/ticket.png',
   'ห้องนำ้สะอาด': 'assets/images/toliet.png',
   'ห้องนำ้ผู้พิการ': 'assets/images/handicaptoliet.png',
+  'ร้านอาหาร': 'assets/images/restaurant.png',
+  'ร้านค้าต่างๆ': 'assets/images/shops.png',
 };
 
 class StationList {
@@ -65,15 +88,33 @@ List<StationList> stationLists = [
       name: 'กรุงเทพ',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'สายสีนำ้เงิน สถานีหัวลำโพง',
+        'รถโดยสารประจำทาง ขสมก.',
+        'shuttle bus ไปสถานีกลางอภิวัฒน์'
+      ],
       comforts: [],
       lines: []),
   StationList(
       name: 'กรุงเทพอภิวัฒน์',
-      postition: '',
+      postition: ' ถนนเทอดดำริ แขวงจตุจักร เขตจตุจักร กรุงเทพ',
       places: [],
-      connects: [],
-      comforts: [],
+      connects: [
+        'สายสีนำ้เงิน สถานีบางซื่อ',
+        'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
+        'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
+        'Taxi บริการที่หน้าสถานี',
+        'รถโดยสารประจำทาง ขสมก.',
+        'shuttle bus ไปสถานีหัวลำโพง'
+      ],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'กันตัง',
@@ -273,16 +314,42 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ชุมทางฉะเชิงเทรา',
-      postition: '',
-      places: [],
+      postition: 'ตำบลหน้าเมือง อำเภอเมือง จังหวัดฉะเชิงเทรา',
+      places: [
+         Destination(
+        imageUrl: 'assets/images/sotorn.jpg',
+        locationName: 'วัดโสธรวรารามวรวิหาร',
+        locationaddress: '	ถนนเทพคุณากร ตำบลหน้าเมือง อำเภอเมืองฉะเชิงเทรา จังหวัดฉะเชิงเทรา',
+        description:
+            ' วัดหลวงพ่อโสธร เป็นวัดเก่าแก่ที่สร้างมาตั้งแต่สมัยกรุงศรีอยุธยาตอนปลาย ภายในประดิษฐาน หลวงพ่อพระพุทธโสธร หรือที่เรียกกันว่า หลวงพ่อโสธร พระรูปปางสมาธิ ลงรักปิดทองสมัยแบบล้านช้าง เป็นสิ่งศักดิ์สิทธิ์คู่บ้านคู่เมืองฉะเชิงเทรา',
+        howtotravel:
+            'จากสถานีฉะเชิงเทรา มีรถสองแถวสีเหลืองมารอรับในสถานีรถไฟเพื่อเดินทางต่อไปยังวัดโสธรวรารามวรวิหารได้เลย'),
+            Destination(
+        imageUrl: 'assets/images/talatbanmai100.jpg',
+        locationName: 'ตลาดบ้านใหม่ 100 ปี',
+        locationaddress: '	ถนนศุภกิจ ตำบลหน้าเมือง อำเภอเมือง จังหวัดฉะเชิงเทรา',
+        description:
+            ' เป็นตลาดริมแม่น้ำบางปะกงที่มีมาตั้งแต่ในสมัยรัชกาลที่ 5 ที่นี่เป็นชุมชนริมน้ำที่เคยมีการค้าขายกันอย่างคึกคักในสมัยเก่า จึงเป็นเหมือนพิพิธภัณฑ์มีชีวิตริมแม่น้ำบางปะกงที่ยังคงความดั้งเดิม คลาสสิกไว้ มีความวินเทจมากๆ',
+        howtotravel:
+            'จากสถานีฉะเชิงเทรา ใช้รถสองแถวรับจ้างที่จอดหน้าสถานีรถไฟเพื่อเดินทางต่อไปยังตลาดบ้านใหม่ 100 ปีได้เลย'),
+      ],
       connects: [],
-      comforts: [],
+      comforts: [
+    'จำหน่ายตั๋วล่วงหน้า',
+    'จำหน่ายตั๋วประจำวัน',
+    'ห้องนำ้สะอาด',
+    'ห้องนำ้ผู้พิการ',
+    'ร้านอาหาร',
+    'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ชุมทางตลิ่งชัน',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'สายสีแดงอ่อน สถานีตลิ่งชัน'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -310,7 +377,14 @@ List<StationList> stationLists = [
       name: 'ชุมทางบางซื่อ',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'สายสีนำ้เงิน สถานีบางซื่อ',
+        'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
+        'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
+        'Taxi บริการที่หน้าสถานี',
+        'รถโดยสารประจำทาง ขสมก.',
+        'shuttle bus ไปสถานีหัวลำโพง'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -414,9 +488,26 @@ List<StationList> stationLists = [
   StationList(
       name: 'ดอนเมือง',
       postition: '',
-      places: [],
-      connects: [],
-      comforts: [],
+      places: [
+         Destination(
+        imageUrl: 'assets/images/donmueng.jpg',
+        locationName: 'ท่าอากาศยานดอนเมือง',
+        locationaddress: '	ถนนวิภาวดีรังสิต แขวงสนามบิน เขตดอนเมือง กรุงเทพฯ',
+        description:
+            'เป็นสนามบินสำหรับเที่ยวบินที่ไม่ไกลมาก เช่น ภายในประเทศ ประเทศเพื่อนบ้าน ผู้โดยสามารถสามารถเดินทางจากสนามบินนี้ได้ไม่ยาก',
+        howtotravel:
+            'จากอาคารสถานีรถไฟ สามารถใช้สะพานลอยคนข้ามเดินเข้ามาที่สนามบินโดยตรง'),
+      ],
+      connects: [
+        'สายสีแดงเข้ม สถานีดอนเมือง',
+        'ท่าอากาศยานดอนเมือง'
+      ],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ'
+      ],
       lines: []),
   StationList(
       name: 'ตรอน',
@@ -532,10 +623,34 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ธนบุรี',
-      postition: '',
-      places: [],
-      connects: [],
-      comforts: [],
+      postition: ' แขวงศิริราช เขตบางกอกน้อย กรุงเทพ',
+      places: [
+         Destination(
+        imageUrl: 'assets/images/siriraj_pimukstan.jpg',
+        locationName: 'พิพิธภัณฑ์ศิริราชพิมุขสถาน',
+        locationaddress: '	แขวงศิริราช เขตบางกอกน้อย กรุงเทพมหานคร',
+        description:
+            'มีความสำคัญในฐานะเคยเป็นสถานีต้นทางแห่งแรกของรถไฟสายใต้ (สถานีธนบุรี) ตัวสถานีรถไฟได้รับการออกแบบโดยหม่อมเจ้าโวฒยากร วรวรรณ ซึ่งสร้างแล้วเสร็จในปี พ.ศ. 2493 ยกเลิการใช้งานรถไฟเมื่อ 3 ตุลาคม 2546 เนื่องจากมอบพื้นที่ให้กับโรงพยาบาลศิริราช',
+        howtotravel:
+            'จากสถานีรถไฟธนบุรี เดินตามถนนพระนเรศวร ทางเดียวกับไปทางโรงพยาบาลศิริราชปิยมหาราชการุณย์'),
+        Destination(
+        imageUrl: 'assets/images/siriraj.jpg',
+        locationName: 'โรงพยาบาลศิริราช',
+        locationaddress: '	ถนนวังหลัง แขวงศิริราช เขตบางกอกน้อย กรุงเทพฯ',
+        description:
+            'โรงพยาบาลศิริราชเคยเป็นที่ประทับรักษาพระประชวรของพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร และ สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ พระบรมราชชนนีพันปีหลวง ตลอดจนพระบรมวงศานุวงศ์หลายพระองค์และบุคคลสำคัญ',
+        howtotravel:
+            'จากสถานีรถไฟธนบุรี เดินตามถนนพระนเรศวร ผ่านวัดอมรินทราราม ก็จะถึงโรงพยาบาลศิริราช'),
+      ],
+      connects: [
+        'สายสีนำ้เงิน สถานีบางขุนนนท์'
+      ],
+      comforts: [
+    'จำหน่ายตั๋วล่วงหน้า',
+    'จำหน่ายตั๋วประจำวัน',
+    'ห้องนำ้สะอาด',
+    'ห้องนำ้ผู้พิการ'
+      ],
       lines: []),
   StationList(
       name: 'นครปฐม',
@@ -639,7 +754,9 @@ List<StationList> stationLists = [
       name: 'บางบำหรุ',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'สายสีแดงอ่อน สถานีบางบำหรุ'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -786,7 +903,9 @@ List<StationList> stationLists = [
       name: 'บ้านทับช้าง',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'Airport link สถานีบ้านทับช้าง'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -1003,7 +1122,10 @@ List<StationList> stationLists = [
       name: 'พญาไท',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'รถไฟฟ้าบีทีเอส สถานีพญาไท',
+        'Airport link สถานีพญาไท'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -1136,7 +1258,9 @@ List<StationList> stationLists = [
       name: 'รังสิต',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'สายสีแดงเข้ม สถานีรังสิต'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -1185,7 +1309,10 @@ List<StationList> stationLists = [
       name: 'ลาดกระบัง',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'Airport link สถานีลาดกระบัง',
+        'ท่าอากาศยานสุวรรณภูมิ'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -1381,7 +1508,9 @@ List<StationList> stationLists = [
       name: 'สุขุมวิท 71',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'Airport link สถานีรามคำแหง'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -1487,15 +1616,29 @@ List<StationList> stationLists = [
       postition: '',
       places: [],
       connects: [],
-      comforts: [],
-      lines: []),
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด'
+      ],
+      lines: [
+        'สายตะวันออก'
+      ]),
   StationList(
       name: 'หัวหมาก',
-      postition: '',
+      postition: 'แขวงพัฒนาการ เขตสวนหลวง กรุงเทพฯ',
       places: [],
-      connects: [],
-      comforts: [],
-      lines: []),
+      connects: [
+        'Airport link สถานีหัวหมาก'
+      ],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด'
+      ],
+      lines: [
+        'สายตะวันออก'
+      ]),
   StationList(
       name: 'หัวหวาย',
       postition: '',
@@ -1591,7 +1734,10 @@ List<StationList> stationLists = [
       name: 'อโศก',
       postition: '',
       places: [],
-      connects: [],
+      connects: [
+        'Airport link สถานีมักกะสัน',
+        'สายสีนำ้เงิน สถานีเพชรบุรี'
+      ],
       comforts: [],
       lines: []),
   StationList(
@@ -1654,9 +1800,6 @@ List<StationList> stationLists = [
         howtotravel:
             'จากสถานีเชียงใหม่ ให้ใช้บริการรถสี่ล้อแดงไปสวนสัตว์โดยตรง'),
   ], connects: [
-    'สายสีนำ้เงิน สถานีบางซื่อ',
-    'สายสีแดงเข้ม สถานีกรุงเทพอภิวัฒน์',
-    'สายสีแดงอ่อน สถานีกรุงเทพอภิวัฒน์',
     'รถสี่ล้อแดง ผู้โดยสารเลือกปลายทางได้',
     'Taxi บริการที่หน้าสถานี'
   ], comforts: [
