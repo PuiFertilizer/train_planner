@@ -2,12 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:web_scraper/web_scraper.dart';
+import '../models/stationdatalist.dart';
 import '../models/task.dart';
 import '../models/route.dart';
 
+class StationTrainList {
+  String trainNo;
+  String originStation;
+  String destinationStation;
+  String stationTime;
+
+  StationTrainList({
+    required this.trainNo,
+    required this.originStation,
+    required this.destinationStation,
+    required this.stationTime,
+  });
+}
+
 class DBHelper {
   static Database? _db;
-  static const int _version = 1;
+  static const int _version = 2;
   static const String _tableTask = 'tasks';
   static const String _tableRoute = 'routes';
 
@@ -17,23 +32,25 @@ class DBHelper {
     }
     try {
       String path = '${await getDatabasesPath()}db.db';
-      _db = await openDatabase(
-        path,
-        version: _version,
-        onCreate: (db, version) {
-          print('creating a new one');
-          //task table
-          db.execute("Create table $_tableTask("
-              "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-              "title STRING, attraction STRING, date STRING, "
-              "startTime STRING, endTime STRING)");
-          //route table
-          db.execute("Create table $_tableRoute("
-              "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-              "train STRING, station STRING, time STRING)") /*.then((value) => updater.updateTrain())*/;
-        },
-      );
-
+      _db =
+          await openDatabase(path, version: _version, onCreate: (db, version) {
+        print('creating a new one');
+        //task table
+        db.execute("Create table $_tableTask("
+            "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            "title STRING, attraction STRING, date STRING, "
+            "startTime STRING, endTime STRING)");
+        //route table
+        db.execute("Create table $_tableRoute("
+            "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            "train STRING, station STRING, time STRING, line STRING)") /*.then((value) => updater.updateTrain())*/;
+      }, onUpgrade: (db, int oldVersion, int newVersion) {
+        // If you need to add a column
+        print("upgrade");
+        if (1 >= oldVersion) {
+          db.execute("ALTER TABLE $_tableRoute ADD COLUMN line STRING");
+        }
+      });
       cleanAndUpdate();
       //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {
@@ -93,26 +110,37 @@ class DBHelper {
       var e = Routes.fromJson(arrive[i]);
       var s = Routes.fromJson(depart[j]);
 
-      //print(s.station + s.train + s.time);
-      //print(e.station + e.train + e.time);
+      //print("${s.station} ${s.train} ${s.time}");
+      //print("${e.station} ${e.train} ${e.time}");
+      //print(s.line);
 
-      TimeOfDay startTime = TimeOfDay(
-          hour: int.parse(s.time.split(":")[0]),
-          minute: int.parse(s.time.split(":")[1]));
-      TimeOfDay endTime = TimeOfDay(
-          hour: int.parse(e.time.split(":")[0]),
-          minute: int.parse(e.time.split(":")[1]));
-      //convert time to double
-      double toDouble(TimeOfDay t) => t.hour + t.minute / 60.0;
-      if (s.train == e.train && toDouble(startTime) < toDouble(endTime)) {
-        Result x = Result(
-            departureStation: s.station,
-            departureTime: s.time,
-            arriveStation: e.station,
-            arriveTime: e.time,
-            traintype: '',
-            trainNumber: s.train);
-        result.add(x);
+      if (s.train == e.train) {
+        //print(line[int.parse(s.line) - 1].indexOf(s.station));
+        //print(line[int.parse(e.line) - 1].indexOf(e.station));
+        //print(int.parse(s.train));
+        if (line[int.parse(s.line) - 1].indexOf(s.station) <
+                line[int.parse(e.line) - 1].indexOf(e.station) &&
+            int.parse(s.train) % 2 != 0) {
+          Result x = Result(
+              departureStation: s.station,
+              departureTime: s.time,
+              arriveStation: e.station,
+              arriveTime: e.time,
+              traintype: '',
+              trainNumber: s.train);
+          result.add(x);
+        } else if ((line[int.parse(s.line) - 1].indexOf(s.station) >
+                line[int.parse(e.line) - 1].indexOf(e.station) &&
+            int.parse(s.train) % 2 == 0)) {
+          Result x = Result(
+              departureStation: e.station,
+              departureTime: e.time,
+              arriveStation: s.station,
+              arriveTime: s.time,
+              traintype: '',
+              trainNumber: s.train);
+          result.add(x);
+        }
         i++;
         j++;
       } else {
@@ -125,6 +153,45 @@ class DBHelper {
     }
 
     return result;
+  }
+
+  static Future<List<StationTrainList>> getStationtable(String station) async {
+    late List<Map<String, dynamic>> trainlist;
+    await Future.wait<void>([
+      _db!
+          .query(_tableRoute,
+              where: 'station=?', whereArgs: [station], orderBy: "train")
+          .then((value) => trainlist = value)
+    ]);
+    print("get table");
+
+    int i = 0;
+    List<StationTrainList> datas = [];
+    for (; i < trainlist.length; i++) {
+      var data = Routes.fromJson(trainlist[i]);
+      late String des;
+      //เช็คสถานีสุดท้ายขาเข้า
+      if (line[int.parse(data.line) - 1].indexOf(station) != 0 &&
+          int.parse(data.train) % 2 == 0) {
+        des = line[int.parse(data.line) - 1]
+            [line[int.parse(data.line) - 1].indexOf(station) - 1];
+      }
+      //เช็คสถานีสุดท้ายขาออก
+      else if (line[int.parse(data.line) - 1].indexOf(station) !=
+              line[int.parse(data.line) - 1].length - 1 &&
+          int.parse(data.train) % 2 != 0) {
+        des = line[int.parse(data.line) - 1]
+            [line[int.parse(data.line) - 1].indexOf(station) + 1];
+      } else {
+        continue;
+      }
+      datas.add(StationTrainList(
+          originStation: station,
+          destinationStation: des,
+          trainNo: data.train,
+          stationTime: data.time));
+    }
+    return datas;
   }
 
   static Future<void> updateTrain() async {
@@ -160,7 +227,8 @@ class DBHelper {
                   station: stations
                       .elementAt(timeCounter ~/ trains.length)[0]
                       .toString(),
-                  time: time.elementAt(timeCounter)[0].toString());
+                  time: time.elementAt(timeCounter)[0].toString(),
+                  line: line.toString());
               batch.insert(_tableRoute, route.toJson());
               //DBHelper.insertR(route);
               id++;
