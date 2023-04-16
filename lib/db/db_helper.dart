@@ -179,28 +179,41 @@ class DBHelper {
     List<StationTrainList> datas = [];
     for (; i < trainlist.length; i++) {
       var data = Routes.fromJson(trainlist[i]);
-      late String des;
+      late String des, arr;
       //เช็คสถานีสุดท้ายขาเข้า
       if (line[int.parse(data.line) - 1].indexOf(station) != 0 &&
           int.parse(data.train) % 2 == 0) {
-        des = line[int.parse(data.line) - 1]
-            [line[int.parse(data.line) - 1].indexOf(station) - 1];
+        des = line[int.parse(data.line) - 1].first;
+        arr = line[int.parse(data.line) - 1].last;
       }
       //เช็คสถานีสุดท้ายขาออก
       else if (line[int.parse(data.line) - 1].indexOf(station) !=
               line[int.parse(data.line) - 1].length - 1 &&
           int.parse(data.train) % 2 != 0) {
-        des = line[int.parse(data.line) - 1]
-            [line[int.parse(data.line) - 1].indexOf(station) + 1];
+        des = line[int.parse(data.line) - 1].last;
+        arr = line[int.parse(data.line) - 1].first;
       } else {
         continue;
       }
       datas.add(StationTrainList(
-          originStation: station,
+          originStation: arr,
           destinationStation: des,
           trainNo: data.train,
           stationTime: data.time));
     }
+    datas.sort(
+      (a, b) {
+        //convert time to double
+        double toDouble(StationTrainList t) {
+          TimeOfDay time = TimeOfDay(
+              hour: int.parse(t.stationTime.split(":")[0]),
+              minute: int.parse(t.stationTime.split(":")[1]));
+          return time.hour + time.minute / 60.0;
+        }
+
+        return (toDouble(a) - toDouble(b)).toInt();
+      },
+    );
     return datas;
   }
 
