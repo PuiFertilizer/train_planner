@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_planner/models/result_model.dart';
-//import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationdetails.dart';
-import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../db/db_helper.dart';
 
@@ -11,7 +9,6 @@ class Searchresult extends StatefulWidget {
   const Searchresult(
       {Key? key, required this.source, required this.destination})
       : super(key: key);
-  //late Future<List<Map<Routes, Routes>>> result;
   final String source;
   final String destination;
 
@@ -23,8 +20,6 @@ class Searchresult extends StatefulWidget {
 class _SearchresultState extends State<Searchresult> {
   @override
   Widget build(BuildContext context) {
-    //print(widget.source);
-    //print(widget.destination);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -35,7 +30,6 @@ class _SearchresultState extends State<Searchresult> {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 List<Result> results = snapshot.data;
-                //print(snapshot.data);
                 return Column(
                   children: <Widget>[
                     Stack(
@@ -248,7 +242,8 @@ class _SearchresultState extends State<Searchresult> {
                                                             color: Colors.black,
                                                           ),
                                                         ),
-                                                        SizedBox(width: 20.0),
+                                                        const SizedBox(
+                                                            width: 20.0),
                                                         Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
@@ -353,7 +348,8 @@ class _SearchresultState extends State<Searchresult> {
                                                                     FontWeight
                                                                         .w600),
                                                           ),
-                                                          SizedBox(width: 10),
+                                                          const SizedBox(
+                                                              width: 10),
                                                           Text(
                                                             result.trainNumber,
                                                             style: GoogleFonts.prompt(
@@ -413,8 +409,8 @@ class _SearchresultState extends State<Searchresult> {
                                                         },
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                          fixedSize:
-                                                              Size(120, 10),
+                                                          fixedSize: const Size(
+                                                              120, 10),
                                                           backgroundColor:
                                                               const Color
                                                                       .fromARGB(
@@ -432,20 +428,15 @@ class _SearchresultState extends State<Searchresult> {
                                                         ),
                                                         child: Text(
                                                           "รายละเอียดขบวน",
-                                                          style: GoogleFonts
-                                                              .prompt(
-                                                                  color: Color
+                                                          style: GoogleFonts.prompt(
+                                                              color: const Color
                                                                       .fromARGB(
-                                                                          255,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                  fontSize:
-                                                                      12.0),
+                                                                  255, 0, 0, 0),
+                                                              fontSize: 12.0),
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 2,
                                                     ),
                                                     Container(
@@ -460,10 +451,11 @@ class _SearchresultState extends State<Searchresult> {
                                                         },
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                          fixedSize:
-                                                              Size(120, 10),
+                                                          fixedSize: const Size(
+                                                              120, 10),
                                                           backgroundColor:
-                                                              Color.fromARGB(
+                                                              const Color
+                                                                      .fromARGB(
                                                                   255,
                                                                   87,
                                                                   204,
@@ -478,16 +470,11 @@ class _SearchresultState extends State<Searchresult> {
                                                         ),
                                                         child: Text(
                                                           "เพิ่มในแผน",
-                                                          style: GoogleFonts
-                                                              .prompt(
-                                                                  color: Color
+                                                          style: GoogleFonts.prompt(
+                                                              color: const Color
                                                                       .fromARGB(
-                                                                          255,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                  fontSize:
-                                                                      14.0),
+                                                                  255, 0, 0, 0),
+                                                              fontSize: 14.0),
                                                         ),
                                                       ),
                                                     ),

@@ -21,6 +21,14 @@ class StationTrainList {
   });
 }
 
+class TrainTimetable {
+  //ช่วงเวลา (ตารางเวลา) ของแต่ละขบวน
+
+  String station; //สถานี
+  String deptime; //เวลาจอดที่สถานี
+  TrainTimetable({required this.station, required this.deptime});
+}
+
 class DBHelper {
   static Database? _db;
   static const int _version = 2;
@@ -208,6 +216,54 @@ class DBHelper {
           TimeOfDay time = TimeOfDay(
               hour: int.parse(t.stationTime.split(":")[0]),
               minute: int.parse(t.stationTime.split(":")[1]));
+          return time.hour + time.minute / 60.0;
+        }
+
+        return (toDouble(a) - toDouble(b)).toInt();
+      },
+    );
+    return datas;
+  }
+
+  static Future<List<TrainTimetable>> getTraintable(String train) async {
+    late List<Map<String, dynamic>> stationlist;
+    await Future.wait<void>([
+      _db!
+          .query(_tableRoute,
+              where: 'train=?', whereArgs: [train], orderBy: "train")
+          .then((value) => stationlist = value)
+    ]);
+    print("get table");
+
+    int i = 0;
+    List<TrainTimetable> datas = [];
+    for (; i < stationlist.length; i++) {
+      var data = Routes.fromJson(stationlist[i]);
+      late String station, deptime;
+      //เช็คสถานีสุดท้ายขาเข้า
+      if (line[int.parse(data.line) - 1].indexOf(data.station) != 0 &&
+          int.parse(data.train) % 2 == 0) {
+        station = data.station;
+        deptime = data.time;
+      }
+      //เช็คสถานีสุดท้ายขาออก
+      else if (line[int.parse(data.line) - 1].indexOf(data.station) !=
+              line[int.parse(data.line) - 1].length - 1 &&
+          int.parse(data.train) % 2 != 0) {
+        station = data.station;
+        deptime = data.time;
+      } else {
+        continue;
+      }
+      datas.add(TrainTimetable(station: station, deptime: deptime));
+    }
+    datas.sort(
+      (a, b) {
+        //convert time to double
+        double toDouble(TrainTimetable t) {
+          TimeOfDay time = TimeOfDay(
+              hour: int.parse(t.deptime.split(":")[0]),
+              minute: int.parse(t.deptime.split(":")[1]));
           return time.hour + time.minute / 60.0;
         }
 
