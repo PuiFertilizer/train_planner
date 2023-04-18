@@ -214,7 +214,7 @@ class _StationDetailsState extends State<StationDetails> {
                           width: 45,
                         ),
                         Text(
-                          "เวลา",
+                          "เวลาออกสถานี",
                           style: GoogleFonts.prompt(
                             color: Colors.white,
                             fontSize: 14.0,
@@ -633,10 +633,11 @@ class DialogConvience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-        title: Text('สิ่งอำนวยความสะดวก' , style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600) ),
+        title: Text('สิ่งอำนวยความสะดวก',
+            style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w600)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         children: <Widget>[
           Padding(
@@ -727,10 +728,11 @@ class DialogConnections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-        title: Text('การเชื่อมต่อกับระบบขนส่งอื่นๆ', style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600) ),
+        title: Text('การเชื่อมต่อกับระบบขนส่งอื่นๆ',
+            style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w600)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         children: <Widget>[
           Padding(

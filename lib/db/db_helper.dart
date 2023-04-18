@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:train_planner/models/result_model.dart';
+import 'package:train_planner/models/traindatalist.dart';
 import 'package:web_scraper/web_scraper.dart';
 import '../models/stationdatalist.dart';
 import '../models/task.dart';
@@ -18,6 +19,14 @@ class StationTrainList {
     required this.destinationStation,
     required this.stationTime,
   });
+}
+
+class TrainTimetable {
+  //ช่วงเวลา (ตารางเวลา) ของแต่ละขบวน
+
+  String station; //สถานี
+  String deptime; //เวลาจอดที่สถานี
+  TrainTimetable({required this.station, required this.deptime});
 }
 
 class DBHelper {
@@ -102,43 +111,40 @@ class DBHelper {
               where: 'station=?', whereArgs: [end], orderBy: "train")
           .then((value) => arrive = value)
     ]);
-    //print(depart);
-    //print(arrive);
+
     List<Result> result = [];
     int i = 0, j = 0;
     for (; i < arrive.length && j < depart.length;) {
       var e = Routes.fromJson(arrive[i]);
       var s = Routes.fromJson(depart[j]);
 
-      //print("${s.station} ${s.train} ${s.time}");
-      //print("${e.station} ${e.train} ${e.time}");
-      //print(s.line);
-
       if (s.train == e.train) {
-        //print(line[int.parse(s.line) - 1].indexOf(s.station));
-        //print(line[int.parse(e.line) - 1].indexOf(e.station));
-        //print(int.parse(s.train));
-        if (line[int.parse(s.line) - 1].indexOf(s.station) <
-                line[int.parse(e.line) - 1].indexOf(e.station) &&
+        int resultLine = int.parse(s.line) - 1;
+        if (line[resultLine].indexOf(s.station) <
+                line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 != 0) {
           Result x = Result(
               departureStation: s.station,
               departureTime: s.time,
               arriveStation: e.station,
               arriveTime: e.time,
-              traintype: '',
+              traintype: trainLists[resultLine]
+                  .firstWhere((element) => element.trainNo == s.train)
+                  .trainType,
               trainNumber: s.train);
           result.add(x);
-        } else if ((line[int.parse(s.line) - 1].indexOf(s.station) >
-                line[int.parse(e.line) - 1].indexOf(e.station) &&
+        } else if ((line[resultLine].indexOf(s.station) >
+                line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 == 0)) {
           Result x = Result(
-              departureStation: e.station,
-              departureTime: e.time,
-              arriveStation: s.station,
-              arriveTime: s.time,
-              traintype: '',
-              trainNumber: s.train);
+              departureStation: s.station,
+              departureTime: s.time,
+              arriveStation: e.station,
+              arriveTime: e.time,
+              traintype: trainLists[resultLine]
+                  .firstWhere((element) => element.trainNo == s.train)
+                  .trainType,
+              trainNumber: e.train);
           result.add(x);
         }
         i++;
@@ -151,7 +157,19 @@ class DBHelper {
         }
       }
     }
+    result.sort(
+      (a, b) {
+        //convert time to double
+        double toDouble(Result t) {
+          TimeOfDay time = TimeOfDay(
+              hour: int.parse(t.departureTime.split(":")[0]),
+              minute: int.parse(t.departureTime.split(":")[1]));
+          return time.hour + time.minute / 60.0;
+        }
 
+        return (toDouble(a) - toDouble(b)).toInt();
+      },
+    );
     return result;
   }
 
@@ -169,28 +187,89 @@ class DBHelper {
     List<StationTrainList> datas = [];
     for (; i < trainlist.length; i++) {
       var data = Routes.fromJson(trainlist[i]);
-      late String des;
+      late String des, arr;
       //เช็คสถานีสุดท้ายขาเข้า
       if (line[int.parse(data.line) - 1].indexOf(station) != 0 &&
           int.parse(data.train) % 2 == 0) {
-        des = line[int.parse(data.line) - 1]
-            [line[int.parse(data.line) - 1].indexOf(station) - 1];
+        des = line[int.parse(data.line) - 1].first;
+        arr = line[int.parse(data.line) - 1].last;
       }
       //เช็คสถานีสุดท้ายขาออก
       else if (line[int.parse(data.line) - 1].indexOf(station) !=
               line[int.parse(data.line) - 1].length - 1 &&
           int.parse(data.train) % 2 != 0) {
-        des = line[int.parse(data.line) - 1]
-            [line[int.parse(data.line) - 1].indexOf(station) + 1];
+        des = line[int.parse(data.line) - 1].last;
+        arr = line[int.parse(data.line) - 1].first;
       } else {
         continue;
       }
       datas.add(StationTrainList(
-          originStation: station,
+          originStation: arr,
           destinationStation: des,
           trainNo: data.train,
           stationTime: data.time));
     }
+    datas.sort(
+      (a, b) {
+        //convert time to double
+        double toDouble(StationTrainList t) {
+          TimeOfDay time = TimeOfDay(
+              hour: int.parse(t.stationTime.split(":")[0]),
+              minute: int.parse(t.stationTime.split(":")[1]));
+          return time.hour + time.minute / 60.0;
+        }
+
+        return (toDouble(a) - toDouble(b)).toInt();
+      },
+    );
+    return datas;
+  }
+
+  static Future<List<TrainTimetable>> getTraintable(String train) async {
+    late List<Map<String, dynamic>> stationlist;
+    await Future.wait<void>([
+      _db!
+          .query(_tableRoute,
+              where: 'train=?', whereArgs: [train], orderBy: "train")
+          .then((value) => stationlist = value)
+    ]);
+    print("get table");
+
+    int i = 0;
+    List<TrainTimetable> datas = [];
+    for (; i < stationlist.length; i++) {
+      var data = Routes.fromJson(stationlist[i]);
+      late String station, deptime;
+      //เช็คสถานีสุดท้ายขาเข้า
+      if (line[int.parse(data.line) - 1].indexOf(data.station) != 0 &&
+          int.parse(data.train) % 2 == 0) {
+        station = data.station;
+        deptime = data.time;
+      }
+      //เช็คสถานีสุดท้ายขาออก
+      else if (line[int.parse(data.line) - 1].indexOf(data.station) !=
+              line[int.parse(data.line) - 1].length - 1 &&
+          int.parse(data.train) % 2 != 0) {
+        station = data.station;
+        deptime = data.time;
+      } else {
+        continue;
+      }
+      datas.add(TrainTimetable(station: station, deptime: deptime));
+    }
+    datas.sort(
+      (a, b) {
+        //convert time to double
+        double toDouble(TrainTimetable t) {
+          TimeOfDay time = TimeOfDay(
+              hour: int.parse(t.deptime.split(":")[0]),
+              minute: int.parse(t.deptime.split(":")[1]));
+          return time.hour + time.minute / 60.0;
+        }
+
+        return (toDouble(a) - toDouble(b)).toInt();
+      },
+    );
     return datas;
   }
 

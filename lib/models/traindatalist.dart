@@ -38,9 +38,9 @@ class TrainList {
   String arriveStation; //สถานีปลายทาง
   String arriveTime;
   String line; //สาย
-  List<Seating> seats;
-  List<Destination> desinations;
-  String chart;
+  List<Seating> seats; //รายระเอียดที่นั่ง
+  List<Destination> desinations; //ทิวทัศน์ข้างทาง
+  String chart; //ผังที่นั่ง
 
   TrainList(
       {required this.trainNo,
@@ -201,7 +201,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -210,16 +211,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [
@@ -251,7 +255,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -260,16 +265,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -284,26 +292,33 @@ List<List<TrainList>> trainLists = [
         line: 'North',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             imageUrlExterior: 'assets/images/trainimage/2ndtokyu_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndtokyu_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40โตคิว.png',
-            coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นโตคิว (คันที่ 4,8,10)',
+            coachname:
+                'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นโตคิว (คันที่ 4,8,10)',
             description: 'ที่นั่ง 5,6,9,10,29,30,33,34 มีปลั๊กไฟ',
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บนทป.png',
           ),
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
-            coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู (คันที่ 2,3)',
+            coachname:
+                'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู (คันที่ 2,3)',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บนทป.png',
           ),
@@ -347,26 +362,33 @@ List<List<TrainList>> trainLists = [
         line: 'North',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             imageUrlExterior: 'assets/images/trainimage/2ndtokyu_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndtokyu_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40โตคิว.png',
-            coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นโตคิว (คันที่ 9,5,3)',
+            coachname:
+                'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นโตคิว (คันที่ 9,5,3)',
             description: 'ที่นั่ง 5,6,9,10,29,30,33,34 มีปลั๊กไฟ',
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บนทป.png',
           ),
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
-            coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู (คันที่ 11,10)',
+            coachname:
+                'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู (คันที่ 11,10)',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บนทป.png',
           ),
@@ -1363,7 +1385,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -1372,16 +1395,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -1402,7 +1428,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -1411,16 +1438,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -1441,7 +1471,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -1450,16 +1481,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -1480,7 +1514,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -1489,16 +1524,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -1624,7 +1662,7 @@ List<List<TrainList>> trainLists = [
         arriveTime: '07:55',
         line: 'NorthEast',
         seats: [
-           Seating(
+          Seating(
             imageUrlExterior: 'assets/images/trainimage/2ndบสส_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndบสส_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บสส20.png',
@@ -1652,7 +1690,7 @@ List<List<TrainList>> trainLists = [
         arriveTime: '05:30',
         line: 'NorthEast',
         seats: [
-           Seating(
+          Seating(
             imageUrlExterior: 'assets/images/trainimage/2ndบสส_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndบสส_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บสส20.png',
@@ -2492,8 +2530,10 @@ List<List<TrainList>> trainLists = [
         line: 'East',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2ndsprinter_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2ndsprinter_Interior.png',
+            imageUrlExterior:
+                'assets/images/trainimage/2ndsprinter_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2ndsprinter_Interior.png',
             imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
             coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
             description: 'ไม่มีบริการอาหาร',
@@ -2512,8 +2552,10 @@ List<List<TrainList>> trainLists = [
         line: 'East',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2ndsprinter_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2ndsprinter_Interior.png',
+            imageUrlExterior:
+                'assets/images/trainimage/2ndsprinter_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2ndsprinter_Interior.png',
             imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
             coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
             description: 'ไม่มีบริการอาหาร',
@@ -2679,7 +2721,7 @@ List<List<TrainList>> trainLists = [
         arriveTime: '17:15',
         line: 'East',
         seats: [
-         Seating(
+          Seating(
             imageUrlExterior: 'assets/images/trainimage/3rdบชส_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/3rdบชส_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บชส76.png',
@@ -2997,7 +3039,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -3006,16 +3049,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -3036,7 +3082,8 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24CN.png',
             coachname: 'ชั้น 1 บนอป.24CN รถนอนปรับอากาศชั้น 1 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
@@ -3045,16 +3092,19 @@ List<List<TrainList>> trainLists = [
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40CN.png',
             coachname: 'ชั้น 2 บนทป.40CN รถนอนปรับอากาศชั้น 2 CNR',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             //ชนิดที่ 2
             imageUrlExterior: 'assets/images/trainimage/2ndcnr_Exterior.jpg',
             imageUrlInterior: 'assets/images/trainimage/2ndcnr_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป36CNผู้พิการ.png',
-            coachname: 'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
+            coachname:
+                'ชั้น 2 บนทป.36CN รถนอนปรับอากาศชั้น 2 CNR รองรับผู้พิการ',
             description: 'มีปลั๊กไฟทุกที่นั่ง ,มีพื้นที่รถเข็นผู้พิการ',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
         desinations: [],
@@ -3069,12 +3119,15 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             imageUrlExterior: 'assets/images/trainimage/2ndtokyu_Exterior.jpg',
@@ -3113,12 +3166,15 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
             imageUrlExterior: 'assets/images/trainimage/2ndtokyu_Exterior.jpg',
@@ -3237,8 +3293,10 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
             coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
@@ -3257,8 +3315,10 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
             coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
@@ -3275,18 +3335,23 @@ List<List<TrainList>> trainLists = [
         arriveStation: 'ตรัง',
         arriveTime: '08:50',
         line: 'South',
-        seats: [  
+        seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
             coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
@@ -3321,16 +3386,21 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
             coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
@@ -3365,16 +3435,21 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
             coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',
@@ -3409,16 +3484,21 @@ List<List<TrainList>> trainLists = [
         line: 'South',
         seats: [
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/1sthyundai_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/1sthyundai_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/1sthyundai_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/1sthyundai_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนอป24เดิม.png',
             coachname: 'ชั้น 1 บนอป.24 รถนอนปรับอากาศชั้น 1 รุ่น Hyundai',
             description: 'มีปลั๊กไฟทุกที่นั่ง',
-            imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_andfirst.png',
+            imageUrlConvience:
+                'assets/images/convience/ความสะดวก_CNR_andfirst.png',
           ),
           Seating(
-            imageUrlExterior: 'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
-            imageUrlInterior: 'assets/images/trainimage/2nddaewooSleep_interior.jpg',
+            imageUrlExterior:
+                'assets/images/trainimage/2nddaewooSleep_Exterior.jpg',
+            imageUrlInterior:
+                'assets/images/trainimage/2nddaewooSleep_interior.jpg',
             imageUrlSeatchart: 'assets/images/seatchart/บนทป40แดวูใหม่.png',
             coachname: 'ชั้น 2 บนทป.40 รถนอนปรับอากาศชั้น 2 รุ่นแดวู',
             description: 'ที่นั่ง 17,18,21,22 มีปลั๊กไฟ',

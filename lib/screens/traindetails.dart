@@ -1,9 +1,8 @@
-//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-//import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:train_planner/db/db_helper.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 import '../models/traindatalist.dart';
 
@@ -15,8 +14,9 @@ class TrainDetails extends StatefulWidget {
 }
 
 class _TrainDetailsState extends State<TrainDetails> {
-  late TimetableDataSource _timetableDataSource;
+  //late TimetableDataSource _timetableDataSource;
   late TrainList traindetail;
+  late List<TrainTimetable> stationStopLists;
   @override
   void initState() {
     super.initState();
@@ -68,6 +68,7 @@ class _TrainDetailsState extends State<TrainDetails> {
   @override
   Widget build(BuildContext context) {
     getTrainDetail();
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -214,7 +215,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                 width: 100,
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "เวลา",
+                                  "เวลาออก",
                                   style: GoogleFonts.prompt(
                                     color: Colors.white,
                                     fontSize: 14.0,
@@ -242,75 +243,29 @@ class _TrainDetailsState extends State<TrainDetails> {
                           thickness: 5,
                           child: Container(
                             color: const Color.fromARGB(255, 255, 255, 255),
-                            child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              itemCount: stationStopLists.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                StationStopList stationStopList =
-                                    stationStopLists[index];
-                                return Stack(
-                                  children: <Widget>[
-                                    Container(
-                                      margin: const EdgeInsets.fromLTRB(
-                                          0, 0.0, 0, 2.0),
-                                      height: 35.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color.fromARGB(
-                                            255, 199, 249, 204),
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                            child: FutureBuilder(
+                              future: DBHelper.getTraintable(widget.train),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  stationStopLists = snapshot.data!;
+                                  return tableBuilder();
+                                } else {
+                                  return Center(
+                                      child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const <Widget>[
+                                      SizedBox(
+                                        width: 60,
+                                        height: 60,
+                                        child: CircularProgressIndicator(),
                                       ),
-                                      child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .start, //Center Row contents horizontally,
-                                          crossAxisAlignment: CrossAxisAlignment
-                                              .center, //Center Row contents vertically,
-                                          children: [
-                                            Container(
-                                              width: 220,
-                                              alignment: Alignment.center,
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            StationDetails(
-                                                              station:
-                                                                  stationStopList
-                                                                      .stationName,
-                                                            )),
-                                                  );
-                                                },
-                                                child: Text(
-                                                  stationStopList.stationName,
-                                                  style: GoogleFonts.prompt(
-                                                    color: Colors.black,
-                                                    fontSize: 14.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.white,
-                                              width: 2,
-                                            ),
-                                            Container(
-                                              width: 100,
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                stationStopList.time,
-                                                style: GoogleFonts.prompt(
-                                                  color: Colors.black,
-                                                  fontSize: 14.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ]),
-                                    )
-                                  ],
-                                );
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 16),
+                                        child: Text('Awaiting result...'),
+                                      ),
+                                    ],
+                                  ));
+                                }
                               },
                             ),
                           ),
@@ -349,6 +304,73 @@ class _TrainDetailsState extends State<TrainDetails> {
           ),
         ],
       ),
+    );
+  }
+
+  ListView tableBuilder() {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: stationStopLists.length,
+      itemBuilder: (BuildContext context, int index) {
+        TrainTimetable stationStopList = stationStopLists[index];
+        return Stack(
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0.0, 0, 2.0),
+              height: 35.0,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 199, 249, 204),
+                borderRadius: BorderRadius.circular(0.0),
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .start, //Center Row contents horizontally,
+                  crossAxisAlignment: CrossAxisAlignment
+                      .center, //Center Row contents vertically,
+                  children: [
+                    Container(
+                      width: 220,
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: () {
+                          //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => StationDetails(
+                                      station: stationStopList.station,
+                                    )),
+                          );
+                        },
+                        child: Text(
+                          stationStopList.station,
+                          style: GoogleFonts.prompt(
+                            color: Colors.black,
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      width: 2,
+                    ),
+                    Container(
+                      width: 100,
+                      alignment: Alignment.center,
+                      child: Text(
+                        stationStopList.deptime,
+                        style: GoogleFonts.prompt(
+                          color: Colors.black,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
+                  ]),
+            )
+          ],
+        );
+      },
     );
   }
 
@@ -691,7 +713,6 @@ class _TrainDetailsState extends State<TrainDetails> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                
                                 Row(
                                   children: [
                                     const Icon(
@@ -699,18 +720,15 @@ class _TrainDetailsState extends State<TrainDetails> {
                                       color: Color.fromARGB(255, 0, 0, 0),
                                       size: 20,
                                     ),
-                                     Text(
-                                     'ทิศเที่ยวไป', //ชื่อสถานีปลายทางของแต่ละขบวน
+                                    Text(
+                                      'ทิศเที่ยวไป', //ชื่อสถานีปลายทางของแต่ละขบวน
                                       style: GoogleFonts.prompt(
-                                      textStyle: const TextStyle(
-                                    fontSize: 12,
-                                  )),
-                                ),
-
+                                          textStyle: const TextStyle(
+                                        fontSize: 12,
+                                      )),
+                                    ),
                                   ],
                                 ),
-                                
-                               
                                 const SizedBox(
                                   width: 20,
                                 ),
@@ -724,20 +742,17 @@ class _TrainDetailsState extends State<TrainDetails> {
                                       )),
                                     ),
                                     const SizedBox(
-                                  width: 2,
-                                ),
-                                const Icon(
-                                  Icons.arrow_forward_sharp,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  size: 20,
-                                ),
+                                      width: 2,
+                                    ),
+                                    const Icon(
+                                      Icons.arrow_forward_sharp,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      size: 20,
+                                    ),
                                   ],
                                 ),
-                                
-                                
                               ],
                             ),
-                            
                           ],
                         ),
                       ),
@@ -962,7 +977,6 @@ class _TrainDetailsState extends State<TrainDetails> {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            
                                           ]),
                                     ),
                                     const SizedBox(
@@ -1164,53 +1178,6 @@ class TimetableDataSource extends DataGridSource {
   }
 }
 
-class TrainTimetable {
-  //ช่วงเวลา (ตารางเวลา) ของแต่ละขบวน
-  TrainTimetable(this.station, this.deptime);
-  final String station; //สถานี
-  final String deptime; //เวลาจอดที่สถานี
-}
-
-/*class Seating {
-  //รายละเอียดขบวน (ที่นั่ง ชนิดรถ รูปรถภายนอกภายใน) แต่ละขบวนอาจมีมากกว่า 2 ชนิดได้
-  String imageUrlExterior; //รูปภายนอกรถ
-  String imageUrlInterior; //รูปภายในรถ
-  String imageUrlSeatchart; //รูปผังที่นั่ง
-  String coachname; //ชื่อชนิดรถ
-  String description; //คำอธิบายเพิ่มเติม (เช่น ไม่มีบริการอาหาร)
-  String imageUrlConvience; //รูป icon ความสะดวก
-
-  Seating({
-    required this.imageUrlExterior,
-    required this.imageUrlInterior,
-    required this.imageUrlSeatchart,
-    required this.coachname,
-    required this.description,
-    required this.imageUrlConvience,
-  });
-}
-
-List<Seating> seats = [
-  Seating(
-    //ชนิดที่ 1
-    imageUrlExterior: 'assets/images/trainimage/2nddaewoo_Exterior.png',
-    imageUrlInterior: 'assets/images/trainimage/2nddaewoo_interior.jpg',
-    imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
-    coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ แดวู',
-    description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
-    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
-  ),
-  Seating(
-    //ชนิดที่ 2
-    imageUrlExterior: 'assets/images/trainimage/2ndsprinter_Exterior.jpg',
-    imageUrlInterior: 'assets/images/trainimage/2ndsprinter_Interior.png',
-    imageUrlSeatchart: 'assets/images/seatchart/กซขป76.png',
-    coachname: 'ชั้น 2 กซขป.76 รถดีเซลรางปรับอากาศ สปรินเตอร์',
-    description: 'มีบริการอาหาร ของว่าง และเครื่องดื่ม',
-    imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
-  ),
-];*/
-
 class Fare {
   //คิดค่าโดยสาร
   String coachname;
@@ -1226,35 +1193,4 @@ List<Fare> fare = [
     seattype: 'นั่งปรับอากาศ (ไม่มีบริการอาหาร)',
     price: '638 บาท',
   ),
-];
-
-class StationStopList {
-  String stationName; //ชื่อสถานีที่จอด
-  String time; //เวลาที่จอดสถานีตามตารางเดินรถ
-
-  StationStopList({
-    required this.stationName,
-    required this.time,
-  });
-}
-
-List<StationStopList> stationStopLists = [
-  //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา
-  StationStopList(stationName: 'กรุงเทพอภิวัฒน์', time: '09:05'),
-  StationStopList(stationName: 'ดอนเมือง', time: '09:20'),
-  StationStopList(stationName: 'รังสิต', time: '09:29'),
-  StationStopList(stationName: 'อยุธยา', time: '09:55'),
-  StationStopList(stationName: 'ลพบุรี', time: '10:29'),
-  StationStopList(stationName: 'นครสวรรค์', time: '11:40'),
-  StationStopList(stationName: 'ตะพานหิน', time: '12:26'),
-  StationStopList(stationName: 'พิจิตร', time: '12:46'),
-  StationStopList(stationName: 'พิษณุโลก', time: '13:22'),
-  StationStopList(stationName: 'อุตรดิตถ์', time: '14:27'),
-  StationStopList(stationName: 'ศิลาอาสน์', time: '14:33'),
-  StationStopList(stationName: 'เด่นชัย', time: '15:24'),
-  StationStopList(stationName: 'บ้านปิน', time: '15:57'),
-  StationStopList(stationName: 'นครลำปาง', time: '17:33'),
-  StationStopList(stationName: 'ขุนตาน', time: '18:23'),
-  StationStopList(stationName: 'ลำพูน', time: '19:15'),
-  StationStopList(stationName: 'เชียงใหม่', time: '19:30'),
 ];
