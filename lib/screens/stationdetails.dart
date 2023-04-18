@@ -214,7 +214,7 @@ class _StationDetailsState extends State<StationDetails> {
                           width: 45,
                         ),
                         Text(
-                          "เวลาออกสถานี",
+                          "เวลา",
                           style: GoogleFonts.prompt(
                             color: Colors.white,
                             fontSize: 14.0,
@@ -549,83 +549,7 @@ class _StationDetailsState extends State<StationDetails> {
   }
 }
 
-/*class StationTrainList {
-  String trainNo;
-  String originStation;
-  String destinationStation;
-  String stationTime;
 
-  StationTrainList({
-    required this.trainNo,
-    required this.originStation,
-    required this.destinationStation,
-    required this.stationTime,
-  });
-}
-
-List<StationTrainList> stationTrainLists = [
-  //รายชื่อขบวนที่จอดที่สถานีนี้พร้อมเวลา ดูตามชื่อสถานีและตารางจาก web scraping
-  StationTrainList(
-      trainNo: '109',
-      originStation: 'กรุงเทพอภิวัฒน์',
-      destinationStation: 'เชียงใหม่',
-      stationTime: '04:05'),
-  StationTrainList(
-      trainNo: '102',
-      originStation: 'เชียงใหม่',
-      destinationStation: 'กรุงเทพอภิวัฒน์',
-      stationTime: '06:30'),
-  StationTrainList(
-      trainNo: '9',
-      originStation: 'กรุงเทพอภิวัฒน์',
-      destinationStation: 'เชียงใหม่',
-      stationTime: '07:15'),
-  StationTrainList(
-      trainNo: '13',
-      originStation: 'กรุงเทพอภิวัฒน์',
-      destinationStation: 'เชียงใหม่',
-      stationTime: '08:40'),
-  StationTrainList(
-      trainNo: '8',
-      originStation: 'เชียงใหม่',
-      destinationStation: 'กรุงเทพอภิวัฒน์',
-      stationTime: '08:50'),
-  StationTrainList(
-      trainNo: '408',
-      originStation: 'เชียงใหม่',
-      destinationStation: 'นครสวรรค์',
-      stationTime: '09:20'),
-  StationTrainList(
-      trainNo: '51',
-      originStation: 'กรุงเทพอภิวัฒน์',
-      destinationStation: 'เชียงใหม่',
-      stationTime: '12:10'),
-  StationTrainList(
-      trainNo: '407',
-      originStation: 'นครสวรรค์',
-      destinationStation: 'เชียงใหม่',
-      stationTime: '14:35'),
-  StationTrainList(
-      trainNo: '52',
-      originStation: 'เชียงใหม่',
-      destinationStation: 'กรุงเทพอภิวัฒน์',
-      stationTime: '15:30'),
-  StationTrainList(
-      trainNo: '14',
-      originStation: 'เชียงใหม่',
-      destinationStation: 'กรุงเทพอภิวัฒน์',
-      stationTime: '17:00'),
-  StationTrainList(
-      trainNo: '10',
-      originStation: 'เชียงใหม่',
-      destinationStation: 'กรุงเทพอภิวัฒน์',
-      stationTime: '18:00'),
-  StationTrainList(
-      trainNo: '7',
-      originStation: 'กรุงเทพอภิวัฒน์',
-      destinationStation: 'เชียงใหม่',
-      stationTime: '19:30'),
-];*/
 
 class DialogConvience extends StatelessWidget {
   const DialogConvience({super.key, required this.convience});

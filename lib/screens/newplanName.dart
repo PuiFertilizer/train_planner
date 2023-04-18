@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
 import 'package:train_planner/screens/planner.dart';
+import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/input_field.dart';
 import 'package:train_planner/widgets/searchRouteNew.dart';
@@ -71,9 +72,7 @@ class _newplanPageState extends State<newplanPage>{
               ElevatedButton.icon(
                                     
              onPressed: () {
-                  showDialog(context: context, builder: (BuildContext context) {
-                  return DialogAddPlan();
-                });
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Writeplan()),); //ไปที่หน้าแผนการเดินทางที่สร้างใหม่ที่ว่าง พร้อม id ใหม่
                },
           icon: Icon(Icons.add),
           label: Text("เพิ่มแผนการเดินทาง", //สร้างแผนใหม่

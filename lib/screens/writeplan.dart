@@ -42,12 +42,12 @@ class _WriteplanState extends State<Writeplan> {
           preferredSize: Size.fromHeight(80.0), // ความสูงของ navbar
           child:AppBar(
         backgroundColor: const Color.fromARGB(255, 87, 204, 153), //title หรือชื่อของแผน
-        title: Text('นั่งรถไฟเที่ยวชายหาดหัวหิน และสวนสนประดิพัทธ์', style: GoogleFonts.prompt(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,)),
+        title: Text('เที่ยวฉะเชิงเทราและปราจีนบุรีด้วยรถไฟชั้น 3', style: GoogleFonts.prompt(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,)),  //title ของแผนการเดินทาง
         centerTitle: true,
         bottom: PreferredSize(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
-            child: Text("3 Jun. 2023 - 5 Jun. 2023", style: GoogleFonts.prompt(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,)),
+            child: Text("4/22/2023 - 4/22/2023", style: GoogleFonts.prompt(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,)), //วันที่ของแผน
           ),
           preferredSize: Size.zero),
           ),

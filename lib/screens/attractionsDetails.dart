@@ -15,6 +15,23 @@ class AttractionsDetails extends StatefulWidget {
 }
 
 class _AttractionsDetailsState extends State<AttractionsDetails> {
+    //favourite
+  bool _isFavourited = false;
+  int _favouriteCount = 0;
+
+  //change colors of favourite
+  void _toggleFavourite() {
+    setState(() {
+      //สถานะรายการโปรด
+      if (_isFavourited) {
+        _favouriteCount -= 1;
+        _isFavourited = false; //ไม่ชอบ
+      } else {
+        _favouriteCount += 1;
+        _isFavourited = true; //ชอบ
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +108,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           color: const Color.fromARGB(255, 255, 255, 255),
         ),
         Container(
-          height: 20,
+          height: 40,
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -109,7 +126,27 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
                 ),
                 Row(
                   //หัวใจรายการโปรด
-                  children: <Widget>[],
+                  children: <Widget>[
+                     Container(
+                            padding: const EdgeInsets.all(0),
+                            child: IconButton(
+                              padding: const EdgeInsets.all(0),
+                              alignment: Alignment.centerRight,
+                              icon: (_isFavourited
+                                  ? const Icon(
+                                      Icons.favorite,
+                                      size: 40.0,
+                                    )
+                                  : const Icon(
+                                      Icons.favorite_border,
+                                      size: 40.0,
+                                    )),
+                              color: Colors.red[500],
+                              //to call _toggleFavourite
+                              onPressed: _toggleFavourite,
+                            ),
+                          )
+                  ],
                 ),
               ],
             ),
@@ -267,7 +304,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           ),
         ),
         const SizedBox(
-          height: 40,
+          height: 10,
         ),
         ElevatedButton(
           onPressed: () {},

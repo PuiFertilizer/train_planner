@@ -14,6 +14,24 @@ class TrainDetails extends StatefulWidget {
 }
 
 class _TrainDetailsState extends State<TrainDetails> {
+
+  //favourite
+  bool _isFavourited = false;
+  int _favouriteCount = 0;
+
+  //change colors of favourite
+  void _toggleFavourite() {
+    setState(() {
+      //สถานะรายการโปรด
+      if (_isFavourited) {
+        _favouriteCount -= 1;
+        _isFavourited = false; //ไม่ชอบ
+      } else {
+        _favouriteCount += 1;
+        _isFavourited = true; //ชอบ
+      }
+    });
+  }
   //late TimetableDataSource _timetableDataSource;
   late TrainList traindetail;
   late List<TrainTimetable> stationStopLists;
@@ -76,38 +94,62 @@ class _TrainDetailsState extends State<TrainDetails> {
         appBar: AppBar(
           title: Padding(
             padding: const EdgeInsets.only(top: 10.0),
-            child: RichText(
-              text: TextSpan(children: [
-                TextSpan(
-                  text: 'ขบวน ${widget.train}',
-                  style: GoogleFonts.prompt(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                      text: 'ขบวน ${widget.train}',
+                      style: GoogleFonts.prompt(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const TextSpan(text: "\n"),
+                    TextSpan(
+                        //สถานีต้นทางของขบวนนั้นๆ
+                        text: traindetail.departureStation,
+                        style: GoogleFonts.prompt(
+                          color: Colors.black,
+                          fontSize: 15,
+                        )),
+                    TextSpan(
+                        text: ' - ',
+                        style: GoogleFonts.prompt(
+                          color: Colors.black,
+                          fontSize: 15,
+                        )),
+                    TextSpan(
+                        //สถานีปลายทางของขบวนนั้นๆ
+                        text: traindetail.arriveStation,
+                        style: GoogleFonts.prompt(
+                          color: Colors.black,
+                          fontSize: 15,
+                        ))
+                  ]),
                 ),
-                const TextSpan(text: "\n"),
-                TextSpan(
-                    //สถานีต้นทางของขบวนนั้นๆ
-                    text: traindetail.departureStation,
-                    style: GoogleFonts.prompt(
-                      color: Colors.black,
-                      fontSize: 18,
-                    )),
-                TextSpan(
-                    text: ' - ',
-                    style: GoogleFonts.prompt(
-                      color: Colors.black,
-                      fontSize: 18,
-                    )),
-                TextSpan(
-                    //สถานีปลายทางของขบวนนั้นๆ
-                    text: traindetail.arriveStation,
-                    style: GoogleFonts.prompt(
-                      color: Colors.black,
-                      fontSize: 18,
-                    ))
-              ]),
+                Container(
+                            padding: const EdgeInsets.all(0),
+                            child: IconButton(
+                              padding: const EdgeInsets.all(0),
+                              alignment: Alignment.centerRight,
+                              icon: (_isFavourited
+                                  ? const Icon(
+                                      Icons.favorite,
+                                      size: 30.0,
+                                    )
+                                  : const Icon(
+                                      Icons.favorite_border,
+                                      size: 30.0,
+                                    )),
+                              color: Colors.red[500],
+                              //to call _toggleFavourite
+                              onPressed: _toggleFavourite,
+                            ),
+                          )
+              ],
             ),
           ),
           iconTheme: const IconThemeData(
@@ -233,7 +275,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                   //เนื้อหาตารางใหม่
                   SizedBox(
                     child: Container(
-                      height: 200,
+                      height: 300,
                       color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10),
