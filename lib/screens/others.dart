@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:train_planner/screens/stationlist.dart';
+import 'package:train_planner/screens/tourtrainlist.dart';
 import 'package:train_planner/screens/trainlist.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -85,7 +86,7 @@ class _OthersState extends State<Others> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: <Widget>[
-                                    Icon(Icons.account_balance, size: 35,),
+                                    Icon(Icons.account_balance, size: 35,), ////
                                     // <-- Icon
                                     const SizedBox(
                                       width: 10,
@@ -118,7 +119,7 @@ class _OthersState extends State<Others> {
                             child: InkWell(
                               //splashColor: Colors.green,
                               onTap: () {
-                               //Navigator.push(context, MaterialPageRoute(builder: (context) => News()));
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => TourtrainList()));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8.0, right: 10),

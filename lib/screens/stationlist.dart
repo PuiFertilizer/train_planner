@@ -45,10 +45,10 @@ class _StationlistState extends State<Stationlist> {
                     fontSize: 13,
                   ),
               tabs: [
-              Tab(text: 'สายเหนือ',),
-              Tab(text: 'สายอีสาน',),
-              Tab(text: 'สายตะวันออก',),
-              Tab(text: 'สายใต้',)
+              Tab(text: 'เหนือ',),
+              Tab(text: 'อีสาน',),
+              Tab(text: 'ตะวันออก',),
+              Tab(text: 'ใต้',)
                       ],),
             ),
             Expanded(

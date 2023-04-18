@@ -78,16 +78,49 @@ List<List<TrainList>> trainLists = [
         ],
         desinations: [
           Destination(
-            //สถานที่ ที่ 1
-            imageUrl: 'assets/images/chiangmai.jpg',
-            scenename: 'แม่นำ้บางปะกง',
-            betweenstation: 'สถานีฉะเชิงเทรา-ดอนสีนนท์',
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'สถานีศิลาอาสน์ขึ้นไป',
           ),
           Destination(
-            //สถานที่ ที่ 2
-            imageUrl: 'assets/images/nongkai.jpg',
-            scenename: 'แกรนด์แคนยอนชลบุรี',
-            betweenstation: 'สถานีชลบุรี-บางพระ',
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'อุโมงค์เขาพลึง',
+            betweenstation: 'ศิลาอาสน์-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom2.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/huaimaelan.jpg',
+            scenename: 'อุโมงค์ห้วยแม่ลาน',
+            betweenstation: 'บ้านปิน-แม่เมาะ',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ลำปาง-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ขุนตาน-ลำพูน',
           ),
         ],
         chart: 'assets/images/trainchart/trainchart_daewoo_depart.png'),
@@ -109,7 +142,48 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_กซขป.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'ก่อนถึงสถานีศิลาอาสน์',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ลำพูน-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ขุนตาน-ลำปาง',
+          ),
+          Destination(
+            imageUrl: 'assets/images/huaimaelan.jpg',
+            scenename: 'อุโมงค์ห้วยแม่ลาน',
+            betweenstation: 'แม่เมาะ-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งซ้าย)',
+            betweenstation: 'บ้านปิน-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom2.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งซ้าย)',
+            betweenstation: 'บ้านปิน-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'อุโมงค์เขาพลึง',
+            betweenstation: 'เด่นชัย-ศิลาอาสน์',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_daewoo_arrive.png'),
     TrainList(
         trainNo: '9',
@@ -148,7 +222,18 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_CNR_disability.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ขุนตาน-ลำพูน',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchartCNR_depart.png'),
     TrainList(
         trainNo: '10',
@@ -239,7 +324,18 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บชส_กซข.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ขุนตาน-ลำพูน',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_13.png'),
     TrainList(
         trainNo: '14',
@@ -335,7 +431,53 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บชส_กซข.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'สถานีศิลาอาสน์ขึ้นไป',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'อุโมงค์เขาพลึง',
+            betweenstation: 'ศิลาอาสน์-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom2.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/huaimaelan.jpg',
+            scenename: 'อุโมงค์ห้วยแม่ลาน',
+            betweenstation: 'บ้านปิน-แม่เมาะ',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ลำปาง-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ขุนตาน-ลำพูน',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_51.png'),
     TrainList(
         trainNo: '52',
@@ -379,7 +521,28 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บชส_กซข.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'ก่อนถึงสถานีศิลาอาสน์',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ลำพูน-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ขุนตาน-ลำปาง',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_52.png'),
     TrainList(
         trainNo: '109',
@@ -443,7 +606,48 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บชส_กซข.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'ก่อนถึงสถานีศิลาอาสน์',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ลำพูน-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ขุนตาน-ลำปาง',
+          ),
+          Destination(
+            imageUrl: 'assets/images/huaimaelan.jpg',
+            scenename: 'อุโมงค์ห้วยแม่ลาน',
+            betweenstation: 'แม่เมาะ-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งซ้าย)',
+            betweenstation: 'บ้านปิน-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom2.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งซ้าย)',
+            betweenstation: 'บ้านปิน-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'อุโมงค์เขาพลึง',
+            betweenstation: 'เด่นชัย-ศิลาอาสน์',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_102.png'),
     TrainList(
         trainNo: '107',
@@ -991,7 +1195,53 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บชส_กซข.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'สถานีศิลาอาสน์ขึ้นไป',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'อุโมงค์เขาพลึง',
+            betweenstation: 'ศิลาอาสน์-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom2.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งขวา)',
+            betweenstation: 'เด่นชัย-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/huaimaelan.jpg',
+            scenename: 'อุโมงค์ห้วยแม่ลาน',
+            betweenstation: 'บ้านปิน-แม่เมาะ',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ลำปาง-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ขุนตาน-ลำพูน',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_thn.png'),
     TrainList(
         trainNo: '408',
@@ -1011,7 +1261,48 @@ List<List<TrainList>> trainLists = [
             imageUrlConvience: 'assets/images/convience/ความสะดวก_บชส_กซข.png',
           ),
         ],
-        desinations: [],
+        desinations: [
+          Destination(
+            imageUrl: 'assets/images/pangtonpueng.jpg',
+            scenename: 'รถไฟทางภูเขา',
+            betweenstation: 'ก่อนถึงสถานีศิลาอาสน์',
+          ),
+          Destination(
+            imageUrl: 'assets/images/tachompooside2.jpg',
+            scenename: 'สะพานทาชมภู',
+            betweenstation: 'ลำพูน-ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/kuntan.jpg',
+            scenename: 'อุโมงค์ขุนตาน',
+            betweenstation: 'ขุนตาน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/saphanhor.jpg',
+            scenename: 'สะพานหอ',
+            betweenstation: 'ขุนตาน-ลำปาง',
+          ),
+          Destination(
+            imageUrl: 'assets/images/huaimaelan.jpg',
+            scenename: 'อุโมงค์ห้วยแม่ลาน',
+            betweenstation: 'แม่เมาะ-บ้านปิน',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งซ้าย)',
+            betweenstation: 'บ้านปิน-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/riveryom2.jpg',
+            scenename: 'แม่นํ้ายม (ฝั่งซ้าย)',
+            betweenstation: 'บ้านปิน-เด่นชัย',
+          ),
+          Destination(
+            imageUrl: 'assets/images/pangtoomkop.jpg',
+            scenename: 'อุโมงค์เขาพลึง',
+            betweenstation: 'เด่นชัย-ศิลาอาสน์',
+          ),
+        ],
         chart: 'assets/images/trainchart/trainchart_thn2.png'),
   ],
   [

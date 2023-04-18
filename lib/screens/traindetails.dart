@@ -1073,7 +1073,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                         Text(destination.scenename,
                                             style: GoogleFonts.prompt(
                                               color: Colors.black,
-                                              fontSize: 24.0,
+                                              fontSize: 18.0,
                                               fontWeight: FontWeight.w600,
                                               letterSpacing: 0,
                                             )),

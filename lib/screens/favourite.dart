@@ -38,7 +38,7 @@ class _FavouriteState extends State<Favourite> {
                       text: 'การเดินทาง',
                       icon: Image.asset(
                         'assets/images/route.png',
-                        width: 35,
+                        width: 38,
                       ),
                     ),
                   ),
@@ -48,7 +48,7 @@ class _FavouriteState extends State<Favourite> {
                       text: 'ขบวนรถ',
                       icon: Image.asset(
                         'assets/images/train1.png',
-                        width: 35,
+                        width: 38,
                       ),
                     ),
                   ),
@@ -57,8 +57,8 @@ class _FavouriteState extends State<Favourite> {
                     child: Tab(
                       text: 'สถานี',
                       icon: Image.asset(
-                        'assets/images/price.png',
-                        width: 35,
+                        'assets/images/stationimage.png',
+                        width: 40,
                       ),
                     ),
                   ),

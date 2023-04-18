@@ -39,6 +39,7 @@ Map<String, String> connectPic = {
   'shuttle bus ไปสถานีกลางอภิวัฒน์': 'assets/images/bus.png',
   'ท่าอากาศยานดอนเมือง': 'assets/images/local-airport.png',
   'ท่าอากาศยานสุวรรณภูมิ': 'assets/images/local-airport.png',
+  'รถสองแถวรอบเมืองฉะเชิงเทรา': 'assets/images/bus.png',
   
   
 };
@@ -333,7 +334,9 @@ List<StationList> stationLists = [
         howtotravel:
             'จากสถานีฉะเชิงเทรา ใช้รถสองแถวรับจ้างที่จอดหน้าสถานีรถไฟเพื่อเดินทางต่อไปยังตลาดบ้านใหม่ 100 ปีได้เลย'),
       ],
-      connects: [],
+      connects: [
+        'รถสองแถวรอบเมืองฉะเชิงเทรา'
+      ],
       comforts: [
     'จำหน่ายตั๋วล่วงหน้า',
     'จำหน่ายตั๋วประจำวัน',
