@@ -55,6 +55,13 @@ class TrainList {
       required this.chart});
 }
 
+//0 ไม่วิ่งเสาร์ อาทิตย์
+//1 วิ่งแค่เสาร์ อาทิตย์
+List<List<String>> isRunOnSatSun = [
+  ["313", "314", "317", "318", "339", "340"],
+  ["997", "998"]
+];
+
 List<List<TrainList>> trainLists = [
   [
     //รายชื่อสถานีที่ขบวนที่ระบุจอด พร้อมเวลา

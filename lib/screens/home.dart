@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   String source = ' ';
   String destination = ' ';
+  String date = ' ';
 
   final TextEditingController _date = TextEditingController();
 
@@ -47,56 +48,107 @@ class _HomePageState extends State<HomePage> {
               color: Colors.black,
             )),
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Image.asset(
-                "assets/images/tachompoo.jpg",
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text("    คุณอยากเดินทางไปที่ใด",
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Image.asset(
+              "assets/images/tachompoo.jpg",
+              height: 200,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text("    คุณอยากเดินทางไปที่ใด",
+                            style: GoogleFonts.prompt(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            )),
+                      ],
+                    )),
+              ],
+            ),
+            Positioned.fill(
+              top: 100,
+              bottom: 580,
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  width: 280,
+                  height: 600,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 221, 221, 221),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      const SizedBox(height: 200.0),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Stack(
+                          children: [
+                            Text(
+                              "สถานีต้นทาง",
                               style: GoogleFonts.prompt(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              )),
-                        ],
-                      )),
-                ],
-              ),
-              Positioned.fill(
-                top: 100,
-                bottom: 580,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    width: 280,
-                    height: 600,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 221, 221, 221),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Container(
-                      child: Stack(
-                        children: <Widget>[
-                          SizedBox(height: 200.0),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Stack(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15.0,
+                            ),
+                            ListView(
                               children: [
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                DropdownSearch<String>(
+                                  mode: Mode.MENU,
+                                  showSelectedItems: true,
+                                  items: stationList,
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        //<-- SEE HERE
+                                        borderSide: const BorderSide(
+                                            color: Colors.white, width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        //<-- SEE HERE
+                                        borderSide: const BorderSide(
+                                            color: Colors.white, width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 4.0),
+                                      filled: true, //<-- SEE HERE
+                                      fillColor: const Color.fromARGB(
+                                          255, 255, 255, 255),
+                                      hintText: "สถานีหรือชื่อจังหวัด"),
+                                  popupItemDisabled: isItemDisabled,
+                                  onChanged: sourceSelectionChanged,
+                                  showSearchBox: true,
+                                  searchFieldProps: const TextFieldProps(
+                                    cursorColor:
+                                        Color.fromARGB(255, 0, 181, 91),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
                                 Text(
-                                  "สถานีต้นทาง",
+                                  'สถานีปลายทาง',
                                   style: GoogleFonts.prompt(
                                     color: Colors.black,
                                     fontSize: 18.0,
@@ -104,234 +156,170 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 15.0,
+                                  height: 2,
                                 ),
-                                Container(
-                                    child: ListView(
-                                  children: [
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    DropdownSearch<String>(
-                                      mode: Mode.MENU,
-                                      showSelectedItems: true,
-                                      items: stationList,
-                                      dropdownSearchDecoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            //<-- SEE HERE
-                                            borderSide: const BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            //<-- SEE HERE
-                                            borderSide: const BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 4.0),
-                                          filled: true, //<-- SEE HERE
-                                          fillColor: const Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          hintText: "สถานีหรือชื่อจังหวัด"),
-                                      popupItemDisabled: isItemDisabled,
-                                      onChanged: sourceSelectionChanged,
-                                      showSearchBox: true,
-                                      searchFieldProps: const TextFieldProps(
-                                        cursorColor:
-                                            Color.fromARGB(255, 0, 181, 91),
+                                DropdownSearch<String>(
+                                  mode: Mode.MENU,
+                                  showSelectedItems: true,
+                                  items: stationList,
+                                  dropdownSearchDecoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        //<-- SEE HERE
+                                        borderSide: const BorderSide(
+                                            color: Colors.white, width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      'สถานีปลายทาง',
-                                      style: GoogleFonts.prompt(
-                                        color: Colors.black,
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w600,
+                                      focusedBorder: OutlineInputBorder(
+                                        //<-- SEE HERE
+                                        borderSide: const BorderSide(
+                                            color: Colors.white, width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 4.0),
+                                      filled: true, //<-- SEE HERE
+                                      fillColor: const Color.fromARGB(
+                                          255, 255, 255, 255),
+                                      hintText: "สถานีหรือชื่อจังหวัด"),
+                                  popupItemDisabled: isItemDisabled,
+                                  onChanged: destinationSelectionChanged,
+                                  showSearchBox: true,
+                                  searchFieldProps: const TextFieldProps(
+                                    cursorColor: Colors.blue,
+                                  ),
+                                  onSaved: ((newValue) {
+                                    destination = newValue!;
+                                  }),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                  'วันเดินทาง',
+                                  style: GoogleFonts.prompt(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 2,
+                                ),
+                                TextField(
+                                  controller: _date,
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Colors.white, width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0)),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 4.0),
+                                    filled: true, //<-- SEE HERE
+                                    fillColor: const Color.fromARGB(
+                                        255, 255, 255, 255),
+                                    icon: const Icon(
+                                        Icons.calendar_today_rounded),
+                                  ),
+                                  onTap: () async {
+                                    DateTime? pickeddate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime(2101));
+                                    if (pickeddate != null) {
+                                      setState(() {
+                                        _date.text = DateFormat('dd/MM/yyyy')
+                                            .format(pickeddate);
+                                      });
+                                    }
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Searchresult(
+                                                source: source,
+                                                destination: destination,
+                                                date: _date.text,
+                                              )),
+                                    );
+                                  },
+                                  icon: const Icon(Icons.location_on,
+                                      size: 30.0, color: Colors.black),
+                                  label: Text(
+                                    "สถานีใกล้ตัว",
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.black, fontSize: 20.0),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(90, 40),
+                                    backgroundColor: const Color.fromARGB(
+                                        255, 128, 237, 193),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    const SizedBox(
-                                      height: 2,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Searchresult(
+                                              source: source,
+                                              destination: destination,
+                                              date: _date.text)),
+                                    ); //ไปที่หน้าผลการค้นหา
+                                  }, //มีการ Query
+                                  icon: const Icon(Icons.search),
+                                  label: Text(
+                                    "ค้นหา",
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.white, fontSize: 20.0),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(90, 40),
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 56, 163, 165),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    DropdownSearch<String>(
-                                      mode: Mode.MENU,
-                                      showSelectedItems: true,
-                                      items: stationList,
-                                      dropdownSearchDecoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            //<-- SEE HERE
-                                            borderSide: const BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            //<-- SEE HERE
-                                            borderSide: const BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 4.0),
-                                          filled: true, //<-- SEE HERE
-                                          fillColor: const Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          hintText: "สถานีหรือชื่อจังหวัด"),
-                                      popupItemDisabled: isItemDisabled,
-                                      onChanged: destinationSelectionChanged,
-                                      showSearchBox: true,
-                                      searchFieldProps: const TextFieldProps(
-                                        cursorColor: Colors.blue,
-                                      ),
-                                      onSaved: ((newValue) {
-                                        destination = newValue!;
-                                      }),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      'วันเดินทาง',
-                                      style: GoogleFonts.prompt(
-                                        color: Colors.black,
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 2,
-                                    ),
-                                    TextField(
-                                      controller: _date,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0)),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 4.0),
-                                        filled: true, //<-- SEE HERE
-                                        fillColor:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        icon: const Icon(
-                                            Icons.calendar_today_rounded),
-                                      ),
-                                      onTap: () async {
-                                        DateTime? pickeddate =
-                                            await showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime(2000),
-                                                lastDate: DateTime(2101));
-                                        if (pickeddate != null) {
-                                          setState(() {
-                                            _date.text =
-                                                DateFormat('dd/MM/yyyy')
-                                                    .format(pickeddate);
-                                          });
-                                        }
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Searchresult(
-                                                    source: source,
-                                                    destination: destination,
-                                                  )),
-                                        );
-                                      },
-                                      icon: const Icon(Icons.location_on,
-                                          size: 30.0, color: Colors.black),
-                                      label: Text(
-                                        "สถานีใกล้ตัว",
-                                        style: GoogleFonts.prompt(
-                                            color: Colors.black,
-                                            fontSize: 20.0),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(90, 40),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 128, 237, 193),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    ElevatedButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Searchresult(
-                                                    source: source,
-                                                    destination: destination,
-                                                  )),
-                                        ); //ไปที่หน้าผลการค้นหา
-                                      }, //มีการ Query
-                                      icon: const Icon(Icons.search),
-                                      label: Text(
-                                        "ค้นหา",
-                                        style: GoogleFonts.prompt(
-                                            color: Colors.white,
-                                            fontSize: 20.0),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: const Size(90, 40),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 56, 163, 165),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )),
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
-              Column(
-                children: [Container()],
-              ),
-              Column(
-                children: <Widget>[
-                  const SizedBox(height: 560.0),
-                  Destination_Carousel(),
-                  const SizedBox(height: 10.0),
-                  Tourtrain_Carousel()
-                ],
-              ),
-            ],
-          ),
+            ),
+            Column(
+              children: [Container()],
+            ),
+            Column(
+              children: <Widget>[
+                const SizedBox(height: 560.0),
+                Destination_Carousel(),
+                const SizedBox(height: 10.0),
+                Tourtrain_Carousel()
+              ],
+            ),
+          ],
         ),
       ),
     );

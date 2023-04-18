@@ -111,41 +111,48 @@ class DBHelper {
               where: 'station=?', whereArgs: [end], orderBy: "train")
           .then((value) => arrive = value)
     ]);
-
     List<Result> result = [];
     int i = 0, j = 0;
     for (; i < arrive.length && j < depart.length;) {
       var e = Routes.fromJson(arrive[i]);
       var s = Routes.fromJson(depart[j]);
-
       if (s.train == e.train) {
         int resultLine = int.parse(s.line) - 1;
         if (line[resultLine].indexOf(s.station) <
                 line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 != 0) {
-          Result x = Result(
-              departureStation: s.station,
-              departureTime: s.time,
-              arriveStation: e.station,
-              arriveTime: e.time,
-              traintype: trainLists[resultLine]
-                  .firstWhere((element) => element.trainNo == s.train)
-                  .trainType,
-              trainNumber: s.train);
-          result.add(x);
+          try {
+            Result x = Result(
+                departureStation: s.station,
+                departureTime: s.time,
+                arriveStation: e.station,
+                arriveTime: e.time,
+                traintype: trainLists[resultLine]
+                    .firstWhere((element) => element.trainNo == s.train)
+                    .trainType,
+                trainNumber: s.train);
+            result.add(x);
+          } catch (e) {
+            print(e);
+          }
         } else if ((line[resultLine].indexOf(s.station) >
                 line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 == 0)) {
-          Result x = Result(
-              departureStation: s.station,
-              departureTime: s.time,
-              arriveStation: e.station,
-              arriveTime: e.time,
-              traintype: trainLists[resultLine]
-                  .firstWhere((element) => element.trainNo == s.train)
-                  .trainType,
-              trainNumber: e.train);
-          result.add(x);
+          try {
+            Result x = Result(
+                departureStation: s.station,
+                departureTime: s.time,
+                arriveStation: e.station,
+                arriveTime: e.time,
+                traintype: trainLists[resultLine]
+                    .firstWhere((element) => element.trainNo == s.train)
+                    .trainType,
+                trainNumber: e.train);
+
+            result.add(x);
+          } catch (e) {
+            print(e);
+          }
         }
         i++;
         j++;
@@ -307,7 +314,7 @@ class DBHelper {
                       .elementAt(timeCounter ~/ trains.length)[0]
                       .toString(),
                   time: time.elementAt(timeCounter)[0].toString(),
-                  line: line.toString());
+                  line: "$line");
               batch.insert(_tableRoute, route.toJson());
               //DBHelper.insertR(route);
               id++;
