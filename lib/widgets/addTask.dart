@@ -44,7 +44,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           fontWeight: FontWeight.bold,),
               ),
               MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่', controller: _titleController,),
-              MyInputField(title: 'สถานที่', hint: 'ระบุที่นี่', controller: _selectedAttraction,),
               MyInputField(title: 'วันที่ต้องการเพิ่มกิจกรรม', hint: DateFormat.yMd().format(_selectedDate),
               widget: IconButton(
                 icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),
@@ -85,6 +84,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 ),
                 
               ],),
+              MyInputField(title: 'สถานที่ (optional)', hint: 'ระบุที่นี่', controller: _selectedAttraction,),
               SizedBox(height: 18,),
               ElevatedButton.icon(                                  
           onPressed: ()  => _validateData(),
