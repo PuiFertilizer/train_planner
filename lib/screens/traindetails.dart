@@ -14,7 +14,6 @@ class TrainDetails extends StatefulWidget {
 }
 
 class _TrainDetailsState extends State<TrainDetails> {
-
   //favourite
   bool _isFavourited = false;
   int _favouriteCount = 0;
@@ -32,6 +31,7 @@ class _TrainDetailsState extends State<TrainDetails> {
       }
     });
   }
+
   //late TimetableDataSource _timetableDataSource;
   late TrainList traindetail;
   late List<TrainTimetable> stationStopLists;
@@ -131,24 +131,24 @@ class _TrainDetailsState extends State<TrainDetails> {
                   ]),
                 ),
                 Container(
-                            padding: const EdgeInsets.all(0),
-                            child: IconButton(
-                              padding: const EdgeInsets.all(0),
-                              alignment: Alignment.centerRight,
-                              icon: (_isFavourited
-                                  ? const Icon(
-                                      Icons.favorite,
-                                      size: 30.0,
-                                    )
-                                  : const Icon(
-                                      Icons.favorite_border,
-                                      size: 30.0,
-                                    )),
-                              color: Colors.red[500],
-                              //to call _toggleFavourite
-                              onPressed: _toggleFavourite,
-                            ),
+                  padding: const EdgeInsets.all(0),
+                  child: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    alignment: Alignment.centerRight,
+                    icon: (_isFavourited
+                        ? const Icon(
+                            Icons.favorite,
+                            size: 30.0,
                           )
+                        : const Icon(
+                            Icons.favorite_border,
+                            size: 30.0,
+                          )),
+                    color: Colors.red[500],
+                    //to call _toggleFavourite
+                    onPressed: _toggleFavourite,
+                  ),
+                )
               ],
             ),
           ),
@@ -204,7 +204,9 @@ class _TrainDetailsState extends State<TrainDetails> {
             line: 'no detail',
             seats: [],
             desinations: [],
-            chart: '');
+            chart: '',
+            classes: '',
+            coach: []);
         print("no detail");
       }
     }
