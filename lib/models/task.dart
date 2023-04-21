@@ -5,15 +5,16 @@ class Task {
   String? date;
   String? startTime;
   String? endTime;
+  int planid = -1;
 
-  Task({
-    this.id,
-    this.title,
-    this.attraction,
-    this.date,
-    this.startTime,
-    this.endTime,
-  });
+  Task(
+      {this.id,
+      this.title,
+      this.attraction,
+      this.date,
+      this.startTime,
+      this.endTime,
+      required this.planid});
 
   Task.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -22,6 +23,7 @@ class Task {
     date = json['date'];
     startTime = json['startTime'];
     endTime = json['endTime'];
+    planid = json['planid'];
   }
 
   Map<String, dynamic> toJson() {
@@ -32,6 +34,7 @@ class Task {
     data['date'] = date;
     data['startTime'] = startTime;
     data['endTime'] = endTime;
+    data['planid'] = planid;
     return data;
   }
 }

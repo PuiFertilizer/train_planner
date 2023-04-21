@@ -3,9 +3,12 @@ import 'package:train_planner/db/db_helper.dart';
 import '../models/task.dart';
 
 class TaskController extends GetxController {
+  final int planid;
+  TaskController(this.planid);
+
   @override
   void onReady() {
-    getTasks();
+    getTasks(planid);
     super.onReady();
   }
 
@@ -16,11 +19,9 @@ class TaskController extends GetxController {
   }
 
   //เอาข้อมูลจากตาราง
-  void getTasks() async {
-    List<Map<String, dynamic>> tasks = await DBHelper.query();
-    taskList.assignAll(tasks
-        .map((data) => Task.fromJson(data))
-        .toList()); //สงสัยจุดนี้ของ sqlite
+  void getTasks(int planid) async {
+    List<Map<String, dynamic>> tasks = await DBHelper.query(planid);
+    taskList.assignAll(tasks.map((data) => Task.fromJson(data)).toList());
   }
 
   void delete(Task task) {

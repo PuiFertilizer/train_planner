@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/plan_model.dart';
+import '../models/plan.dart';
 import 'addSearchResultEdit.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationdetails.dart';

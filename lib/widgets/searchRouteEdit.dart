@@ -15,6 +15,8 @@ import '../screens/searchresult.dart';
 
 //ใส่ข้อมูลค้นหาเส้นทางของหน้าแก้ไขแผน
 
+//need edit
+
 class SearchRouteEdit extends StatefulWidget {
   const SearchRouteEdit({Key? key}) : super(key: key);
 
@@ -23,11 +25,11 @@ class SearchRouteEdit extends StatefulWidget {
 }
 
 class _SearchRouteEditState extends State<SearchRouteEdit> {
-  final TaskController _taskController = Get.put(TaskController());
+  final TaskController _taskController = Get.put(TaskController(0));
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _date = TextEditingController();
   DateTime _selectedDate = DateTime.now();
-  String _endTime= "เลือกเวลา";
+  String _endTime = "เลือกเวลา";
   String _startTime = "เลือกเวลา";
   String _selectedAttraction = 'ไม่ระบุสถานที่';
 
@@ -40,228 +42,221 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
         child: ListView(
           children: [
             Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.train,
-                    color: Color.fromARGB(255, 24, 24, 24),
-                    size: 40,
-                  ),
-                  SizedBox(width: 4,),
-                  Text(
-                    "สถานีต้นทาง",
-                    style: GoogleFonts.prompt(
-                    textStyle: TextStyle(fontSize: 16, color: Color.fromARGB(255, 24, 24, 24))
-                    ),
-                  ), 
-                  SizedBox(width: 0,),               
-                ],
-              ),
-             SizedBox(height: 5,),
-             DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItems: true,
-              items: [
-                //เอามาจากรายชื่อสถานีใน Database
-                'กรุงเทพ  จ.กรุงเทพ',
-                'บ้านพลูตาหลวง  จ.ชลบุรี',
-                'เชียงใหม่  จ.เชียงใหม่',
-                'หนองคาย  จ.หนองคาย',
-                'อุบลราชธานี  จ.อุบลราชธานี',
-                'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
-                'ชุมทางหาดใหญ่  จ.สงขลา'
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.train,
+                  color: Color.fromARGB(255, 24, 24, 24),
+                  size: 40,
+                ),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  "สถานีต้นทาง",
+                  style: GoogleFonts.prompt(
+                      textStyle: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 24, 24, 24))),
+                ),
+                SizedBox(
+                  width: 0,
+                ),
               ],
-              dropdownSearchDecoration: InputDecoration(
-                
-                hintText: "  สถานีหรือชื่อจังหวัด",
-                enabledBorder: 
-                OutlineInputBorder(                                           
-                borderSide: const BorderSide(
-                  color: Colors.grey, width: 2),
-                borderRadius:
-                BorderRadius.circular(10.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                color: Colors.white, width: 2),
-                borderRadius:
-                  BorderRadius.circular(10.0),
-                ),
-                contentPadding:
-                const EdgeInsets.symmetric(
-                vertical: 4.0),
-                filled: true, //<-- SEE HERE
-                fillColor: const Color.fromARGB(
-                255, 255, 255, 255),
-
-              ),
-              onChanged: itemSelectionChanged,
-              showSearchBox: true,
-              searchFieldProps: TextFieldProps(
-                cursorColor: Colors.red,
-              )
             ),
-            SizedBox(height: 20,),
-            Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.add_location_alt,
-                    color: Color.fromARGB(255, 24, 24, 24),
-                    size: 40,
-                  ),
-                  SizedBox(width: 4,),
-                  Text(
-                    "สถานีปลายทาง",
-                    style: GoogleFonts.prompt(
-                    textStyle: TextStyle(fontSize: 16, color: Color.fromARGB(255, 24, 24, 24))
-                    ),
-                  ), 
-                  SizedBox(width: 0,),               
-                ],
-              ),
-             SizedBox(height: 5,),
-             DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItems: true,
-              items: [
-                //เอามาจากรายชื่อสถานีใน Database
-                'กรุงเทพ  จ.กรุงเทพ',
-                'บ้านพลูตาหลวง  จ.ชลบุรี',
-                'เชียงใหม่  จ.เชียงใหม่',
-                'หนองคาย  จ.หนองคาย',
-                'อุบลราชธานี  จ.อุบลราชธานี',
-                'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
-                'ชุมทางหาดใหญ่  จ.สงขลา'
-              ],
-              dropdownSearchDecoration: InputDecoration(
-                
-                hintText: "  สถานีหรือชื่อจังหวัด",
-                enabledBorder: 
-                OutlineInputBorder(                                           
-                borderSide: const BorderSide(
-                  color: Colors.grey, width: 2),
-                borderRadius:
-                BorderRadius.circular(10.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                color: Colors.white, width: 2),
-                borderRadius:
-                  BorderRadius.circular(10.0),
-                ),
-                contentPadding:
-                const EdgeInsets.symmetric(
-                vertical: 4.0),
-                filled: true, //<-- SEE HERE
-                fillColor: const Color.fromARGB(
-                255, 255, 255, 255),
-
-              ),
-              onChanged: itemSelectionChanged2,
-              showSearchBox: true,
-              searchFieldProps: TextFieldProps(
-                cursorColor: Colors.red,
-              )
+            SizedBox(
+              height: 5,
             ),
-            SizedBox(height: 20,),
-            Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.calendar_today,
-                    color: Color.fromARGB(255, 24, 24, 24),
-                    size: 35,
-                  ),
-                  SizedBox(width: 10,),
-                  Text(
-                    "วันเดินทาง",
-                    style: GoogleFonts.prompt(
-                    textStyle: TextStyle(fontSize: 16, color: Color.fromARGB(255, 24, 24, 24))
-                    ),
-                  ), 
-                  SizedBox(width: 0,),               
+            DropdownSearch<String>(
+                mode: Mode.MENU,
+                showSelectedItems: true,
+                items: [
+                  //เอามาจากรายชื่อสถานีใน Database
+                  'กรุงเทพ  จ.กรุงเทพ',
+                  'บ้านพลูตาหลวง  จ.ชลบุรี',
+                  'เชียงใหม่  จ.เชียงใหม่',
+                  'หนองคาย  จ.หนองคาย',
+                  'อุบลราชธานี  จ.อุบลราชธานี',
+                  'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
+                  'ชุมทางหาดใหญ่  จ.สงขลา'
                 ],
-              ),
-              SizedBox(height: 5,),
-              TextField(
-                  controller: _date,
-                  decoration: InputDecoration(
+                dropdownSearchDecoration: InputDecoration(
+                  hintText: "  สถานีหรือชื่อจังหวัด",
                   enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, width: 2),
-                  borderRadius:
-                    BorderRadius.circular(10.0)),
-                 contentPadding:
-                 const EdgeInsets.symmetric(vertical: 4.0),
-                 filled: true, //<-- SEE HERE
-                 fillColor: Color.fromARGB(255, 255, 255, 255),
-                 //icon: const Icon(Icons.calendar_today_rounded),
-                 ),
-                onTap: () async {
-                  DateTime? pickeddate =
-                  await showDatePicker(
-                   context: context,
-                   initialDate: DateTime.now(),
-                   firstDate: DateTime(2000),
-                   lastDate: DateTime(2101));
-                  if (pickeddate != null) {
-                    setState(() {
-                      _date.text =
-                        DateFormat('dd/MM/yyyy').format(pickeddate);
-                         });
-                        }
-                      },
+                    borderSide: const BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+                  filled: true, //<-- SEE HERE
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                ),
+                onChanged: itemSelectionChanged,
+                showSearchBox: true,
+                searchFieldProps: TextFieldProps(
+                  cursorColor: Colors.red,
+                )),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.add_location_alt,
+                  color: Color.fromARGB(255, 24, 24, 24),
+                  size: 40,
+                ),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  "สถานีปลายทาง",
+                  style: GoogleFonts.prompt(
+                      textStyle: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 24, 24, 24))),
+                ),
+                SizedBox(
+                  width: 0,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            DropdownSearch<String>(
+                mode: Mode.MENU,
+                showSelectedItems: true,
+                items: [
+                  //เอามาจากรายชื่อสถานีใน Database
+                  'กรุงเทพ  จ.กรุงเทพ',
+                  'บ้านพลูตาหลวง  จ.ชลบุรี',
+                  'เชียงใหม่  จ.เชียงใหม่',
+                  'หนองคาย  จ.หนองคาย',
+                  'อุบลราชธานี  จ.อุบลราชธานี',
+                  'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
+                  'ชุมทางหาดใหญ่  จ.สงขลา'
+                ],
+                dropdownSearchDecoration: InputDecoration(
+                  hintText: "  สถานีหรือชื่อจังหวัด",
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+                  filled: true, //<-- SEE HERE
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                ),
+                onChanged: itemSelectionChanged2,
+                showSearchBox: true,
+                searchFieldProps: TextFieldProps(
+                  cursorColor: Colors.red,
+                )),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                  color: Color.fromARGB(255, 24, 24, 24),
+                  size: 35,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "วันเดินทาง",
+                  style: GoogleFonts.prompt(
+                      textStyle: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 24, 24, 24))),
+                ),
+                SizedBox(
+                  width: 0,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            TextField(
+              controller: _date,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10.0)),
+                contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+                filled: true, //<-- SEE HERE
+                fillColor: Color.fromARGB(255, 255, 255, 255),
+                //icon: const Icon(Icons.calendar_today_rounded),
               ),
-              SizedBox(height: 10,),
-              ElevatedButton.icon(
-                 onPressed: () {
-                 Navigator.push(
+              onTap: () async {
+                DateTime? pickeddate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2101));
+                if (pickeddate != null) {
+                  setState(() {
+                    _date.text = DateFormat('dd/MM/yyyy').format(pickeddate);
+                  });
+                }
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                       SearchresultPlan()),
-                    ); //ไปที่หน้าผลการค้นหา
-                    }, //มีการ Query
-                    icon: const Icon(Icons.search),
-                    label: Text(
-                      "ค้นหา",
-                    style: GoogleFonts.prompt(
-                      color: Colors.white,
-                      fontSize: 20.0),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(90, 40),
-                      backgroundColor:
-                      Color.fromARGB(255, 56, 163, 165),
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(15.0),
-                      ),
-                        ),
-                      ),
-
+                  MaterialPageRoute(builder: (context) => SearchresultPlan()),
+                ); //ไปที่หน้าผลการค้นหา
+              }, //มีการ Query
+              icon: const Icon(Icons.search),
+              label: Text(
+                "ค้นหา",
+                style: GoogleFonts.prompt(color: Colors.white, fontSize: 20.0),
+              ),
+              style: ElevatedButton.styleFrom(
+                fixedSize: const Size(90, 40),
+                backgroundColor: Color.fromARGB(255, 56, 163, 165),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-  _appBar(BuildContext context){
+
+  _appBar(BuildContext context) {
     return AppBar(
       elevation: 0,
       backgroundColor: Color.fromARGB(255, 56, 163, 165),
       leading: GestureDetector(
-        onTap:(){
+        onTap: () {
           Get.back();
         },
-        child: Icon(Icons.arrow_back_ios,
-        size:20,
+        child: Icon(
+          Icons.arrow_back_ios,
+          size: 20,
         ),
       ),
     );
   }
-
-  
 
   void itemSelectionChanged(String? originStation) {
     print('items');
@@ -272,5 +267,4 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
     print('items');
     print(destinationStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
   }
- 
 }
