@@ -111,8 +111,13 @@ class DBHelper {
   }
 
   static Future<List<Map<String, dynamic>>> queryPlan() async {
-    print("query function called");
+    print("query plan function called");
     return await _db!.query(_tablePlan);
+  }
+
+  static Future<List<Map<String, dynamic>>> getPlan(int id) async {
+    print("getPlan function called $id");
+    return await _db!.query(_tablePlan, where: 'id=?', whereArgs: [id]);
   }
 
   //task
@@ -122,8 +127,7 @@ class DBHelper {
   }
 
   static Future<List<Map<String, dynamic>>> query(int planid) async {
-    print("query function called");
-    print(planid);
+    print("query task function called $planid");
     return await _db!.query(_tableTask,
         where: 'planid=?', whereArgs: [planid], orderBy: "startTime");
   }

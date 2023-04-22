@@ -2,6 +2,8 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/rendering/box.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:train_planner/db/db_helper.dart';
 import 'package:train_planner/screens/planner.dart';
 import 'package:train_planner/widgets/addTask.dart';
 import 'package:train_planner/widgets/button.dart';
@@ -27,38 +29,78 @@ class _WriteplanState extends State<Writeplan> {
   DateTime _selectedDate = DateTime.now();
   DateTime startDate = DateTime(2023, 2, 5);
   DateTime endDate = DateTime(2023, 2, 8);
-  var _taskController;
+  late TaskController _taskController;
   var notifyHelper;
 
   @override
+  void dispose() {
+    print("dispose");
+    _taskController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _taskController = Get.put(TaskController(widget.planid));
+    _taskController = TaskController(widget.planid);
+    _taskController.getTasks(widget.planid);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80.0), // ความสูงของ navbar
-        child: AppBar(
-          backgroundColor:
-              const Color.fromARGB(255, 87, 204, 153), //title หรือชื่อของแผน
-          title: Text('เที่ยวฉะเชิงเทราและปราจีนบุรีด้วยรถไฟชั้น 3',
-              style: GoogleFonts.prompt(
-                color: Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              )), //title ของแผนการเดินทาง
-          centerTitle: true,
-          bottom: PreferredSize(
-              preferredSize: Size.zero,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
-                child: Text("4/22/2023 - 4/22/2023",
+        child: FutureBuilder(
+          future: DBHelper.getPlan(widget.planid),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              Plan plan = Plan.fromJson(snapshot.data![0]);
+              return AppBar(
+                backgroundColor: const Color.fromARGB(
+                    255, 87, 204, 153), //title หรือชื่อของแผน
+                title: Text(plan.name,
                     style: GoogleFonts.prompt(
                       color: Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                    )), //วันที่ของแผน
-              )),
+                    )), //title ของแผนการเดินทาง
+                centerTitle: true,
+                bottom: PreferredSize(
+                    preferredSize: Size.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
+                      child: Text("4/22/2023 - 4/22/2023",
+                          style: GoogleFonts.prompt(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          )), //วันที่ของแผน
+                    )),
+              );
+            } else {
+              return AppBar(
+                backgroundColor: const Color.fromARGB(
+                    255, 87, 204, 153), //title หรือชื่อของแผน
+                title: Text(' ',
+                    style: GoogleFonts.prompt(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    )), //title ของแผนการเดินทาง
+                centerTitle: true,
+                bottom: PreferredSize(
+                    preferredSize: Size.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
+                      child: Text(" ",
+                          style: GoogleFonts.prompt(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          )), //วันที่ของแผน
+                    )),
+              );
+            }
+          },
         ),
       ),
       floatingActionButton: Container(
@@ -74,6 +116,7 @@ class _WriteplanState extends State<Writeplan> {
                 builder: (BuildContext context) {
                   return DialogAddPlan(
                     planid: widget.planid,
+                    taskController: _taskController,
                   );
                 });
           },
@@ -91,10 +134,9 @@ class _WriteplanState extends State<Writeplan> {
           ),
 
           ElevatedButton.icon(
-            onPressed: () async {
+            onPressed: () {
               //save แผน และกลับหน้ารวมแผน
-              await Get.to(const Planner());
-              _taskController.getTasks(widget.planid);
+              Navigator.pop(context);
             },
             icon: const Icon(Icons.add),
             label: Text(
@@ -174,7 +216,7 @@ class _WriteplanState extends State<Writeplan> {
     //ลบกิจกรรมออก
     Get.bottomSheet(Container(
       padding: const EdgeInsets.only(top: 4.0),
-      height: MediaQuery.of(context).size.height * 0.32,
+      height: MediaQuery.of(context).size.height * 0.40,
       color: Colors.white,
       child: Column(
         children: [
@@ -190,11 +232,12 @@ class _WriteplanState extends State<Writeplan> {
             label: "แก้ไขกิจกรรม",
             onTap: () async {
               //แก้ไขกิจกรรม และ save ทับ
-              await Get.to(AddTaskPage(
-                planid: widget.planid,
-              ));
-              _taskController.getTasks();
-              //Navigator.of(context).pop();
+              _taskController.getTasks(widget.planid);
+              await Get.to(() => AddTaskPage(
+                    planid: widget.planid,
+                  ));
+
+              Navigator.of(context).pop();
             },
             clr: const Color.fromARGB(255, 56, 163, 165),
             context: context,
@@ -206,7 +249,7 @@ class _WriteplanState extends State<Writeplan> {
             label: "ลบกิจกรรมออก",
             onTap: () {
               _taskController.delete(task);
-              _taskController.getTasks();
+              _taskController.getTasks(widget.planid);
               Get.back();
             },
             clr: Colors.red,
@@ -270,12 +313,15 @@ class _WriteplanState extends State<Writeplan> {
 
 //class SimpleDialog
 class DialogAddPlan extends StatelessWidget {
-  var _taskController;
+  final TaskController taskController;
   final int planid;
-  DialogAddPlan({super.key, required this.planid}); //กล่องยืนยันลบแผนการเดินทาง
+  const DialogAddPlan(
+      {super.key,
+      required this.planid,
+      required this.taskController}); //กล่องยืนยันลบแผนการเดินทาง
   @override
   Widget build(BuildContext context) {
-    _taskController = Get.put(TaskController(planid));
+    //taskController = Get.put(TaskController(planid));
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Stack(
@@ -301,8 +347,9 @@ class DialogAddPlan extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () async {
+                          taskController.getTasks(planid);
                           await Get.to(const SearchRouteEdit());
-                          _taskController.getTasks();
+
                           Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
@@ -323,10 +370,11 @@ class DialogAddPlan extends StatelessWidget {
                     //กิจกรรมอื่นๆ
                     ElevatedButton(
                         onPressed: () async {
-                          await Get.to(AddTaskPage(
-                            planid: planid,
-                          ));
-                          _taskController.getTasks();
+                          taskController.getTasks(planid);
+                          await Get.to(() => AddTaskPage(
+                                planid: planid,
+                              ));
+
                           Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
@@ -352,13 +400,14 @@ class DialogAddPlan extends StatelessWidget {
 }
 
 class DialogSearchRoute extends StatelessWidget {
-  var _taskController;
+  final TaskController taskController;
   final int planid;
-  DialogSearchRoute(
-      {super.key, required this.planid}); //กล่องยืนยันลบแผนการเดินทาง
+  const DialogSearchRoute(
+      {super.key,
+      required this.planid,
+      required this.taskController}); //กล่องยืนยันลบแผนการเดินทาง
   @override
   Widget build(BuildContext context) {
-    _taskController = Get.put(TaskController(planid));
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Stack(
@@ -405,8 +454,9 @@ class DialogSearchRoute extends StatelessWidget {
                     //กิจกรรมอื่นๆ
                     ElevatedButton(
                         onPressed: () async {
-                          await Get.to(AddTaskPage(planid: planid));
-                          _taskController.getTasks();
+                          taskController.getTasks(planid);
+                          await Get.to(() => AddTaskPage(planid: planid));
+
                           Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
@@ -433,22 +483,24 @@ class DialogSearchRoute extends StatelessWidget {
 
 //test swap overlay
 class MyDialog extends StatefulWidget {
-  const MyDialog({Key? key, required this.planid}) : super(key: key);
+  final TaskController taskController;
+  const MyDialog({Key? key, required this.planid, required this.taskController})
+      : super(key: key);
   final int planid;
   @override
   MyDialogState createState() => MyDialogState();
 }
 
 class MyDialogState extends State<MyDialog> {
-  var _taskController;
+  late
 
-  /// When this value is false, it shows list of buttons
-  /// When this value is true, it shows list of textfields
-  bool isForm = false;
+      /// When this value is false, it shows list of buttons
+      /// When this value is true, it shows list of textfields
+      bool isForm = false;
 
   @override
   Widget build(BuildContext context) {
-    _taskController = Get.put(TaskController(widget.planid));
+    //_taskController = Get.put(TaskController(widget.planid));
     return AlertDialog(
       title: const Text('เลือกกิจกรรม'),
       // Here, we conditionally change content
@@ -482,6 +534,7 @@ class MyDialogState extends State<MyDialog> {
                                     builder: (BuildContext context) {
                                       return DialogSearchRoute(
                                         planid: widget.planid,
+                                        taskController: widget.taskController,
                                       );
                                     });
                                 //Navigator.pop(context);
@@ -505,10 +558,11 @@ class MyDialogState extends State<MyDialog> {
                           //กิจกรรมอื่นๆ
                           ElevatedButton(
                               onPressed: () async {
-                                await Get.to(AddTaskPage(
-                                  planid: widget.planid,
-                                ));
-                                _taskController.getTasks();
+                                widget.taskController.getTasks(widget.planid);
+                                await Get.to(() => AddTaskPage(
+                                      planid: widget.planid,
+                                    ));
+
                                 Navigator.of(context).pop();
                               },
                               style: ElevatedButton.styleFrom(

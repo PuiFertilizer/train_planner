@@ -29,6 +29,7 @@ class PlanList extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         Plan plann = Plan.fromJson(
                             planns[index]); //index เรียงตามชื่อแผน
+
                         return Stack(
                           children: <Widget>[
                             //widget คือจำนวนกล่องข้อความ

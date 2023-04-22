@@ -78,25 +78,11 @@ class _NewplanPageState extends State<NewplanPage> {
               const SizedBox(height: 30),
               ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return FutureBuilder(
-                        future: DBHelper.newPlan(_titleController.text),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return Writeplan(
-                              planid: snapshot.data!,
-                            );
-                          } else {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                        },
-                      );
-                    }),
-                  ); //ไปที่หน้าแผนการเดินทางที่สร้างใหม่ที่ว่าง พร้อม id ใหม่
+                  DBHelper.newPlan(_titleController.text).then((value) =>
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Writeplan(planid: value);
+                      }))); //ไปที่หน้าแผนการเดินทางที่สร้างใหม่ที่ว่าง พร้อม id ใหม่
                 },
                 icon: const Icon(Icons.add),
                 label: Text(
@@ -126,8 +112,7 @@ class _NewplanPageState extends State<NewplanPage> {
       backgroundColor: const Color.fromARGB(255, 56, 163, 165),
       leading: GestureDetector(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const Planner()));
+          Navigator.pop(context);
         },
         child: const Icon(
           Icons.arrow_back_ios,

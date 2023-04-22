@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/NavBar.dart';
-import '../main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/PlanList.dart';
-
-import '../widgets/Tourtrain_Carousel.dart';
 
 class Planner extends StatefulWidget {
   const Planner({Key? key}) : super(key: key);
@@ -27,45 +23,43 @@ class _PlannerState extends State<Planner> {
             style: GoogleFonts.prompt(color: Colors.black),
           ),
         ),
-        body: Container(
-          child: SingleChildScrollView(
-            child: Stack(
-              children: [
-                Image.asset(
-                  "assets/images/pasak.jpg",
-                  height: 150,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "แผนการเดินทางที่กำลังมาถึง",
-                            style: GoogleFonts.prompt(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: const <Widget>[
-                    SizedBox(height: 150.0),
-                    PlanList(), //รายชื่อแผนการเดินทาง และปุ่มใหญ่ด้านล่าง
-                  ],
-                ),
-              ],
-            ),
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Image.asset(
+                "assets/images/pasak.jpg",
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "แผนการเดินทางที่กำลังมาถึง",
+                          style: GoogleFonts.prompt(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                children: const <Widget>[
+                  SizedBox(height: 150.0),
+                  PlanList(), //รายชื่อแผนการเดินทาง และปุ่มใหญ่ด้านล่าง
+                ],
+              ),
+            ],
           ),
         ));
   }
