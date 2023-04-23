@@ -53,6 +53,7 @@ class DBHelper {
         db.execute("Create table $_tableRoute("
             "id INTEGER PRIMARY KEY AUTOINCREMENT, "
             "train STRING, station STRING, time STRING, line STRING)") /*.then((value) => updater.updateTrain())*/;
+            updateTrain();
       }, onUpgrade: (db, int oldVersion, int newVersion) {
         // If you need to add a column
         print("upgrade");
@@ -60,6 +61,7 @@ class DBHelper {
           db.execute("ALTER TABLE $_tableRoute ADD COLUMN line STRING");
         }
       });
+      await updateTrain();
       cleanAndUpdate();
       //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {

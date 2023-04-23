@@ -73,7 +73,7 @@ class StationList {
 List<StationList> stationLists = [
   StationList(
       name: 'กบินทร์บุรี',
-      postition: '',
+      postition: ' ตำบลกบินทร์ อำเภอกบินทร์บุรี จังหวัดปราจีนบุรี',
       places: [],
       connects: [],
       comforts: [],
@@ -87,14 +87,21 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'กรุงเทพ',
-      postition: '',
+      postition: ' ถนนรองเมือง แขวงรองเมือง เขตปทุมวัน กรุงเทพ',
       places: [],
       connects: [
         'สายสีนำ้เงิน สถานีหัวลำโพง',
         'รถโดยสารประจำทาง ขสมก.',
         'shuttle bus ไปสถานีกลางอภิวัฒน์'
       ],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'กรุงเทพอภิวัฒน์',
@@ -161,10 +168,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ขอนแก่น',
-      postition: '',
+      postition: ' ตำบลในเมือง อำเภอเมือง จังหวัดขอนแก่น',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ขุนตาน',
@@ -189,7 +203,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'คลองตัน',
-      postition: '',
+      postition: ' แขวงบางกะปี เขตห้วยขวาง กรุงเทพฯ',
       places: [],
       connects: [],
       comforts: [],
@@ -210,28 +224,28 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'คลองบางพระ',
-      postition: '',
+      postition: ' ตำบลบางเตย อำเภอเมือง จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
       lines: []),
   StationList(
       name: 'คลองหลวงแพ่ง',
-      postition: '',
+      postition: ' แขวงขุมทอง เขตลาดกระบัง กรุงเทพฯ',
       places: [],
       connects: [],
       comforts: [],
       lines: []),
   StationList(
       name: 'คลองอุดมชลจร',
-      postition: '',
+      postition: '  ตำบลอุดมชลจร อำเภอเมือง จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
       lines: []),
   StationList(
       name: 'คลองแขวงกลั่น',
-      postition: '',
+      postition: ' ตำบลบางเตย อำเภอเมือง จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
@@ -308,7 +322,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ชุมทางคลองสิบเก้า',
-      postition: '',
+      postition: ' ตำบลโยธะกา อำเภอบางนำ้เปรี้ยว จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
@@ -348,12 +362,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ชุมทางตลิ่งชัน',
-      postition: '',
+      postition: ' แขวงฉิมพลี เขตตลิ่งชัน กรุงเทพฯ',
       places: [],
       connects: [
         'สายสีแดงอ่อน สถานีตลิ่งชัน'
       ],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+      ],
       lines: []),
   StationList(
       name: 'ชุมทางถนนจิระ',
@@ -399,10 +418,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ชุมทางบ้านภาชี',
-      postition: '',
+      postition: ' ตำบลภาชี อำเภอภาชี จ.พระนครศรีอยุธยา',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ชุมทางศรีราชา',
@@ -490,7 +516,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ดอนเมือง',
-      postition: '',
+      postition: ' แขวงสนามบิน เขตดอนเมือง กรุงเทพฯ',
       places: [
          Destination(
         imageUrl: 'assets/images/donmueng.jpg',
@@ -577,10 +603,14 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ท่ากิเลน',
-      postition: '',
+      postition: ' ตำบลสิงห์ อำเภอไทรโยค จ.กาญจนบุรี',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+      ],
       lines: []),
   StationList(
       name: 'ท่าฉลอม',
@@ -657,31 +687,75 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'นครปฐม',
-      postition: '',
-      places: [],
+      postition: ' ต.พระปฐมเจดีย์ อ.เมืองนครปฐม จ.นครปฐม',
+      places: [
+        Destination(
+        imageUrl: 'assets/images/sanamchandra.jpg',
+        locationName: 'พระราชวังสนามจันทร์',
+        locationaddress: '	ตำบลพระปฐมเจดีย์ อำเภอเมือง จังหวัดนครปฐม',
+        description:
+            'พระราชวังสนามจันทร์ ห่างจากพระปฐมเจดีย์ ประมาณ 2 กิโลเมตร สร้างขึ้นโดยพระบาทสมเด็จพระมงกุฎเกล้าเจ้าอยู่หัว รัชกาลที่ 6 หลังจากพระองค์สวรรคต พระราชวังสนามจันทร์ใช้เป็นที่ทำการของส่วนราชการต่าง ๆ ของจังหวัดนครปฐม รวมทั้งเป็นวิทยาเขตหนึ่งของ มหาวิทยาลัยศิลปากร',
+        howtotravel:
+            ' ที่สถานีนครปฐม ให้ต่อรถรถจักรยานยนต์รับจ้างไปพระราชวังสนามจันทร์ สามารถเข้าพระราชวังสนามจันทร์ผ่านทางด้านมหาวิทยาลัยศิลปากรได้'),
+        Destination(
+        imageUrl: 'assets/images/pathomchedi.png',
+        locationName: 'วัดพระปฐมเจดีย์',
+        locationaddress: '	ตำบลพระปฐมเจดีย์ อำเภอเมือง จังหวัดนครปฐม',
+        description:
+            'วัดพระปฐมเจดีย์ เป็นพระอารามหลวงชั้นเอกชนิดราชวรมหาวิหาร มีจุดเด่นที่สำคัญคือ พระปฐมเจดีย์ หรือ พระธมเจดีย์ ซึ่งเป็นเจดีย์ที่ใหญ่และสูงที่สุดแห่งหนึ่งในประเทศไทย (120.45 เมตร) องค์พระปฐมเจดีย์ปัจจุบันนี้ เป็นพระเจดีย์ทรงลังกาแบบสุโขทัย สร้างขึ้นในสมัยพระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว',
+        howtotravel:
+            ' จากสถานีนครปฐม เดินไปไม่กี่ก้าวประมาณ 400 เมตร ก็ถึงแล้ว'),
+      ],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'นครราชสีมา',
-      postition: '',
+      postition: ' ตำบลในเมือง อำเภอเมือง จังหวัดนครราชสีมา',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'นครลำปาง',
-      postition: '',
+      postition: ' ตำบลสบตุ๋ย อำเภอเมือง จังหวัดลำปาง',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'นครสวรรค์',
-      postition: '',
+      postition: ' ตำบลหนองปลิง อำเภอเมือง จังหวัดนครสวรรค์',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'นาบอน',
@@ -741,7 +815,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'บางน้ำเปรี้ยว',
-      postition: '',
+      postition: ' ตำบลบางขนาก อำเภอบางนำ้เปรี้ยว จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
@@ -755,19 +829,29 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'บางบำหรุ',
-      postition: '',
+      postition: ' แขวงบางพลัด เขตบางพลัด กรุงเทพฯ',
       places: [],
       connects: [
         'สายสีแดงอ่อน สถานีบางบำหรุ'
       ],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+    'จำหน่ายตั๋วประจำวัน',
+    'ห้องนำ้สะอาด',
+    'ห้องนำ้ผู้พิการ',
+      ],
       lines: []),
   StationList(
       name: 'บางปะอิน',
-      postition: '',
+      postition: ' ตำบลบางเลน อำเภอบางปะอิน จ.พระนครศรีอยุธยา',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+      ],
       lines: []),
   StationList(
       name: 'บางพระ',
@@ -820,7 +904,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'บางเตย',
-      postition: '',
+      postition: ' ตำบลบางเตย อำเภอเมือง จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
@@ -904,7 +988,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'บ้านทับช้าง',
-      postition: '',
+      postition: ' แขวงประเวศ เขตประเวศ กรุงเทพฯ',
       places: [],
       connects: [
         'Airport link สถานีบ้านทับช้าง'
@@ -1060,10 +1144,34 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ปราจีนบุรี',
-      postition: '',
-      places: [],
+      postition: ' ตำบลหน้าเมือง อำเภอเมือง จังหวัดปราจีนบุรี',
+      places: [
+        Destination(
+        imageUrl: 'assets/images/abhaibhubejhr.jpg',
+        locationName: 'โรงพยาบาลเจ้าพระยาอภัยภูเบศร',
+        locationaddress: '	ถนนปราจีนอนุสรณ์ ตำบลท่างาม อำเภอเมือง จังหวัดปราจีนบุรี',
+        description:
+            'โรงพยาบาลเจ้าพระยาอภัยภูเบศร เป็นโรงพยาบาลศูนย์ประจำจังหวัดปราจีนบุรี และเป็นโรงพยาบาลนำร่องเรื่องการแพทย์แผนไทย ใช้สมุนไพรบำบัดรักษาโรค มีการนวด อบ ประคบ และฝังเข็ม แปรรูปสมุนไพรไทยเป็นเวชภัณฑ์ และเครื่องสำอาง ตึกเจ้าพระยาอภัยภูเบศร มีลักษณะสถาปัตยกรรมเป็นสถาปัตยกรรมบาโรก แสดงออกอย่างไม่สมดุล',
+        howtotravel:
+            ' จากสถานีปราจีนบุรี ให้ต่อรถตุ๊กตุ๊ก ให้บอกไปโรงพยาบาลเจ้าพระยาอภัยภูเบศร'),
+        Destination(
+        imageUrl: 'assets/images/chakarapong.jpg',
+        locationName: 'พิพิธภัณฑ์ทหารจักรพงษ์',
+        locationaddress: '	กองบัญชาการมณฑลทหารบกที่ 12 ตำบลดงพระราม อำเภอเมือง จังหวัดปราจีนบุรี',
+        description:
+            'พิพิธภัณฑ์ทหารค่ายจักรพงษ์เป็นตึกเหลืองสไตล์ยุโรปตั้งอยู่บริเวณมณฑลทหารบกที่ 12 ค่ายทหารแห่งแรกในประเทศไทย ต่อมากรมศิลปากรได้ขึ้นทะเบียนเป็นตึกอนุรักษ์และเริ่มทำเป็นพิพิธภัณฑ์ เพื่ออนุรักษ์เป็นสถานที่เยี่ยมชมประวัติศาสตร์แก่ลูกหลาน  มีห้องทำงานและมุมพักผ่อนอิริยาบถ ส่วนวัตถุจัดแสดงตามห้องต่าง ๆ ในพิพิธภัณฑ์นี้ส่วนใหญ่เป็นเครื่องใช้ในการทหาร ถ้วยโถชามกระเบื้องแบบยุโรป สิ่งของทุกชิ้นที่จัดแสดงจะมีตราของกองทัพบก',
+        howtotravel:
+            ' จากสถานีปราจีนบุรี เดินเข้ากองบัญชาการมณฑลทหารบกที่ 12 ก็ถึงแล้ว'),
+      ],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ปราณบุรี',
@@ -1123,7 +1231,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'พญาไท',
-      postition: '',
+      postition: ' แขวงถนนพญาไท เขตราชเทวี กรุงเทพฯ',
       places: [],
       connects: [
         'รถไฟฟ้าบีทีเอส สถานีพญาไท',
@@ -1147,7 +1255,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'พระจอมเกล้า',
-      postition: '',
+      postition: ' แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพฯ',
       places: [],
       connects: [],
       comforts: [],
@@ -1203,10 +1311,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'พิษณุโลก',
-      postition: '',
+      postition: ' ตำบลในเมือง อำเภอเมือง จังหวัดพิษณุโลก',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'มวกเหล็ก',
@@ -1224,7 +1339,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'มักกะสัน',
-      postition: '',
+      postition: ' แขวงมักกะสัน เขตราชเทวี กรุงเทพฯ',
       places: [],
       connects: [],
       comforts: [],
@@ -1259,12 +1374,18 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'รังสิต',
-      postition: '',
+      postition: ' ตำบลประชาธิปัตย์ อำเภอธัญบุรี จังหวัดปทุมธานี',
       places: [],
       connects: [
         'สายสีแดงเข้ม สถานีรังสิต'
       ],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'รางสะแก',
@@ -1282,10 +1403,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ราชบุรี',
-      postition: '',
+      postition: ' ตำบลหน้าเมือง อำเภอเมือง จังหวัดราชบุรี',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ราชปรารภ',
@@ -1296,10 +1424,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ลพบุรี',
-      postition: '',
+      postition: ' ตำบลท่าหิน อำเภอเมือง จังหวัดลพบุรี',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ละแม',
@@ -1310,7 +1445,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ลาดกระบัง',
-      postition: '',
+      postition: ' แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพฯ',
       places: [],
       connects: [
         'Airport link สถานีลาดกระบัง',
@@ -1341,10 +1476,15 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ลำพูน',
-      postition: '',
+      postition: ' ตำบลในเมือง อำเภอเมือง จังหวัดลำพูน',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ'
+      ],
       lines: []),
   StationList(
       name: 'วงเวียนใหญ่',
@@ -1404,10 +1544,26 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ศาลายา',
-      postition: '',
-      places: [],
+      postition: ' ตำบลศาลายา อำเภอพุทธมณฑล จังหวัดนครปฐม',
+      places: [
+         Destination(
+        imageUrl: 'assets/images/phutthamonton.jpg',
+        locationName: 'พุทธมณฑล',
+        locationaddress: ' ถนนพุทธมณฑล สาย 4 ตำบลศาลายา อำเภอพุทธมณฑล จังหวัดนครปฐม',
+        description:
+            'เป็นสถานที่สำคัญทางพุทธศาสนา  มีเนื้อที่ 2,500 ไร่ สร้างขึ้นเพื่อฉลองวาระกึ่งพุทธกาล เมื่อ พ.ศ. 2500 มีพระพุทธรูปปางลีลาประจำพุทธมณฑล เรียกว่า พระศรีศากยะทศพลญาณ ประธานพุทธมณฑลสุทรรศน์ พระพุทธรูปนี้มีความโดดเด่นทางผ้าจีวรที่พลิ้วเหมือนจริง พระพุทธรูปนี้สร้างเสร็จและฉลอง เมื่อ พ.ศ. 2525 คราวพระราชพิธีสมโภชกรุงรัตนโกสินทร์ 200 ปี',
+        howtotravel:
+            'จากสถานีรถไฟศาลายา สามารถใช้รถแท็กซี่ไปตามถนนพุทธมณฑลสาย 4 เพียงไม่ถึง 15 นาที ก็ถึงพุทธมณฑลแล้ว'),
+      ],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ศาลาลำดวน',
@@ -1418,7 +1574,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'ศิลาอาสน์',
-      postition: '',
+      postition: ' ตำบลท่าเสา อำเภอเมือง จังหวัดอุตรดิตถ์',
       places: [],
       connects: [],
       comforts: [],
@@ -1432,7 +1588,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'สระบุรี',
-      postition: '',
+      postition: ' ตำบลปากเพรียว อำเภอเมือง จังหวัดสระบุรี',
       places: [],
       connects: [],
       comforts: [],
@@ -1560,10 +1716,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'หนองคาย',
-      postition: '',
+      postition: ' ตำบลมีชัย อำเภอเมือง จังหวัดหนองคาย',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'หนองตม',
@@ -1616,7 +1779,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'หัวตะเข้',
-      postition: '',
+      postition: ' แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพฯ',
       places: [],
       connects: [],
       comforts: [
@@ -1651,10 +1814,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'หัวหิน',
-      postition: '',
+      postition: ' ตำบลหัวหิน อำเภอหัวหิน จังหวัดประจวบคีรีขันธ์',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'ห้วยสามพาด',
@@ -1686,10 +1856,17 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'อยุธยา',
-      postition: '',
+      postition: ' ตำบลกะมัง อำเภอเมือง จ.พระนครศรีอยุธยา',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'อรัญประเทศ',
@@ -1707,7 +1884,7 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'อุตรดิตถ์',
-      postition: '',
+      postition: ' ตำบลท่าอิฐ อำเภอเมือง จังหวัดอุตรดิตถ์',
       places: [],
       connects: [],
       comforts: [],
@@ -1721,21 +1898,28 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'อุบลราชธานี',
-      postition: '',
+      postition: ' ตำบลคำน้ำแซบ อำเภอวารินชำราบ จ.อุบลราชธานี',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'อุรุพงษ์',
-      postition: '',
+      postition: ' แขวงทุ่งพญาไท เขตราชเทวี กรุงเทพฯ',
       places: [],
       connects: [],
       comforts: [],
       lines: []),
   StationList(
       name: 'อโศก',
-      postition: '',
+      postition: ' แขวงมักกะสัน เขตราชเทวี กรุงเทพฯ',
       places: [],
       connects: [
         'Airport link สถานีมักกะสัน',
@@ -1780,12 +1964,12 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'เชียงราก',
-      postition: '',
+      postition: ' ตำบลคลองหนึ่ง อำเภอคลองหลวง จังหวัดปทุมธานี',
       places: [],
       connects: [],
       comforts: [],
       lines: []),
-  StationList(name: 'เชียงใหม่', postition: '', places: [
+  StationList(name: 'เชียงใหม่', postition: ' ถนนเจริญเมือง ตำบลวัดเกต อำเภอเมือง จังหวัดเชียงใหม่', places: [
     Destination(
         imageUrl: 'assets/images/nongkai.jpg',
         locationName: 'ประตูท่าแพ',
@@ -1807,9 +1991,11 @@ List<StationList> stationLists = [
     'Taxi บริการที่หน้าสถานี'
   ], comforts: [
     'จำหน่ายตั๋วล่วงหน้า',
-    'จำหน่ายตั๋วประจำวัน',
-    'ห้องนำ้สะอาด',
-    'ห้องนำ้ผู้พิการ'
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
   ], lines: [
     "สายเหนือ"
   ]),
@@ -1829,17 +2015,24 @@ List<StationList> stationLists = [
       lines: []),
   StationList(
       name: 'เปรง',
-      postition: '',
+      postition: ' ตำบลคลองเปรง อำเภอเมือง จังหวัดฉะเชิงเทรา',
       places: [],
       connects: [],
       comforts: [],
       lines: []),
   StationList(
       name: 'เพชรบุรี',
-      postition: '',
+      postition: ' ตำบลคลองกระแชง อำเภอเมือง จังหวัดเพชรบุรี',
       places: [],
       connects: [],
-      comforts: [],
+      comforts: [
+        'จำหน่ายตั๋วล่วงหน้า',
+        'จำหน่ายตั๋วประจำวัน',
+        'ห้องนำ้สะอาด',
+        'ห้องนำ้ผู้พิการ',
+        'ร้านอาหาร',
+        'ร้านค้าต่างๆ'
+      ],
       lines: []),
   StationList(
       name: 'เมืองคง',

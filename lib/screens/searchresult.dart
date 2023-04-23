@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationdetails.dart';
@@ -320,7 +321,7 @@ class _SearchresultState extends State<Searchresult> {
                                             children: [
                                               Container(
                                                   height: 100,
-                                                  width: 200,
+                                                  width: context.mediaQuery.size.width*0.5,
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
@@ -390,7 +391,7 @@ class _SearchresultState extends State<Searchresult> {
                                                   )),
                                               Container(
                                                 height: 100,
-                                                width: 120,
+                                                width: context.mediaQuery.size.width*0.32,
                                                 child: Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.end,
