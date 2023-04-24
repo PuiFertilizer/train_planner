@@ -44,33 +44,112 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.train,
                   color: Color.fromARGB(255, 24, 24, 24),
                   size: 40,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
                 Text(
                   "สถานีต้นทาง",
                   style: GoogleFonts.prompt(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(255, 24, 24, 24))),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 0,
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
+              height: 5,
+            ),
+            DropdownSearch<String>(
+              mode: Mode.MENU,
+              showSelectedItems: true,
+              items: const [
+                //เอามาจากรายชื่อสถานีใน Database
+                'กรุงเทพ ',
+                'บ้านพลูตาหลวง ',
+                'เชียงใหม่  ',
+                'หนองคาย  ',
+                'อุบลราชธานี  ',
+                'สุราษฎร์ธานี ',
+                'ชุมทางหาดใหญ่ ',
+                'ชุมทางฉะเชิงเทรา',
+                'ปราจีนบุรี'
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.add_location_alt,
+                  color: Color.fromARGB(255, 24, 24, 24),
+                  size: 40,
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  "สถานีปลายทาง",
+                  style: GoogleFonts.prompt(
+                      textStyle: const TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 24, 24, 24))),
+                ),
+                const SizedBox(
+                  width: 0,
+                ),
+              ],
+            ),
+            const SizedBox(
               height: 5,
             ),
             DropdownSearch<String>(
                 mode: Mode.MENU,
                 showSelectedItems: true,
-                items: [
+                items: const [
+                  //เอามาจากรายชื่อสถานีใน Database
+                  'กรุงเทพ ',
+                  'บ้านพลูตาหลวง ',
+                  'เชียงใหม่ ',
+                  'หนองคาย ',
+                  'อุบลราชธานี ',
+                  'สุราษฎร์ธานี ',
+                  'ชุมทางหาดใหญ่ ',
+                  'ชุมทางฉะเชิงเทรา',
+                  'ปราจีนบุรี'
+                ],
+                dropdownSearchDecoration: InputDecoration(
+                  hintText: "  สถานีหรือชื่อจังหวัด",
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+                  filled: true, //<-- SEE HERE
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                ),
+                onChanged: itemSelectionChanged2,
+                showSearchBox: true,
+                searchFieldProps: const TextFieldProps(
+                  cursorColor: Colors.red,
+                )),
+            DropdownSearch<String>(
+                mode: Mode.MENU,
+                showSelectedItems: true,
+                items: const [
                   //เอามาจากรายชื่อสถานีใน Database
                   'กรุงเทพ  จ.กรุงเทพ',
                   'บ้านพลูตาหลวง  จ.ชลบุรี',
@@ -96,42 +175,42 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                 ),
                 onChanged: itemSelectionChanged,
                 showSearchBox: true,
-                searchFieldProps: TextFieldProps(
+                searchFieldProps: const TextFieldProps(
                   cursorColor: Colors.red,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.add_location_alt,
                   color: Color.fromARGB(255, 24, 24, 24),
                   size: 40,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
                 Text(
                   "สถานีปลายทาง",
                   style: GoogleFonts.prompt(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(255, 24, 24, 24))),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 0,
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             DropdownSearch<String>(
                 mode: Mode.MENU,
                 showSelectedItems: true,
-                items: [
+                items: const [
                   //เอามาจากรายชื่อสถานีใน Database
                   'กรุงเทพ  จ.กรุงเทพ',
                   'บ้านพลูตาหลวง  จ.ชลบุรี',
@@ -157,36 +236,36 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                 ),
                 onChanged: itemSelectionChanged2,
                 showSearchBox: true,
-                searchFieldProps: TextFieldProps(
+                searchFieldProps: const TextFieldProps(
                   cursorColor: Colors.red,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.calendar_today,
                   color: Color.fromARGB(255, 24, 24, 24),
                   size: 35,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   "วันเดินทาง",
                   style: GoogleFonts.prompt(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(255, 24, 24, 24))),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 0,
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             TextField(
@@ -197,7 +276,7 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                     borderRadius: BorderRadius.circular(10.0)),
                 contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
                 filled: true, //<-- SEE HERE
-                fillColor: Color.fromARGB(255, 255, 255, 255),
+                fillColor: const Color.fromARGB(255, 255, 255, 255),
                 //icon: const Icon(Icons.calendar_today_rounded),
               ),
               onTap: () async {
@@ -213,14 +292,15 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SearchresultPlan()),
+                  MaterialPageRoute(
+                      builder: (context) => const SearchresultPlan()),
                 ); //ไปที่หน้าผลการค้นหา
               }, //มีการ Query
               icon: const Icon(Icons.search),
@@ -230,7 +310,7 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
               ),
               style: ElevatedButton.styleFrom(
                 fixedSize: const Size(90, 40),
-                backgroundColor: Color.fromARGB(255, 56, 163, 165),
+                backgroundColor: const Color.fromARGB(255, 56, 163, 165),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
@@ -245,12 +325,12 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
   _appBar(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: Color.fromARGB(255, 56, 163, 165),
+      backgroundColor: const Color.fromARGB(255, 56, 163, 165),
       leading: GestureDetector(
         onTap: () {
           Get.back();
         },
-        child: Icon(
+        child: const Icon(
           Icons.arrow_back_ios,
           size: 20,
         ),
