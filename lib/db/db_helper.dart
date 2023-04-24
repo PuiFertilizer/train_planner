@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/models/traindatalist.dart';
@@ -64,6 +65,7 @@ class DBHelper {
           db.execute("Create table $_tableRoute("
               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
               "train STRING, station STRING, time STRING, line STRING)") /*.then((value) => updater.updateTrain())*/;
+          updateTrain();
         },
         onUpgrade: (db, int oldVersion, int newVersion) {
           // If you need to add a column
@@ -88,7 +90,6 @@ class DBHelper {
         },
         onConfigure: (db) async => await db.execute('PRAGMA foreign_keys = ON'),
       );
-
       cleanAndUpdate();
       //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {
@@ -120,6 +121,24 @@ class DBHelper {
     return await _db!.query(_tablePlan, where: 'id=?', whereArgs: [id]);
   }
 
+  static deletePlan(Plan plan) async {
+    return await _db!.delete(_tablePlan, where: 'id=?', whereArgs: [plan.id]);
+  }
+
+  static List<DateTime> getPlanDate(int plan) {
+    List<DateTime> tasks = [];
+    query(plan).then((value) {
+      for (var element in value) {
+        tasks.add(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
+      }
+    });
+    tasks.sort((a, b) {
+      //sorting in descending order
+      return a.compareTo(b);
+    });
+    return tasks;
+  }
+
   //task
   static Future<int> insert(Task? task) async {
     print('insert function called');
@@ -129,7 +148,7 @@ class DBHelper {
   static Future<List<Map<String, dynamic>>> query(int planid) async {
     print("query task function called $planid");
     return await _db!.query(_tableTask,
-        where: 'planid=?', whereArgs: [planid], orderBy: "startTime");
+        where: 'planid=?', whereArgs: [planid], orderBy: "date, startTime");
   }
 
   static delete(Task task) async {

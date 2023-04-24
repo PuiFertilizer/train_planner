@@ -26,15 +26,15 @@ class Writeplan extends StatefulWidget {
 }
 
 class _WriteplanState extends State<Writeplan> {
-  DateTime _selectedDate = DateTime.now();
-  DateTime startDate = DateTime(2023, 2, 5);
-  DateTime endDate = DateTime(2023, 2, 8);
+  //DateTime _selectedDate = DateTime.now();
+  //DateTime startDate = DateTime(2023, 2, 5);
+  //DateTime endDate = DateTime(2023, 2, 8);
   late TaskController _taskController;
   var notifyHelper;
 
   @override
   void dispose() {
-    print("dispose");
+    //print("dispose");
     _taskController.dispose();
     super.dispose();
   }
@@ -43,6 +43,13 @@ class _WriteplanState extends State<Writeplan> {
   Widget build(BuildContext context) {
     _taskController = TaskController(widget.planid);
     _taskController.getTasks(widget.planid);
+    var date = DBHelper.getPlanDate(widget.planid);
+    var firstDay = "no date";
+    var lastDay = "";
+    if (date.isNotEmpty) {
+      firstDay = date.first.toString();
+      lastDay = date.last.toString();
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -67,7 +74,7 @@ class _WriteplanState extends State<Writeplan> {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
-                      child: Text("4/22/2023 - 4/22/2023",
+                      child: Text("$firstDay - $lastDay",
                           style: GoogleFonts.prompt(
                             color: Colors.black,
                             fontSize: 14,

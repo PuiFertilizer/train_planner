@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:train_planner/db/db_helper.dart';
-import 'package:train_planner/screens/planner.dart';
 import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/input_field.dart';
 
@@ -16,7 +14,7 @@ class NewplanPage extends StatefulWidget {
 
 class _NewplanPageState extends State<NewplanPage> {
   final TextEditingController _titleController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  //final DateTime _selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +38,8 @@ class _NewplanPageState extends State<NewplanPage> {
                 hint: 'ระบุที่นี่',
                 controller: _titleController,
               ),
-              Row(
+              //เอาเวลาออก
+              /*Row(
                 children: [
                   Expanded(
                     child: MyInputField(
@@ -74,7 +73,7 @@ class _NewplanPageState extends State<NewplanPage> {
                     ),
                   ),
                 ],
-              ),
+              ),*/
               const SizedBox(height: 30),
               ElevatedButton.icon(
                 onPressed: () {
@@ -122,7 +121,7 @@ class _NewplanPageState extends State<NewplanPage> {
     );
   }
 
-  _getDateFromUser() async {
+  /*_getDateFromUser() async {
     DateTime? pickerDate = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
@@ -137,5 +136,5 @@ class _NewplanPageState extends State<NewplanPage> {
     } else {
       print("it's null or something wrong");
     }
-  }
+  }*/
 }

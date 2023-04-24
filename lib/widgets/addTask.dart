@@ -48,7 +48,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               startTime: _startTime,
               endTime: _endTime,
               planid: widget.planid));
-      print("My id is" + " $value");
+      print("My id is $value");
     }
 
     validateData() {
@@ -196,25 +196,28 @@ class _AddTaskPageState extends State<AddTaskPage> {
     }
   }
 
-  _getTimeFromUser({required bool isStartTime}) async {
-    var pickedTime = await _showTimePicker();
-    var df = DateFormat("h:mm a");
-    var dt = df.parse(pickedTime!.format(context));
-    var formattedTime = DateFormat('HH:mm').format(dt); //แก้เวลา
-    if (pickedTime == null) {
-      print("Time Cancelled");
-    } else if (isStartTime == true) {
-      setState(() {
-        _startTime = formattedTime;
-      });
-    } else if (isStartTime == false) {
-      setState(() {
-        _endTime = formattedTime;
-      });
-    }
+  _getTimeFromUser({required bool isStartTime}) {
+    DateTime dt;
+    String formattedTime;
+    _showTimePicker().then((value) {
+      var df = DateFormat("h:mm a");
+      dt = df.parse(value!.format(context));
+      formattedTime = DateFormat('HH:mm').format(dt);
+      if (isStartTime == true) {
+        setState(() {
+          _startTime = formattedTime;
+        });
+      } else if (isStartTime == false) {
+        setState(() {
+          _endTime = formattedTime;
+        });
+      }
+    });
+
+    //แก้เวลา
   }
 
-  _showTimePicker() {
+  Future<TimeOfDay?> _showTimePicker() {
     return showTimePicker(
         context: context,
         initialTime: TimeOfDay.now(),

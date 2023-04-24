@@ -29,7 +29,13 @@ class PlanList extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         Plan plann = Plan.fromJson(
                             planns[index]); //index เรียงตามชื่อแผน
-
+                        var date = DBHelper.getPlanDate(plann.id!);
+                        var firstDay = "no date";
+                        var lastDay = "";
+                        if (date.isNotEmpty) {
+                          firstDay = date.first.toString();
+                          lastDay = date.last.toString();
+                        }
                         return Stack(
                           children: <Widget>[
                             //widget คือจำนวนกล่องข้อความ
@@ -84,12 +90,12 @@ class PlanList extends StatelessWidget {
                                       const SizedBox(
                                         height: 20.0,
                                       ),
-                                      /*Text(plann.plandate,
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 16, color: Colors.black)),
-                              Text(plann.noOfDate,
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 16, color: Colors.black)),*/
+                                      Text("$firstDay - $lastDay",
+                                          style: GoogleFonts.prompt(
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          )),
                                     ]),
                               ),
                             ),
