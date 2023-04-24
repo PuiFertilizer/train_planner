@@ -3,13 +3,16 @@ class Routes {
   String train = '';
   String station = '';
   String time = '';
-  String inOrOut = '';
+  String line = '';
+  //String order = '';
 
   Routes({
     required this.id,
     required this.train,
+    //required this.order,
     required this.station,
     required this.time,
+    required this.line,
   });
 
   Routes.fromJson(Map<String, dynamic> json) {
@@ -17,7 +20,8 @@ class Routes {
     train = json['train'].toString();
     station = json['station'];
     time = json['time'];
-    //inOrOut = json['inOrOut'];
+    line = json['line'].toString();
+    //order = json['order'];
   }
 
   Map<String, dynamic> toJson() {
@@ -26,7 +30,8 @@ class Routes {
     data['train'] = train;
     data['station'] = station;
     data['time'] = time;
-    //data['inOrOut'] = inOrOut;
+    data['line'] = line;
+    //data['order'] = order;
     return data;
   }
 }

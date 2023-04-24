@@ -4,13 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
 import 'package:train_planner/screens/planner.dart';
+import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/input_field.dart';
-import 'package:train_planner/widgets/searchRouteNew.dart';
+
 
 import '../models/task.dart';
 import '../widgets/addTask.dart';
-import '../widgets/addTaskNewPlan.dart';
+
 import '../widgets/searchRouteEdit.dart';
 
 //สร้างแผนการเดินทางใหม่ ตั้งชื่อแผน เวลาเริ่ม-สิ้นสุด
@@ -71,9 +72,7 @@ class _newplanPageState extends State<newplanPage>{
               ElevatedButton.icon(
                                     
              onPressed: () {
-                  showDialog(context: context, builder: (BuildContext context) {
-                  return DialogAddPlan();
-                });
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Writeplan()),); //ไปที่หน้าแผนการเดินทางที่สร้างใหม่ที่ว่าง พร้อม id ใหม่
                },
           icon: Icon(Icons.add),
           label: Text("เพิ่มแผนการเดินทาง", //สร้างแผนใหม่
@@ -127,58 +126,3 @@ class _newplanPageState extends State<newplanPage>{
   }
 }
 
-class DialogAddPlan extends StatelessWidget{
-  final _taskController = Get.put(TaskController()); //กล่องยืนยันลบแผนการเดินทาง
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Stack(
-        children: [
-          Container(
-            height:140,
-            width: 600,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10,30,10,10),
-              child: Column(
-                children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Text('เพิ่มกิจกรรมในแผน', style: GoogleFonts.prompt(fontWeight: FontWeight.bold, fontSize: 16) ,)),
-                  SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(onPressed: () async {
-                        await Get.to(const SearchRouteNew());
-                        _taskController.getTasks();
-                        Navigator.of(context).pop();
-                      }, style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 56, 163, 165),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                      ),child: Text('เดินทางรถไฟ', style: GoogleFonts.prompt(fontWeight: FontWeight.bold, fontSize: 12) ,)
-                      ),
-                      SizedBox(width: 20,),
-
-                      //กิจกรรมอื่นๆ
-                      ElevatedButton(onPressed: () async {
-                        await Get.to(const AddTaskNewPlanPage());
-                        _taskController.getTasks();
-                        Navigator.of(context).pop();
-                      },style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 56, 163, 165),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                      ), child: Text('กิจกรรมอื่นๆ', style: GoogleFonts.prompt(fontWeight: FontWeight.bold, fontSize: 12) ,)
-                      ),
-                    ],
-                  ),
-
-              ]),
-
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
