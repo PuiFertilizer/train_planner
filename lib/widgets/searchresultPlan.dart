@@ -396,7 +396,7 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
                                     attraction:
                                         "${result.departureStation} - ${result.arriveStation}",
                                     title:
-                                        "โดยสารโดย ${result.trainNumber} ${result.traintype}");
+                                        "โดยสารรถไฟขบวน ${result.trainNumber} ${result.traintype}");
                                 DBHelper.insert(task);
                                 Navigator.pop(context);
                                 Navigator.pop(context);
