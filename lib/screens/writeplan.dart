@@ -1,20 +1,13 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/rendering/box.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:train_planner/db/db_helper.dart';
-import 'package:train_planner/screens/planner.dart';
 import 'package:train_planner/widgets/addTask.dart';
-import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/searchRouteEdit.dart';
 import '../controllers/task_controllers.dart';
 import '../models/plan.dart';
 import '../models/task.dart';
-import '../widgets/NavBar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import '../widgets/task_tile.dart';
 
 // แก้ไขแผนเดิมที่มีอยู่แล้ว
@@ -43,13 +36,13 @@ class _WriteplanState extends State<Writeplan> {
   Widget build(BuildContext context) {
     _taskController = TaskController(widget.planid);
     _taskController.getTasks(widget.planid);
-    var date = DBHelper.getPlanDate(widget.planid);
+    /*var date = DBHelper.getPlanDate(widget.planid);
     var firstDay = "no date";
     var lastDay = "";
     if (date.isNotEmpty) {
       firstDay = date.first.toString();
       lastDay = date.last.toString();
-    }
+    }*/
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -69,17 +62,17 @@ class _WriteplanState extends State<Writeplan> {
                       fontWeight: FontWeight.bold,
                     )), //title ของแผนการเดินทาง
                 centerTitle: true,
-                bottom: PreferredSize(
+                bottom: const PreferredSize(
                     preferredSize: Size.zero,
                     child: Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
-                      child: Text("$firstDay - $lastDay",
+                      /*child: Text("$firstDay - $lastDay",
                           style: GoogleFonts.prompt(
                             color: Colors.black,
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                          )), //วันที่ของแผน
+                          )), //วันที่ของแผน*/
                     )),
               );
             } else {
@@ -355,7 +348,9 @@ class DialogAddPlan extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           taskController.getTasks(planid);
-                          await Get.to(const SearchRouteEdit());
+                          await Get.to(SearchRouteEdit(
+                            planid: planid,
+                          ));
 
                           Navigator.of(context).pop();
                         },

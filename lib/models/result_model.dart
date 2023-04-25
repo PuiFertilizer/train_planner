@@ -5,17 +5,21 @@ class Result {
   String arriveTime = '';
   String traintype = '';
   String trainNumber = '';
+  String classes = '';
+  List<String> coach = [];
   //String price;
 
-  Result({
-    required this.departureStation,
-    required this.departureTime,
-    required this.arriveStation,
-    required this.arriveTime,
-    required this.traintype,
-    required this.trainNumber,
-    //required this.price
-  });
+  Result(
+      {required this.departureStation,
+      required this.departureTime,
+      required this.arriveStation,
+      required this.arriveTime,
+      required this.traintype,
+      required this.trainNumber,
+      required this.classes,
+      required this.coach
+      //required this.price
+      });
   Result.fromJson(Map<String, dynamic> json) {
     departureStation = json['departureStation'];
     arriveStation = json['arriveStation'];

@@ -1,11 +1,8 @@
-import 'package:date_format/date_format.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
-import 'package:train_planner/widgets/button.dart';
 import 'package:train_planner/widgets/input_field.dart';
 
 import '../models/task.dart';

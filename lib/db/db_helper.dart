@@ -125,10 +125,13 @@ class DBHelper {
     return await _db!.delete(_tablePlan, where: 'id=?', whereArgs: [plan.id]);
   }
 
-  static List<DateTime> getPlanDate(int plan) {
+  /*static List<DateTime> getPlanDate(int plan) {
     List<DateTime> tasks = [];
+    print("get date");
     query(plan).then((value) {
+      print(value.toString());
       for (var element in value) {
+        print(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
         tasks.add(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
       }
     });
@@ -136,8 +139,9 @@ class DBHelper {
       //sorting in descending order
       return a.compareTo(b);
     });
+    print(tasks.toString());
     return tasks;
-  }
+  }*/
 
   //task
   static Future<int> insert(Task? task) async {
@@ -188,15 +192,17 @@ class DBHelper {
                 line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 != 0) {
           try {
+            TrainList train = trainLists[resultLine]
+                .firstWhere((element) => element.trainNo == s.train);
             Result x = Result(
                 departureStation: s.station,
                 departureTime: s.time,
                 arriveStation: e.station,
                 arriveTime: e.time,
-                traintype: trainLists[resultLine]
-                    .firstWhere((element) => element.trainNo == s.train)
-                    .trainType,
-                trainNumber: s.train);
+                traintype: train.trainType,
+                trainNumber: s.train,
+                classes: train.classes,
+                coach: train.coach);
             result.add(x);
           } catch (e) {
             print(e);
@@ -205,15 +211,17 @@ class DBHelper {
                 line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 == 0)) {
           try {
+            TrainList train = trainLists[resultLine]
+                .firstWhere((element) => element.trainNo == s.train);
             Result x = Result(
                 departureStation: s.station,
                 departureTime: s.time,
                 arriveStation: e.station,
                 arriveTime: e.time,
-                traintype: trainLists[resultLine]
-                    .firstWhere((element) => element.trainNo == s.train)
-                    .trainType,
-                trainNumber: e.train);
+                traintype: train.trainType,
+                trainNumber: e.train,
+                classes: train.classes,
+                coach: train.coach);
 
             result.add(x);
           } catch (e) {
@@ -387,9 +395,12 @@ class DBHelper {
             }
             timeCounter++;
           }
+
           await batch.commit(noResult: true);
+          print("finish line");
         }
       }
     }
+    print("finish");
   }
 }

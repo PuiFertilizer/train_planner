@@ -1,24 +1,20 @@
-import 'package:date_format/date_format.dart';
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
-import 'package:train_planner/widgets/button.dart';
-import 'package:train_planner/widgets/input_field.dart';
 import 'package:train_planner/widgets/searchresultPlan.dart';
 
-import '../models/task.dart';
-import '../screens/searchresult.dart';
+import '../db/datalist.dart';
 
 //ใส่ข้อมูลค้นหาเส้นทางของหน้าแก้ไขแผน
 
 //need edit
 
 class SearchRouteEdit extends StatefulWidget {
-  const SearchRouteEdit({Key? key}) : super(key: key);
+  const SearchRouteEdit({Key? key, required this.planid}) : super(key: key);
+  final int planid;
 
   @override
   State<SearchRouteEdit> createState() => _SearchRouteEditState();
@@ -29,9 +25,8 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _date = TextEditingController();
   DateTime _selectedDate = DateTime.now();
-  String _endTime = "เลือกเวลา";
-  String _startTime = "เลือกเวลา";
-  String _selectedAttraction = 'ไม่ระบุสถานที่';
+  String origin = "";
+  String destination = "";
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +54,6 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                           fontSize: 16,
                           color: Color.fromARGB(255, 24, 24, 24))),
                 ),
-                const SizedBox(
-                  width: 0,
-                ),
               ],
             ),
             const SizedBox(
@@ -70,18 +62,26 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
             DropdownSearch<String>(
               mode: Mode.MENU,
               showSelectedItems: true,
-              items: const [
-                //เอามาจากรายชื่อสถานีใน Database
-                'กรุงเทพ ',
-                'บ้านพลูตาหลวง ',
-                'เชียงใหม่  ',
-                'หนองคาย  ',
-                'อุบลราชธานี  ',
-                'สุราษฎร์ธานี ',
-                'ชุมทางหาดใหญ่ ',
-                'ชุมทางฉะเชิงเทรา',
-                'ปราจีนบุรี'
-              ],
+              items: stationList,
+              dropdownSearchDecoration: InputDecoration(
+                hintText: "  สถานีหรือชื่อจังหวัด",
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.grey, width: 2),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white, width: 2),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+                filled: true, //<-- SEE HERE
+                fillColor: const Color.fromARGB(255, 255, 255, 255),
+              ),
+              onChanged: itemSelectionChanged,
+              showSearchBox: true,
+              searchFieldProps: const TextFieldProps(
+                cursorColor: Colors.red,
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -115,111 +115,7 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
             DropdownSearch<String>(
                 mode: Mode.MENU,
                 showSelectedItems: true,
-                items: const [
-                  //เอามาจากรายชื่อสถานีใน Database
-                  'กรุงเทพ ',
-                  'บ้านพลูตาหลวง ',
-                  'เชียงใหม่ ',
-                  'หนองคาย ',
-                  'อุบลราชธานี ',
-                  'สุราษฎร์ธานี ',
-                  'ชุมทางหาดใหญ่ ',
-                  'ชุมทางฉะเชิงเทรา',
-                  'ปราจีนบุรี'
-                ],
-                dropdownSearchDecoration: InputDecoration(
-                  hintText: "  สถานีหรือชื่อจังหวัด",
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey, width: 2),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white, width: 2),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-                  filled: true, //<-- SEE HERE
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                ),
-                onChanged: itemSelectionChanged2,
-                showSearchBox: true,
-                searchFieldProps: const TextFieldProps(
-                  cursorColor: Colors.red,
-                )),
-            DropdownSearch<String>(
-                mode: Mode.MENU,
-                showSelectedItems: true,
-                items: const [
-                  //เอามาจากรายชื่อสถานีใน Database
-                  'กรุงเทพ  จ.กรุงเทพ',
-                  'บ้านพลูตาหลวง  จ.ชลบุรี',
-                  'เชียงใหม่  จ.เชียงใหม่',
-                  'หนองคาย  จ.หนองคาย',
-                  'อุบลราชธานี  จ.อุบลราชธานี',
-                  'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
-                  'ชุมทางหาดใหญ่  จ.สงขลา'
-                ],
-                dropdownSearchDecoration: InputDecoration(
-                  hintText: "  สถานีหรือชื่อจังหวัด",
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey, width: 2),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white, width: 2),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-                  filled: true, //<-- SEE HERE
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                ),
-                onChanged: itemSelectionChanged,
-                showSearchBox: true,
-                searchFieldProps: const TextFieldProps(
-                  cursorColor: Colors.red,
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.add_location_alt,
-                  color: Color.fromARGB(255, 24, 24, 24),
-                  size: 40,
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  "สถานีปลายทาง",
-                  style: GoogleFonts.prompt(
-                      textStyle: const TextStyle(
-                          fontSize: 16,
-                          color: Color.fromARGB(255, 24, 24, 24))),
-                ),
-                const SizedBox(
-                  width: 0,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            DropdownSearch<String>(
-                mode: Mode.MENU,
-                showSelectedItems: true,
-                items: const [
-                  //เอามาจากรายชื่อสถานีใน Database
-                  'กรุงเทพ  จ.กรุงเทพ',
-                  'บ้านพลูตาหลวง  จ.ชลบุรี',
-                  'เชียงใหม่  จ.เชียงใหม่',
-                  'หนองคาย  จ.หนองคาย',
-                  'อุบลราชธานี  จ.อุบลราชธานี',
-                  'สุราษฎร์ธานี  จ.สุราษฎร์ธานี',
-                  'ชุมทางหาดใหญ่  จ.สงขลา'
-                ],
+                items: stationList,
                 dropdownSearchDecoration: InputDecoration(
                   hintText: "  สถานีหรือชื่อจังหวัด",
                   enabledBorder: OutlineInputBorder(
@@ -288,6 +184,7 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                 if (pickeddate != null) {
                   setState(() {
                     _date.text = DateFormat('dd/MM/yyyy').format(pickeddate);
+                    _selectedDate = pickeddate;
                   });
                 }
               },
@@ -300,7 +197,12 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const SearchresultPlan()),
+                      builder: (context) => SearchresultPlan(
+                            date: _selectedDate.toString(),
+                            destination: destination,
+                            source: origin,
+                            planid: widget.planid,
+                          )),
                 ); //ไปที่หน้าผลการค้นหา
               }, //มีการ Query
               icon: const Icon(Icons.search),
@@ -341,10 +243,12 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
   void itemSelectionChanged(String? originStation) {
     print('items');
     print(originStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    origin = originStation!;
   }
 
   void itemSelectionChanged2(String? destinationStation) {
     print('items');
     print(destinationStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    destination = destinationStation!;
   }
 }
