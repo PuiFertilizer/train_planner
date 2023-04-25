@@ -389,8 +389,8 @@ class _SearchresultState extends State<Searchresult> {
                                                         'รถนั่งปรับอากาศ', //result.coachtype2
                                                         style:
                                                             GoogleFonts.prompt(
-                                                          color: Colors.black,
-                                                          fontSize: 15.0,
+                                                            color: Colors.black,
+                                                            fontSize: 15.0,
                                                         ),
                                                       ),
                                                     ],

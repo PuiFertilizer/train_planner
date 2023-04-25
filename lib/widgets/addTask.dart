@@ -44,7 +44,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           fontWeight: FontWeight.bold,),
               ),
               MyInputField(title: 'คำอธิบาย', hint: 'ระบุที่นี่', controller: _titleController,),
-              MyInputField(title: 'วันที่ต้องการเพิ่มกิจกรรม', hint: DateFormat.yMd().format(_selectedDate),
+              MyInputField(title: 'วันที่ต้องการเพิ่มกิจกรรม', hint: DateFormat('dd/MM/yyyy').format(_selectedDate),
               widget: IconButton(
                 icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),
                 onPressed: (){
@@ -125,7 +125,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       task: Task(
       title: _titleController.text,
       attraction: _selectedAttraction.text,
-      date: DateFormat.yMd().format(_selectedDate),
+      date: DateFormat('dd/MM/yyyy').format(_selectedDate),
       startTime: _startTime,
       endTime: _endTime,
     )
@@ -192,7 +192,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
               data: MediaQuery.of(context).copyWith(
                   // Using 24-Hour format
                   alwaysUse24HourFormat: true),
-              // If you want 12-Hour format, just change alwaysUse24HourFormat to false or remove all the builder argument
               child: childWidget!);
 }
     );

@@ -46,7 +46,7 @@ class _AddResultPageState extends State<AddResultPage> {
               ),
               MyInputFieldDisabled(title: 'คำอธิบาย', hint: _description ),
               MyInputFieldDisabled(title: 'ต้นทาง - ปลายทาง', hint: _selectedAttraction ),
-              MyInputFieldDisabled(title: 'วันเดินทาง', hint: DateFormat.yMd().format(_selectedDate) ),
+              MyInputFieldDisabled(title: 'วันเดินทาง', hint: DateFormat('dd/MM/yyyy').format(_selectedDate) ),
               
               Row(children: [
                 Expanded(
@@ -102,7 +102,7 @@ class _AddResultPageState extends State<AddResultPage> {
       task: Task(
       title: _description,
       attraction: _selectedAttraction,
-      date: DateFormat.yMd().format(_selectedDate),
+      date: DateFormat('dd/MM/yyyy').format(_selectedDate),
       startTime: _startTime,
       endTime: _endTime,
     )

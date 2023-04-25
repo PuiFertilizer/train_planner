@@ -48,42 +48,42 @@ List<Destination> destinations = [
     imageUrl: 'assets/images/chiangmai.jpg',
     city: 'เชียงใหม่',
 
-    description: 'สถานีเชียงใหม่',
+    description: 'เชียงใหม่',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/nongkai.jpg',
     city: 'หนองคาย',
 
-    description: 'สถานีหนองคาย',
+    description: 'หนองคาย',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/surat.jpg',
     city: 'สุราษฎร์ธานี',
 
-    description: 'สถานีสุราษฏร์ธานี',
+    description: 'สุราษฎร์ธานี',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/tachompoo.jpg',
     city: 'ลำพูน',
 
-    description: 'สถานีลำพูน',
+    description: 'ลำพูน',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/suanson.jpg',
     city: 'ประจวบฯ',
 
-    description: 'สถานีหัวหิน',
+    description: 'หัวหิน',
     activities: activities,
   ),
   Destination(
     imageUrl: 'assets/images/suanson.jpg',
     city: 'สงขลา',
 
-    description: 'สงขลา',
+    description: 'ชุมทางหาดใหญ่',
     activities: activities,
   ),
 ];

@@ -278,7 +278,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                   //เนื้อหาตารางใหม่
                   SizedBox(
                     child: Container(
-                      height: 300,
+                      height: context.mediaQuery.size.height*0.4,
                       color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10),

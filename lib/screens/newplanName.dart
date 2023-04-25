@@ -46,7 +46,7 @@ class _newplanPageState extends State<newplanPage>{
                 Expanded(
                   child: MyInputField(
                     title:"วันเริ่มต้นแผน",
-                    hint:  DateFormat.yMd().format(_selectedDate),
+                    hint:  DateFormat('dd/MM/yyyy').format(_selectedDate),
                     widget: IconButton(
                     icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),
                     onPressed: (){
@@ -58,7 +58,7 @@ class _newplanPageState extends State<newplanPage>{
                 Expanded(
                   child: MyInputField(
                     title:"วันสิ้นสุดแผน",
-                    hint:  DateFormat.yMd().format(_selectedDate),
+                    hint:  DateFormat('dd/MM/yyyy').format(_selectedDate),
                     widget: IconButton(
                       icon:Icon(Icons.calendar_today_outlined, color: Colors.grey,),
                     onPressed: (){

@@ -307,21 +307,21 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           const SizedBox(
             height: 10,
           ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              fixedSize: const Size(350, 30),
-              backgroundColor: const Color.fromARGB(255, 87, 204, 153),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-            ),
-            child: Text(
-              "เพิ่มในแผนการเดินทาง", //สร้างแผนใหม่
-              style: GoogleFonts.prompt(
-                  color: const Color.fromARGB(255, 19, 19, 19), fontSize: 16.0),
-            ),
-          )
+          // ElevatedButton(
+          //   onPressed: () {},
+          //   style: ElevatedButton.styleFrom(
+          //     fixedSize: const Size(350, 30),
+          //     backgroundColor: const Color.fromARGB(255, 87, 204, 153),
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(15.0),
+          //     ),
+          //   ),
+          //   child: Text(
+          //     "เพิ่มในแผนการเดินทาง", //สร้างแผนใหม่
+          //     style: GoogleFonts.prompt(
+          //         color: const Color.fromARGB(255, 19, 19, 19), fontSize: 16.0),
+          //   ),
+          // )
         ]),
       ),
     );
