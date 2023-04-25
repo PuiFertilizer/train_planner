@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/models/traindatalist.dart';
@@ -6,6 +7,7 @@ import 'package:web_scraper/web_scraper.dart';
 import '../models/stationdatalist.dart';
 import '../models/task.dart';
 import '../models/route.dart';
+import '../models/Plan.dart';
 
 class StationTrainList {
   String trainNo;
@@ -31,9 +33,10 @@ class TrainTimetable {
 
 class DBHelper {
   static Database? _db;
-  static const int _version = 2;
+  static const int _version = 3;
   static const String _tableTask = 'tasks';
   static const String _tableRoute = 'routes';
+  static const String _tablePlan = 'plans';
 
   static Future<void> initDb() async {
     if (_db != null) {
@@ -41,27 +44,52 @@ class DBHelper {
     }
     try {
       String path = '${await getDatabasesPath()}db.db';
-      _db =
-          await openDatabase(path, version: _version, onCreate: (db, version) {
-        print('creating a new one');
-        //task table
-        db.execute("Create table $_tableTask("
-            "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-            "title STRING, attraction STRING, date STRING, "
-            "startTime STRING, endTime STRING)");
-        //route table
-        db.execute("Create table $_tableRoute("
-            "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-            "train STRING, station STRING, time STRING, line STRING)") /*.then((value) => updater.updateTrain())*/;
-            updateTrain();
-      }, onUpgrade: (db, int oldVersion, int newVersion) {
-        // If you need to add a column
-        print("upgrade");
-        if (1 >= oldVersion) {
-          db.execute("ALTER TABLE $_tableRoute ADD COLUMN line STRING");
-        }
-      });
-      await updateTrain();
+      _db = await openDatabase(
+        path,
+        version: _version,
+        onCreate: (db, version) {
+          print('creating a new one');
+          //task table
+          db.execute("Create table $_tablePlan("
+              "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+              "name STRING)");
+          db.execute("Create table $_tableTask("
+              "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+              "title STRING, attraction STRING, date STRING, "
+              "startTime STRING, endTime STRING, "
+              "planid INTEGER, "
+              "FOREIGN KEY (planid) REFERENCES plans (id)"
+              "ON DELETE CASCADE"
+              ")");
+          //route table
+          db.execute("Create table $_tableRoute("
+              "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+              "train STRING, station STRING, time STRING, line STRING)") /*.then((value) => updater.updateTrain())*/;
+          updateTrain();
+        },
+        onUpgrade: (db, int oldVersion, int newVersion) {
+          // If you need to add a column
+          print("upgrade");
+          if (1 >= oldVersion) {
+            db.execute("ALTER TABLE $_tableRoute ADD COLUMN line STRING");
+          }
+          if (2 >= oldVersion) {
+            db.execute('DROP TABLE $_tableTask');
+            db.execute("Create table $_tableTask("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "title STRING, attraction STRING, date STRING, "
+                "startTime STRING, endTime STRING, "
+                "planid INTEGER, "
+                "FOREIGN KEY (planid) REFERENCES plans (id)"
+                "ON DELETE CASCADE"
+                ")");
+            db.execute("Create table $_tablePlan("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "name STRING)");
+          }
+        },
+        onConfigure: (db) async => await db.execute('PRAGMA foreign_keys = ON'),
+      );
       cleanAndUpdate();
       //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {
@@ -76,15 +104,55 @@ class DBHelper {
     await updateTrain();
   }
 
+  //plan
+  static Future<int> newPlan(String name) async {
+    print('insert function called');
+    Plan plan = Plan(name: name);
+    return await _db?.insert(_tablePlan, plan.toJson()) ?? 1;
+  }
+
+  static Future<List<Map<String, dynamic>>> queryPlan() async {
+    print("query plan function called");
+    return await _db!.query(_tablePlan);
+  }
+
+  static Future<List<Map<String, dynamic>>> getPlan(int id) async {
+    print("getPlan function called $id");
+    return await _db!.query(_tablePlan, where: 'id=?', whereArgs: [id]);
+  }
+
+  static deletePlan(Plan plan) async {
+    return await _db!.delete(_tablePlan, where: 'id=?', whereArgs: [plan.id]);
+  }
+
+  /*static List<DateTime> getPlanDate(int plan) {
+    List<DateTime> tasks = [];
+    print("get date");
+    query(plan).then((value) {
+      print(value.toString());
+      for (var element in value) {
+        print(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
+        tasks.add(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
+      }
+    });
+    tasks.sort((a, b) {
+      //sorting in descending order
+      return a.compareTo(b);
+    });
+    print(tasks.toString());
+    return tasks;
+  }*/
+
   //task
   static Future<int> insert(Task? task) async {
     print('insert function called');
     return await _db?.insert(_tableTask, task!.toJson()) ?? 1;
   }
 
-  static Future<List<Map<String, dynamic>>> query() async {
-    print("query function called");
-    return await _db!.query(_tableTask, orderBy: "startTime");
+  static Future<List<Map<String, dynamic>>> query(int planid) async {
+    print("query task function called $planid");
+    return await _db!.query(_tableTask,
+        where: 'planid=?', whereArgs: [planid], orderBy: "date, startTime");
   }
 
   static delete(Task task) async {
@@ -124,15 +192,17 @@ class DBHelper {
                 line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 != 0) {
           try {
+            TrainList train = trainLists[resultLine]
+                .firstWhere((element) => element.trainNo == s.train);
             Result x = Result(
                 departureStation: s.station,
                 departureTime: s.time,
                 arriveStation: e.station,
                 arriveTime: e.time,
-                traintype: trainLists[resultLine]
-                    .firstWhere((element) => element.trainNo == s.train)
-                    .trainType,
-                trainNumber: s.train);
+                traintype: train.trainType,
+                trainNumber: s.train,
+                classes: train.classes,
+                coach: train.coach);
             result.add(x);
           } catch (e) {
             print(e);
@@ -141,15 +211,17 @@ class DBHelper {
                 line[resultLine].indexOf(e.station) &&
             int.parse(s.train) % 2 == 0)) {
           try {
+            TrainList train = trainLists[resultLine]
+                .firstWhere((element) => element.trainNo == s.train);
             Result x = Result(
                 departureStation: s.station,
                 departureTime: s.time,
                 arriveStation: e.station,
                 arriveTime: e.time,
-                traintype: trainLists[resultLine]
-                    .firstWhere((element) => element.trainNo == s.train)
-                    .trainType,
-                trainNumber: e.train);
+                traintype: train.trainType,
+                trainNumber: e.train,
+                classes: train.classes,
+                coach: train.coach);
 
             result.add(x);
           } catch (e) {
@@ -323,9 +395,12 @@ class DBHelper {
             }
             timeCounter++;
           }
+
           await batch.commit(noResult: true);
+          print("finish line");
         }
       }
     }
+    print("finish");
   }
 }

@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:train_planner/db/db_helper.dart';
 import 'screens/home.dart';
 import 'screens/favourite.dart';
 import 'screens/planner.dart';
 import 'screens/others.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DBHelper.initDb();
   await GetStorage.init();
-  //await updater.updateTrain();
+  await DBHelper.initDb();
+
   runApp(const MyApp());
 }
 
@@ -39,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _controller = PersistentTabController(initialIndex: 0);
+  final _controller = PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Color.fromARGB(255, 98, 231, 173),
+      backgroundColor: const Color.fromARGB(255, 98, 231, 173),
       navBarHeight: 70, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
@@ -64,12 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: ItemAnimationProperties(
+      itemAnimationProperties: const ItemAnimationProperties(
         // Navigation Bar's items animation properties.
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
+      screenTransitionAnimation: const ScreenTransitionAnimation(
         // Screen transition animation on change of selected tab.
         animateTabTransition: true,
         curve: Curves.ease,
@@ -81,7 +77,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePage(), Favourite(), Planner(), Others()];
+    return [
+      const HomePage(),
+      const Favourite(),
+      const Planner(),
+      const Others()
+    ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
           'assets/images/home.png',
           height: 20,
         ),
-        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        activeColorPrimary: const Color.fromARGB(255, 0, 0, 0),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           'assets/images/favourite.png',
           height: 20,
         ),
-        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        activeColorPrimary: const Color.fromARGB(255, 0, 0, 0),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
@@ -107,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
           'assets/images/travelplan.png',
           height: 20,
         ),
-        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        activeColorPrimary: const Color.fromARGB(255, 0, 0, 0),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
@@ -115,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
           'assets/images/otherinfo.png',
           height: 20,
         ),
-        activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+        activeColorPrimary: const Color.fromARGB(255, 0, 0, 0),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
     ];

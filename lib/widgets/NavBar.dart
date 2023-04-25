@@ -9,66 +9,152 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/trainlist.dart';
 
-class NavBar extends StatelessWidget{
+class NavBar extends StatelessWidget {
+  const NavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color.fromARGB(255, 199, 249, 204),
-      
+      backgroundColor: const Color.fromARGB(255, 199, 249, 204),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
           ListTile(
-            leading: Icon(Icons.home, size: 35,color: Colors.black,),
-            title: Text('หน้าหลักอื่นๆ',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Others()));
+            leading: const Icon(
+              Icons.home,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'หน้าหลักอื่นๆ',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Others()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.newspaper, size: 35,color: Colors.black,),
-            title: Text('ข่าวสาร',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => News()));
+            leading: const Icon(
+              Icons.newspaper,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'ข่าวสาร',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const News()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.account_balance, size: 35,color: Colors.black,),
-            title: Text('รายชื่อสถานี',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Stationlist()));
+            leading: const Icon(
+              Icons.account_balance,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'รายชื่อสถานี',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Stationlist()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.tour, size: 35,color: Colors.black,),
-            title: Text('โปรแกรมท่องเที่ยวรถไฟ',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Planner()));
+            leading: const Icon(
+              Icons.tour,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'โปรแกรมท่องเที่ยวรถไฟ',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Planner()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.train, size: 35,color: Colors.black,),
-            title: Text('ข้อมูลขบวนรถ',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Trainlist()));
+            leading: const Icon(
+              Icons.train,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'ข้อมูลขบวนรถ',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Trainlist()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.route, size: 35,color: Colors.black,),
-            title: Text('เส้นทางรถไฟ',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Planner()));
+            leading: const Icon(
+              Icons.route,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'เส้นทางรถไฟ',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Planner()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.access_time_filled, size: 35,color: Colors.black,),
-            title: Text('กำหนดเวลาเดินรถ',style: GoogleFonts.prompt(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.w600,),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Planner()));
+            leading: const Icon(
+              Icons.access_time_filled,
+              size: 35,
+              color: Colors.black,
+            ),
+            title: Text(
+              'กำหนดเวลาเดินรถ',
+              style: GoogleFonts.prompt(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Planner()));
             },
           ),
-
         ],
       ),
     );
