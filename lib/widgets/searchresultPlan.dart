@@ -388,16 +388,15 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                var df = DateFormat('dd/MM/yyyy');
                                 Task task = Task(
                                     planid: widget.planid,
                                     date: dateText,
                                     startTime: result.departureTime,
                                     endTime: result.arriveTime,
                                     attraction:
-                                        "${result.trainNumber} ${result.traintype}",
+                                        "${result.departureStation} - ${result.arriveStation}",
                                     title:
-                                        "${result.departureStation} - ${result.arriveStation}");
+                                        "โดยสารโดย ${result.trainNumber} ${result.traintype}");
                                 DBHelper.insert(task);
                                 Navigator.pop(context);
                                 Navigator.pop(context);
