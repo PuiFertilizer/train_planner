@@ -85,7 +85,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                   MyInputField(
                     title: 'วันที่ต้องการเพิ่มกิจกรรม',
-                    hint: DateFormat.yMd().format(_selectedDate),
+                    hint: DateFormat('dd/MM/yyyy').format(_selectedDate),
                     widget: IconButton(
                         icon: const Icon(
                           Icons.calendar_today_outlined,

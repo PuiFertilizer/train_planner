@@ -117,7 +117,7 @@ class _AddResultPageState extends State<AddResultPage> {
         task: Task(
             title: _description,
             attraction: _selectedAttraction,
-            date: DateFormat.yMd().format(_selectedDate),
+            date: DateFormat('dd/MM/yyyy').format(_selectedDate),
             startTime: _startTime,
             endTime: _endTime,
             planid: 1));
