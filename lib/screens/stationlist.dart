@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 import '../widgets/NavBar.dart';
 import '../screens/home.dart';
@@ -68,7 +69,7 @@ class _StationlistState extends State<Stationlist> {
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            left: 18, top: 5, right: 18, bottom: 10),
+                            left: 5, top: 5, right: 5, bottom: 10),
                         child: Column(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -77,7 +78,7 @@ class _StationlistState extends State<Stationlist> {
                 height: 40,
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5),
                   child: Container(
                     color: const Color(0xff009889),
                     child: Row(
@@ -95,7 +96,7 @@ class _StationlistState extends State<Stationlist> {
                           ),
                           
                           Text(
-                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)",
+                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)  ",
                             style: GoogleFonts.prompt(
                               color: Colors.white,
                               fontSize: 14.0,
@@ -113,11 +114,11 @@ class _StationlistState extends State<Stationlist> {
                             //เนื้อหาตารางใหม่
                             SizedBox(
                               child: Container(
-                                height: 375,
+                                height: context.mediaQuery.size.width*0.9,
                                 color: const Color.fromARGB(255, 255, 255, 255),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10.0, right: 10),
+                                      left: 5, right: 5),
                                   child: Container(
                                     child: RawScrollbar(
                                       thumbColor: const Color.fromARGB(
@@ -152,7 +153,7 @@ class _StationlistState extends State<Stationlist> {
                                                   ),
                                                   child: Row(children: [
                                                     Container(
-                                                      width: 330,
+                                                      width: context.mediaQuery.size.width*0.9,
                                                       alignment:
                                                           Alignment.centerLeft,
                                                       child: Padding(
@@ -191,19 +192,19 @@ class _StationlistState extends State<Stationlist> {
                                                                                 FontWeight
                                                                                     .w600),
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(northStationList.transfer1),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(northStationList.transfer2),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(northStationList.transfer3),
@@ -263,7 +264,7 @@ class _StationlistState extends State<Stationlist> {
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            left: 18, top: 5, right: 18, bottom: 10),
+                            left: 5, top: 5, right: 5, bottom: 10),
                         child: Column(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -272,7 +273,7 @@ class _StationlistState extends State<Stationlist> {
                 height: 40,
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5),
                   child: Container(
                     color: const Color(0xff009889),
                     child: Row(
@@ -290,7 +291,7 @@ class _StationlistState extends State<Stationlist> {
                           ),
                           
                           Text(
-                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)",
+                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)  ",
                             style: GoogleFonts.prompt(
                               color: Colors.white,
                               fontSize: 14.0,
@@ -308,11 +309,11 @@ class _StationlistState extends State<Stationlist> {
                             //เนื้อหาตารางใหม่
                             SizedBox(
                               child: Container(
-                                height: 375,
+                                height: context.mediaQuery.size.width*0.9,
                                 color: const Color.fromARGB(255, 255, 255, 255),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10.0, right: 10),
+                                      left: 5, right: 5),
                                   child: Container(
                                     child: RawScrollbar(
                                       thumbColor: const Color.fromARGB(
@@ -347,7 +348,7 @@ class _StationlistState extends State<Stationlist> {
                                                   ),
                                                   child: Row(children: [
                                                     Container(
-                                                      width: 330,
+                                                      width: context.mediaQuery.size.width*0.9,
                                                       alignment:
                                                           Alignment.centerLeft,
                                                       child: Padding(
@@ -386,19 +387,19 @@ class _StationlistState extends State<Stationlist> {
                                                                                 FontWeight
                                                                                     .w600),
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(northeastStationList.transfer1),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(northeastStationList.transfer2),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(northeastStationList.transfer3),
@@ -458,7 +459,7 @@ class _StationlistState extends State<Stationlist> {
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            left: 18, top: 5, right: 18, bottom: 10),
+                            left: 5, top: 5, right: 5, bottom: 10),
                         child: Column(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -467,7 +468,7 @@ class _StationlistState extends State<Stationlist> {
                 height: 40,
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5),
                   child: Container(
                     color: const Color(0xff009889),
                     child: Row(
@@ -485,7 +486,7 @@ class _StationlistState extends State<Stationlist> {
                           ),
                           
                           Text(
-                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)",
+                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)  ",
                             style: GoogleFonts.prompt(
                               color: Colors.white,
                               fontSize: 14.0,
@@ -503,11 +504,11 @@ class _StationlistState extends State<Stationlist> {
                             //เนื้อหาตารางใหม่
                             SizedBox(
                               child: Container(
-                                height: 375,
+                                height: context.mediaQuery.size.width*0.9,
                                 color: const Color.fromARGB(255, 255, 255, 255),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10.0, right: 10),
+                                      left: 5, right: 5),
                                   child: Container(
                                     child: RawScrollbar(
                                       thumbColor: const Color.fromARGB(
@@ -542,7 +543,7 @@ class _StationlistState extends State<Stationlist> {
                                                   ),
                                                   child: Row(children: [
                                                     Container(
-                                                      width: 330,
+                                                      width: context.mediaQuery.size.width*0.9,
                                                       alignment:
                                                           Alignment.centerLeft,
                                                       child: Padding(
@@ -581,19 +582,19 @@ class _StationlistState extends State<Stationlist> {
                                                                                 FontWeight
                                                                                     .w600),
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(eastStationList.transfer1),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(eastStationList.transfer2),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(eastStationList.transfer3),
@@ -653,7 +654,7 @@ class _StationlistState extends State<Stationlist> {
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            left: 18, top: 5, right: 18, bottom: 10),
+                            left: 5, top: 5, right: 5, bottom: 10),
                         child: Column(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -662,7 +663,7 @@ class _StationlistState extends State<Stationlist> {
                 height: 40,
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5),
                   child: Container(
                     color: const Color(0xff009889),
                     child: Row(
@@ -680,7 +681,7 @@ class _StationlistState extends State<Stationlist> {
                           ),
                           
                           Text(
-                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)",
+                            "ที่ตั้งสถานี (อำเภอ - จังหวัด)  ",
                             style: GoogleFonts.prompt(
                               color: Colors.white,
                               fontSize: 14.0,
@@ -698,11 +699,11 @@ class _StationlistState extends State<Stationlist> {
                             //เนื้อหาตารางใหม่
                             SizedBox(
                               child: Container(
-                                height: 375,
+                                height: context.mediaQuery.size.width*0.9,
                                 color: const Color.fromARGB(255, 255, 255, 255),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10.0, right: 10),
+                                      left: 5, right: 5),
                                   child: Container(
                                     child: RawScrollbar(
                                       thumbColor: const Color.fromARGB(
@@ -737,7 +738,7 @@ class _StationlistState extends State<Stationlist> {
                                                   ),
                                                   child: Row(children: [
                                                     Container(
-                                                      width: 330,
+                                                      width: context.mediaQuery.size.width*0.9,
                                                       alignment:
                                                           Alignment.centerLeft,
                                                       child: Padding(
@@ -776,19 +777,19 @@ class _StationlistState extends State<Stationlist> {
                                                                                 FontWeight
                                                                                     .w600),
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(southStationList.transfer1),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(southStationList.transfer2),
                                                                           fit: BoxFit.cover,
                                                                       ),
-                                                                      SizedBox(width: 5,),
+                                                                      SizedBox(width: 3,),
                                                                       Image(
                                                                           height: 21.0,                                                                     
                                                                           image: AssetImage(southStationList.transfer3),

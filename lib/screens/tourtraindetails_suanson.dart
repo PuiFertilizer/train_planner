@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 
@@ -21,7 +22,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
         unselectedLabelColor: Colors.black,
         labelStyle: GoogleFonts.prompt(
           color: Colors.black,
-          fontSize: 17,
+          fontSize: 15,
         ),
         tabs: [
           SizedBox(
@@ -80,7 +81,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                   text: 'รถไฟนำเที่ยว หัวหิน/สวนสนประดิพัทธ์',
                   style: GoogleFonts.prompt(
                     color: Colors.black,
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -90,7 +91,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                     text: 'มีทุกวันหยุด ตลอดปี',
                     style: GoogleFonts.prompt(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 15,
                     )),
               ]),
             ),
@@ -495,7 +496,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                 .center, //Center Row contents vertically,
                             children: [
                               Container(
-                                width: 220,
+                                width: context.mediaQuery.size.width*0.5,
                                 alignment: Alignment.center,
                                 child: Text(
                                   "สถานีที่จอด",
@@ -510,7 +511,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                 width: 2,
                               ),
                               Container(
-                                width: 100,
+                                width: context.mediaQuery.size.width*0.3,
                                 alignment: Alignment.center,
                                 child: Text(
                                   "เวลา",
@@ -531,7 +532,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                   //เนื้อหาตารางใหม่
                   SizedBox(
                     child: Container(
-                      height: 400,
+                      height: 320,
                       color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -566,7 +567,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                               .center, //Center Row contents vertically,
                                           children: [
                                             Container(
-                                              width: 220,
+                                              width: context.mediaQuery.size.width*0.5,
                                               alignment: Alignment.center,
                                               child: GestureDetector(
                                                 onTap: () {
@@ -596,7 +597,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                               width: 2,
                                             ),
                                             Container(
-                                              width: 100,
+                                              width: context.mediaQuery.size.width*0.3,
                                               alignment: Alignment.center,
                                               child: Text(
                                                 suansonStationStopList.time,
@@ -642,7 +643,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
             SizedBox(
               height: 120,
               child: Padding(
-                padding: const EdgeInsets.only(left: 45, right: 45),
+                padding: const EdgeInsets.only(left: 30, right: 30),
                 child: Stack(
                   children: <Widget>[
                     Container(
@@ -762,7 +763,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
             SizedBox(
               height: 370,
               child: Padding(
-                padding: const EdgeInsets.only(left: 45, right: 45),
+                padding: const EdgeInsets.only(left: 30, right: 30),
                 child: RawScrollbar(
                   thumbColor: const Color.fromARGB(255, 130, 130, 130),
                   radius: const Radius.circular(20),
@@ -826,7 +827,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                               BorderRadius.circular(15.0),
                                           child: Image(
                                             height: 120.0,
-                                            width: 135.0, //200
+                                            width: context.mediaQuery.size.width*0.35, //200
                                             image: AssetImage(
                                                 suansonSeating.imageUrlExterior),
                                             fit: BoxFit.cover,
@@ -837,7 +838,7 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                               BorderRadius.circular(15.0),
                                           child: Image(
                                             height: 120.0,
-                                            width: 135.0, //200
+                                            width: context.mediaQuery.size.width*0.35, //200
                                             image: AssetImage(
                                                 suansonSeating.imageUrlInterior),
                                             fit: BoxFit.cover,
@@ -907,8 +908,8 @@ class _Tourtraindetails_SuansonState extends State<Tourtraindetails_Suanson> {
                                                                 color: Colors
                                                                     .red)),
                                                   ),
-                                                  const SizedBox(
-                                                    width: 80,
+                                                  SizedBox(
+                                                    width: context.mediaQuery.size.width*0.15,
                                                   ),
                                                   Text(
                                                     "กรุงเทพ",

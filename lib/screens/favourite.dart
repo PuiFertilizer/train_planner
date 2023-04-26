@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 import 'package:train_planner/screens/traindetails.dart';
@@ -330,7 +331,7 @@ class _FavouriteState extends State<Favourite> {
                                                       children: [
                                                         SizedBox(
                                                             height: 120,
-                                                            width: 200,
+                                                            width: context.mediaQuery.size.width*0.5,
                                                             child: Column(
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
@@ -830,7 +831,7 @@ class _FavouriteState extends State<Favourite> {
                                                 ),
                                                 child: Row(children: [
                                                   Container(
-                                                    width: 290,
+                                                    width:  context.mediaQuery.size.width*0.7,
                                                     alignment:
                                                         Alignment.centerLeft,
                                                     child: Padding(
@@ -1007,7 +1008,7 @@ class _FavouriteState extends State<Favourite> {
                                               ),
                                               child: Row(children: [
                                                 Container(
-                                                  width: 290,
+                                                  width: context.mediaQuery.size.width*0.7,
                                                   alignment:
                                                       Alignment.centerLeft,
                                                   child: Padding(

@@ -54,7 +54,7 @@ class _AddResultPageState extends State<AddResultPage> {
                       title: 'ต้นทาง - ปลายทาง', hint: _selectedAttraction),
                   MyInputFieldDisabled(
                       title: 'วันเดินทาง',
-                      hint: DateFormat.yMd().format(_selectedDate)),
+                      hint: DateFormat('dd/MM/yyyy').format(_selectedDate)),
                   Row(
                     children: [
                       Expanded(

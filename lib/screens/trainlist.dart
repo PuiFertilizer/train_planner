@@ -110,7 +110,7 @@ class DisplayTrain extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                              width: 80,
+                              width: 70,
                             ),
                             Column(
                               children: [
@@ -195,7 +195,7 @@ class DisplayTrain extends StatelessWidget {
                                                     'ขบวน ${trainList.trainNo}', //เลขขบวน
                                                     style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 17.0,
+                                                        fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.w600),
                                                   ),
@@ -207,7 +207,7 @@ class DisplayTrain extends StatelessWidget {
                                                         .trainType, //ประเภทขบวน
                                                     style: GoogleFonts.prompt(
                                                       color: Colors.black,
-                                                      fontSize: 12.0,
+                                                      fontSize: 11.0,
                                                     ),
                                                   ),
                                                 ],
@@ -231,7 +231,7 @@ class DisplayTrain extends StatelessWidget {
                                                           .departureStation, //สถานีต้นทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 15.0,
+                                                        fontSize: 13.0,
                                                       ),
                                                     ),
                                                     const SizedBox(
@@ -241,7 +241,7 @@ class DisplayTrain extends StatelessWidget {
                                                       'ออก', //สถานีปลายทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 12.0,
+                                                        fontSize: 10.0,
                                                       ),
                                                     ),
                                                     const SizedBox(
@@ -252,7 +252,7 @@ class DisplayTrain extends StatelessWidget {
                                                           .departureTime, //สถานีต้นทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 15.0,
+                                                        fontSize: 13.0,
                                                       ),
                                                     ),
                                                   ],
@@ -267,7 +267,7 @@ class DisplayTrain extends StatelessWidget {
                                                           .arriveStation, //สถานีปลายทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 15.0,
+                                                        fontSize: 13.0,
                                                       ),
                                                     ),
                                                     const SizedBox(
@@ -277,7 +277,7 @@ class DisplayTrain extends StatelessWidget {
                                                       'ถึง', //สถานีปลายทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 12.0,
+                                                        fontSize: 10.0,
                                                       ),
                                                     ),
                                                     const SizedBox(
@@ -288,7 +288,7 @@ class DisplayTrain extends StatelessWidget {
                                                           .arriveTime, //สถานีปลายทางแต่ละขบวน
                                                       style: GoogleFonts.prompt(
                                                         color: Colors.black,
-                                                        fontSize: 15.0,
+                                                        fontSize: 13.0,
                                                       ),
                                                     ),
                                                   ],

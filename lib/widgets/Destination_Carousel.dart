@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import '../models/destination_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../screens/stationdetails.dart';
+import '../screens/tourtraindetails_Namtok.dart';
+
 class Destination_Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class Destination_Carousel extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               letterSpacing: 0,
                               )),
-                      Text(destination.description,
+                      Text('สถานี${destination.description}',
                       style: GoogleFonts.prompt(
                         color: Color.fromARGB(255, 80, 80, 80),
                         fontSize: 12.0,
@@ -86,33 +89,40 @@ class Destination_Carousel extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15.0),
                   ),
-                    child: Stack(
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image(
-                            height: 140.0, 
-                            width: 200.0, //200
-                            image: AssetImage(destination.imageUrl),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          left: 10.0,
-                          bottom: 10.0,
-                          child: Column( //wra[]
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                            
-                          Row(
-                            children: <Widget>[
-                            SizedBox(width: 4.0,),
-                            
-                            ],
+                    child: GestureDetector(
+                      onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => StationDetails(
+                                                                              station: destination.description,
+                                                                            )));                       
+                          },
+                      child: Stack(
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image(
+                              height: 140.0, 
+                              width: 200.0, //200
+                              image: AssetImage(destination.imageUrl),
+                              fit: BoxFit.cover,
                             ),
-                          ],),
-                        )
-                      ],
+                          ),
+                          Positioned(
+                            left: 10.0,
+                            bottom: 10.0,
+                            child: Column( //wra[]
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                              
+                            Row(
+                              children: <Widget>[
+                              SizedBox(width: 4.0,),
+                              
+                              ],
+                              ),
+                            ],),
+                          )
+                        ],
+                      ),
                     ),
                 )
 

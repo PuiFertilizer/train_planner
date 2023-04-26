@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:train_planner/screens/stationlist.dart';
 import 'package:train_planner/screens/tourtrainlist.dart';
 import 'package:train_planner/screens/trainlist.dart';
@@ -43,7 +44,7 @@ class _OthersState extends State<Others> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox.fromSize(
-                          size: const Size(170, 60),
+                          size: Size(context.mediaQuery.size.width*0.4, 60),
                           child: Material(
                             color: const Color.fromARGB(255, 199, 249, 204),
                             child: InkWell(
@@ -58,12 +59,12 @@ class _OthersState extends State<Others> {
                                   children: <Widget>[
                                     Icon(Icons.newspaper, size: 35,),
                                     const SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ), // <-- Icon
                                     Flexible(
                                       child: Text(
                                         "ข่าวประชาสัมพันธ์",
-                                        style: GoogleFonts.prompt(fontSize: 14),
+                                        style: GoogleFonts.prompt(fontSize: 13),
                                       ),
                                     ), // <-- Text
                                   ],
@@ -73,7 +74,7 @@ class _OthersState extends State<Others> {
                           ),
                         ),
                         SizedBox.fromSize(
-                          size: const Size(170, 60),
+                          size: Size(context.mediaQuery.size.width*0.4, 60),
                           child: Material(
                             color: const Color.fromARGB(255, 199, 249, 204),
                             child: InkWell(
@@ -89,7 +90,7 @@ class _OthersState extends State<Others> {
                                     Icon(Icons.account_balance, size: 35,), ////
                                     // <-- Icon
                                     const SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     Flexible(
                                       child: Text(
@@ -113,7 +114,7 @@ class _OthersState extends State<Others> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox.fromSize(
-                          size: const Size(170, 60),
+                          size: Size(context.mediaQuery.size.width*0.4, 60),
                           child: Material(
                             color: const Color.fromARGB(255, 199, 249, 204),
                             child: InkWell(
@@ -128,7 +129,7 @@ class _OthersState extends State<Others> {
                                   children: <Widget>[
                                     Icon(Icons.tour, size: 35,),
                                     const SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ), // <-- Icon
                                     Flexible(
                                       child: Text(
@@ -143,7 +144,7 @@ class _OthersState extends State<Others> {
                           ),
                         ),
                         SizedBox.fromSize(
-                          size: const Size(170, 60),
+                          size: Size(context.mediaQuery.size.width*0.4, 60),
                           child: Material(
                             color: const Color.fromARGB(255, 199, 249, 204),
                             child: InkWell(
@@ -159,7 +160,7 @@ class _OthersState extends State<Others> {
                                     Icon(Icons.train, size: 35,),
                                     // <-- Icon
                                     const SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     Flexible(
                                       child: Text(
@@ -183,7 +184,7 @@ class _OthersState extends State<Others> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox.fromSize(
-                          size: const Size(170, 60),
+                          size: Size(context.mediaQuery.size.width*0.4, 60),
                           child: Material(
                             color: const Color.fromARGB(255, 199, 249, 204),
                             child: InkWell(
@@ -198,7 +199,7 @@ class _OthersState extends State<Others> {
                                   children: <Widget>[
                                     Icon(Icons.route, size: 35,),
                                     const SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ), // <-- Icon
                                     Flexible(
                                       child: Text(
@@ -213,7 +214,7 @@ class _OthersState extends State<Others> {
                           ),
                         ),
                         SizedBox.fromSize(
-                          size: const Size(170, 60),
+                          size: Size(context.mediaQuery.size.width*0.4, 60),
                           child: Material(
                             color: const Color.fromARGB(255, 199, 249, 204),
                             child: InkWell(
@@ -229,7 +230,7 @@ class _OthersState extends State<Others> {
                                     Icon(Icons.access_time_filled, size: 35,),
                                     // <-- Icon
                                     const SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     Flexible(
                                       child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:train_planner/models/stationdatalist.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/traindetails.dart';
@@ -181,7 +182,7 @@ class _StationDetailsState extends State<StationDetails> {
                           .center, //Center Row contents vertically,
                       children: [
                         const SizedBox(
-                          width: 30,
+                          width: 10,
                         ),
                         Text(
                           "ขบวน",
@@ -293,7 +294,7 @@ class _StationDetailsState extends State<StationDetails> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox.fromSize(
-                        size: const Size(80, 80),
+                        size: Size(context.mediaQuery.size.width*0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -325,7 +326,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: const Size(80, 80),
+                        size: Size(context.mediaQuery.size.width*0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -359,7 +360,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: const Size(80, 80),
+                        size: Size(context.mediaQuery.size.width*0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -393,7 +394,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: const Size(80, 80),
+                        size: Size(context.mediaQuery.size.width*0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -452,13 +453,13 @@ class _StationDetailsState extends State<StationDetails> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Row(
                           //แบ่งครึ่งหน้า
                           mainAxisAlignment: MainAxisAlignment
-                              .center, //Center Row contents horizontally,
+                              .start, //Center Row contents horizontally,
                           crossAxisAlignment: CrossAxisAlignment
                               .center, //Center Row contents vertically,
                           children: [
@@ -485,7 +486,7 @@ class _StationDetailsState extends State<StationDetails> {
                               ),
                             ),
                             Container(
-                              width: 20,
+                              width: 15,
                             ),
                             //SizedBox(width: 5,),
                             Column(
@@ -516,7 +517,7 @@ class _StationDetailsState extends State<StationDetails> {
                             ),
 
                             Container(
-                              width: 50,
+                              width: 55,
                             ),
 
                             SizedBox(
