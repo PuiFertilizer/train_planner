@@ -8,8 +8,19 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/newplanName.dart';
 
-class PlanList extends StatelessWidget {
+class PlanList extends StatefulWidget {
   const PlanList({super.key});
+
+  @override
+  PlanListState createState() => PlanListState();
+}
+
+class PlanListState extends State<PlanList> {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     late List<Map<String, dynamic>> planns;

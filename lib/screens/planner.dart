@@ -11,6 +11,12 @@ class Planner extends StatefulWidget {
 }
 
 class _PlannerState extends State<Planner> {
+  final PlanList planlist = const PlanList();
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,9 +60,9 @@ class _PlannerState extends State<Planner> {
                 ],
               ),
               Column(
-                children: const <Widget>[
-                  SizedBox(height: 150.0),
-                  PlanList(), //รายชื่อแผนการเดินทาง และปุ่มใหญ่ด้านล่าง
+                children: <Widget>[
+                  const SizedBox(height: 150.0),
+                  planlist, //รายชื่อแผนการเดินทาง และปุ่มใหญ่ด้านล่าง
                 ],
               ),
             ],

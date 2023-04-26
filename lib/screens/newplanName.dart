@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/db/db_helper.dart';
+import 'package:train_planner/screens/planner.dart';
 import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/input_field.dart';
 
@@ -77,11 +78,14 @@ class _NewplanPageState extends State<NewplanPage> {
               const SizedBox(height: 30),
               ElevatedButton.icon(
                 onPressed: () {
-                  DBHelper.newPlan(_titleController.text).then((value) =>
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) {
-                        return Writeplan(planid: value);
-                      }))); //ไปที่หน้าแผนการเดินทางที่สร้างใหม่ที่ว่าง พร้อม id ใหม่
+                  DBHelper.newPlan(_titleController.text).then((value) {
+                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Planner(),
+                        ));
+                  }); //ไปที่หน้าแผนการเดินทางที่สร้างใหม่ที่ว่าง พร้อม id ใหม่
                 },
                 icon: const Icon(Icons.add),
                 label: Text(
