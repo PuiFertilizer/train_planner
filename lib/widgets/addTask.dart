@@ -55,13 +55,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         //add to database
         addTaskToDb();
         Navigator.pop(context);
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Writeplan(
-                planid: widget.planid,
-              ),
-            ));
+        Navigator.pop(context);
       } else if (_titleController.text.isEmpty) {
         Get.snackbar("Required", "All fields are required!",
             snackPosition: SnackPosition.BOTTOM,

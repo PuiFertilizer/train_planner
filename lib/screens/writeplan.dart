@@ -348,15 +348,17 @@ class DialogAddPlan extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                        onPressed: () async {
-                          taskController.getTasks(planid);
-                          Navigator.pushReplacement(
+                        onPressed: () {
+                          //Navigator.pop(context);
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SearchRouteEdit(
                                   planid: planid,
                                 ),
                               ));
+                          taskController.getTasks(planid);
+                          //Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -375,15 +377,17 @@ class DialogAddPlan extends StatelessWidget {
 
                     //กิจกรรมอื่นๆ
                     ElevatedButton(
-                        onPressed: () async {
-                          taskController.getTasks(planid);
-                          Navigator.pushReplacement(
+                        onPressed: () {
+                          //Navigator.pop(context);
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => AddTaskPage(
                                   planid: planid,
                                 ),
                               ));
+                          taskController.getTasks(planid);
+                          //Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -403,216 +407,6 @@ class DialogAddPlan extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class DialogSearchRoute extends StatelessWidget {
-  final TaskController taskController;
-  final int planid;
-  const DialogSearchRoute(
-      {super.key,
-      required this.planid,
-      required this.taskController}); //กล่องยืนยันลบแผนการเดินทาง
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Stack(
-        children: [
-          SizedBox(
-            height: 140,
-            width: 600,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-              child: Column(children: [
-                Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      'ค้นหาเที่ยวรถไฟ',
-                      style: GoogleFonts.prompt(
-                          fontWeight: FontWeight.bold, fontSize: 16),
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          //ไม่ลบ
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 56, 163, 165),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 5),
-                        ),
-                        child: Text(
-                          'ยกเลิก',
-                          style: GoogleFonts.prompt(
-                              fontWeight: FontWeight.bold, fontSize: 12),
-                        )),
-                    const SizedBox(
-                      width: 20,
-                    ),
-
-                    //กิจกรรมอื่นๆ
-                    ElevatedButton(
-                        onPressed: () async {
-                          taskController.getTasks(planid);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AddTaskPage(
-                                  planid: planid,
-                                ),
-                              ));
-                          //await Get.to(() => AddTaskPage(planid: planid));
-
-                          //Navigator.of(context).pop();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 56, 163, 165),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 5),
-                        ),
-                        child: Text(
-                          'ค้นหา',
-                          style: GoogleFonts.prompt(
-                              fontWeight: FontWeight.bold, fontSize: 12),
-                        )),
-                  ],
-                ),
-              ]),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-//test swap overlay
-class MyDialog extends StatefulWidget {
-  final TaskController taskController;
-  const MyDialog({Key? key, required this.planid, required this.taskController})
-      : super(key: key);
-  final int planid;
-  @override
-  MyDialogState createState() => MyDialogState();
-}
-
-class MyDialogState extends State<MyDialog> {
-  late
-
-      /// When this value is false, it shows list of buttons
-      /// When this value is true, it shows list of textfields
-      bool isForm = false;
-
-  @override
-  Widget build(BuildContext context) {
-    //_taskController = Get.put(TaskController(widget.planid));
-    return AlertDialog(
-      title: const Text('เลือกกิจกรรม'),
-      // Here, we conditionally change content
-      content: isForm
-          ? Stack()
-          : Stack(
-              children: [
-                SizedBox(
-                  height: 140,
-                  width: 600,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-                    child: Column(children: [
-                      Align(
-                          alignment: Alignment.topCenter,
-                          child: Text(
-                            'เพิ่มกิจกรรมในแผน',
-                            style: GoogleFonts.prompt(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return DialogSearchRoute(
-                                        planid: widget.planid,
-                                        taskController: widget.taskController,
-                                      );
-                                    });
-                                //Navigator.pop(context);
-                                //ค้นหาเส้นทางรถไฟ
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 56, 163, 165),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 5),
-                              ),
-                              child: Text(
-                                'เดินทางรถไฟ',
-                                style: GoogleFonts.prompt(
-                                    fontWeight: FontWeight.bold, fontSize: 12),
-                              )),
-                          const SizedBox(
-                            width: 20,
-                          ),
-
-                          //กิจกรรมอื่นๆ
-                          ElevatedButton(
-                              onPressed: () async {
-                                widget.taskController.getTasks(widget.planid);
-                                await Get.to(() => AddTaskPage(
-                                      planid: widget.planid,
-                                    ));
-
-                                Navigator.of(context).pop();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 56, 163, 165),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 5),
-                              ),
-                              child: Text(
-                                'กิจกรรมอื่นๆ',
-                                style: GoogleFonts.prompt(
-                                    fontWeight: FontWeight.bold, fontSize: 12),
-                              )),
-                        ],
-                      ),
-                    ]),
-                  ),
-                )
-              ],
-            ),
-      actions: [
-        TextButton(
-          // Here isForm is switched to change the content
-          onPressed: () => setState(() => isForm = !isForm),
-          child: const Text('Switch'),
-        ),
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () => Navigator.pop(context, true),
-          child: const Text('OK'),
-        ),
-      ],
     );
   }
 }
