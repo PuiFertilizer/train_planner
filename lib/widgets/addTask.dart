@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
+import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/input_field.dart';
 
 import '../models/task.dart';
@@ -53,7 +54,14 @@ class _AddTaskPageState extends State<AddTaskPage> {
       if (_titleController.text.isNotEmpty) {
         //add to database
         addTaskToDb();
-        Get.back();
+        Navigator.pop(context);
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Writeplan(
+                planid: widget.planid,
+              ),
+            ));
       } else if (_titleController.text.isEmpty) {
         Get.snackbar("Required", "All fields are required!",
             snackPosition: SnackPosition.BOTTOM,

@@ -400,6 +400,13 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
                                 DBHelper.insert(task);
                                 Navigator.pop(context);
                                 Navigator.pop(context);
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Writeplan(
+                                        planid: widget.planid,
+                                      ),
+                                    ));
                               },
                               style: ElevatedButton.styleFrom(
                                 fixedSize: const Size(120, 10),

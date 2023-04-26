@@ -233,11 +233,13 @@ class _WriteplanState extends State<Writeplan> {
             onTap: () async {
               //แก้ไขกิจกรรม และ save ทับ
               _taskController.getTasks(widget.planid);
-              await Get.to(() => AddTaskPage(
-                    planid: widget.planid,
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddTaskPage(
+                      planid: widget.planid,
+                    ),
                   ));
-
-              Navigator.of(context).pop();
             },
             clr: const Color.fromARGB(255, 56, 163, 165),
             context: context,
@@ -348,11 +350,13 @@ class DialogAddPlan extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           taskController.getTasks(planid);
-                          await Get.to(SearchRouteEdit(
-                            planid: planid,
-                          ));
-
-                          Navigator.of(context).pop();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SearchRouteEdit(
+                                  planid: planid,
+                                ),
+                              ));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -373,11 +377,13 @@ class DialogAddPlan extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           taskController.getTasks(planid);
-                          await Get.to(() => AddTaskPage(
-                                planid: planid,
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddTaskPage(
+                                  planid: planid,
+                                ),
                               ));
-
-                          Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -457,9 +463,16 @@ class DialogSearchRoute extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           taskController.getTasks(planid);
-                          await Get.to(() => AddTaskPage(planid: planid));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddTaskPage(
+                                  planid: planid,
+                                ),
+                              ));
+                          //await Get.to(() => AddTaskPage(planid: planid));
 
-                          Navigator.of(context).pop();
+                          //Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:

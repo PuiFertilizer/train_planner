@@ -7,6 +7,7 @@ import 'package:train_planner/screens/writeplan.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/newplanName.dart';
+import '../screens/planner.dart';
 
 class PlanList extends StatefulWidget {
   const PlanList({super.key});
@@ -238,6 +239,11 @@ class DeleteDialog extends StatelessWidget {
                         onPressed: () {
                           DBHelper.deletePlan(plan);
                           Navigator.of(context).pop();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Planner(),
+                              ));
                           //ลบ
                         },
                         style: ElevatedButton.styleFrom(
