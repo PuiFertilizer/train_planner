@@ -147,7 +147,9 @@ class PlanList extends StatelessWidget {
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return const SimpleDialog();
+                                          return DeleteDialog(
+                                            plan: plann,
+                                          );
                                         });
                                   }
                                 },
@@ -193,8 +195,9 @@ class PlanList extends StatelessWidget {
   }
 }
 
-class SimpleDialog extends StatelessWidget {
-  const SimpleDialog({super.key});
+class DeleteDialog extends StatelessWidget {
+  const DeleteDialog({super.key, required this.plan});
+  final Plan plan;
   //กล่องยืนยันลบแผนการเดินทาง
   @override
   Widget build(BuildContext context) {
@@ -222,8 +225,9 @@ class SimpleDialog extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () {
+                          DBHelper.deletePlan(plan);
                           Navigator.of(context).pop();
-                          //ไม่ลบ
+                          //ลบ
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,

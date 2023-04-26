@@ -37,6 +37,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     final TaskController taskController =
         Get.put(TaskController(widget.planid));
     addTaskToDb() async {
+      var df = DateFormat('dd/MM/yyyy');
       int value = await taskController.addTask(
           task: Task(
               title: _titleController.text,

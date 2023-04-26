@@ -7,7 +7,7 @@ import 'package:web_scraper/web_scraper.dart';
 import '../models/stationdatalist.dart';
 import '../models/task.dart';
 import '../models/route.dart';
-import '../models/Plan.dart';
+import '../models/plan.dart';
 
 class StationTrainList {
   String trainNo;
