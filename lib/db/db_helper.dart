@@ -201,8 +201,8 @@ class DBHelper {
                 arriveTime: e.time,
                 traintype: train.trainType,
                 trainNumber: s.train,
-                classes: train.classes,
-                coach: train.coach);
+                //classes: train.classes,
+                seats: train.seats);
             result.add(x);
           } catch (e) {
             print(e);
@@ -220,8 +220,8 @@ class DBHelper {
                 arriveTime: e.time,
                 traintype: train.trainType,
                 trainNumber: e.train,
-                classes: train.classes,
-                coach: train.coach);
+                //classes: train.classes,
+                seats: train.seats);
 
             result.add(x);
           } catch (e) {

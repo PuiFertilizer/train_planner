@@ -1,3 +1,5 @@
+import 'package:train_planner/models/traindatalist.dart';
+
 class Result {
   String departureStation = '';
   String departureTime = '';
@@ -5,8 +7,8 @@ class Result {
   String arriveTime = '';
   String traintype = '';
   String trainNumber = '';
-  String classes = '';
-  List<String> coach = [];
+  //String classes = '';
+  List<Seating> seats = [];
   //String price;
 
   Result(
@@ -16,8 +18,8 @@ class Result {
       required this.arriveTime,
       required this.traintype,
       required this.trainNumber,
-      required this.classes,
-      required this.coach
+      //required this.classes,
+      required this.seats
       //required this.price
       });
   Result.fromJson(Map<String, dynamic> json) {
@@ -27,6 +29,7 @@ class Result {
     arriveTime = json['arriveTime'];
     traintype = json['traintype'];
     trainNumber = json['trainNumber'];
+    seats = json['seats'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,6 +40,7 @@ class Result {
     data['arriveTime'] = arriveTime;
     data['traintype'] = traintype;
     data['trainNumber'] = trainNumber;
+    data['seats'] = seats;
     return data;
   }
 }

@@ -143,11 +143,16 @@ class _SearchresultState extends State<Searchresult> {
       return Stack();
     }
 
+    String seats = "";
+    for (var i in result.seats) {
+      seats = '$seats\n${i.coachname}';
+    }
+
     return Stack(
       children: <Widget>[
         Container(
           margin: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 5.0),
-          height: 280.0,
+          //height: 280.0,
           width: double.infinity,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 199, 249, 204),
@@ -325,21 +330,6 @@ class _SearchresultState extends State<Searchresult> {
                                   ),
                                 ],
                               ),
-                              /*Text(
-                                'ชั้น 2', //result.class
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                ),
-                              ),*/
-
-                              /*Text(
-                                'รถนั่งปรับอากาศ', //result.coachtype1
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                ),
-                              ),*/
                             ],
                           )),
                       SizedBox(
@@ -405,6 +395,7 @@ class _SearchresultState extends State<Searchresult> {
                       Row(),
                     ],
                   ),
+                  ResultExpansionClass(seats: seats)
                 ]),
           ),
         ),
@@ -416,6 +407,43 @@ class _SearchresultState extends State<Searchresult> {
             borderRadius: BorderRadius.circular(20.0),
           ),
         )
+      ],
+    );
+  }
+}
+
+class ResultExpansionClass extends StatefulWidget {
+  const ResultExpansionClass({super.key, required this.seats});
+  final String seats;
+
+  @override
+  State<ResultExpansionClass> createState() => _ResultExpansionClassState();
+}
+
+class _ResultExpansionClassState extends State<ResultExpansionClass> {
+  bool _customTileExpanded = false;
+  //String showText = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ExpansionTile(
+          title: const Text('ประเภทขบวนที่มี'),
+          trailing: Icon(
+            _customTileExpanded
+                ? Icons.arrow_drop_down_circle
+                : Icons.arrow_drop_down,
+          ),
+          children: <Widget>[
+            ListTile(title: Text(widget.seats)),
+          ],
+          onExpansionChanged: (bool expanded) {
+            setState(() {
+              _customTileExpanded = expanded;
+            });
+          },
+        ),
       ],
     );
   }
