@@ -1,32 +1,33 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:train_planner/models/stationdatalist.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/traindetails.dart';
-import 'package:train_planner/screens/stationTouristAttractions.dart';
+import 'package:train_planner/screens/station_tourist_attractions.dart';
 import '../db/db_helper.dart';
 
 class StationDetails extends StatefulWidget {
   const StationDetails({Key? key, required this.station}) : super(key: key);
   final String station;
   @override
-  _StationDetailsState createState() => _StationDetailsState();
+  State<StationDetails> createState() => _StationDetailsState();
 }
 
 class _StationDetailsState extends State<StationDetails> {
   //favourite
   bool _isFavourited = false;
-  int _favouriteCount = 0;
+  //int _favouriteCount = 0;
 
   //change colors of favourite
   void _toggleFavourite() {
     setState(() {
       //สถานะรายการโปรด
       if (_isFavourited) {
-        _favouriteCount -= 1;
+        //_favouriteCount -= 1;
         _isFavourited = false; //ไม่ชอบ
       } else {
-        _favouriteCount += 1;
+        //_favouriteCount += 1;
         _isFavourited = true; //ชอบ
       }
     });
@@ -246,7 +247,9 @@ class _StationDetailsState extends State<StationDetails> {
                           builder: (BuildContext context,
                               AsyncSnapshot<List<StationTrainList>> snapshot) {
                             if (snapshot.hasData) {
-                              print("get data");
+                              if (kDebugMode) {
+                                print("get data");
+                              }
                               return stationTable(snapshot.data);
                             } else {
                               return Center(
@@ -293,7 +296,7 @@ class _StationDetailsState extends State<StationDetails> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox.fromSize(
+                      /*SizedBox.fromSize(
                         size: Size(context.mediaQuery.size.width*0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
@@ -324,9 +327,9 @@ class _StationDetailsState extends State<StationDetails> {
                             ),
                           ),
                         ),
-                      ),
+                      ),*/
                       SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width*0.2, 80),
+                        size: Size(context.mediaQuery.size.width * 0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -360,7 +363,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width*0.2, 80),
+                        size: Size(context.mediaQuery.size.width * 0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -394,7 +397,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width*0.2, 80),
+                        size: Size(context.mediaQuery.size.width * 0.2, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -549,8 +552,6 @@ class _StationDetailsState extends State<StationDetails> {
     );
   }
 }
-
-
 
 class DialogConvience extends StatelessWidget {
   const DialogConvience({super.key, required this.convience});

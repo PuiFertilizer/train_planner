@@ -1,9 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:train_planner/controllers/task_controllers.dart';
-import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/input_field.dart';
 
 import '../models/task.dart';
@@ -38,7 +38,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
     final TaskController taskController =
         Get.put(TaskController(widget.planid));
     addTaskToDb() async {
-      var df = DateFormat('dd/MM/yyyy');
       int value = await taskController.addTask(
           task: Task(
               title: _titleController.text,
@@ -47,7 +46,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
               startTime: _startTime,
               endTime: _endTime,
               planid: widget.planid));
-      print("My id is $value");
+      if (kDebugMode) {
+        print("My id is $value");
+      }
     }
 
     validateData() {

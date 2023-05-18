@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../widgets/NavBar.dart';
+import '../widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TourtrainList extends StatefulWidget {
   const TourtrainList({Key? key}) : super(key: key);
 
   @override
-  _TourtrainListState createState() => _TourtrainListState();
+  State<TourtrainList> createState() => _TourtrainListState();
 }
 
 class _TourtrainListState extends State<TourtrainList> {

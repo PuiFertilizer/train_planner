@@ -1,9 +1,9 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:train_planner/controllers/task_controllers.dart';
 import 'package:train_planner/widgets/searchresultPlan.dart';
 
 import '../db/datalist.dart';
@@ -21,8 +21,6 @@ class SearchRouteEdit extends StatefulWidget {
 }
 
 class _SearchRouteEditState extends State<SearchRouteEdit> {
-  final TaskController _taskController = Get.put(TaskController(0));
-  final TextEditingController _titleController = TextEditingController();
   final TextEditingController _date = TextEditingController();
   DateTime _selectedDate = DateTime.now();
   String origin = "";
@@ -241,14 +239,20 @@ class _SearchRouteEditState extends State<SearchRouteEdit> {
   }
 
   void itemSelectionChanged(String? originStation) {
-    print('items');
-    print(originStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    if (kDebugMode) {
+      print('items');
+      print(originStation);
+      //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    }
     origin = originStation!;
   }
 
   void itemSelectionChanged2(String? destinationStation) {
-    print('items');
-    print(destinationStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    if (kDebugMode) {
+      print('items');
+      print(destinationStation);
+      //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    }
     destination = destinationStation!;
   }
 }

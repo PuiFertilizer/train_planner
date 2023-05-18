@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:train_planner/screens/traindetails.dart';
-import '../widgets/NavBar.dart';
+import '../widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/traindatalist.dart';
 
@@ -8,7 +8,7 @@ class Trainlist extends StatefulWidget {
   const Trainlist({Key? key}) : super(key: key);
 
   @override
-  _TrainlistState createState() => _TrainlistState();
+  State<Trainlist> createState() => _TrainlistState();
 }
 
 class _TrainlistState extends State<Trainlist> {
@@ -18,10 +18,13 @@ class _TrainlistState extends State<Trainlist> {
         length: linenames.length,
         child: Scaffold(
             backgroundColor: Colors.white,
-            drawer: NavBar(),
+            drawer: const NavBar(),
             appBar: AppBar(
               backgroundColor: const Color.fromARGB(255, 87, 204, 153),
-              title: Text('รายชื่อขบวนรถทุกสาย',style: GoogleFonts.prompt(color: Colors.black),),
+              title: Text(
+                'รายชื่อขบวนรถทุกสาย',
+                style: GoogleFonts.prompt(color: Colors.black),
+              ),
             ),
             body: Column(
               children: <Widget>[
@@ -85,7 +88,9 @@ class DisplayTrain extends StatelessWidget {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 Container(
                   height: 45,
                   color: const Color.fromARGB(255, 255, 255, 255),
@@ -141,7 +146,8 @@ class DisplayTrain extends StatelessWidget {
                 //เนื้อหาตารางใหม่
                 SizedBox(
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.45, //ขนาดหน้าจอ
+                    height:
+                        MediaQuery.of(context).size.height * 0.45, //ขนาดหน้าจอ
                     color: const Color.fromARGB(255, 255, 255, 255),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10.0, right: 10),

@@ -28,9 +28,9 @@ class TaskController extends GetxController {
         var aa = a.date!.replaceAll('/', '-');
         var bb = b.date!.replaceAll('/', '-');
         DateFormat formatter = DateFormat("dd-MM-yyyy");
-        DateTime _formattedDateA = formatter.parse(aa);
-        DateTime _formattedDateB = formatter.parse(bb);
-        return _formattedDateA.compareTo(_formattedDateB);
+        DateTime formattedDateA = formatter.parse(aa);
+        DateTime formattedDateB = formatter.parse(bb);
+        return formattedDateA.compareTo(formattedDateB);
       },
     );
   }

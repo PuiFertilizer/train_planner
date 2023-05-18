@@ -3,8 +3,6 @@ import 'package:train_planner/screens/others.dart';
 import '../screens/news.dart';
 import '../screens/stationlist.dart';
 import '../screens/planner.dart';
-import '../main.dart';
-import '../screens/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/trainlist.dart';

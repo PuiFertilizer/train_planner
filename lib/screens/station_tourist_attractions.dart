@@ -10,7 +10,7 @@ class StationTouristAttractions extends StatefulWidget {
   final StationList station;
 
   @override
-  _StationTouristAttractionsState createState() =>
+  State<StationTouristAttractions> createState() =>
       _StationTouristAttractionsState();
 }
 
@@ -44,7 +44,7 @@ class _StationTouristAttractionsState extends State<StationTouristAttractions> {
                       ),
                       Row(
                         //หัวใจรายการโปรด
-                        children: <Widget>[],
+                        children: const <Widget>[],
                       ),
                     ],
                   ),
@@ -181,39 +181,3 @@ class _StationTouristAttractionsState extends State<StationTouristAttractions> {
         ));
   }
 }
-
-/*class Destination {
-  String imageUrl; //รูปสถานที่
-  String locationName; //ชื่อสถานที่
-  String locationaddress; //ที่อยู่สถานที่
-  String description; //คำอธิบายสถานที่โดยย่อ
-  String howtotravel; //วิธีเดินทางไป
-
-  Destination({
-    required this.imageUrl,
-    required this.locationName,
-    required this.locationaddress,
-    required this.description,
-    required this.howtotravel,
-  });
-}*/
-
-/*
-List<Destination> destinations = [
-  //รายชื่อสถานที่รอบสถานี ซึ่งแต่ละสถานีจะมีไม่เหมือนกัน
-  Destination(
-      imageUrl: 'assets/images/nongkai.jpg',
-      locationName: 'ประตูท่าแพ',
-      locationaddress: 'ถนนท่าแพ ตำบลช้างคลาน อำเภอเมือง จังหวัดเชียงใหม่',
-      description:
-          'ประตูที่ตั้งอยู่ทางทิศตะวันออก และเป็น 1 ใน 5 ประตูเมืองชั้นในของเวียงเชียงใหม่อีกด้วย ซึ่งถือได้ว่าปัจจุบันนี้ ที่นี่เป็นแค่เพียงประตูเมืองเพียงแห่งเดียวที่มีบานประตูนั่นเอง',
-      howtotravel: 'จากสถานีเชียงใหม่ ให้ใช้บริการรถสี่ล้อแดงไปประตูท่าแพได้'),
-  Destination(
-      imageUrl: 'assets/images/surat.jpg',
-      locationName: 'สวนสัตว์เชียงใหม่',
-      locationaddress: 'ถนนห้วยแก้ว ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่',
-      description:
-          'มีสัตว์อยู่จำนวนมาก เช่น เม่น นกยูง เสือโคร่ง เสือขาว กวาง แรด ฮิปโปเตมัส ช้าง หมี อีเห็น ยีราฟ และยังมีส่วนจัดแสดงหมีแพนด้า ช่วงช่วง และ หลินฮุ่ย ทูตจากประเทศจีนอีกด้วย',
-      howtotravel: 'จากสถานีเชียงใหม่ ให้ใช้บริการรถสี่ล้อแดงไปสวนสัตว์โดยตรง'),
-];
-*/

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/db/db_helper.dart';
 import 'package:train_planner/screens/planner.dart';
-import 'package:train_planner/screens/writeplan.dart';
 import 'package:train_planner/widgets/input_field.dart';
 
 //สร้างแผนการเดินทางใหม่ ตั้งชื่อแผน เวลาเริ่ม-สิ้นสุด
@@ -39,42 +38,6 @@ class _NewplanPageState extends State<NewplanPage> {
                 hint: 'ระบุที่นี่',
                 controller: _titleController,
               ),
-              //เอาเวลาออก
-              /*Row(
-                children: [
-                  Expanded(
-                    child: MyInputField(
-                      title: "วันเริ่มต้นแผน",
-                      hint: DateFormat.yMd().format(_selectedDate),
-                      widget: IconButton(
-                          icon: const Icon(
-                            Icons.calendar_today_outlined,
-                            color: Colors.grey,
-                          ),
-                          onPressed: () {
-                            _getDateFromUser();
-                          }),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  Expanded(
-                    child: MyInputField(
-                      title: "วันสิ้นสุดแผน",
-                      hint: DateFormat.yMd().format(_selectedDate),
-                      widget: IconButton(
-                          icon: const Icon(
-                            Icons.calendar_today_outlined,
-                            color: Colors.grey,
-                          ),
-                          onPressed: () {
-                            _getDateFromUser();
-                          }),
-                    ),
-                  ),
-                ],
-              ),*/
               const SizedBox(height: 30),
               ElevatedButton.icon(
                 onPressed: () {

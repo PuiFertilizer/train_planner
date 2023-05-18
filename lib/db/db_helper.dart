@@ -1,5 +1,5 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/models/traindatalist.dart';
@@ -48,7 +48,9 @@ class DBHelper {
         path,
         version: _version,
         onCreate: (db, version) {
-          print('creating a new one');
+          if (kDebugMode) {
+            print('creating a new one');
+          }
           //task table
           db.execute("Create table $_tablePlan("
               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -69,7 +71,9 @@ class DBHelper {
         },
         onUpgrade: (db, int oldVersion, int newVersion) {
           // If you need to add a column
-          print("upgrade");
+          if (kDebugMode) {
+            print("upgrade");
+          }
           if (1 >= oldVersion) {
             db.execute("ALTER TABLE $_tableRoute ADD COLUMN line STRING");
           }
@@ -93,12 +97,16 @@ class DBHelper {
       cleanAndUpdate();
       //_db?.delete(_tableRoute).whenComplete(() => updater.updateTrain()));
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
   static void cleanAndUpdate() async {
-    print("delete call");
+    if (kDebugMode) {
+      print("delete call");
+    }
     await _db?.delete(_tableRoute);
     await _db!.execute('DELETE FROM $_tableRoute');
     await updateTrain();
@@ -106,18 +114,24 @@ class DBHelper {
 
   //plan
   static Future<int> newPlan(String name) async {
-    print('insert function called');
+    if (kDebugMode) {
+      print('insert function called');
+    }
     Plan plan = Plan(name: name);
     return await _db?.insert(_tablePlan, plan.toJson()) ?? 1;
   }
 
   static Future<List<Map<String, dynamic>>> queryPlan() async {
-    print("query plan function called");
+    if (kDebugMode) {
+      print("query plan function called");
+    }
     return await _db!.query(_tablePlan);
   }
 
   static Future<List<Map<String, dynamic>>> getPlan(int id) async {
-    print("getPlan function called $id");
+    if (kDebugMode) {
+      print("getPlan function called $id");
+    }
     return await _db!.query(_tablePlan, where: 'id=?', whereArgs: [id]);
   }
 
@@ -125,32 +139,18 @@ class DBHelper {
     return await _db!.delete(_tablePlan, where: 'id=?', whereArgs: [plan.id]);
   }
 
-  /*static List<DateTime> getPlanDate(int plan) {
-    List<DateTime> tasks = [];
-    print("get date");
-    query(plan).then((value) {
-      print(value.toString());
-      for (var element in value) {
-        print(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
-        tasks.add(DateFormat('MM/dd/yyyy').parse(Task.fromJson(element).date!));
-      }
-    });
-    tasks.sort((a, b) {
-      //sorting in descending order
-      return a.compareTo(b);
-    });
-    print(tasks.toString());
-    return tasks;
-  }*/
-
   //task
   static Future<int> insert(Task? task) async {
-    print('insert function called');
+    if (kDebugMode) {
+      print('insert function called');
+    }
     return await _db?.insert(_tableTask, task!.toJson()) ?? 1;
   }
 
   static Future<List<Map<String, dynamic>>> query(int planid) async {
-    print("query task function called $planid");
+    if (kDebugMode) {
+      print("query task function called $planid");
+    }
     return await _db!.query(_tableTask,
         where: 'planid=?', whereArgs: [planid], orderBy: "date, startTime");
   }
@@ -161,12 +161,16 @@ class DBHelper {
 
   //route
   static Future<int> insertR(Routes? route) async {
-    print('insert function called');
+    if (kDebugMode) {
+      print('insert function called');
+    }
     return await _db?.insert(_tableRoute, route!.toJson()) ?? 1;
   }
 
   static Future<List<Result>> seachR(String start, String end) async {
-    print("query function called");
+    if (kDebugMode) {
+      print("query function called");
+    }
     List<Map<String, dynamic>> depart = [];
     List<Map<String, dynamic>> arrive = [];
     await Future.wait<void>([
@@ -205,7 +209,9 @@ class DBHelper {
                 seats: train.seats);
             result.add(x);
           } catch (e) {
-            print(e);
+            if (kDebugMode) {
+              print(e);
+            }
           }
         } else if ((line[resultLine].indexOf(s.station) >
                 line[resultLine].indexOf(e.station) &&
@@ -225,7 +231,9 @@ class DBHelper {
 
             result.add(x);
           } catch (e) {
-            print(e);
+            if (kDebugMode) {
+              print(e);
+            }
           }
         }
         i++;
@@ -262,7 +270,9 @@ class DBHelper {
               where: 'station=?', whereArgs: [station], orderBy: "train")
           .then((value) => trainlist = value)
     ]);
-    print("get table");
+    if (kDebugMode) {
+      print("get table");
+    }
 
     int i = 0;
     List<StationTrainList> datas = [];
@@ -314,7 +324,9 @@ class DBHelper {
               where: 'train=?', whereArgs: [train], orderBy: "train")
           .then((value) => stationlist = value)
     ]);
-    print("get table");
+    if (kDebugMode) {
+      print("get table");
+    }
 
     int i = 0;
     List<TrainTimetable> datas = [];
@@ -397,10 +409,14 @@ class DBHelper {
           }
 
           await batch.commit(noResult: true);
-          print("finish line");
+          if (kDebugMode) {
+            print("finish line");
+          }
         }
       }
     }
-    print("finish");
+    if (kDebugMode) {
+      print("finish");
+    }
   }
 }

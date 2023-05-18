@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../widgets/NavBar.dart';
+import '../widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
 
   @override
-  _NewsState createState() => _NewsState();
+  State<News> createState() => _NewsState();
 }
 
 class _NewsState extends State<News> {

@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:date_format/date_format.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
-import '../widgets/NavBar.dart';
 import '../screens/searchresult.dart';
 
 import '../db/datalist.dart';
@@ -20,7 +16,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -82,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.center,
                 child: Container(
                   width: 280,
-                  height: 600,
+                  height: 350,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 221, 221, 221),
                     borderRadius: BorderRadius.circular(15),
@@ -237,37 +233,6 @@ class _HomePageState extends State<HomePage> {
                                       });
                                     }
                                   },
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                ElevatedButton.icon(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Searchresult(
-                                                source: source,
-                                                destination: destination,
-                                                date: _date.text,
-                                              )),
-                                    );
-                                  },
-                                  icon: const Icon(Icons.location_on,
-                                      size: 30.0, color: Colors.black),
-                                  label: Text(
-                                    "สถานีใกล้ตัว",
-                                    style: GoogleFonts.prompt(
-                                        color: Colors.black, fontSize: 20.0),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(90, 40),
-                                    backgroundColor: const Color.fromARGB(
-                                        255, 128, 237, 193),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    ),
-                                  ),
                                 ),
                                 const SizedBox(
                                   height: 10,

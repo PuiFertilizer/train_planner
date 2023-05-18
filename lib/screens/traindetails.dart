@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,23 +12,23 @@ class TrainDetails extends StatefulWidget {
   const TrainDetails({super.key, required this.train});
   final String train;
   @override
-  _TrainDetailsState createState() => _TrainDetailsState();
+  State<TrainDetails> createState() => _TrainDetailsState();
 }
 
 class _TrainDetailsState extends State<TrainDetails> {
   //favourite
   bool _isFavourited = false;
-  int _favouriteCount = 0;
+  //int _favouriteCount = 0;
 
   //change colors of favourite
   void _toggleFavourite() {
     setState(() {
       //สถานะรายการโปรด
       if (_isFavourited) {
-        _favouriteCount -= 1;
+        //_favouriteCount -= 1;
         _isFavourited = false; //ไม่ชอบ
       } else {
-        _favouriteCount += 1;
+        //_favouriteCount += 1;
         _isFavourited = true; //ชอบ
       }
     });
@@ -71,7 +72,7 @@ class _TrainDetailsState extends State<TrainDetails> {
               ),
             ),
           ),
-          SizedBox(
+          /*SizedBox(
             height: 80.0,
             child: Tab(
               text: 'ค่าโดยสาร',
@@ -80,7 +81,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                 width: 30,
               ),
             ),
-          ),
+          ),*/
         ],
       );
 
@@ -89,7 +90,7 @@ class _TrainDetailsState extends State<TrainDetails> {
     getTrainDetail();
 
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         //resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -179,7 +180,7 @@ class _TrainDetailsState extends State<TrainDetails> {
           children: [
             tableTab(context),
             seatTab(),
-            priceTab(),
+            //priceTab(),
           ],
         ),
       ),
@@ -208,7 +209,9 @@ class _TrainDetailsState extends State<TrainDetails> {
             chart: '',
             classes: '',
             coach: []);
-        print("no detail");
+        if (kDebugMode) {
+          print("no detail");
+        }
       }
     }
   }
@@ -242,7 +245,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                 .center, //Center Row contents vertically,
                             children: [
                               Container(
-                                width: context.mediaQuery.size.width*0.5,
+                                width: context.mediaQuery.size.width * 0.5,
                                 alignment: Alignment.center,
                                 child: Text(
                                   "สถานีที่จอด",
@@ -257,7 +260,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                 width: 2,
                               ),
                               Container(
-                                 width: context.mediaQuery.size.width*0.3,
+                                width: context.mediaQuery.size.width * 0.3,
                                 alignment: Alignment.center,
                                 child: Text(
                                   "เวลาออก",
@@ -278,7 +281,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                   //เนื้อหาตารางใหม่
                   SizedBox(
                     child: Container(
-                      height: context.mediaQuery.size.height*0.4,
+                      height: context.mediaQuery.size.height * 0.4,
                       color: const Color.fromARGB(255, 255, 255, 255),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -374,7 +377,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                       .center, //Center Row contents vertically,
                   children: [
                     Container(
-                      width:  context.mediaQuery.size.width*0.5,
+                      width: context.mediaQuery.size.width * 0.5,
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
@@ -401,7 +404,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                       width: 2,
                     ),
                     Container(
-                      width: context.mediaQuery.size.width*0.3,
+                      width: context.mediaQuery.size.width * 0.3,
                       alignment: Alignment.center,
                       child: Text(
                         stationStopList.deptime,
@@ -877,7 +880,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                                               BorderRadius.circular(15.0),
                                           child: Image(
                                             height: 120.0,
-                                            width: context.mediaQuery.size.width*0.35, //200
+                                            width:
+                                                context.mediaQuery.size.width *
+                                                    0.35, //200
                                             image: AssetImage(
                                                 seating.imageUrlExterior),
                                             fit: BoxFit.cover,
@@ -888,7 +893,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                                               BorderRadius.circular(15.0),
                                           child: Image(
                                             height: 120.0,
-                                            width: context.mediaQuery.size.width*0.35, //200
+                                            width:
+                                                context.mediaQuery.size.width *
+                                                    0.35, //200
                                             image: AssetImage(
                                                 seating.imageUrlInterior),
                                             fit: BoxFit.cover,
@@ -902,7 +909,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                     Text(seating.description,
                                         style: GoogleFonts.prompt(
                                             fontSize: 14, color: Colors.black)),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text('ผังที่นั่ง',
@@ -959,7 +966,9 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                                     .red)),
                                                   ),
                                                   SizedBox(
-                                                    width: context.mediaQuery.size.width*0.15,
+                                                    width: context.mediaQuery
+                                                            .size.width *
+                                                        0.15,
                                                   ),
                                                   Text(
                                                     "ทิศเที่ยวกลับ",
@@ -977,7 +986,7 @@ class _TrainDetailsState extends State<TrainDetails> {
                                                                         0,
                                                                         226))),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 2,
                                                   ),
                                                   const Icon(
@@ -1200,8 +1209,11 @@ class _TrainDetailsState extends State<TrainDetails> {
   }
 
   void itemSelectionChanged(String? originStation) {
-    print('items');
-    print(originStation); //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
+    if (kDebugMode) {
+      print('items');
+      print(originStation);
+    }
+    //เมื่อเลือกระบบจะเลือก items ออกมาเป็นค่า s
   }
 }
 

@@ -1,17 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:train_planner/controllers/task_controllers.dart';
 import 'package:train_planner/models/result_model.dart';
 import 'package:train_planner/models/task.dart';
 import 'package:train_planner/models/traindatalist.dart';
 import 'package:train_planner/screens/traindetails.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:train_planner/widgets/addTask.dart';
 import '../db/db_helper.dart';
 import 'package:intl/intl.dart';
-
-import '../screens/writeplan.dart';
 
 // ผลการค้นหาเส้นทางตอนแก้ไขแผน เหมือนค้นหาจากหน้าแรก
 class SearchresultPlan extends StatefulWidget {
@@ -138,9 +134,11 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
 
     DateTime dateTime = DateTime.parse(widget.date);
     String dateText = df.format(dateTime);
-    print(widget.date);
-    print(dateTime);
-    print(dateText);
+    if (kDebugMode) {
+      print(widget.date);
+      print(dateTime);
+      print(dateText);
+    }
     bool checkIsOnlySatSun() =>
         dateTime.weekday >= 6 &&
         (isRunOnSatSun[1].contains(result.trainNumber));
@@ -336,21 +334,6 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
                                   ),
                                 ],
                               ),
-                              /*Text(
-                                'ชั้น 2', //result.class
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                ),
-                              ),*/
-
-                              /*Text(
-                                'รถนั่งปรับอากาศ', //result.coachtype1
-                                style: GoogleFonts.prompt(
-                                  color: Colors.black,
-                                  fontSize: 15.0,
-                                ),
-                              ),*/
                             ],
                           )),
                       SizedBox(

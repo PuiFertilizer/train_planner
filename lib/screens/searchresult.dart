@@ -19,8 +19,7 @@ class Searchresult extends StatefulWidget {
   final String date;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SearchresultState createState() => _SearchresultState();
+  State<Searchresult> createState() => _SearchresultState();
 }
 
 class _SearchresultState extends State<Searchresult> {

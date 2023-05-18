@@ -1,19 +1,15 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:train_planner/models/destination_model.dart';
 
-
-class PlanScreen extends StatefulWidget{
- 
+class PlanScreen extends StatefulWidget {
+  const PlanScreen({super.key});
 
   @override
-  _PlanScreenState createState() => _PlanScreenState();
+  State<PlanScreen> createState() => _PlanScreenState();
 }
 
-class _PlanScreenState extends State<PlanScreen>{
+class _PlanScreenState extends State<PlanScreen> {
   @override
-  Widget build(BuildContext context){
-    return Scaffold();
+  Widget build(BuildContext context) {
+    return const Scaffold();
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:train_planner/screens/stationTouristAttractions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../models/stationdatalist.dart';
@@ -11,27 +10,28 @@ class AttractionsDetails extends StatefulWidget {
   const AttractionsDetails({super.key, required this.destination});
 
   @override
-  _AttractionsDetailsState createState() => _AttractionsDetailsState();
+  State<AttractionsDetails> createState() => _AttractionsDetailsState();
 }
 
 class _AttractionsDetailsState extends State<AttractionsDetails> {
-    //favourite
+  //favourite
   bool _isFavourited = false;
-  int _favouriteCount = 0;
+  //int _favouriteCount = 0;
 
   //change colors of favourite
   void _toggleFavourite() {
     setState(() {
       //สถานะรายการโปรด
       if (_isFavourited) {
-        _favouriteCount -= 1;
+        //_favouriteCount -= 1;
         _isFavourited = false; //ไม่ชอบ
       } else {
-        _favouriteCount += 1;
+        //_favouriteCount += 1;
         _isFavourited = true; //ชอบ
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +61,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
                   ),
                   Row(
                     //หัวใจรายการโปรด
-                    children: <Widget>[],
+                    children: const <Widget>[],
                   ),
                 ],
               ),
@@ -128,25 +128,25 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
                   Row(
                     //หัวใจรายการโปรด
                     children: <Widget>[
-                       Container(
-                              padding: const EdgeInsets.all(0),
-                              child: IconButton(
-                                padding: const EdgeInsets.all(0),
-                                alignment: Alignment.centerRight,
-                                icon: (_isFavourited
-                                    ? const Icon(
-                                        Icons.favorite,
-                                        size: 40.0,
-                                      )
-                                    : const Icon(
-                                        Icons.favorite_border,
-                                        size: 40.0,
-                                      )),
-                                color: Colors.red[500],
-                                //to call _toggleFavourite
-                                onPressed: _toggleFavourite,
-                              ),
-                            )
+                      Container(
+                        padding: const EdgeInsets.all(0),
+                        child: IconButton(
+                          padding: const EdgeInsets.all(0),
+                          alignment: Alignment.centerRight,
+                          icon: (_isFavourited
+                              ? const Icon(
+                                  Icons.favorite,
+                                  size: 40.0,
+                                )
+                              : const Icon(
+                                  Icons.favorite_border,
+                                  size: 40.0,
+                                )),
+                          color: Colors.red[500],
+                          //to call _toggleFavourite
+                          onPressed: _toggleFavourite,
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -239,7 +239,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   //ชื่อสถานที่
-      
+
                   Expanded(
                     child: Text(
                       widget.destination.howtotravel,
@@ -290,7 +290,7 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   //ชื่อสถานที่
-      
+
                   Expanded(
                     child: Text(
                       widget.destination.locationaddress,
@@ -307,21 +307,6 @@ class _AttractionsDetailsState extends State<AttractionsDetails> {
           const SizedBox(
             height: 10,
           ),
-          // ElevatedButton(
-          //   onPressed: () {},
-          //   style: ElevatedButton.styleFrom(
-          //     fixedSize: const Size(350, 30),
-          //     backgroundColor: const Color.fromARGB(255, 87, 204, 153),
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(15.0),
-          //     ),
-          //   ),
-          //   child: Text(
-          //     "เพิ่มในแผนการเดินทาง", //สร้างแผนใหม่
-          //     style: GoogleFonts.prompt(
-          //         color: const Color.fromARGB(255, 19, 19, 19), fontSize: 16.0),
-          //   ),
-          // )
         ]),
       ),
     );

@@ -8,7 +8,7 @@ class Favourite extends StatefulWidget {
   const Favourite({Key? key}) : super(key: key);
 
   @override
-  _FavouriteState createState() => _FavouriteState();
+  State<Favourite> createState() => _FavouriteState();
 }
 
 class _FavouriteState extends State<Favourite> {
@@ -331,7 +331,11 @@ class _FavouriteState extends State<Favourite> {
                                                       children: [
                                                         SizedBox(
                                                             height: 120,
-                                                            width: context.mediaQuery.size.width*0.5,
+                                                            width: context
+                                                                    .mediaQuery
+                                                                    .size
+                                                                    .width *
+                                                                0.5,
                                                             child: Column(
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
@@ -421,7 +425,7 @@ class _FavouriteState extends State<Favourite> {
                                                                         builder:
                                                                             (BuildContext
                                                                                 context) {
-                                                                          return DialogDelete();
+                                                                          return const DialogDelete();
                                                                         }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
                                                                   },
                                                                   child:
@@ -495,48 +499,46 @@ class _FavouriteState extends State<Favourite> {
                                                               const SizedBox(
                                                                 height: 2,
                                                               ),
-                                                              Container(
-                                                                child:
-                                                                    ElevatedButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    /*Navigator.push(
+                                                              ElevatedButton(
+                                                                onPressed: () {
+                                                                  /*Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           Searchresult()),
                                                 );*/
-                                                                  },
-                                                                  style: ElevatedButton
-                                                                      .styleFrom(
-                                                                    fixedSize:
-                                                                        const Size(
-                                                                            120,
-                                                                            1),
-                                                                    backgroundColor:
-                                                                        const Color.fromARGB(
-                                                                            255,
-                                                                            87,
-                                                                            204,
-                                                                            153),
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              15.0),
-                                                                    ),
+                                                                },
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  fixedSize:
+                                                                      const Size(
+                                                                          120,
+                                                                          1),
+                                                                  backgroundColor:
+                                                                      const Color
+                                                                              .fromARGB(
+                                                                          255,
+                                                                          87,
+                                                                          204,
+                                                                          153),
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            15.0),
                                                                   ),
-                                                                  child: Text(
-                                                                    "เพิ่มในแผน",
-                                                                    style: GoogleFonts.prompt(
-                                                                        color: const Color.fromARGB(
-                                                                            255,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        fontSize:
-                                                                            14.0),
-                                                                  ),
+                                                                ),
+                                                                child: Text(
+                                                                  "เพิ่มในแผน",
+                                                                  style: GoogleFonts.prompt(
+                                                                      color: const Color
+                                                                              .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                                      fontSize:
+                                                                          14.0),
                                                                 ),
                                                               ),
                                                             ],
@@ -571,197 +573,178 @@ class _FavouriteState extends State<Favourite> {
 
               child: Column(
                 children: [
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18, top: 18, right: 18, bottom: 10),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            height: 0,
-                            color: const Color.fromARGB(255, 255, 255, 255),
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 18, top: 18, right: 18, bottom: 10),
+                    child: Column(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          height: 0,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                        ),
 
-                          //เนื้อหาตารางใหม่
-                          SizedBox(
-                            child: Container(
-                              height: 510,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10),
+                        //เนื้อหาตารางใหม่
+                        SizedBox(
+                          child: Container(
+                            height: 510,
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, right: 10),
+                              child: RawScrollbar(
+                                thumbColor:
+                                    const Color.fromARGB(255, 132, 132, 132),
+                                radius: const Radius.circular(20),
+                                thickness: 5,
                                 child: Container(
-                                  child: RawScrollbar(
-                                    thumbColor: const Color.fromARGB(
-                                        255, 132, 132, 132),
-                                    radius: const Radius.circular(20),
-                                    thickness: 5,
-                                    child: Container(
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255),
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: favouriteTrainLists.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          FavouriteTrainList
-                                              favouriteTrainList =
-                                              favouriteTrainLists[index];
-                                          return Stack(
-                                            children: <Widget>[
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: favouriteTrainLists.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      FavouriteTrainList favouriteTrainList =
+                                          favouriteTrainLists[index];
+                                      return Stack(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: const EdgeInsets.fromLTRB(
+                                                0, 0.0, 0, 10.0),
+                                            height: 80.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 255, 255, 255),
+                                              border: Border.all(
+                                                color: const Color.fromARGB(
+                                                    255, 0, 0, 0),
+                                                width: 2,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Row(children: [
                                               Container(
-                                                margin:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 0.0, 0, 10.0),
-                                                height: 80.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                                      255, 255, 255, 255),
-                                                  border: Border.all(
-                                                    color: const Color.fromARGB(
-                                                        255, 0, 0, 0),
-                                                    width: 2,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                ),
-                                                child: Row(children: [
-                                                  Container(
-                                                    width: 120,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 10),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      TrainDetails(
-                                                                          train:
-                                                                              favouriteTrainList.trainNo)),
-                                                            );
-                                                          },
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                'ขบวน ${favouriteTrainList.trainNo}', //เลขขบวน
-                                                                style: GoogleFonts.prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        17.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
-                                                              ),
-                                                              const SizedBox(
-                                                                height: 2,
-                                                              ),
-                                                              Text(
-                                                                favouriteTrainList
-                                                                    .trainType, //ประเภทขบวน
-                                                                style:
-                                                                    GoogleFonts
-                                                                        .prompt(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        )),
-                                                  ),
-                                                  Container(
-                                                    width: 170,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 10),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              favouriteTrainList
-                                                                  .departureStation, //สถานีต้นทางแต่ละขบวน
-                                                              style: GoogleFonts
-                                                                  .prompt(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize: 15.0,
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 2,
-                                                            ),
-                                                            Text(
-                                                              favouriteTrainList
-                                                                  .arriveStation, //สถานีปลายทางแต่ละขบวน
-                                                              style: GoogleFonts
-                                                                  .prompt(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize: 15.0,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        )),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 30,
+                                                width: 120,
+                                                alignment: Alignment.centerLeft,
+                                                child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0, top: 10),
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (BuildContext
-                                                                    context) {
-                                                              return DialogDelete();
-                                                            }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                                                        //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  TrainDetails(
+                                                                      train: favouriteTrainList
+                                                                          .trainNo)),
+                                                        );
                                                       },
-                                                      child: const Icon(
-                                                        Icons.delete,
-                                                        color: Color.fromARGB(
-                                                            255, 0, 0, 0),
-                                                        size: 30,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            'ขบวน ${favouriteTrainList.trainNo}', //เลขขบวน
+                                                            style: GoogleFonts.prompt(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 17.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 2,
+                                                          ),
+                                                          Text(
+                                                            favouriteTrainList
+                                                                .trainType, //ประเภทขบวน
+                                                            style: GoogleFonts
+                                                                .prompt(
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 12.0,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ),
+                                                    )),
+                                              ),
+                                              Container(
+                                                width: 170,
+                                                alignment: Alignment.centerLeft,
+                                                child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0, top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          favouriteTrainList
+                                                              .departureStation, //สถานีต้นทางแต่ละขบวน
+                                                          style: GoogleFonts
+                                                              .prompt(
+                                                            color: Colors.black,
+                                                            fontSize: 15.0,
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 2,
+                                                        ),
+                                                        Text(
+                                                          favouriteTrainList
+                                                              .arriveStation, //สถานีปลายทางแต่ละขบวน
+                                                          style: GoogleFonts
+                                                              .prompt(
+                                                            color: Colors.black,
+                                                            fontSize: 15.0,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ),
+                                              SizedBox(
+                                                width: 30,
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return const DialogDelete();
+                                                        }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.delete,
+                                                    color: Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                    size: 30,
                                                   ),
-                                                ]),
-                                              )
-                                            ],
-                                          );
-                                        },
-                                      ),
-                                    ),
+                                                ),
+                                              ),
+                                            ]),
+                                          )
+                                        ],
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
                             ),
-                          )
+                          ),
+                        )
 
-                          //เนื้อหาตารางใหม่
-                        ],
-                      ),
+                        //เนื้อหาตารางใหม่
+                      ],
                     ),
                   ),
                 ],
@@ -773,174 +756,168 @@ class _FavouriteState extends State<Favourite> {
 
               child: Column(
                 children: [
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 18, top: 18, right: 18, bottom: 10),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            height: 0,
-                            color: const Color.fromARGB(255, 255, 255, 255),
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 18, top: 18, right: 18, bottom: 10),
+                    child: Column(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          height: 0,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                        ),
 
-                          //เนื้อหาตารางใหม่
-                          SizedBox(
-                            child: Container(
-                              height: 510,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10.0, right: 10),
+                        //เนื้อหาตารางใหม่
+                        SizedBox(
+                          child: Container(
+                            height: 510,
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, right: 10),
+                              child: RawScrollbar(
+                                thumbColor:
+                                    const Color.fromARGB(255, 132, 132, 132),
+                                radius: const Radius.circular(20),
+                                thickness: 5,
                                 child: Container(
-                                  child: RawScrollbar(
-                                    thumbColor: const Color.fromARGB(
-                                        255, 132, 132, 132),
-                                    radius: const Radius.circular(20),
-                                    thickness: 5,
-                                    child: Container(
-                                      color: const Color.fromARGB(
-                                          255, 255, 255, 255),
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: favouriteStationLists.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          FavouriteStationList
-                                              favouriteStationList =
-                                              favouriteStationLists[index];
-                                          return Stack(
-                                            children: <Widget>[
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: favouriteStationLists.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      FavouriteStationList
+                                          favouriteStationList =
+                                          favouriteStationLists[index];
+                                      return Stack(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: const EdgeInsets.fromLTRB(
+                                                0, 0.0, 0, 10.0),
+                                            height: 80.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 255, 255, 255),
+                                              border: Border.all(
+                                                color: const Color.fromARGB(
+                                                    255, 0, 0, 0),
+                                                width: 2,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Row(children: [
                                               Container(
-                                                margin:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 0.0, 0, 10.0),
-                                                height: 80.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                                      255, 255, 255, 255),
-                                                  border: Border.all(
-                                                    color: const Color.fromARGB(
-                                                        255, 0, 0, 0),
-                                                    width: 2,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                ),
-                                                child: Row(children: [
-                                                  Container(
-                                                    width:  context.mediaQuery.size.width*0.7,
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 8.0,
-                                                                top: 10),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      StationDetails(
-                                                                        station:
-                                                                            favouriteStationList.stationName,
-                                                                      )), //ไปราะละเอียดแต่ละสถานี
-                                                            );
-                                                          },
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                favouriteStationList
-                                                                    .stationName, //ชื่อสถานี
-                                                                style: GoogleFonts.prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        17.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
-                                                              ),
-                                                              const SizedBox(
-                                                                height: 2,
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Text(
-                                                                    'จ. ${favouriteStationList.stationProvince}', //จังหวัดสถานี
-                                                                    style: GoogleFonts
-                                                                        .prompt(
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontSize:
-                                                                          16.0,
-                                                                    ),
-                                                                  ),
-                                                                  const SizedBox(
-                                                                    width: 10,
-                                                                  ),
-                                                                  Text(
-                                                                    favouriteStationList
-                                                                        .stationRoute, //จังหวัดสถานี
-                                                                    style: GoogleFonts
-                                                                        .prompt(
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontSize:
-                                                                          16.0,
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              )
-                                                            ],
-                                                          ),
-                                                        )),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 30,
+                                                width: context
+                                                        .mediaQuery.size.width *
+                                                    0.7,
+                                                alignment: Alignment.centerLeft,
+                                                child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0, top: 10),
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (BuildContext
-                                                                    context) {
-                                                              return DialogDelete();
-                                                            }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                                                        //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  StationDetails(
+                                                                    station:
+                                                                        favouriteStationList
+                                                                            .stationName,
+                                                                  )), //ไปราะละเอียดแต่ละสถานี
+                                                        );
                                                       },
-                                                      child: const Icon(
-                                                        Icons.delete,
-                                                        color: Color.fromARGB(
-                                                            255, 0, 0, 0),
-                                                        size: 30,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            favouriteStationList
+                                                                .stationName, //ชื่อสถานี
+                                                            style: GoogleFonts.prompt(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 17.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 2,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                'จ. ${favouriteStationList.stationProvince}', //จังหวัดสถานี
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .prompt(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                ),
+                                                              ),
+                                                              const SizedBox(
+                                                                width: 10,
+                                                              ),
+                                                              Text(
+                                                                favouriteStationList
+                                                                    .stationRoute, //จังหวัดสถานี
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .prompt(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
                                                       ),
-                                                    ),
+                                                    )),
+                                              ),
+                                              SizedBox(
+                                                width: 30,
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return const DialogDelete();
+                                                        }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.delete,
+                                                    color: Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                    size: 30,
                                                   ),
-                                                ]),
-                                              )
-                                            ],
-                                          );
-                                        },
-                                      ),
-                                    ),
+                                                ),
+                                              ),
+                                            ]),
+                                          )
+                                        ],
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
                             ),
-                          )
+                          ),
+                        )
 
-                          //เนื้อหาตารางใหม่
-                        ],
-                      ),
+                        //เนื้อหาตารางใหม่
+                      ],
                     ),
                   ),
                 ],
@@ -971,132 +948,128 @@ class _FavouriteState extends State<Favourite> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.only(left: 10.0, right: 10),
-                              child: Container(
-                                child: RawScrollbar(
-                                  thumbColor:
-                                      const Color.fromARGB(255, 132, 132, 132),
-                                  radius: const Radius.circular(20),
-                                  thickness: 5,
-                                  child: Container(
-                                    color: const Color.fromARGB(
-                                        255, 255, 255, 255),
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.vertical,
-                                      itemCount:
-                                          favouriteAttractionLists.length,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        FavouriteAttractionList
-                                            favouriteAttractionList =
-                                            favouriteAttractionLists[index];
-                                        return Stack(
-                                          children: <Widget>[
-                                            Container(
-                                              margin: const EdgeInsets.fromLTRB(
-                                                  0, 0.0, 0, 10.0),
-                                              height: 80.0,
-                                              decoration: BoxDecoration(
+                              child: RawScrollbar(
+                                thumbColor:
+                                    const Color.fromARGB(255, 132, 132, 132),
+                                radius: const Radius.circular(20),
+                                thickness: 5,
+                                child: Container(
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: favouriteAttractionLists.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      FavouriteAttractionList
+                                          favouriteAttractionList =
+                                          favouriteAttractionLists[index];
+                                      return Stack(
+                                        children: <Widget>[
+                                          Container(
+                                            margin: const EdgeInsets.fromLTRB(
+                                                0, 0.0, 0, 10.0),
+                                            height: 80.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 255, 255, 255),
+                                              border: Border.all(
                                                 color: const Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                                border: Border.all(
-                                                  color: const Color.fromARGB(
-                                                      255, 0, 0, 0),
-                                                  width: 2,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
+                                                    255, 0, 0, 0),
+                                                width: 2,
                                               ),
-                                              child: Row(children: [
-                                                Container(
-                                                  width: context.mediaQuery.size.width*0.7,
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0,
-                                                              top: 10),
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    StationDetails(
-                                                                      station:
-                                                                          favouriteAttractionList
-                                                                              .attractionStation,
-                                                                    )), //ไปราะละเอียดแต่ละสถานี
-                                                          );
-                                                        },
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              favouriteAttractionList
-                                                                  .attractionName, //ชื่อสถานี
-                                                              style: GoogleFonts.prompt(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Row(children: [
+                                              Container(
+                                                width: context
+                                                        .mediaQuery.size.width *
+                                                    0.7,
+                                                alignment: Alignment.centerLeft,
+                                                child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 8.0, top: 10),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        //link ไปหน้ารายละเอียดของแต่ละเลขขบวนได้ตาม index
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  StationDetails(
+                                                                    station:
+                                                                        favouriteAttractionList
+                                                                            .attractionStation,
+                                                                  )), //ไปราะละเอียดแต่ละสถานี
+                                                        );
+                                                      },
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            favouriteAttractionList
+                                                                .attractionName, //ชื่อสถานี
+                                                            style: GoogleFonts.prompt(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 17.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 2,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                'สถานีรถไฟ${favouriteAttractionList.attractionStation}', //จังหวัดสถานี
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .prompt(
                                                                   color: Colors
                                                                       .black,
                                                                   fontSize:
-                                                                      17.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600),
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 2,
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  'สถานีรถไฟ${favouriteAttractionList.attractionStation}', //จังหวัดสถานี
-                                                                  style:
-                                                                      GoogleFonts
-                                                                          .prompt(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        16.0,
-                                                                  ),
+                                                                      16.0,
                                                                 ),
-                                                                const SizedBox(
-                                                                  width: 10,
-                                                                ),
-                                                              ],
-                                                            )
-                                                          ],
-                                                        ),
-                                                      )),
-                                                ),
-                                                SizedBox(
-                                                  width: 30,
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      showDialog(
-                                                          context: context,
-                                                          builder: (BuildContext
-                                                              context) {
-                                                            return DialogDelete();
-                                                          }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
-                                                    },
-                                                    child: const Icon(
-                                                      Icons.delete,
-                                                      color: Color.fromARGB(
-                                                          255, 0, 0, 0),
-                                                      size: 30,
-                                                    ),
+                                                              ),
+                                                              const SizedBox(
+                                                                width: 10,
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )),
+                                              ),
+                                              SizedBox(
+                                                width: 30,
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return const DialogDelete();
+                                                        }); //link ไปหน้ารายละเอียดของแต่ละสถานีได้ตาม index
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.delete,
+                                                    color: Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                    size: 30,
                                                   ),
                                                 ),
-                                              ]),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                    ),
+                                              ),
+                                            ]),
+                                          )
+                                        ],
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
@@ -1282,6 +1255,8 @@ List<FavouriteAttractionList> favouriteAttractionLists = [
 ];
 
 class DialogDelete extends StatelessWidget {
+  const DialogDelete({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -1316,7 +1291,7 @@ class DialogDelete extends StatelessWidget {
                           //ไม่ลบ
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
+                          backgroundColor: Colors.red,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 5),
                         ),
@@ -1333,7 +1308,8 @@ class DialogDelete extends StatelessWidget {
                           Navigator.of(context).pop(); //ไม่ลบ
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(255, 56, 163, 165),
+                          backgroundColor:
+                              const Color.fromARGB(255, 56, 163, 165),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 5),
                         ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/PlanList.dart';
+import '../widgets/planlist.dart';
 
 class Planner extends StatefulWidget {
   const Planner({Key? key}) : super(key: key);
 
   @override
-  _PlannerState createState() => _PlannerState();
+  State<Planner> createState() => _PlannerState();
 }
 
 class _PlannerState extends State<Planner> {

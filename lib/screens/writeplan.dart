@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:train_planner/db/db_helper.dart';
-import 'package:train_planner/widgets/addTask.dart';
-import 'package:train_planner/widgets/searchRouteEdit.dart';
+import 'package:train_planner/widgets/addtask.dart';
+import 'package:train_planner/widgets/search_route_edit.dart';
 import '../controllers/task_controllers.dart';
 import '../models/plan.dart';
 import '../models/task.dart';
@@ -15,15 +15,12 @@ class Writeplan extends StatefulWidget {
   const Writeplan({Key? key, required this.planid}) : super(key: key);
   final int planid;
   @override
-  _WriteplanState createState() => _WriteplanState();
+  State<Writeplan> createState() => _WriteplanState();
 }
 
 class _WriteplanState extends State<Writeplan> {
-  //DateTime _selectedDate = DateTime.now();
-  //DateTime startDate = DateTime(2023, 2, 5);
-  //DateTime endDate = DateTime(2023, 2, 8);
   late TaskController _taskController;
-  var notifyHelper;
+  //var notifyHelper;
 
   @override
   void dispose() {
@@ -36,13 +33,6 @@ class _WriteplanState extends State<Writeplan> {
   Widget build(BuildContext context) {
     _taskController = TaskController(widget.planid);
     _taskController.getTasks(widget.planid);
-    /*var date = DBHelper.getPlanDate(widget.planid);
-    var firstDay = "no date";
-    var lastDay = "";
-    if (date.isNotEmpty) {
-      firstDay = date.first.toString();
-      lastDay = date.last.toString();
-    }*/
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -67,12 +57,6 @@ class _WriteplanState extends State<Writeplan> {
                     child: Padding(
                       padding: EdgeInsets.only(
                           bottom: 10, left: 10), //วันเริ่มและวันสิ้นสุดของแผน
-                      /*child: Text("$firstDay - $lastDay",
-                          style: GoogleFonts.prompt(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          )), //วันที่ของแผน*/
                     )),
               );
             } else {
