@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:train_planner/screens/stationdetails.dart';
-import '../widgets/NavBar.dart';
+import '../widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Stationlist extends StatefulWidget {

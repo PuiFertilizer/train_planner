@@ -24,8 +24,7 @@ class SearchresultPlan extends StatefulWidget {
   final int planid;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SearchresultPlanState createState() => _SearchresultPlanState();
+  State<SearchresultPlan> createState() => _SearchresultPlanState();
 }
 
 class _SearchresultPlanState extends State<SearchresultPlan> {

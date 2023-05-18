@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_planner/screens/stationdetails.dart';
 
-import '../widgets/Destination_Carousel.dart';
-
 class Tourtraindetails_Namtok extends StatefulWidget {
   const Tourtraindetails_Namtok({Key? key}) : super(key: key);
 
