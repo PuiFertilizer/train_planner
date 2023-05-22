@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/Destination_Carousel.dart';
+import '../widgets/Tourtrain_Carousel.dart';
 import '../widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,11 +28,19 @@ class _TourtrainListState extends State<TourtrainList> {
         child: Stack(
           children: [
             Image.asset(
-              "assets/images/CSY5213.jpg",
+              "assets/images/krasae.jpg",
               height: 180,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
+            Column(
+              children: <Widget>[
+                const SizedBox(height: 180.0),
+                Destination_Carousel(),
+                const SizedBox(height: 10.0),
+                Tourtrain_Carousel()
+              ],
+            )
           ],
         ),
       ),

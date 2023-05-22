@@ -298,7 +298,7 @@ class _SearchresultState extends State<Searchresult> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                          height: 100,
+                          height: 50,
                           width: 200,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -306,25 +306,36 @@ class _SearchresultState extends State<Searchresult> {
                               Row(
                                 children: [
                                   Text(
+                                    'ประเภท: ',
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.black,
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Text(
                                     result.traintype,
                                     style: GoogleFonts.prompt(
                                         color: Colors.black,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w600),
-                                  ),
+                                  ),                 
+                                ],
+                              ),
+                              Row(
+                                children: [
                                   Text(
-                                    ' ที่',
+                                    'เลขขบวน: ',
                                     style: GoogleFonts.prompt(
                                         color: Colors.black,
-                                        fontSize: 16.0,
+                                        fontSize: 14.0,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                  const SizedBox(width: 10),
+                                  //const SizedBox(width: 10),
                                   Text(
                                     result.trainNumber,
                                     style: GoogleFonts.prompt(
                                         color: Colors.black,
-                                        fontSize: 16.0,
+                                        fontSize: 18.0,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ],
@@ -332,7 +343,7 @@ class _SearchresultState extends State<Searchresult> {
                             ],
                           )),
                       SizedBox(
-                        height: 100,
+                        height: 50,
                         width: 120,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -364,30 +375,25 @@ class _SearchresultState extends State<Searchresult> {
                             const SizedBox(
                               height: 2,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                /*Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Searchresult()),
-                                                );*/
-                              },
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(120, 10),
-                                backgroundColor:
-                                    const Color.fromARGB(255, 87, 204, 153),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                              ),
-                              child: Text(
-                                "เพิ่มในแผน",
-                                style: GoogleFonts.prompt(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 14.0),
-                              ),
-                            ),
+                            // ElevatedButton(
+                            //   onPressed: () {
+                               
+                            //   },
+                            //   style: ElevatedButton.styleFrom(
+                            //     fixedSize: const Size(120, 10),
+                            //     backgroundColor:
+                            //         const Color.fromARGB(255, 87, 204, 153),
+                            //     shape: RoundedRectangleBorder(
+                            //       borderRadius: BorderRadius.circular(10.0),
+                            //     ),
+                            //   ),
+                            //   child: Text(
+                            //     "เพิ่มในแผน",
+                            //     style: GoogleFonts.prompt(
+                            //         color: const Color.fromARGB(255, 0, 0, 0),
+                            //         fontSize: 14.0),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -428,14 +434,18 @@ class _ResultExpansionClassState extends State<ResultExpansionClass> {
     return Column(
       children: <Widget>[
         ExpansionTile(
-          title: const Text('ประเภทขบวนที่มี'),
+          title: Container(
+            child: Text('ชั้นที่นั่งและชนิดรถในขบวน' , style: GoogleFonts.prompt(fontSize: 16.0,fontWeight: FontWeight.w600,color: _customTileExpanded ? Colors.teal : Colors.black),)),
           trailing: Icon(
             _customTileExpanded
-                ? Icons.arrow_drop_down_circle
+                ? Icons.arrow_drop_up
                 : Icons.arrow_drop_down,
+                size: 60.0,
           ),
           children: <Widget>[
-            ListTile(title: Text(widget.seats)),
+            ListTile(
+              title: Text(widget.seats, style: GoogleFonts.prompt(fontSize: 14.0),),),
+            SizedBox(height: 20,),
           ],
           onExpansionChanged: (bool expanded) {
             setState(() {

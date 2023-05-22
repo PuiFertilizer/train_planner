@@ -151,11 +151,16 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
       return Stack();
     }
 
+    String seats = "";
+    for (var i in result.seats) {
+      seats = '$seats\n${i.coachname}';
+    }
+
     return Stack(
       children: <Widget>[
         Container(
           margin: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 5.0),
-          height: 280.0,
+          //height: 280.0,
           width: double.infinity,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 199, 249, 204),
@@ -310,25 +315,36 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
                               Row(
                                 children: [
                                   Text(
+                                    'ประเภท: ',
+                                    style: GoogleFonts.prompt(
+                                        color: Colors.black,
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Text(
                                     result.traintype,
                                     style: GoogleFonts.prompt(
                                         color: Colors.black,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w600),
-                                  ),
+                                  ),                 
+                                ],
+                              ),
+                              Row(
+                                children: [
                                   Text(
-                                    ' ที่',
+                                    'เลขขบวน: ',
                                     style: GoogleFonts.prompt(
                                         color: Colors.black,
-                                        fontSize: 16.0,
+                                        fontSize: 14.0,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                  const SizedBox(width: 10),
+                                  //const SizedBox(width: 10),
                                   Text(
                                     result.trainNumber,
                                     style: GoogleFonts.prompt(
                                         color: Colors.black,
-                                        fontSize: 16.0,
+                                        fontSize: 18.0,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ],
@@ -404,6 +420,7 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
                       Row(),
                     ],
                   ),
+                  ResultExpansionClass(seats: seats)
                 ]),
           ),
         ),
@@ -415,6 +432,47 @@ class _SearchresultPlanState extends State<SearchresultPlan> {
             borderRadius: BorderRadius.circular(20.0),
           ),
         )
+      ],
+    );
+  }
+}
+
+class ResultExpansionClass extends StatefulWidget {
+  const ResultExpansionClass({super.key, required this.seats});
+  final String seats;
+
+  @override
+  State<ResultExpansionClass> createState() => _ResultExpansionClassState();
+}
+
+class _ResultExpansionClassState extends State<ResultExpansionClass> {
+  bool _customTileExpanded = false;
+  //String showText = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ExpansionTile(
+          title: Container(
+            child: Text('ชั้นที่นั่งและชนิดรถในขบวน' , style: GoogleFonts.prompt(fontSize: 16.0,fontWeight: FontWeight.w600,color: _customTileExpanded ? Colors.teal : Colors.black),)),
+          trailing: Icon(
+            _customTileExpanded
+                ? Icons.arrow_drop_up
+                : Icons.arrow_drop_down,
+                size: 60.0,
+          ),
+          children: <Widget>[
+            ListTile(
+              title: Text(widget.seats, style: GoogleFonts.prompt(fontSize: 14.0),),),
+            SizedBox(height: 20,),
+          ],
+          onExpansionChanged: (bool expanded) {
+            setState(() {
+              _customTileExpanded = expanded;
+            });
+          },
+        ),
       ],
     );
   }

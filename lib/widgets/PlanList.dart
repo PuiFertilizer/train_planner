@@ -54,7 +54,7 @@ class PlanListState extends State<PlanList> {
                             Container(
                               margin: const EdgeInsets.fromLTRB(
                                   40.0, 10.0, 40.0, 5.0),
-                              height: 140.0,
+                              height: 100.0,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: const Color.fromARGB(255, 255, 255, 255),
@@ -114,7 +114,7 @@ class PlanListState extends State<PlanList> {
                             Positioned(
                               //popup ของ 3 dots
                               right: 40.0,
-                              top: 80.0,
+                              top: 60.0,
                               bottom: 10.0,
                               child: PopupMenuButton(
                                 itemBuilder: (context) => [
