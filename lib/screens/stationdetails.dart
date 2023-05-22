@@ -296,38 +296,6 @@ class _StationDetailsState extends State<StationDetails> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      /*SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width*0.2, 80),
-                        child: Material(
-                          color: const Color.fromARGB(255, 199, 249, 204),
-                          child: InkWell(
-                            //splashColor: Colors.green,
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return DialogMap();
-                                  });
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Image.asset(
-                                  'assets/images/map.png',
-                                  width: 40,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ), // <-- Icon
-                                Text(
-                                  "แผนที่",
-                                  style: GoogleFonts.prompt(fontSize: 13),
-                                ), // <-- Text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),*/
                       SizedBox.fromSize(
                         size: Size(context.mediaQuery.size.width * 0.2, 80),
                         child: Material(

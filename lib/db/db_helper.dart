@@ -276,24 +276,28 @@ class DBHelper {
 
     int i = 0;
     List<StationTrainList> datas = [];
+
     for (; i < trainlist.length; i++) {
       var data = Routes.fromJson(trainlist[i]);
+      //print(data.line);
       late String des, arr;
-      //เช็คสถานีสุดท้ายขาเข้า
-      if (line[int.parse(data.line) - 1].indexOf(station) != 0 &&
-          int.parse(data.train) % 2 == 0) {
-        des = line[int.parse(data.line) - 1].first;
-        arr = line[int.parse(data.line) - 1].last;
-      }
-      //เช็คสถานีสุดท้ายขาออก
-      else if (line[int.parse(data.line) - 1].indexOf(station) !=
-              line[int.parse(data.line) - 1].length - 1 &&
-          int.parse(data.train) % 2 != 0) {
-        des = line[int.parse(data.line) - 1].last;
-        arr = line[int.parse(data.line) - 1].first;
-      } else {
+      try {
+        des = trainLists[int.parse(data.line) - 1]
+            .firstWhere((element) => element.trainNo == data.train)
+            .departureStation;
+      } catch (e) {
+        print(e);
         continue;
       }
+      try {
+        arr = trainLists[int.parse(data.line) - 1]
+            .firstWhere((element) => element.trainNo == data.train)
+            .arriveStation;
+      } catch (e) {
+        print(e);
+        continue;
+      }
+
       datas.add(StationTrainList(
           originStation: arr,
           destinationStation: des,
