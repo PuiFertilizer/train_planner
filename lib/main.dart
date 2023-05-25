@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(home: MyHomePage()); //หน้าหลัก
+    return const GetMaterialApp(home: MyHomePage(),debugShowCheckedModeBanner: false,); //หน้าหลัก
   }
 }
 

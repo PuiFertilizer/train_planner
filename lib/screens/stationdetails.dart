@@ -152,7 +152,7 @@ class _StationDetailsState extends State<StationDetails> {
                 padding: const EdgeInsets.only(left: 10.0, right: 10),
                 child: Row(children: [
                   Text(
-                    "กำหนดเวลาเดินรถ สถานี",
+                    "กำหนดเวลาเดินรถ สถานีรถไฟ",
                     style: GoogleFonts.prompt(
                         color: Colors.black,
                         fontSize: 15.0,
@@ -297,7 +297,7 @@ class _StationDetailsState extends State<StationDetails> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width * 0.2, 80),
+                        size: Size(context.mediaQuery.size.width * 0.25, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -331,7 +331,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width * 0.2, 80),
+                        size: Size(context.mediaQuery.size.width * 0.25, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -365,7 +365,7 @@ class _StationDetailsState extends State<StationDetails> {
                         ),
                       ),
                       SizedBox.fromSize(
-                        size: Size(context.mediaQuery.size.width * 0.2, 80),
+                        size: Size(context.mediaQuery.size.width * 0.25, 80),
                         child: Material(
                           color: const Color.fromARGB(255, 199, 249, 204),
                           child: InkWell(
@@ -466,10 +466,10 @@ class _StationDetailsState extends State<StationDetails> {
                                   width: 110,
                                   child: Text(
                                     stationTrainList
-                                        .originStation, //ชื่อสถานีต้นทางขบวน
+                                        .destinationStation, //ชื่อสถานีต้นทางขบวน
                                     style: GoogleFonts.prompt(
                                       color: Colors.black,
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                     ),
                                   ),
                                 ),
@@ -477,10 +477,10 @@ class _StationDetailsState extends State<StationDetails> {
                                   width: 110,
                                   child: Text(
                                     stationTrainList
-                                        .destinationStation, //ชื่อสถานีปลายทางขบวน
+                                        .originStation, //ชื่อสถานีปลายทางขบวน
                                     style: GoogleFonts.prompt(
                                       color: Colors.black,
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                     ),
                                   ),
                                 ),

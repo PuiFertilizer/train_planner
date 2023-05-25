@@ -90,16 +90,26 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(10),
                         child: Stack(
                           children: [
-                            Text(
-                              "สถานีต้นทาง",
-                              style: GoogleFonts.prompt(
-                                color: Colors.black,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            Row(
+                              children: [
+                                Icon(
+                                    Icons.directions_train,
+                                    size: 30.0,
+                                    color: Colors.black,
+                                  ),
+                                Text(
+                                  " สถานีต้นทาง",
+                                  style: GoogleFonts.prompt(
+                                    color: Colors.black,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                               
+                              ],
                             ),
                             const SizedBox(
-                              height: 15.0,
+                              height: 25.0,
                             ),
                             ListView(
                               children: [
@@ -143,13 +153,22 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 15,
                                 ),
-                                Text(
-                                  'สถานีปลายทาง',
-                                  style: GoogleFonts.prompt(
+                                Row(
+                                  children: [
+                                    Icon(
+                                    Icons.location_on,
+                                    size: 30.0,
                                     color: Colors.black,
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
                                   ),
+                                    Text(
+                                      ' สถานีปลายทาง',
+                                      style: GoogleFonts.prompt(
+                                        color: Colors.black,
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 const SizedBox(
                                   height: 2,
